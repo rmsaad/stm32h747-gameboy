@@ -1,1 +1,2 @@
 gbcpu.c:18:6:vGBCPUpowerup	0	static
+gbcpu.c:24:6:instr	0	static

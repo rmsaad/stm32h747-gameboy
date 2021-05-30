@@ -20,3 +20,7 @@ void vGBCPUpowerup(){
 	reg.PC = 0x100;
 	reg.SP = 0xFFFE;
 }
+
+void instr(){
+
+}
