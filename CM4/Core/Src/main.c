@@ -52,8 +52,6 @@
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
-static void MX_GPIO_Init(void);
-static void MX_RTC_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
