@@ -22,7 +22,9 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "gbmemory.h"
 #include "Tetris.gb.h"
+#include "dmg_boot.bin.h"
 #include <string.h>
 #include <stdio.h>
 /* USER CODE END Includes */
@@ -148,9 +150,30 @@ Error_Handler();
 
   UTIL_LCD_Clear(UTIL_LCD_COLOR_WHITE);
   UTIL_LCD_FillRect(0, 0, 160*3, 480, UTIL_LCD_COLOR_BLACK);
+  UTIL_LCD_FillRect(0, (480 - (144*3))/2, 160*3, 144*3, UTIL_LCD_COLOR_BLUE);
+  UTIL_LCD_SetBackColor(UTIL_LCD_COLOR_WHITE);
+  UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_BLUE);
+  UTIL_LCD_SetFont(&Font24);
+
+  int a = 0;
+  char temp[15];
+
+  UTIL_LCD_Clear(UTIL_LCD_COLOR_WHITE);
+  UTIL_LCD_FillRect(0, 0, 160*3, 480, UTIL_LCD_COLOR_BLACK);
+  UTIL_LCD_FillRect(0, (480 - (144*3))/2, 160*3, 144*3, UTIL_LCD_COLOR_BLUE);
+  UTIL_LCD_SetBackColor(UTIL_LCD_COLOR_WHITE);
+  UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_BLUE);
+  UTIL_LCD_SetFont(&Font24);
+
   while (1)
   {
-  UTIL_LCD_FillRect(0, (480 - (144*3))/2, 160*3, 144*3, UTIL_LCD_COLOR_BLUE);
+	  if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) != 0){									// read the button input
+		  HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_14);										// toggle debug light
+		  vGBMemoryLoad(dmg_boot_bin);													// load boot rom into approiate place in memory map
+		  sprintf(temp,"Opcode: 0x%.2x",vGBMemoryRead(a));
+		  UTIL_LCD_DisplayStringAt(500, LINE(6), (uint8_t *) temp, LEFT_MODE);
+		  a++;
+	  }
   HAL_Delay(1000);
   }
 
@@ -281,6 +304,12 @@ static void vLEDInit(void){
 	GPIO_InitStruct.Pull = GPIO_NOPULL;
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
 	HAL_GPIO_Init(GPIOI, &GPIO_InitStruct);
+
+	GPIO_InitStruct.Pin = GPIO_PIN_13;
+	GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+	GPIO_InitStruct.Pull = GPIO_NOPULL;
+	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+	HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 }
 
 /* USER CODE END 4 */
@@ -305,7 +334,7 @@ void Error_Handler(void)
   * @param  None
   * @retval None
   */
-static void LCD_BriefDisplay(void)
+__attribute__ ((unused)) static void LCD_BriefDisplay(void)
 {
   UTIL_LCD_Clear(UTIL_LCD_COLOR_WHITE);
   UTIL_LCD_SetBackColor(UTIL_LCD_COLOR_BLUE);
@@ -318,7 +347,7 @@ static void LCD_BriefDisplay(void)
   UTIL_LCD_DisplayStringAt(0, LINE(6), (uint8_t *)"on LCD DSI using same buffer for display and for draw", CENTER_MODE);
 }
 
-static void CopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t xsize, uint16_t ysize)
+__attribute__ ((unused)) static void CopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t xsize, uint16_t ysize)
 {
 
   uint32_t destination = (uint32_t)pDst + (y * LCD_X_Size + x) * 4;

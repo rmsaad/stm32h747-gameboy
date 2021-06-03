@@ -1,2 +1,3 @@
-gbcpu.c:18:6:vGBCPUpowerup	0	static
-gbcpu.c:24:6:instr	0	static
+gbcpu.c:24:6:vGBCPUreset	8	static
+gbcpu.c:34:6:vGBCPUboot	0	static
+gbcpu.c:41:6:vGBCPUinstr	0	static

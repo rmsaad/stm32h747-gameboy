@@ -11,7 +11,6 @@
 #include <stdio.h>
 
 typedef struct{
-
 	union{
 	  struct{
 		uint8_t F;
@@ -48,6 +47,15 @@ typedef struct{
 
 	uint16_t PC;
 }registers;
+
+typedef struct{
+	uint8_t ram[65536];
+}memory;
+
+/* Public function prototypes -----------------------------------------------*/
+
+void vGBMemoryLoad(const void* data);
+uint8_t vGBMemoryRead(uint16_t address);
 
 #endif /* INC_GBMEMORY_H_ */
 
