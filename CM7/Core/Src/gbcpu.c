@@ -5,6 +5,7 @@
  *      Author: Rami
  */
 
+#include "gbcpu.h"
 #include "gbmemory.h"
 //#include "Tetris.gb.h"
 //#include "dmg_boot.bin.h"
@@ -12,15 +13,78 @@
 /* Private variables ---------------------------------------------------------*/
 extern registers reg;
 
-void vGBCPUreset();
-void vGBCPUboot();
-void vGBCPUinstr(uint8_t opcode);
+// https://gbdev.io/gb-opcodes/optables/#prefixed
 
-/**
-  * @brief  init gameboy on powerup
-  * @param  None
-  * @retval None
-  */
+void vNOP();
+void vLD_BC_d16();
+void vLD_BC_A();
+void vINC_BC();
+void vINC_B();
+void vDEC_B();
+void vLD_B_d8();
+void vRLCA();
+void vLD_a16_SP();
+void vADD_HL_BC();
+void vLD_A_BC();
+void vDEC_BC();
+void vINC_C();
+void vDEC_C();
+void vLD_C_d8();
+void vRRCA();
+
+void vSTOP();
+void vLD_DE_d16();
+void vLD_DE_A();
+void vINC_DE();
+void vINC_D();
+void vDEC_D();
+void vLD_D_d8();
+void vRLA();
+void vJR_r8();
+void vADD_HL_DE();
+void vLD_A_DE();
+void vDEC_DE();
+void vINC_E();
+void vDEC_E();
+void vLD_E_d8();
+void vRRA();
+
+void vJR_NZ_r8();
+void vLD_HL_d16();
+void vLD_HLI_A();
+void vINC_HL();
+void vINC_H();
+void vDEC_H();
+void vLD_H_d8();
+void vDAA();
+void vJR_Z_r8();
+void vADD_HL_HL();
+void vLD_A_HLI();
+void vDEC_HL();
+void vINC_L();
+void vDEC_L();
+void vLD_L_d8();
+void vCPL();
+
+void vJR_NC_r8();
+void vLD_SP_d16();
+void vLD_HLD_A();
+void vINC_SP();
+
+
+Assembly_Instr instructions[2] = {
+		{vNOP, 1, 4},
+		{vLD_BC_d16, 3, 12}
+};
+
+void vNOP(){
+
+}
+
+void vLD_BC_d16(){
+
+}
+
 void vGBCPUreset(){
 	// TEMP until OPCODES implemented
 	reg.PC = 0x100;
@@ -40,7 +104,7 @@ void vGBCPUboot(){
 
 void vGBCPUinstr(uint8_t opcode){
 	switch (opcode) {								// Instr				bytes  T-states		Flags
-		//case 0x00: __asm volatile("MOV r0, r0"); reg.PC++; break;							// NOP 						1  4
+		//case 0x00: __asm volatile("MOV r0, r0"); break;							// NOP 						1  4
 		case 0x01:	break;							// LD BC, d16				3  12
 		case 0x02:	break;							// LD (BC), A				1  8
 		case 0x03:	break;							// INC BC					1  8

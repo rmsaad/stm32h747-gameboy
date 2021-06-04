@@ -344,11 +344,11 @@ void SystemInit (void)
  8000464:	52004000 	.word	0x52004000
 
 08000468 <vGBMemoryLoad>:
-#include "gbmemory.h"
 
 registers reg;
 memory mem;
 
+// loads data into memory map
 void vGBMemoryLoad(const void* data){
  8000468:	4601      	mov	r1, r0
 	memcpy(mem.ram , data, 256);
@@ -360,6 +360,7 @@ void vGBMemoryLoad(const void* data){
 08000478 <vGBMemoryRead>:
 }
 
+// reads a location from memory map
 uint8_t vGBMemoryRead(uint16_t address){
 	return mem.ram[address];
  8000478:	4b01      	ldr	r3, [pc, #4]	; (8000480 <vGBMemoryRead+0x8>)
@@ -843,11 +844,11 @@ while((__HAL_RCC_GET_FLAG(RCC_FLAG_D2CKRDY) == RESET) && (timeout-- > 0));
 		  vGBMemoryLoad(dmg_boot_bin);													// load boot rom into approiate place in memory map
  8000778:	4638      	mov	r0, r7
  800077a:	f7ff fe75 	bl	8000468 <vGBMemoryLoad>
-		  sprintf(temp,"Opcode: 0x%.2x",vGBMemoryRead(a));
+		  sprintf(temp,"Opcode: 0x%.2x",vGBMemoryRead(a));								// read the next opcode
  800077e:	b2a0      	uxth	r0, r4
 		  a++;
  8000780:	3401      	adds	r4, #1
-		  sprintf(temp,"Opcode: 0x%.2x",vGBMemoryRead(a));
+		  sprintf(temp,"Opcode: 0x%.2x",vGBMemoryRead(a));								// read the next opcode
  8000782:	f7ff fe79 	bl	8000478 <vGBMemoryRead>
  8000786:	4915      	ldr	r1, [pc, #84]	; (80007dc <main+0x284>)
  8000788:	4602      	mov	r2, r0
