@@ -216,7 +216,7 @@ Discarded input sections
                 0x0000000000000000        0x4 Core/Src/gbcpu.o
  .data.instructions
                 0x0000000000000000       0x10 Core/Src/gbcpu.o
- .debug_info    0x0000000000000000      0xb4b Core/Src/gbcpu.o
+ .debug_info    0x0000000000000000      0xb52 Core/Src/gbcpu.o
  .debug_abbrev  0x0000000000000000      0x221 Core/Src/gbcpu.o
  .debug_aranges
                 0x0000000000000000       0x38 Core/Src/gbcpu.o
