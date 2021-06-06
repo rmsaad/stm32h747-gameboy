@@ -23,6 +23,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "gbmemory.h"
+#include "gbcpu.h"
 #include "Tetris.gb.h"
 #include "dmg_boot.bin.h"
 #include <string.h>
@@ -155,9 +156,6 @@ Error_Handler();
   UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_BLUE);
   UTIL_LCD_SetFont(&Font24);
 
-  int a = 0;
-  char temp[15];
-
   UTIL_LCD_Clear(UTIL_LCD_COLOR_WHITE);
   UTIL_LCD_FillRect(0, 0, 160*3, 480, UTIL_LCD_COLOR_BLACK);
   UTIL_LCD_FillRect(0, (480 - (144*3))/2, 160*3, 144*3, UTIL_LCD_COLOR_BLUE);
@@ -170,10 +168,8 @@ Error_Handler();
 	  if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) != 0){									// read the button input
 		  HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_14);										// toggle debug light
 		  vGBMemoryLoad(dmg_boot_bin);													// load boot rom into approiate place in memory map
-
-		  sprintf(temp,"Opcode: 0x%.2x",vGBMemoryRead(a));								// read the next opcode
-		  UTIL_LCD_DisplayStringAt(500, LINE(6), (uint8_t *) temp, LEFT_MODE);
-		  a++;
+		  vGBCPUboot();
+		  vGBMemoryPrint();
 	  }
   HAL_Delay(1000);
   }

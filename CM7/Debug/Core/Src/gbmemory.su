@@ -1,2 +1,3 @@
-gbmemory.c:15:6:vGBMemoryLoad	0	static
-gbmemory.c:20:9:vGBMemoryRead	0	static
+gbmemory.c:16:6:vGBMemoryLoad	0	static
+gbmemory.c:21:9:vGBMemoryRead	0	static
+gbmemory.c:25:6:vGBMemoryPrint	32	static
