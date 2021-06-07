@@ -9,11 +9,16 @@
 #include "gbmemory.h"
 #include "gbfunctions.h"
 
+#define SET   1
+#define RESET 0
 //#include "Tetris.gb.h"
 //#include "dmg_boot.bin.h"
 
 
 /* Private variables ---------------------------------------------------------*/
+
+uint8_t ucSTOPPED = 0;
+
 extern registers reg;
 
 /* Game Boy CPI instruction set */
@@ -1094,18 +1099,18 @@ void vINCs_BC(){      reg.BC++;}
 void vINC_B(){        v8bitRegisterINC(&reg.B, &reg.F);}
 void vDEC_B(){        v8bitRegisterDEC(&reg.B, &reg.F);}
 void vLD_B_d8(){      reg.B = ucGBMemoryRead(reg.PC + 1); reg.PC += 1;}
-void vRLCA(){}
+void vRLCA(){         vGBFunctionRLCA(&reg.A, &reg.F);}
 void vLDs_a16_SP(){   vGBMemoryWrite(concat_16bit_bigEndian(ucGBMemoryRead(reg.PC + 1), ucGBMemoryRead(reg.PC + 2)), reg.SP); reg.PC += 2;}
-void vADDs_HL_BC(){}
+void vADDs_HL_BC(){   vGBFunction16bitADD(&reg.HL, reg.BC, &reg.F);}
 void vLD_A_BC(){      reg.A = ucGBMemoryRead(reg.BC);}
 void vDECs_BC(){      reg.BC--;}
 void vINC_C(){        v8bitRegisterINC(&reg.C, &reg.F);}
 void vDEC_C(){        v8bitRegisterDEC(&reg.C, &reg.F);}
 void vLD_C_d8(){      reg.C = ucGBMemoryRead(reg.PC + 1); reg.PC += 1;}
-void vRRCA(){}
+void vRRCA(){         vGBFunctionRRCA(&reg.A, &reg.F);}
 
 /*********************0x1X*/
-void vSTOP(){}
+void vSTOP(){         vStoppedFlag(SET);}  // MORE NEEDED TO IMPLEMENT LATER
 void vLDs_DE_d16(){   reg.DE = concat_16bit_bigEndian(ucGBMemoryRead(reg.PC + 1), ucGBMemoryRead(reg.PC + 2)); reg.PC += 2;}
 void vLD_DE_A(){      vGBMemoryWrite(reg.DE, reg.A);}
 void vINCs_DE(){      reg.DE++;}
@@ -1113,8 +1118,8 @@ void vINC_D(){        v8bitRegisterINC(&reg.D, &reg.F);}
 void vDEC_D(){        v8bitRegisterDEC(&reg.D, &reg.F);}
 void vLD_D_d8(){      reg.D = ucGBMemoryRead(reg.PC + 1); reg.PC += 1;}
 void vRLA(){}
-void vJR_r8(){}
-void vADDs_HL_DE(){}
+void vJR_r8(){        reg.PC += (int8_t) ucGBMemoryRead(reg.PC + 1);}  // NOT SURE IF increment after JUMP
+void vADDs_HL_DE(){   vGBFunction16bitADD(&reg.HL, reg.DE, &reg.F);}
 void vLD_A_DE(){      reg.A = ucGBMemoryRead(reg.DE);}
 void vDECs_DE(){      reg.DE--;}
 void vINC_E(){        v8bitRegisterINC(&reg.E, &reg.F);}
@@ -1122,7 +1127,7 @@ void vDEC_E(){        v8bitRegisterDEC(&reg.E, &reg.F);}
 void vLD_E_d8(){      reg.E = ucGBMemoryRead(reg.PC + 1); reg.PC += 1;}
 void vRRA(){}
 
-/*0x2X*/
+/*********************0x2X*/
 void vJR_NZ_r8(){}
 void vLDs_HL_d16(){   reg.HL = concat_16bit_bigEndian(ucGBMemoryRead(reg.PC + 1), ucGBMemoryRead(reg.PC + 2)); reg.PC += 2;}
 void vLD_HLI_A(){     vGBMemoryWrite(reg.HL, reg.A); reg.HL++;}
@@ -1132,7 +1137,7 @@ void vDEC_H(){        v8bitRegisterDEC(&reg.H, &reg.F);}
 void vLD_H_d8(){      reg.H = ucGBMemoryRead(reg.PC + 1); reg.PC += 1;}
 void vDAA(){}
 void vJR_Z_r8(){}
-void vADDs_HL_HL(){}
+void vADDs_HL_HL(){   vGBFunction16bitADD(&reg.HL, reg.HL, &reg.F);}
 void vLD_A_HLI(){     reg.A = ucGBMemoryRead(reg.HL); reg.HL++;}
 void vDECs_HL(){      reg.HL--;}
 void vINC_L(){        v8bitRegisterINC(&reg.L, &reg.F);}
@@ -1140,7 +1145,7 @@ void vDEC_L(){        v8bitRegisterDEC(&reg.L, &reg.F);}
 void vLD_L_d8(){      reg.H = ucGBMemoryRead(reg.PC + 1); reg.PC += 1;}
 void vCPL(){}
 
-/*0x3X*/
+/*********************0x3X*/
 void vJR_NC_r8(){}
 void vLDs_SP_d16(){   reg.SP = concat_16bit_bigEndian(ucGBMemoryRead(reg.PC + 1), ucGBMemoryRead(reg.PC + 2)); reg.PC += 2;}
 void vLD_HLD_A(){     vGBMemoryWrite(reg.HL, reg.A); reg.HL--;}
@@ -1150,7 +1155,7 @@ void vDEC_HL(){}
 void vLD_HL_d8(){     vGBMemoryWrite(reg.HL, ucGBMemoryRead(reg.PC + 1)); reg.PC += 1;}
 void vSCF(){}
 void vJR_C_r8(){}
-void vADDs_HL_SP(){}
+void vADDs_HL_SP(){   vGBFunction16bitADD(&reg.HL, reg.SP, &reg.F);}
 void vLD_A_HLD(){     reg.A = ucGBMemoryRead(reg.HL); reg.HL--;}
 void vDECs_SP(){      reg.SP--;}
 void vINC_A(){        v8bitRegisterINC(&reg.A, &reg.F);}
@@ -1158,79 +1163,79 @@ void vDEC_A(){        v8bitRegisterDEC(&reg.A, &reg.F);}
 void vLD_A_d8(){      reg.A = ucGBMemoryRead(reg.PC + 1); reg.PC += 1;}
 void vCCF(){}
 
-/*0x4X*/
-void vLD_B_B(){}
-void vLD_B_C(){}
-void vLD_B_D(){}
-void vLD_B_E(){}
-void vLD_B_H(){}
-void vLD_B_L(){}
-void vLD_B_HL(){}
-void vLD_B_A(){}
-void vLD_C_B(){}
-void vLD_C_C(){}
-void vLD_C_D(){}
-void vLD_C_E(){}
-void vLD_C_H(){}
-void vLD_C_L(){}
-void vLD_C_HL(){}
-void vLD_C_A(){}
+/*********************0x4X*/
+void vLD_B_B(){       reg.B = reg.B;}
+void vLD_B_C(){       reg.B = reg.C;}
+void vLD_B_D(){       reg.B = reg.D;}
+void vLD_B_E(){       reg.B = reg.E;}
+void vLD_B_H(){       reg.B = reg.H;}
+void vLD_B_L(){       reg.B = reg.L;}
+void vLD_B_HL(){      reg.B = ucGBMemoryRead(reg.HL);}
+void vLD_B_A(){       reg.B = reg.A;}
+void vLD_C_B(){       reg.C = reg.B;}
+void vLD_C_C(){       reg.C = reg.C;}
+void vLD_C_D(){       reg.C = reg.D;}
+void vLD_C_E(){       reg.C = reg.E;}
+void vLD_C_H(){       reg.C = reg.H;}
+void vLD_C_L(){       reg.C = reg.L;}
+void vLD_C_HL(){      reg.C = ucGBMemoryRead(reg.HL);}
+void vLD_C_A(){       reg.C = reg.A;}
 
-/*0x5X*/
-void vLD_D_B(){}
-void vLD_D_C(){}
-void vLD_D_D(){}
-void vLD_D_E(){}
-void vLD_D_H(){}
-void vLD_D_L(){}
-void vLD_D_HL(){}
-void vLD_D_A(){}
-void vLD_E_B(){}
-void vLD_E_C(){}
-void vLD_E_D(){}
-void vLD_E_E(){}
-void vLD_E_H(){}
-void vLD_E_L(){}
-void vLD_E_HL(){}
-void vLD_E_A(){}
+/*********************0x5X*/
+void vLD_D_B(){       reg.D = reg.B;}
+void vLD_D_C(){       reg.D = reg.C;}
+void vLD_D_D(){       reg.D = reg.D;}
+void vLD_D_E(){       reg.D = reg.E;}
+void vLD_D_H(){       reg.D = reg.H;}
+void vLD_D_L(){       reg.D = reg.L;}
+void vLD_D_HL(){      reg.D = ucGBMemoryRead(reg.HL);}
+void vLD_D_A(){       reg.D = reg.A;}
+void vLD_E_B(){       reg.E = reg.B;}
+void vLD_E_C(){       reg.E = reg.C;}
+void vLD_E_D(){       reg.E = reg.D;}
+void vLD_E_E(){       reg.E = reg.E;}
+void vLD_E_H(){       reg.E = reg.H;}
+void vLD_E_L(){       reg.E = reg.L;}
+void vLD_E_HL(){      reg.E = ucGBMemoryRead(reg.HL);}
+void vLD_E_A(){       reg.E = reg.A;}
 
-/*0x6X*/
-void vLD_H_B(){}
-void vLD_H_C(){}
-void vLD_H_D(){}
-void vLD_H_E(){}
-void vLD_H_H(){}
-void vLD_H_L(){}
-void vLD_H_HL(){}
-void vLD_H_A(){}
-void vLD_L_B(){}
-void vLD_L_C(){}
-void vLD_L_D(){}
-void vLD_L_E(){}
-void vLD_L_H(){}
-void vLD_L_L(){}
-void vLD_L_HL(){}
-void vLD_L_A(){}
+/*********************0x6X*/
+void vLD_H_B(){       reg.H = reg.B;}
+void vLD_H_C(){       reg.H = reg.C;}
+void vLD_H_D(){       reg.H = reg.D;}
+void vLD_H_E(){       reg.H = reg.E;}
+void vLD_H_H(){       reg.H = reg.H;}
+void vLD_H_L(){       reg.H = reg.L;}
+void vLD_H_HL(){      reg.H = ucGBMemoryRead(reg.HL);}
+void vLD_H_A(){       reg.H = reg.A;}
+void vLD_L_B(){       reg.L = reg.B;}
+void vLD_L_C(){       reg.L = reg.C;}
+void vLD_L_D(){       reg.L = reg.D;}
+void vLD_L_E(){       reg.L = reg.E;}
+void vLD_L_H(){       reg.L = reg.H;}
+void vLD_L_L(){       reg.L = reg.L;}
+void vLD_L_HL(){      reg.L = ucGBMemoryRead(reg.HL);}
+void vLD_L_A(){       reg.L = reg.A;}
 
-/*0x7X*/
-void vLD_HL_B(){}
-void vLD_HL_C(){}
-void vLD_HL_D(){}
-void vLD_HL_E(){}
-void vLD_HL_H(){}
-void vLD_HL_L(){}
+/*********************0x7X*/
+void vLD_HL_B(){      vGBMemoryWrite(reg.HL, reg.B);}
+void vLD_HL_C(){      vGBMemoryWrite(reg.HL, reg.C);}
+void vLD_HL_D(){      vGBMemoryWrite(reg.HL, reg.D);}
+void vLD_HL_E(){      vGBMemoryWrite(reg.HL, reg.E);}
+void vLD_HL_H(){      vGBMemoryWrite(reg.HL, reg.H);}
+void vLD_HL_L(){      vGBMemoryWrite(reg.HL, reg.L);}
 void vHALT(){}
-void vLD_HL_A(){}
-void vLD_A_B(){}
-void vLD_A_C(){}
-void vLD_A_D(){}
-void vLD_A_E(){}
-void vLD_A_H(){}
-void vLD_A_L(){}
-void vLD_A_HL(){}
-void vLD_A_A(){}
+void vLD_HL_A(){      vGBMemoryWrite(reg.HL, reg.A);}
+void vLD_A_B(){       reg.A = reg.B;}
+void vLD_A_C(){       reg.A = reg.C;}
+void vLD_A_D(){       reg.A = reg.D;}
+void vLD_A_E(){       reg.A = reg.E;}
+void vLD_A_H(){       reg.A = reg.H;}
+void vLD_A_L(){       reg.A = reg.L;}
+void vLD_A_HL(){      reg.A = ucGBMemoryRead(reg.HL);}
+void vLD_A_A(){       reg.A = reg.A;}
 
-/*0x8X*/
+/*********************0x8X*/
 void vADD_A_B(){}
 void vADD_A_C(){}
 void vADD_A_D(){}
@@ -1374,6 +1379,10 @@ void vEI(){}
 void vCP_d8(){}
 void vRST_38H(){}
 
+
+void vStoppedFlag(uint8_t condition){
+	ucSTOPPED = condition;
+}
 
 void vGBCPUreset(){
 	// TEMP until OPCODES implemented

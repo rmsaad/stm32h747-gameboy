@@ -26,5 +26,8 @@ uint8_t checkbit(uint8_t n, uint8_t bit);
 
 void v8bitRegisterINC(uint8_t *reg, uint8_t *flagReg);
 void v8bitRegisterDEC(uint8_t *reg, uint8_t *flagReg);
+void vGBFunctionRLCA(uint8_t *reg, uint8_t *flagReg);
+void vGBFunctionRRCA(uint8_t *reg, uint8_t *flagReg);
+void vGBFunction16bitADD(uint16_t *regHL, uint16_t reg16, uint8_t *flagReg);
 
 #endif /* INC_GBFUNCTIONS_H_ */

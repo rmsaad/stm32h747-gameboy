@@ -26,5 +26,5 @@ typedef struct{
 void vGBCPUreset();
 void vGBCPUboot();
 void vGBCPUinstr(uint8_t opcode);
-
+void vStoppedFlag(uint8_t condition);
 #endif /* INC_GBCPU_H_ */
