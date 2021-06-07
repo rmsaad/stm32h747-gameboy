@@ -55,8 +55,10 @@ typedef struct{
 /* Public function prototypes -----------------------------------------------*/
 
 void vGBMemoryLoad(const void* data);
-uint8_t vGBMemoryRead(uint16_t address);
+void vGBMemoryWrite(uint16_t address, uint8_t data);
+uint8_t ucGBMemoryRead(uint16_t address);
 void vGBMemoryPrint();
+void vGBMemorySetOP(uint8_t op);
 
 #endif /* INC_GBMEMORY_H_ */
 

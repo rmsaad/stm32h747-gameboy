@@ -10,6 +10,11 @@
 
 #include <stdio.h>
 
+#define Z_FLAG 7
+#define N_FLAG 6
+#define H_FLAG 5
+#define C_FLAG 4
+
 typedef struct{
 	void* instr;
 	uint8_t bytes;

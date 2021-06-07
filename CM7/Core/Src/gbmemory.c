@@ -11,20 +11,29 @@
 
 registers reg;
 memory mem;
+uint8_t current_op;
+
+void vGBMemorySetOP(uint8_t op){
+	current_op = op;
+}
 
 // loads data into memory map
 void vGBMemoryLoad(const void* data){
 	memcpy(mem.ram , data, 256);
 }
 
+void vGBMemoryWrite(uint16_t address, uint8_t data){
+	mem.ram[address] = data;
+}
+
 // reads a location from memory map
-uint8_t vGBMemoryRead(uint16_t address){
+uint8_t ucGBMemoryRead(uint16_t address){
 	return mem.ram[address];
 }
 
 void vGBMemoryPrint(){
 	char temp[15];
-	sprintf(temp,"Opcode: 0x%.2x",vGBMemoryRead(reg.PC));
+	sprintf(temp,"Opcode: 0x%.2x", current_op);
 	UTIL_LCD_DisplayStringAt(500, LINE(6), (uint8_t *) temp, LEFT_MODE);
 	sprintf(temp,"AF: 0x%.4x",reg.AF);
 	UTIL_LCD_DisplayStringAt(500, LINE(7), (uint8_t *) temp, LEFT_MODE);

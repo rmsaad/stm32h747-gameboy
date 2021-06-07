@@ -1,0 +1,7 @@
+gbfunctions.c:11:10:concat_16bit_bigEndian	0	static
+gbfunctions.c:18:6:setbit	0	static
+gbfunctions.c:22:6:resetbit	0	static
+gbfunctions.c:26:9:checkbit	0	static
+gbfunctions.c:30:6:v8bitRegisterINC	0	static
+gbfunctions.c:37:6:v8bitRegisterDEC	0	static
+gbfunctions.c:44:6:vMemoryLocationINC	0	static
