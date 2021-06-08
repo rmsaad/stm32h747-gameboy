@@ -29,5 +29,7 @@ void v8bitRegisterDEC(uint8_t *reg, uint8_t *flagReg);
 void vGBFunctionRLCA(uint8_t *reg, uint8_t *flagReg);
 void vGBFunctionRRCA(uint8_t *reg, uint8_t *flagReg);
 void vGBFunction16bitADD(uint16_t *regHL, uint16_t reg16, uint8_t *flagReg);
+void vGBFunctionRLA(uint8_t *regA, uint8_t *flagReg);
+void vGBFunctionRRA(uint8_t *regA, uint8_t *flagReg);
 
 #endif /* INC_GBFUNCTIONS_H_ */

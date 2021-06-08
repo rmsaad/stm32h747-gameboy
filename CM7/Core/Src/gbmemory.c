@@ -6,6 +6,7 @@
  */
 
 #include <string.h>
+#include "gbfunctions.h"
 #include "main.h"
 #include "gbmemory.h"
 
@@ -47,4 +48,13 @@ void vGBMemoryPrint(){
 	UTIL_LCD_DisplayStringAt(500, LINE(11), (uint8_t *) temp, LEFT_MODE);
 	sprintf(temp,"PC: 0x%.4x",reg.PC);
 	UTIL_LCD_DisplayStringAt(500, LINE(12), (uint8_t *) temp, LEFT_MODE);
+
+	sprintf(temp," Z: 0x%.1x",checkbit(reg.F, 7));
+	UTIL_LCD_DisplayStringAt(500, LINE(14), (uint8_t *) temp, LEFT_MODE);
+	sprintf(temp," N: 0x%.1x",checkbit(reg.F, 6));
+	UTIL_LCD_DisplayStringAt(500, LINE(15), (uint8_t *) temp, LEFT_MODE);
+	sprintf(temp," H: 0x%.1x",checkbit(reg.F, 5));
+	UTIL_LCD_DisplayStringAt(500, LINE(16), (uint8_t *) temp, LEFT_MODE);
+	sprintf(temp," C: 0x%.1x",checkbit(reg.F, 4));
+	UTIL_LCD_DisplayStringAt(500, LINE(17), (uint8_t *) temp, LEFT_MODE);
 }

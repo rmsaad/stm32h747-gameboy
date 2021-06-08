@@ -6,7 +6,7 @@ gbfunctions.c:30:6:v8bitRegisterINC	0	static
 gbfunctions.c:37:6:v8bitRegisterDEC	0	static
 gbfunctions.c:44:6:vGBFunctionRLCA	0	static
 gbfunctions.c:51:6:vGBFunctionRRCA	0	static
-gbfunctions.c:58:6:vGBFunction16bitADD	4	static
+gbfunctions.c:58:6:vGBFunction16bitADD	8	static
 gbfunctions.c:66:6:vGBFunctionRLA	0	static
-gbfunctions.c:70:6:vGBFunctionRRA	0	static
-gbfunctions.c:74:6:vMemoryLocationINC	0	static
+gbfunctions.c:73:6:vGBFunctionRRA	0	static
+gbfunctions.c:77:6:vMemoryLocationINC	0	static

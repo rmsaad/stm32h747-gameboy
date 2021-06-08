@@ -28,14 +28,14 @@ uint8_t checkbit(uint8_t n, uint8_t bit){
 }
 
 void v8bitRegisterINC(uint8_t *reg, uint8_t *flagReg){
-	((*reg & 0x0f) == 0x0f) ? setbit(flagReg, H_FLAG): resetbit(flagReg, H_FLAG);
+	((*reg & 0x0F) == 0x0F) ? setbit(flagReg, H_FLAG): resetbit(flagReg, H_FLAG);
 	*reg = *reg + 1;
 	resetbit(flagReg, N_FLAG);
 	(*reg != 0) ? resetbit(flagReg, Z_FLAG): setbit(flagReg, Z_FLAG);
 }
 
 void v8bitRegisterDEC(uint8_t *reg, uint8_t *flagReg){
-	((*reg & 0x0f) != 0) ? resetbit(flagReg, H_FLAG) : setbit(flagReg, H_FLAG);
+	((*reg & 0x0F) != 0) ? resetbit(flagReg, H_FLAG) : setbit(flagReg, H_FLAG);
 	*reg = *reg - 1;
 	setbit(flagReg, N_FLAG);
 	(*reg != 0) ? resetbit(flagReg, Z_FLAG): setbit(flagReg, Z_FLAG);
@@ -55,20 +55,26 @@ void vGBFunctionRRCA(uint8_t *reg, uint8_t *flagReg){
 	if (tempCarry != 0) setbit(reg, 7);
 }
 
-void vGBFunction16bitADD(uint16_t *regHL, uint16_t reg16, uint8_t *flagReg){ // CHECK THIS SHIT FIRST
+void vGBFunction16bitADD(uint16_t *regHL, uint16_t reg16, uint8_t *flagReg){
 	uint32_t tempRes = *regHL + reg16;
-	(tempRes & 0xffff0000) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG); // 15th bit CFLAG
+	(tempRes & 0xFFFF0000) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG);
+	(((tempRes & 0x0FFF) < (*regHL & 0x0FFF))) ? setbit(flagReg, H_FLAG): resetbit(flagReg, H_FLAG);
 	*regHL = (uint16_t)(tempRes & 0xffff);
-	((*regHL & 0x0f) + (reg16 & 0x0f) > 0x0f) ? setbit(flagReg, H_FLAG): resetbit(flagReg, H_FLAG); // 11th bit HFLAG
 	resetbit(flagReg, N_FLAG);
 }
 
-void vGBFunctionRLA(){
-
+void vGBFunctionRLA(uint8_t *regA, uint8_t *flagReg){
+	uint8_t prevCarry =  checkbit(*flagReg, C_FLAG);
+	*flagReg = ((*regA & 0x80) != 0) ? 0x10 : 0x00;
+	*regA <<= 1;
+	*regA += prevCarry;
 }
 
-void vGBFunctionRRA(){
-
+void vGBFunctionRRA(uint8_t *regA, uint8_t *flagReg){
+	uint8_t prevCarry =  checkbit(*flagReg, C_FLAG);
+	*flagReg = ((*regA & 0x01) != 0) ? 0x10 : 0x00;
+	*regA >>= 1;
+	*regA += (prevCarry << 7);
 }
 
 void vMemoryLocationINC(){

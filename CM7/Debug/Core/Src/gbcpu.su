@@ -131,9 +131,9 @@ gbcpu.c:1122:6:vADDs_HL_DE	0	static
 gbcpu.c:1140:6:vADDs_HL_HL	0	static
 gbcpu.c:1158:6:vADDs_HL_SP	0	static
 gbcpu.c:1110:6:vRRCA	0	static
-gbcpu.c:1380:6:vRST_38H	0	static
 gbcpu.c:1120:6:vRLA	0	static
 gbcpu.c:1128:6:vRRA	0	static
+gbcpu.c:1380:6:vRST_38H	0	static
 gbcpu.c:1131:6:vJR_NZ_r8	0	static
 gbcpu.c:1138:6:vDAA	0	static
 gbcpu.c:1139:6:vJR_Z_r8	0	static
@@ -245,5 +245,6 @@ gbcpu.c:1376:6:vEI	0	static
 gbcpu.c:1379:6:vCP_d8	0	static
 gbcpu.c:1383:6:vStoppedFlag	0	static
 gbcpu.c:1387:6:vGBCPUreset	8	static
-gbcpu.c:1397:6:vGBCPUboot	16	static
-gbcpu.c:1403:6:vGBCPUinstr	8	static
+gbcpu.c:1397:6:vGBCPUTestInstr	8	static
+gbcpu.c:1404:6:vGBCPUboot	16	static
+gbcpu.c:1410:6:vGBCPUinstr	8	static

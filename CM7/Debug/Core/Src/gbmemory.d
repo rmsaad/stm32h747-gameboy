@@ -1,4 +1,5 @@
-Core/Src/gbmemory.o: ../Core/Src/gbmemory.c ../Core/Inc/main.h \
+Core/Src/gbmemory.o: ../Core/Src/gbmemory.c ../Core/Inc/gbfunctions.h \
+ ../Core/Inc/main.h \
  ../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal.h \
  ../Core/Inc/stm32h7xx_hal_conf.h \
  ../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_rcc.h \
@@ -57,6 +58,8 @@ Core/Src/gbmemory.o: ../Core/Src/gbmemory.c ../Core/Inc/main.h \
  C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Utilities/lcd/stm32_lcd.h \
  c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\utilities\fonts\fonts.h \
  ../Core/Inc/gbmemory.h
+
+../Core/Inc/gbfunctions.h:
 
 ../Core/Inc/main.h:
 

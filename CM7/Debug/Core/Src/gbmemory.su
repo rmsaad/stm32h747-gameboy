@@ -1,5 +1,5 @@
-gbmemory.c:16:6:vGBMemorySetOP	0	static
-gbmemory.c:21:6:vGBMemoryLoad	0	static
-gbmemory.c:25:6:vGBMemoryWrite	0	static
-gbmemory.c:30:9:ucGBMemoryRead	0	static
-gbmemory.c:34:6:vGBMemoryPrint	32	static
+gbmemory.c:17:6:vGBMemorySetOP	0	static
+gbmemory.c:22:6:vGBMemoryLoad	0	static
+gbmemory.c:26:6:vGBMemoryWrite	0	static
+gbmemory.c:31:9:ucGBMemoryRead	0	static
+gbmemory.c:35:6:vGBMemoryPrint	32	static

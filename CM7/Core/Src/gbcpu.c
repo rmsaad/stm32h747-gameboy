@@ -1110,14 +1110,14 @@ void vLD_C_d8(){      reg.C = ucGBMemoryRead(reg.PC + 1); reg.PC += 1;}
 void vRRCA(){         vGBFunctionRRCA(&reg.A, &reg.F);}
 
 /*********************0x1X*/
-void vSTOP(){         vStoppedFlag(SET);}  // MORE NEEDED TO IMPLEMENT LATER
+void vSTOP(){         vStoppedFlag(SET);}                             // MORE NEEDED TO IMPLEMENT LATER
 void vLDs_DE_d16(){   reg.DE = concat_16bit_bigEndian(ucGBMemoryRead(reg.PC + 1), ucGBMemoryRead(reg.PC + 2)); reg.PC += 2;}
 void vLD_DE_A(){      vGBMemoryWrite(reg.DE, reg.A);}
 void vINCs_DE(){      reg.DE++;}
 void vINC_D(){        v8bitRegisterINC(&reg.D, &reg.F);}
 void vDEC_D(){        v8bitRegisterDEC(&reg.D, &reg.F);}
 void vLD_D_d8(){      reg.D = ucGBMemoryRead(reg.PC + 1); reg.PC += 1;}
-void vRLA(){}
+void vRLA(){          vGBFunctionRLA(&reg.A, &reg.F);}
 void vJR_r8(){        reg.PC += (int8_t) ucGBMemoryRead(reg.PC + 1);}  // NOT SURE IF increment after JUMP
 void vADDs_HL_DE(){   vGBFunction16bitADD(&reg.HL, reg.DE, &reg.F);}
 void vLD_A_DE(){      reg.A = ucGBMemoryRead(reg.DE);}
@@ -1125,7 +1125,7 @@ void vDECs_DE(){      reg.DE--;}
 void vINC_E(){        v8bitRegisterINC(&reg.E, &reg.F);}
 void vDEC_E(){        v8bitRegisterDEC(&reg.E, &reg.F);}
 void vLD_E_d8(){      reg.E = ucGBMemoryRead(reg.PC + 1); reg.PC += 1;}
-void vRRA(){}
+void vRRA(){          vGBFunctionRRA(&reg.A, &reg.F);}
 
 /*********************0x2X*/
 void vJR_NZ_r8(){}
@@ -1392,6 +1392,13 @@ void vGBCPUreset(){
 	reg.BC = 0x0013;
 	reg.DE = 0x00D8;
 	reg.HL = 0x014D;
+}
+
+void vGBCPUTestInstr(uint8_t opcode){
+	vGBMemorySetOP(opcode);
+	reg.HL = 0x0800;
+	reg.BC = 0x0800;
+	((void (*)(void))instructions[opcode].instr)();
 }
 
 void vGBCPUboot(){
