@@ -31,5 +31,16 @@ void vGBFunctionRRCA(uint8_t *reg, uint8_t *flagReg);
 void vGBFunction16bitADD(uint16_t *regHL, uint16_t reg16, uint8_t *flagReg);
 void vGBFunctionRLA(uint8_t *regA, uint8_t *flagReg);
 void vGBFunctionRRA(uint8_t *regA, uint8_t *flagReg);
-
+uint8_t vGBFunctionJR_NZ(uint16_t *regPC, uint8_t *flagReg, uint8_t r8value);
+void vGBFunctionDAA(uint8_t *regA, uint8_t *flagReg);
+uint8_t vGBFunctionJR_Z(uint16_t *regPC, uint8_t *flagReg, uint8_t r8value);
+uint8_t vGBFunctionJR_NC(uint16_t *regPC, uint8_t *flagReg, uint8_t r8value);
+void vMemoryLocationINC(uint16_t loc, uint8_t *flagReg);
+void vMemoryLocationDEC(uint16_t loc, uint8_t *flagReg);
+uint8_t vGBFunctionJR_C(uint16_t *regPC, uint8_t *flagReg, uint8_t r8value);
+void vGBFunctionADD(uint8_t *regA, uint8_t *flagReg, uint8_t regValue);
+void vGBFunctionADC(uint8_t *regA, uint8_t *flagReg, uint8_t regValue);
+void vGBFunctionSUB(uint8_t *regA, uint8_t *flagReg, uint8_t regValue);
+void vGBFunctionSBC(uint8_t *regA, uint8_t *flagReg, uint8_t regValue);
+void vGBFunctionCP(uint8_t regA, uint8_t *flagReg, uint8_t regValue);
 #endif /* INC_GBFUNCTIONS_H_ */
