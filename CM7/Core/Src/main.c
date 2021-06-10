@@ -163,16 +163,17 @@ Error_Handler();
   UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_BLUE);
   UTIL_LCD_SetFont(&Font24);
 
+  vGBMemoryLoad(dmg_boot_bin);													// load boot rom into approiate place in memory map
+
   while (1)
   {
-	  if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) != 0){									// read the button input
-		  HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_14);										// toggle debug light
-		  vGBMemoryLoad(dmg_boot_bin);													// load boot rom into approiate place in memory map
+	  //if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) != 0){									// read the button input
+		  //HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_14);										// toggle debug light
 		  vGBCPUboot();
 		  //vGBCPUTestInstr(0x09);
 		  vGBMemoryPrint();
-	  }
-  HAL_Delay(1000);
+	  //}
+  //HAL_Delay(10);
   }
 
 }

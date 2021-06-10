@@ -56,4 +56,18 @@ uint8_t vGBFunctionJP_C_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t addr);
 uint8_t vGBFunctionCALL_C_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t *regSP);
 void vGBFunctionADD_SP_r8(uint16_t *regSP, uint8_t *flagReg, uint8_t r8value);
 void vGBFunctionLD_HL_SP_r8(uint16_t *regHL, uint16_t *regSP, uint8_t *flagReg, uint8_t r8value);
+
+// prefix
+uint8_t ucGBFunctionRLC(uint8_t regValue, uint8_t *flagReg);
+uint8_t ucGBFunctionRRC(uint8_t regValue, uint8_t *flagReg);
+uint8_t ucGBFunctionRL(uint8_t regValue, uint8_t *flagReg);
+uint8_t ucGBFunctionRR(uint8_t regValue, uint8_t *flagReg);
+uint8_t ucGBFunctionSLA(uint8_t regValue, uint8_t *flagReg);
+uint8_t ucGBFunctionSRA(uint8_t regValue, uint8_t *flagReg);
+uint8_t ucGBFunctionSWAP(uint8_t regValue, uint8_t *flagReg);
+uint8_t ucGBFunctionSRL(uint8_t regValue, uint8_t *flagReg);
+void vGBFunctionBIT(uint8_t regValue, uint8_t bit, uint8_t *flagReg);
+uint8_t ucGBFunctionRESHL(uint16_t regHLaddr, uint8_t bit);
+uint8_t ucGBFunctionSETHL(uint16_t regHLaddr, uint8_t bit);
+
 #endif /* INC_GBFUNCTIONS_H_ */

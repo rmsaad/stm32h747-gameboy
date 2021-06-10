@@ -10,10 +10,7 @@
 #include "gbmemory.h"
 
 uint16_t concat_16bit_bigEndian(uint8_t x, uint8_t y) {
-	uint16_t pow = 16;
-    while(x >= pow)
-        pow *= 16;
-    return y * pow + x;
+	return (uint16_t) (y << 8) + x;
 }
 
 void setbit(uint8_t *n, uint8_t bit){
@@ -149,7 +146,7 @@ void vGBFunctionADD(uint8_t *regA, uint8_t *flagReg, uint8_t regValue){
 	resetbit(flagReg, N_FLAG);
 	if(tempRes > 0xFF)	setbit(flagReg, C_FLAG);
 	*regA = tempRes;
-	if(*regA == 0) setbit(flagReg, Z_FLAG);
+	(*regA != 0) ? resetbit(flagReg, Z_FLAG): setbit(flagReg, Z_FLAG);
 }
 
 void vGBFunctionADC(uint8_t *regA, uint8_t *flagReg, uint8_t regValue){
@@ -158,7 +155,7 @@ void vGBFunctionADC(uint8_t *regA, uint8_t *flagReg, uint8_t regValue){
 	resetbit(flagReg, N_FLAG);
 	if(tempRes > 0xFF)	setbit(flagReg, C_FLAG);
 	*regA = tempRes;
-	if(*regA == 0) setbit(flagReg, Z_FLAG);
+	(*regA != 0) ? resetbit(flagReg, Z_FLAG): setbit(flagReg, Z_FLAG);
 }
 
 void vGBFunctionSUB(uint8_t *regA, uint8_t *flagReg, uint8_t regValue){
@@ -295,5 +292,104 @@ void vGBFunctionLD_HL_SP_r8(uint16_t *regHL, uint16_t *regSP, uint8_t *flagReg, 
 	*regHL = tempRes & 0xFFFF;
 }
 
+/*prefix functions*/
 
+uint8_t ucGBFunctionRLC(uint8_t regValue, uint8_t *flagReg){
+	uint8_t tempCarry = checkbit(regValue, 7);
+	regValue <<= 1;
+	regValue += tempCarry;
+	(regValue == 0) ? setbit(flagReg, Z_FLAG): resetbit(flagReg, Z_FLAG);
+	resetbit(flagReg, N_FLAG);
+	resetbit(flagReg, H_FLAG);
+	(tempCarry != 0) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG);
+	return regValue;
+}
 
+uint8_t ucGBFunctionRRC(uint8_t regValue, uint8_t *flagReg){
+	uint8_t tempCarry = checkbit(regValue, 0);
+	regValue >>= 1;
+	if(tempCarry) setbit(&regValue, 7);
+	(regValue == 0) ? setbit(flagReg, Z_FLAG): resetbit(flagReg, Z_FLAG);
+	resetbit(flagReg, N_FLAG);
+	resetbit(flagReg, H_FLAG);
+	(tempCarry != 0) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG);
+	return regValue;
+}
+
+uint8_t ucGBFunctionRL(uint8_t regValue, uint8_t *flagReg){
+	uint8_t prevCarry =  checkbit(*flagReg, C_FLAG);
+	((regValue & 0x80) != 0) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG);
+	regValue <<= 1;
+	regValue += prevCarry;
+	resetbit(flagReg, N_FLAG);
+	resetbit(flagReg, H_FLAG);
+	(regValue == 0) ? setbit(flagReg, Z_FLAG): resetbit(flagReg, Z_FLAG);
+	return regValue;
+}
+
+uint8_t ucGBFunctionRR(uint8_t regValue, uint8_t *flagReg){
+	uint8_t prevCarry =  checkbit(*flagReg, C_FLAG);
+	((regValue & 0x01) != 0) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG);
+	regValue >>= 1;
+	regValue += (prevCarry << 7);
+	resetbit(flagReg, N_FLAG);
+	resetbit(flagReg, H_FLAG);
+	(regValue == 0) ? setbit(flagReg, Z_FLAG): resetbit(flagReg, Z_FLAG);
+	return regValue;
+}
+
+uint8_t ucGBFunctionSLA(uint8_t regValue, uint8_t *flagReg){
+	((regValue & 0x80) != 0) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG);
+	regValue <<= 1;
+	resetbit(flagReg, N_FLAG);
+	resetbit(flagReg, H_FLAG);
+	(regValue == 0) ? setbit(flagReg, Z_FLAG): resetbit(flagReg, Z_FLAG);
+	return regValue;
+}
+
+uint8_t ucGBFunctionSRA(uint8_t regValue, uint8_t *flagReg){
+	uint8_t tempMSB = regValue & 0x80;
+	((regValue & 0x01) != 0) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG);
+	regValue >>= 1;
+	regValue += tempMSB;
+	resetbit(flagReg, N_FLAG);
+	resetbit(flagReg, H_FLAG);
+	(regValue == 0) ? setbit(flagReg, Z_FLAG): resetbit(flagReg, Z_FLAG);
+	return regValue;
+}
+
+uint8_t ucGBFunctionSWAP(uint8_t regValue, uint8_t *flagReg){
+	regValue = ((regValue & 0x0F) << 4) | ((regValue & 0xF0) >> 4);
+	(regValue == 0) ? setbit(flagReg, Z_FLAG): resetbit(flagReg, Z_FLAG);
+	resetbit(flagReg, N_FLAG);
+	resetbit(flagReg, H_FLAG);
+	resetbit(flagReg, C_FLAG);
+	return regValue;
+}
+
+uint8_t ucGBFunctionSRL(uint8_t regValue, uint8_t *flagReg){
+	((regValue & 0x01) != 0) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG);
+	regValue >>= 1;
+	resetbit(flagReg, N_FLAG);
+	resetbit(flagReg, H_FLAG);
+	(regValue == 0) ? setbit(flagReg, Z_FLAG): resetbit(flagReg, Z_FLAG);
+	return regValue;
+}
+
+void vGBFunctionBIT(uint8_t regValue, uint8_t bit, uint8_t *flagReg){
+	(checkbit(regValue, bit) != 0) ?  resetbit(flagReg, Z_FLAG): setbit(flagReg, Z_FLAG);
+	resetbit(flagReg, N_FLAG);
+	setbit(flagReg, H_FLAG);
+}
+
+uint8_t ucGBFunctionRESHL(uint16_t regHLaddr, uint8_t bit){
+	uint8_t tempRes = ucGBMemoryRead(regHLaddr);
+	resetbit(&tempRes, bit);
+	return tempRes;
+}
+
+uint8_t ucGBFunctionSETHL(uint16_t regHLaddr, uint8_t bit){
+	uint8_t tempRes = ucGBMemoryRead(regHLaddr);
+	setbit(&tempRes, bit);
+	return tempRes;
+}
