@@ -87,7 +87,7 @@ uint8_t vGBFunctionJR_NZ(uint16_t *regPC, uint8_t *flagReg, uint8_t r8value){
 	}
 }
 
-void vGBFunctionDAA(uint8_t *regA, uint8_t *flagReg){ // figure this out later
+void vGBFunctionDAA(uint8_t *regA, uint8_t *flagReg){
 	uint16_t tempShort = *regA;
 	if(checkbit(*flagReg, N_FLAG) != 0){
 		if(checkbit(*flagReg, H_FLAG) != 0) tempShort = ( tempShort - 0x06) & 0xFF;
@@ -185,12 +185,115 @@ void vGBFunctionCP(uint8_t regA, uint8_t *flagReg, uint8_t regValue){
 	setbit(flagReg, N_FLAG);
 }
 
+void vGBFunctionRET(uint16_t *regSP, uint16_t *regPC){
+	*regPC = concat_16bit_bigEndian(ucGBMemoryRead(*regSP), ucGBMemoryRead(*regSP + 1));
+	*regSP += 2;
+}
 
+void vGBFunctionPOP(uint16_t *regSP, uint16_t *reg16){
+	*reg16 = concat_16bit_bigEndian(ucGBMemoryRead(*regSP), ucGBMemoryRead(*regSP + 1));
+	*regSP += 2;
+}
 
+uint8_t vGBFunctionJP_NZ_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t addr){
+	if(checkbit(*flagReg, Z_FLAG) != 0){
+		return 12;
+	}else{
+		*regPC = addr;
+		return 16;
+	}
+}
 
+uint8_t vGBFunctionCALL_NZ_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t *regSP){
+	if(checkbit(*flagReg, Z_FLAG) != 0){
+		return 12;
+	}else{
+		vGBFunctionPUSH(regSP, regPC);
+		*regPC = concat_16bit_bigEndian(ucGBMemoryRead(*regPC - 2), ucGBMemoryRead(*regPC - 1));
+		return 24;
+	}
+}
 
+void vGBFunctionPUSH(uint16_t *regSP, uint16_t *reg16){
+	vGBMemoryWrite(*regSP - 1, (uint8_t) ((*reg16 & 0xFF00) >> 8));
+	vGBMemoryWrite(*regSP - 2, (uint8_t) (*reg16 & 0x00FF));
+	*regSP -= 2;
+}
 
+uint8_t vGBFunctionJP_Z_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t addr){
+	if(checkbit(*flagReg, Z_FLAG) != 0){
+		*regPC = addr;
+		return 16;
+	}else{
+		return 12;
+	}
+}
 
+uint8_t vGBFunctionCALL_Z_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t *regSP){
+	if(checkbit(*flagReg, Z_FLAG) != 0){
+		vGBFunctionPUSH(regSP, regPC);
+		*regPC = concat_16bit_bigEndian(ucGBMemoryRead(*regPC - 2), ucGBMemoryRead(*regPC - 1));
+		return 24;
+	}else{
+		return 12;
+	}
+}
+
+uint8_t vGBFunctionJP_NC_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t addr){
+	if(checkbit(*flagReg, C_FLAG) != 0){
+		return 12;
+	}else{
+		*regPC = addr;
+		return 16;
+	}
+}
+
+uint8_t vGBFunctionCALL_NC_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t *regSP){
+	if(checkbit(*flagReg, C_FLAG) != 0){
+		return 12;
+	}else{
+		vGBFunctionPUSH(regSP, regPC);
+		*regPC = concat_16bit_bigEndian(ucGBMemoryRead(*regPC - 2), ucGBMemoryRead(*regPC - 1));
+		return 24;
+	}
+}
+
+uint8_t vGBFunctionJP_C_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t addr){
+	if(checkbit(*flagReg, C_FLAG) != 0){
+		*regPC = addr;
+		return 16;
+	}else{
+		return 12;
+	}
+}
+
+uint8_t vGBFunctionCALL_C_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t *regSP){
+	if(checkbit(*flagReg, C_FLAG) != 0){
+		vGBFunctionPUSH(regSP, regPC);
+		*regPC = concat_16bit_bigEndian(ucGBMemoryRead(*regPC - 2), ucGBMemoryRead(*regPC - 1));
+		return 24;
+	}else{
+		return 12;
+	}
+}
+
+void vGBFunctionADD_SP_r8(uint16_t *regSP, uint8_t *flagReg, uint8_t r8value){
+	uint32_t tempRes = *regSP + (int8_t) r8value;
+	(tempRes & 0xffff0000) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG);
+	(((*regSP & 0x0F) + ((int8_t)r8value & 0x0F)) > 0x0F) ? setbit(flagReg, H_FLAG): resetbit(flagReg, H_FLAG);
+	resetbit(flagReg, Z_FLAG);
+	resetbit(flagReg, N_FLAG);
+	*regSP = tempRes & 0xFFFF;
+}
+
+void vGBFunctionLD_HL_SP_r8(uint16_t *regHL, uint16_t *regSP, uint8_t *flagReg, uint8_t r8value){
+	uint32_t tempRes = *regSP + (int8_t) r8value;
+	(tempRes & 0xffff0000) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG);
+	(((*regSP & 0x0F) + ((int8_t)r8value & 0x0F)) > 0x0F) ? setbit(flagReg, H_FLAG): resetbit(flagReg, H_FLAG);
+	resetbit(flagReg, Z_FLAG);
+	resetbit(flagReg, N_FLAG);
+	*regHL = tempRes & 0xFFFF;
+}
 
 
 

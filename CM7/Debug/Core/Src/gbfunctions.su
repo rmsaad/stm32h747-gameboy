@@ -21,3 +21,16 @@ gbfunctions.c:155:6:vGBFunctionADC	12	static
 gbfunctions.c:164:6:vGBFunctionSUB	8	static
 gbfunctions.c:172:6:vGBFunctionSBC	8	static
 gbfunctions.c:181:6:vGBFunctionCP	8	static
+gbfunctions.c:188:6:vGBFunctionRET	16	static
+gbfunctions.c:193:6:vGBFunctionPOP	0	static
+gbfunctions.c:198:9:vGBFunctionJP_NZ_a16	0	static
+gbfunctions.c:217:6:vGBFunctionPUSH	16	static
+gbfunctions.c:207:9:vGBFunctionCALL_NZ_a16	16	static
+gbfunctions.c:223:9:vGBFunctionJP_Z_a16	0	static
+gbfunctions.c:232:9:vGBFunctionCALL_Z_a16	16	static
+gbfunctions.c:242:9:vGBFunctionJP_NC_a16	0	static
+gbfunctions.c:251:9:vGBFunctionCALL_NC_a16	16	static
+gbfunctions.c:261:9:vGBFunctionJP_C_a16	0	static
+gbfunctions.c:270:9:vGBFunctionCALL_C_a16	16	static
+gbfunctions.c:280:6:vGBFunctionADD_SP_r8	8	static
+gbfunctions.c:289:6:vGBFunctionLD_HL_SP_r8	12	static

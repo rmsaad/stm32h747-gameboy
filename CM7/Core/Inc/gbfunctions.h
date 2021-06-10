@@ -43,4 +43,17 @@ void vGBFunctionADC(uint8_t *regA, uint8_t *flagReg, uint8_t regValue);
 void vGBFunctionSUB(uint8_t *regA, uint8_t *flagReg, uint8_t regValue);
 void vGBFunctionSBC(uint8_t *regA, uint8_t *flagReg, uint8_t regValue);
 void vGBFunctionCP(uint8_t regA, uint8_t *flagReg, uint8_t regValue);
+void vGBFunctionRET(uint16_t *regSP, uint16_t *regPC);
+void vGBFunctionPOP(uint16_t *regSP, uint16_t *reg16);
+uint8_t vGBFunctionJP_NZ_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t addr);
+uint8_t vGBFunctionCALL_NZ_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t *regSP);
+void vGBFunctionPUSH(uint16_t *regSP, uint16_t *reg16);
+uint8_t vGBFunctionJP_Z_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t addr);
+uint8_t vGBFunctionCALL_Z_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t *regSP);
+uint8_t vGBFunctionJP_NC_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t addr);
+uint8_t vGBFunctionCALL_NC_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t *regSP);
+uint8_t vGBFunctionJP_C_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t addr);
+uint8_t vGBFunctionCALL_C_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t *regSP);
+void vGBFunctionADD_SP_r8(uint16_t *regSP, uint8_t *flagReg, uint8_t r8value);
+void vGBFunctionLD_HL_SP_r8(uint16_t *regHL, uint16_t *regSP, uint8_t *flagReg, uint8_t r8value);
 #endif /* INC_GBFUNCTIONS_H_ */

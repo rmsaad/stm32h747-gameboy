@@ -19,6 +19,7 @@
 
 uint8_t ucSTOPPED = 0;
 uint8_t ucHALTED = 0;
+uint8_t InterruptDisabled = 0;
 uint8_t customDuration = 0;
 
 extern registers reg;
@@ -1309,77 +1310,77 @@ void vCP_L(){         vGBFunctionCP(reg.A, &reg.F, reg.L);}
 void vCP_HL(){        vGBFunctionCP(reg.A, &reg.F, ucGBMemoryRead(reg.HL));}
 void vCP_A(){         vGBFunctionCP(reg.A, &reg.F, reg.A);}
 
-/*0xCX*/
-void vRET_NZ(){}
-void vPOP_BC(){}
-void vJP_NZ_a16(){}
-void vJP_a16(){}
-void vCALL_NZ_a16(){}
-void vPUSH_BC(){}
-void vADD_A_d8(){}
-void vRST_00H(){}
-void vRET_Z(){}
-void vRET(){}
-void vJP_Z_a16(){}
+/*********************0xCX*/
+void vRET_NZ(){       customDuration = (checkbit(reg.F, Z_FLAG)) ?  8 : 20; if(checkbit(reg.F, Z_FLAG) == 0) vGBFunctionRET(&reg.SP, &reg.PC);}
+void vPOP_BC(){       vGBFunctionPOP(&reg.SP, &reg.BC);}
+void vJP_NZ_a16(){    customDuration = vGBFunctionJP_NZ_a16(&reg.PC, &reg.F, concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
+void vJP_a16(){       reg.PC = concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1));}
+void vCALL_NZ_a16(){  customDuration = vGBFunctionCALL_NZ_a16(&reg.PC, &reg.F, &reg.SP);}
+void vPUSH_BC(){      vGBFunctionPUSH(&reg.SP, &reg.BC);}
+void vADD_A_d8(){     vGBFunctionADD(&reg.A, &reg.F, ucGBMemoryRead(reg.PC - 1));}
+void vRST_00H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0000;}
+void vRET_Z(){        customDuration = (checkbit(reg.F, Z_FLAG)) ?  20 : 8; if(checkbit(reg.F, Z_FLAG)) vGBFunctionRET(&reg.SP, &reg.PC);}
+void vRET(){          vGBFunctionRET(&reg.SP, &reg.PC);}
+void vJP_Z_a16(){     customDuration = vGBFunctionJP_Z_a16(&reg.PC, &reg.F, concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
 void vPREFIX(){}
-void vCALL_Z_a16(){}
-void vCALL_a16(){}
-void vADC_A_d8(){}
-void vRST_08H(){}
+void vCALL_Z_a16(){   customDuration = vGBFunctionCALL_Z_a16(&reg.PC, &reg.F, &reg.SP);}
+void vCALL_a16(){     vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1));}
+void vADC_A_d8(){     vGBFunctionADD(&reg.A, &reg.F, ucGBMemoryRead(reg.PC - 1));}
+void vRST_08H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0008;}
 
 /*0xDX*/
-void vRET_NC(){}
-void vPOP_DE(){}
-void vJP_NC_a16(){}
+void vRET_NC(){       customDuration =(checkbit(reg.F, C_FLAG)) ?  8 : 20; if(checkbit(reg.F, C_FLAG) == 0) vGBFunctionRET(&reg.SP, &reg.PC);}
+void vPOP_DE(){       vGBFunctionPOP(&reg.SP, &reg.DE);}
+void vJP_NC_a16(){    customDuration = vGBFunctionJP_NC_a16(&reg.PC, &reg.F, concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
 // -----------
-void vCALL_NC_a16(){}
-void vPUSH_DE(){}
-void vSUB_d8(){}
-void vRST_10H(){}
-void vRET_C(){}
-void vRETI(){}
-void vJP_C_a16(){}
+void vCALL_NC_a16(){  customDuration = vGBFunctionCALL_NC_a16(&reg.PC, &reg.F, &reg.SP);}
+void vPUSH_DE(){      vGBFunctionPUSH(&reg.SP, &reg.DE);}
+void vSUB_d8(){       vGBFunctionSUB(&reg.A, &reg.F, ucGBMemoryRead(reg.PC - 1));}
+void vRST_10H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0010;}
+void vRET_C(){        customDuration =(checkbit(reg.F, C_FLAG)) ?  20 : 8; if(checkbit(reg.F, C_FLAG)) vGBFunctionRET(&reg.SP, &reg.PC);}
+void vRETI(){         vGBFunctionRET(&reg.SP, &reg.PC); InterruptDisabled = 0;}
+void vJP_C_a16(){     customDuration = vGBFunctionJP_C_a16(&reg.PC, &reg.F, concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
 // -----------
-void vCALL_C_a16(){}
+void vCALL_C_a16(){   customDuration = vGBFunctionCALL_C_a16(&reg.PC, &reg.F, &reg.SP);}
 // -----------
-void vSBC_A_d8(){}
-void vRST_18H(){}
+void vSBC_A_d8(){     vGBFunctionSBC(&reg.A, &reg.F, ucGBMemoryRead(reg.PC - 1));}
+void vRST_18H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0018;}
 
 /*0xEX*/
-void vLDH_a8_A(){}
-void vPOP_HL(){}
-void vLD_fC_A(){}
+void vLDH_a8_A(){     vGBMemoryWrite(0xFF00 + ucGBMemoryRead(reg.PC - 1), reg.A);}
+void vPOP_HL(){       vGBFunctionPOP(&reg.SP, &reg.HL);}
+void vLD_fC_A(){      vGBMemoryWrite(0xFF00 + reg.C, reg.A);}
 // -----------
 // -----------
-void vPUSH_HL(){}
-void vAND_d8(){}
-void vRST20H(){}
-void vADDs_SP_r8(){}
-void vJP_HL(){}
-void vLD_a16_A(){}
+void vPUSH_HL(){      vGBFunctionPUSH(&reg.SP, &reg.HL);}
+void vAND_d8(){       reg.A &= ucGBMemoryRead(reg.PC - 1); reg.F = (reg.A == 0) ? 0xA0 : 0x20;}
+void vRST20H(){       vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0020;}
+void vADDs_SP_r8(){   vGBFunctionADD_SP_r8(&reg.SP, &reg.F, ucGBMemoryRead(reg.PC - 1));}
+void vJP_HL(){        reg.PC = reg.HL;}
+void vLD_a16_A(){     vGBMemoryWrite(concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)), reg.A);}
 // -----------
 // -----------
 // -----------
-void vXOR_d8(){}
-void vRST_28H(){}
+void vXOR_d8(){       reg.A ^= ucGBMemoryRead(reg.PC - 1); reg.F = (reg.A == 0) ? 0x80 : 0x00;}
+void vRST_28H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0028;}
 
 /*0xFX*/
-void vLDH_A_a8(){}
-void vPOP_AF(){}
-void vLD_A_fC(){}
-void vDI(){}
+void vLDH_A_a8(){     reg.A = ucGBMemoryRead(0xFF00 + ucGBMemoryRead(reg.PC - 1));}
+void vPOP_AF(){       vGBFunctionPOP(&reg.SP, &reg.AF);}
+void vLD_A_fC(){      reg.A = ucGBMemoryRead(0xFF00 + reg.C);}
+void vDI(){           InterruptDisabled = 1;}
 // -----------
-void vPUSH_AF(){}
-void vOR_d8(){}
-void vRST_30H(){}
-void vLDs_HL_SP_r8(){}
-void vLDs_SP_HL(){ reg.SP = reg.HL;}
-void vLD_A_a16(){}
-void vEI(){}
+void vPUSH_AF(){      vGBFunctionPUSH(&reg.SP, &reg.AF);}
+void vOR_d8(){        reg.A |= ucGBMemoryRead(reg.PC - 1); reg.F = (reg.A == 0) ? 0x80 : 0x00;}
+void vRST_30H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0030;}
+void vLDs_HL_SP_r8(){ vGBFunctionLD_HL_SP_r8(&reg.HL, &reg.SP, &reg.F, ucGBMemoryRead(reg.PC - 1));}
+void vLDs_SP_HL(){    reg.SP = reg.HL;}
+void vLD_A_a16(){     reg.A = ucGBMemoryRead(concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
+void vEI(){           InterruptDisabled = 0;}
 // -----------
 // -----------
-void vCP_d8(){}
-void vRST_38H(){}
+void vCP_d8(){        vGBFunctionCP(reg.A, &reg.F, ucGBMemoryRead(reg.PC - 1));}
+void vRST_38H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0038;}
 
 void vGBCPUreset(){
 	// TEMP until OPCODES implemented
