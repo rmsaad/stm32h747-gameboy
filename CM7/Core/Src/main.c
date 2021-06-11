@@ -163,7 +163,8 @@ Error_Handler();
   UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_BLUE);
   UTIL_LCD_SetFont(&Font24);
 
-  vGBMemoryLoad(dmg_boot_bin);													// load boot rom into approiate place in memory map
+  vGBMemoryLoad(Tetris_gb, 32768);
+  vGBMemoryLoad(dmg_boot_bin, 256);													// load boot rom into approiate place in memory map
 
   while (1)
   {

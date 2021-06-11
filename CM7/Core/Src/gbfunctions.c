@@ -178,7 +178,7 @@ void vGBFunctionSBC(uint8_t *regA, uint8_t *flagReg, uint8_t regValue){
 void vGBFunctionCP(uint8_t regA, uint8_t *flagReg, uint8_t regValue){
 	(regValue > regA) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG);
 	((regValue & 0x0F) > (regA & 0x0F)) ? setbit(flagReg, H_FLAG): resetbit(flagReg, H_FLAG);
-	(regA == regValue) ? resetbit(flagReg, Z_FLAG): setbit(flagReg, Z_FLAG);
+	(regA == regValue) ? setbit(flagReg, Z_FLAG): resetbit(flagReg, Z_FLAG);
 	setbit(flagReg, N_FLAG);
 }
 

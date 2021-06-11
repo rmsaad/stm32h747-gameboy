@@ -19,8 +19,8 @@ void vGBMemorySetOP(uint8_t op){
 }
 
 // loads data into memory map
-void vGBMemoryLoad(const void* data){
-	memcpy(mem.ram , data, 256);
+void vGBMemoryLoad(const void* data, uint32_t size){
+	memcpy(mem.ram , data, size);
 }
 
 void vGBMemoryWrite(uint16_t address, uint8_t data){
