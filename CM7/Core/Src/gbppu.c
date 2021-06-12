@@ -15,10 +15,10 @@
 
 extern uint32_t tStates;
 uint8_t ly = 0;
-uint8_t mode = 0;
 uint32_t tempState = 0;
 
 void LYC_check(uint8_t ly);
+void setMode(uint8_t mode);
 
 void gbPPUStep(){
 
@@ -26,7 +26,7 @@ void gbPPUStep(){
 		ly++;
 
 		if(ly > 153){
-			mode = MODE_2;
+			setMode(MODE_2);
 			ly = 0;
 		}
 
@@ -39,14 +39,14 @@ void gbPPUStep(){
 	LYC_check(ly);
 
 	if (ly > 143){
-		mode = MODE_1;
+		setMode(MODE_1);
 	}else{
 		if (tStates <= 80)
-			mode = MODE_2;
+			setMode(MODE_2);
 		else if(tStates <= 252)
-			mode = MODE_3;
+			setMode(MODE_3);
 		else if(tStates <= 456)
-			mode = MODE_0;
+			setMode(MODE_0);
 	}
 }
 
@@ -55,5 +55,15 @@ void LYC_check(uint8_t ly){
 		vGBMemorySetBit(0xFF41, 2);
 	}else{
 		vGBMemoryResetBit(0xFF41, 2);
+	}
+}
+
+void setMode(uint8_t mode){
+	switch (mode) {
+		case MODE_0: vGBMemoryResetBit(0xFF41, 1); vGBMemoryResetBit(0xFF41, 0); break;		// 00
+		case MODE_1: vGBMemoryResetBit(0xFF41, 1);   vGBMemorySetBit(0xFF41, 0); break;		// 01
+		case MODE_2:   vGBMemorySetBit(0xFF41, 1); vGBMemoryResetBit(0xFF41, 0); break;		// 10
+		case MODE_3:   vGBMemorySetBit(0xFF41, 1);   vGBMemorySetBit(0xFF41, 0); break;		// 11
+		default:                                                                 break;
 	}
 }
