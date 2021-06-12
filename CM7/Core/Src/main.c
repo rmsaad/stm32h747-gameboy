@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "gbmemory.h"
 #include "gbcpu.h"
+#include "gbppu.h"
 #include "Tetris.gb.h"
 #include "dmg_boot.bin.h"
 #include <string.h>
@@ -171,8 +172,9 @@ Error_Handler();
 	  //if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) != 0){									// read the button input
 		  //HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_14);										// toggle debug light
 		  vGBCPUboot();
+		  gbPPUStep();
 		  //vGBCPUTestInstr(0x09);
-		  vGBMemoryPrint();
+		  //vGBMemoryPrint();
 	  //}
   //HAL_Delay(10);
   }

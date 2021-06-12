@@ -56,8 +56,8 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_bus.h \
  C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Utilities/lcd/stm32_lcd.h \
  c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\utilities\fonts\fonts.h \
- ../Core/Inc/gbmemory.h ../Core/Inc/gbcpu.h ../Core/Inc/Tetris.gb.h \
- ../Core/Inc/dmg_boot.bin.h
+ ../Core/Inc/gbmemory.h ../Core/Inc/gbcpu.h ../Core/Inc/gbppu.h \
+ ../Core/Inc/Tetris.gb.h ../Core/Inc/dmg_boot.bin.h
 
 ../Core/Inc/main.h:
 
@@ -178,6 +178,8 @@ c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\utilities\fonts\fonts.
 ../Core/Inc/gbmemory.h:
 
 ../Core/Inc/gbcpu.h:
+
+../Core/Inc/gbppu.h:
 
 ../Core/Inc/Tetris.gb.h:
 

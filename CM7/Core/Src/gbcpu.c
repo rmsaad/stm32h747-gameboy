@@ -21,6 +21,7 @@ uint8_t ucSTOPPED = 0;
 uint8_t ucHALTED = 0;
 uint8_t InterruptDisabled = 0;
 uint8_t customDuration = 0;
+uint32_t tStates = 0;
 
 extern registers reg;
 
@@ -1692,16 +1693,22 @@ void vGBCPUTestInstr(uint8_t opcode){
 void vGBCPUboot(){
 	if(reg.PC <= 0xFF){
 		vGBCPUinstr(ucGBMemoryRead(reg.PC));
+	}else{
+		vGBMemoryPrint();
 	}
 }
 
 void vGBCPUinstr(uint8_t opcode){
 	vGBMemorySetOP(opcode);
 
-	if(opcode != 0xCB)
-		reg.PC += instructions[opcode].bytes;
-	else
-		reg.PC += prefix_instructions[ucGBMemoryRead(reg.PC + 1)].bytes;
-
+	reg.PC += (opcode != 0xCB) ? instructions[opcode].bytes : prefix_instructions[ucGBMemoryRead(reg.PC + 1)].bytes;
 	((void (*)(void))instructions[opcode].instr)();
+
+	if (opcode == 0xCB){
+		tStates += prefix_instructions[ucGBMemoryRead(reg.PC - 1)].Tstate;
+	}else if(instructions[opcode].Tstate == 255){
+		tStates += customDuration;
+	}else{
+		tStates += instructions[opcode].Tstate;
+	}
 }

@@ -1,5 +1,7 @@
-gbmemory.c:17:6:vGBMemorySetOP	0	static
-gbmemory.c:22:6:vGBMemoryLoad	0	static
-gbmemory.c:26:6:vGBMemoryWrite	0	static
-gbmemory.c:31:9:ucGBMemoryRead	0	static
-gbmemory.c:35:6:vGBMemoryPrint	32	static
+gbmemory.c:19:6:vGBMemorySetOP	0	static
+gbmemory.c:24:6:vGBMemoryLoad	0	static
+gbmemory.c:28:6:vGBMemoryWrite	0	static
+gbmemory.c:32:6:vGBMemorySetBit	0	static
+gbmemory.c:36:6:vGBMemoryResetBit	0	static
+gbmemory.c:41:9:ucGBMemoryRead	0	static
+gbmemory.c:45:6:vGBMemoryPrint	32	static
