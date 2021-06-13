@@ -42,6 +42,12 @@ static DMA2D_HandleTypeDef           hdma2d;
 #ifndef HSEM_ID_0
 #define HSEM_ID_0 (0U) /* HW semaphore 0*/
 #endif
+
+#define DARKEST_GREEN  0XFF0F38OFUL
+#define DARK_GREEN     0XFF306230UL
+#define LIGHT_GREEN    0XFF8BAC0FUL
+#define LIGHTEST_GREEN 0XFF9BBC0FUL
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -68,7 +74,6 @@ static void MX_GPIO_Init(void);
 /* USER CODE BEGIN PFP */
 void Error_Handler(void);
 static void vLEDInit(void);
-static void LCD_BriefDisplay(void);
 static void CopyBuffer(uint32_t *pSrc,
                            uint32_t *pDst,
                            uint16_t x,
@@ -152,28 +157,22 @@ Error_Handler();
 
   UTIL_LCD_Clear(UTIL_LCD_COLOR_WHITE);
   UTIL_LCD_FillRect(0, 0, 160*3, 480, UTIL_LCD_COLOR_BLACK);
-  UTIL_LCD_FillRect(0, (480 - (144*3))/2, 160*3, 144*3, UTIL_LCD_COLOR_BLUE);
+  UTIL_LCD_FillRect(0, (480 - (144*3))/2, 160*3, 144*3, LIGHTEST_GREEN);
   UTIL_LCD_SetBackColor(UTIL_LCD_COLOR_WHITE);
   UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_BLUE);
   UTIL_LCD_SetFont(&Font24);
 
-  UTIL_LCD_Clear(UTIL_LCD_COLOR_WHITE);
-  UTIL_LCD_FillRect(0, 0, 160*3, 480, UTIL_LCD_COLOR_BLACK);
-  UTIL_LCD_FillRect(0, (480 - (144*3))/2, 160*3, 144*3, UTIL_LCD_COLOR_BLUE);
-  UTIL_LCD_SetBackColor(UTIL_LCD_COLOR_WHITE);
-  UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_BLUE);
-  UTIL_LCD_SetFont(&Font24);
 
   vGBMemoryLoad(Tetris_gb, 32768);
   vGBMemoryLoad(dmg_boot_bin, 256);													// load boot rom into approiate place in memory map
 
   while (1)
   {
+
 	  //if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) != 0){									// read the button input
 		  //HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_14);										// toggle debug light
 		  vGBCPUboot();
 		  gbPPUStep();
-		  //vGBCPUTestInstr(0x09);
 		  //vGBMemoryPrint();
 	  //}
   //HAL_Delay(10);
@@ -329,24 +328,6 @@ void Error_Handler(void)
   {
   }
   /* USER CODE END Error_Handler_Debug */
-}
-
-/**
-  * @brief  Display Example description.
-  * @param  None
-  * @retval None
-  */
-__attribute__ ((unused)) static void LCD_BriefDisplay(void)
-{
-  UTIL_LCD_Clear(UTIL_LCD_COLOR_WHITE);
-  UTIL_LCD_SetBackColor(UTIL_LCD_COLOR_BLUE);
-  UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_BLUE);
-  UTIL_LCD_FillRect(0, 0, LCD_X_Size, 112, UTIL_LCD_COLOR_BLUE);
-  UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_WHITE);
-  UTIL_LCD_DisplayStringAt(0, LINE(2), (uint8_t *)"LCD_DSI_VideoMode_SingleBuffer", CENTER_MODE);
-  UTIL_LCD_SetFont(&Font16);
-  UTIL_LCD_DisplayStringAt(0, LINE(5), (uint8_t *)"This example shows how to display images", CENTER_MODE);
-  UTIL_LCD_DisplayStringAt(0, LINE(6), (uint8_t *)"on LCD DSI using same buffer for display and for draw", CENTER_MODE);
 }
 
 __attribute__ ((unused)) static void CopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t xsize, uint16_t ysize)
