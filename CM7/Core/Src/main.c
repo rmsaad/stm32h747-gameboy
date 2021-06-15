@@ -27,13 +27,14 @@
 #include "gbppu.h"
 #include "Tetris.gb.h"
 #include "dmg_boot.bin.h"
+#include "stm32h7_display.h"
 #include <string.h>
 #include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
-static DMA2D_HandleTypeDef           hdma2d;
+
 /* USER CODE END PTD */
 
 /* Private define ------------------------------------------------------------*/
@@ -43,7 +44,7 @@ static DMA2D_HandleTypeDef           hdma2d;
 #define HSEM_ID_0 (0U) /* HW semaphore 0*/
 #endif
 
-#define DARKEST_GREEN  0XFF0F38OFUL
+#define DARKEST_GREEN  0XFF0F380FUL
 #define DARK_GREEN     0XFF306230UL
 #define LIGHT_GREEN    0XFF8BAC0FUL
 #define LIGHTEST_GREEN 0XFF9BBC0FUL
@@ -62,8 +63,8 @@ DSI_HandleTypeDef hdsi;
 LTDC_HandleTypeDef hltdc;
 
 /* USER CODE BEGIN PV */
-static uint32_t LCD_X_Size	= 800;
 extern unsigned char Tetris_gb[];
+
 
 /* USER CODE END PV */
 
@@ -74,12 +75,7 @@ static void MX_GPIO_Init(void);
 /* USER CODE BEGIN PFP */
 void Error_Handler(void);
 static void vLEDInit(void);
-static void CopyBuffer(uint32_t *pSrc,
-                           uint32_t *pDst,
-                           uint16_t x,
-                           uint16_t y,
-                           uint16_t xsize,
-                           uint16_t ysize);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -152,10 +148,14 @@ Error_Handler();
   /* USER CODE BEGIN 2 */
   vLEDInit();
   BSP_LCD_Init(0, LCD_ORIENTATION_LANDSCAPE);
+
   UTIL_LCD_SetFuncDriver(&LCD_Driver);
   UTIL_LCD_SetLayer(0);
-
   UTIL_LCD_Clear(UTIL_LCD_COLOR_WHITE);
+
+  //dummy_code();
+
+
   UTIL_LCD_FillRect(0, 0, 160*3, 480, UTIL_LCD_COLOR_BLACK);
   UTIL_LCD_FillRect(0, (480 - (144*3))/2, 160*3, 144*3, LIGHTEST_GREEN);
   UTIL_LCD_SetBackColor(UTIL_LCD_COLOR_WHITE);
@@ -330,45 +330,7 @@ void Error_Handler(void)
   /* USER CODE END Error_Handler_Debug */
 }
 
-__attribute__ ((unused)) static void CopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t xsize, uint16_t ysize)
-{
 
-  uint32_t destination = (uint32_t)pDst + (y * LCD_X_Size + x) * 4;
-  uint32_t source      = (uint32_t)pSrc;
-
-  /*##-1- Configure the DMA2D Mode, Color Mode and output offset #############*/
-  hdma2d.Init.Mode         = DMA2D_M2M;
-  hdma2d.Init.ColorMode    = DMA2D_OUTPUT_ARGB8888;
-  hdma2d.Init.OutputOffset = LCD_X_Size - xsize;
-  hdma2d.Init.AlphaInverted = DMA2D_REGULAR_ALPHA;  /* No Output Alpha Inversion*/
-  hdma2d.Init.RedBlueSwap   = DMA2D_RB_REGULAR;     /* No Output Red & Blue swap */
-
-  /*##-2- DMA2D Callbacks Configuration ######################################*/
-  hdma2d.XferCpltCallback  = NULL;
-
-  /*##-3- Foreground Configuration ###########################################*/
-  hdma2d.LayerCfg[1].AlphaMode = DMA2D_NO_MODIF_ALPHA;
-  hdma2d.LayerCfg[1].InputAlpha = 0xFF;
-  hdma2d.LayerCfg[1].InputColorMode = DMA2D_INPUT_ARGB8888;
-  hdma2d.LayerCfg[1].InputOffset = 0;
-  hdma2d.LayerCfg[1].RedBlueSwap = DMA2D_RB_REGULAR; /* No ForeGround Red/Blue swap */
-  hdma2d.LayerCfg[1].AlphaInverted = DMA2D_REGULAR_ALPHA; /* No ForeGround Alpha inversion */
-
-  hdma2d.Instance          = DMA2D;
-
-  /* DMA2D Initialization */
-  if(HAL_DMA2D_Init(&hdma2d) == HAL_OK)
-  {
-    if(HAL_DMA2D_ConfigLayer(&hdma2d, 1) == HAL_OK)
-    {
-      if (HAL_DMA2D_Start(&hdma2d, source, destination, xsize, ysize) == HAL_OK)
-      {
-        /* Polling For DMA transfer */
-        HAL_DMA2D_PollForTransfer(&hdma2d, 100);
-      }
-    }
-  }
-}
 #ifdef  USE_FULL_ASSERT
 /**
   * @brief  Reports the name of the source file and the source line number

@@ -4,4 +4,5 @@ gbmemory.c:28:6:vGBMemoryWrite	0	static
 gbmemory.c:32:6:vGBMemorySetBit	0	static
 gbmemory.c:36:6:vGBMemoryResetBit	0	static
 gbmemory.c:41:9:ucGBMemoryRead	0	static
-gbmemory.c:45:6:vGBMemoryPrint	32	static
+gbmemory.c:45:10:usGBMemoryReadShort	0	static
+gbmemory.c:49:6:vGBMemoryPrint	32	static

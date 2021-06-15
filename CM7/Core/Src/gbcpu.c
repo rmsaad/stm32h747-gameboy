@@ -1694,7 +1694,7 @@ void vGBCPUboot(){
 	if(reg.PC <= 0xFF){
 		vGBCPUinstr(ucGBMemoryRead(reg.PC));
 	}else{
-		vGBMemoryPrint();
+		//vGBMemoryPrint();
 	}
 }
 

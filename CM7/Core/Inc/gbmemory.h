@@ -57,6 +57,7 @@ typedef struct{
 void vGBMemoryLoad(const void* data, uint32_t size);
 void vGBMemoryWrite(uint16_t address, uint8_t data);
 uint8_t ucGBMemoryRead(uint16_t address);
+uint16_t usGBMemoryReadShort(uint16_t address);
 void vGBMemorySetBit(uint16_t address, uint8_t bit);
 void vGBMemoryResetBit(uint16_t address, uint8_t bit);
 void vGBMemoryPrint();

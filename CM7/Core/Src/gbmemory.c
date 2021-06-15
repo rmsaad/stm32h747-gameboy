@@ -42,6 +42,10 @@ uint8_t ucGBMemoryRead(uint16_t address){
 	return mem.ram[address];
 }
 
+uint16_t usGBMemoryReadShort(uint16_t address){
+	return *((uint16_t*) &mem.ram[address]);
+}
+
 void vGBMemoryPrint(){
 	char temp[15];
 	sprintf(temp,"Opcode: 0x%.2x", current_op);
