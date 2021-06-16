@@ -1,3 +1,4 @@
 stm32h7_display.c:43:6:HAL_LTDC_LineEventCallback	12	static
 stm32h7_display.c:57:6:CopyBuffer	48	static
-stm32h7_display.c:97:6:dummy_code	24	static
+stm32h7_display.c:97:6:dummy2_code	16	static
+stm32h7_display.c:103:6:dummy_code	24	static

@@ -61,6 +61,8 @@ void HardFault_Handler(void)
   /* Go to infinite loop when Hard Fault exception occurs */
   while (1)
   {
+	  HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_14);
+	  HAL_Delay(500);
   }
 }
 

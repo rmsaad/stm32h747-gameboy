@@ -49,6 +49,7 @@
 #define LIGHT_GREEN    0XFF8BAC0FUL
 #define LIGHTEST_GREEN 0XFF9BBC0FUL
 
+
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
@@ -153,11 +154,12 @@ Error_Handler();
   UTIL_LCD_SetLayer(0);
   UTIL_LCD_Clear(UTIL_LCD_COLOR_WHITE);
 
-  //dummy_code();
 
 
-  UTIL_LCD_FillRect(0, 0, 160*3, 480, UTIL_LCD_COLOR_BLACK);
-  UTIL_LCD_FillRect(0, (480 - (144*3))/2, 160*3, 144*3, LIGHTEST_GREEN);
+
+
+  //UTIL_LCD_FillRect(0, 0, 160*3, 480, UTIL_LCD_COLOR_BLACK);
+  //UTIL_LCD_FillRect(0, (480 - (144*3))/2, 160*3, 144*3, LIGHTEST_GREEN);
   UTIL_LCD_SetBackColor(UTIL_LCD_COLOR_WHITE);
   UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_BLUE);
   UTIL_LCD_SetFont(&Font24);

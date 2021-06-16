@@ -14,7 +14,6 @@
 registers reg;
 memory mem;
 uint8_t current_op;
-extern uint32_t tStates;
 
 void vGBMemorySetOP(uint8_t op){
 	current_op = op;
@@ -71,6 +70,4 @@ void vGBMemoryPrint(){
 	UTIL_LCD_DisplayStringAt(500, LINE(12), (uint8_t *) temp, LEFT_MODE);
 	sprintf(temp," C: 0x%.1x",checkbit(reg.F, 4));
 	UTIL_LCD_DisplayStringAt(500, LINE(13), (uint8_t *) temp, LEFT_MODE);
-	sprintf(temp,"T States: %lu", tStates);
-	UTIL_LCD_DisplayStringAt(500, LINE(15), (uint8_t *) temp, LEFT_MODE);
 }

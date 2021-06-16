@@ -7,6 +7,8 @@
 
 #include "gbcpu.h"
 #include "gbmemory.h"
+#include "string.h"
+#include "stm32h7_display.h"
 
 // ppu modes
 #define MODE_0 0    // HBLANK
@@ -43,6 +45,8 @@
 #define LIGHT_GREEN    0XFF8BAC0FUL
 #define LIGHTEST_GREEN 0XFF9BBC0FUL
 
+#define SRAM1		   0x30000000UL
+
 // Flags
 uint8_t BackWinTileDataAddr;
 uint8_t BackTileDisplayAddr;
@@ -51,7 +55,10 @@ uint8_t Mode;
 extern uint32_t tStates;
 uint8_t ly = 0;
 uint32_t color_to_pallette[4];
-uint32_t gb_frame[160*144];
+
+// use this to access d2_sram
+uint32_t *gb_frame = (uint32_t*)SRAM1;
+
 
 void vCheckBGP();
 void LYC_check(uint8_t ly);
@@ -66,6 +73,7 @@ void gbPPUStep(){
 			ly++;
 
 			if(ly > 153){												// end of vblank
+				dummy2_code(gb_frame);
 				setMode(MODE_2);
 				ly = 0;
 			}
@@ -78,18 +86,17 @@ void gbPPUStep(){
 		LYC_check(ly);
 
 		if (ly > 143){													// vblank
-			// draw frame
 			setMode(MODE_1);
 		}else{
 			if (tStates <= 80 && Mode != MODE_2)											// oam
 				setMode(MODE_2);
-			else if(tStates <= 252 && Mode != MODE_3){										// vram
+			else if(tStates > 80 && tStates <= 252 && Mode != MODE_3){										// vram
 				vCheckBGP();
 				vCheckBackWinTileDataSel();
 				vCheckBackTileDisplaySel();
 				draw_line(ly, ucGBMemoryRead(SCX_ADDR), ucGBMemoryRead(SCY_ADDR));
 				setMode(MODE_3);
-			}else if(tStates <= 456 && Mode != MODE_0)										// hblank
+			}else if(tStates > 252 && tStates <= 456 && Mode != MODE_0)										// hblank
 				setMode(MODE_0);
 		}
 	}
@@ -110,8 +117,6 @@ void vCheckBGP(){
 	}
 
 }
-
-
 
 void vCheckBackWinTileDataSel(){
 	BackWinTileDataAddr = (ucGBMemoryRead(LCDC_ADDR) & 0x10) ? TILE_DATA_UNSIGNED_ADDR : TILE_DATA_SIGNED_ADDR;
@@ -162,8 +167,6 @@ void draw_line(uint8_t ly, uint8_t SCX, uint8_t SCY){
 
 void drawFrame(){
 
-		if(ucGBMemoryRead(LCDC_ADDR) & 0x10){														// check bit 4 for addressing BG and Windows
-		}
 }
 
 void LYC_check(uint8_t ly){

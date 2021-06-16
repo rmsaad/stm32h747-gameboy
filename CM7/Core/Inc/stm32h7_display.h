@@ -8,6 +8,7 @@
 #ifndef INC_STM32H7_DISPLAY_H_
 #define INC_STM32H7_DISPLAY_H_
 
+void dummy2_code();
 void dummy_code();
 void CopyBuffer(uint32_t *pSrc,
                            uint32_t *pDst,

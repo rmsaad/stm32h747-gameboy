@@ -215,11 +215,15 @@
                         					
                     </folderInfo>
                     					
+                    <fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.722380797.413573019" name="image_320x240_argb8888.h" rcbsApplicability="disable" resourcePath="Core/Inc/image_320x240_argb8888.h" toolsToInvoke=""/>
+                    					
+                    <fileInfo id="com.st.stm32cube.ide.mcu.gnu.managedbuild.config.exe.debug.722380797.1626929511" name="life_augmented_argb8888.h" rcbsApplicability="disable" resourcePath="Core/Inc/life_augmented_argb8888.h" toolsToInvoke=""/>
+                    					
                     <sourceEntries>
                         						
                         <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Common"/>
                         						
-                        <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
+                        <entry excluding="Inc/life_augmented_argb8888.h|Inc/image_320x240_argb8888.h" flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Core"/>
                         						
                         <entry flags="VALUE_WORKSPACE_PATH|RESOLVED" kind="sourcePath" name="Drivers"/>
                         						
