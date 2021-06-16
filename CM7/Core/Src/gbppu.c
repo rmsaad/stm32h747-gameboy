@@ -45,13 +45,14 @@
 #define LIGHT_GREEN    0XFF8BAC0FUL
 #define LIGHTEST_GREEN 0XFF9BBC0FUL
 
-#define SRAM1		   0x30000000UL
+#define SRAM1		   0xD1000000UL
 
 // Flags
-uint8_t BackWinTileDataAddr;
-uint8_t BackTileDisplayAddr;
+uint16_t BackWinTileDataAddr;
+uint16_t BackTileDisplayAddr;
 uint8_t Mode;
-
+uint8_t ucSCY;
+uint8_t ucSCX;
 extern uint32_t tStates;
 uint8_t ly = 0;
 uint32_t color_to_pallette[4];
@@ -67,7 +68,14 @@ void draw_line(uint8_t ly, uint8_t SCX, uint8_t SCY);
 void vCheckBackWinTileDataSel();
 void vCheckBackTileDisplaySel();
 
+
 void gbPPUStep(){
+	static uint8_t n = 0;
+	if (n == 0){
+		memset(gb_frame, 0, 160*144*4);
+		n = 1;
+	}
+
 	if(ucGBMemoryRead(LCDC_ADDR) & 0x80){															// check MSB of LCDC for screen en
 		if (tStates > 456){												// end of hblank or vblank
 			ly++;
@@ -94,7 +102,9 @@ void gbPPUStep(){
 				vCheckBGP();
 				vCheckBackWinTileDataSel();
 				vCheckBackTileDisplaySel();
-				draw_line(ly, ucGBMemoryRead(SCX_ADDR), ucGBMemoryRead(SCY_ADDR));
+				ucSCY = ucGBMemoryRead(SCY_ADDR);
+				ucSCX = ucGBMemoryRead(SCX_ADDR);
+				draw_line(ly, ucSCX, ucSCY);
 				setMode(MODE_3);
 			}else if(tStates > 252 && tStates <= 456 && Mode != MODE_0)										// hblank
 				setMode(MODE_0);
@@ -126,43 +136,16 @@ void vCheckBackTileDisplaySel(){
 	BackTileDisplayAddr = (ucGBMemoryRead(LCDC_ADDR) & 0x08) ? TILE_MAP_LOCATION_HIGH : TILE_MAP_LOCATION_LOW;
 }
 
-uint16_t getTileLineData(uint8_t tile_offset, uint8_t line_offset){
-	if (BackTileDisplayAddr == 0x8000){
+uint16_t getTileLineData(uint16_t tile_offset, uint8_t line_offset){
+	if (BackWinTileDataAddr == 0x8000){
 		return usGBMemoryReadShort(BackWinTileDataAddr + ucGBMemoryRead(BackTileDisplayAddr + tile_offset) + line_offset);
+		//return usGBMemoryReadShort(BackWinTileDataAddr + 0x192 + line_offset);
 	}else{
 		int8_t temp  = ucGBMemoryRead(BackTileDisplayAddr + tile_offset);
 		uint8_t temp2 = temp + 128;
 		return usGBMemoryReadShort(BackWinTileDataAddr + temp2 + line_offset);
 	}
 
-}
-
-void draw_line(uint8_t ly, uint8_t SCX, uint8_t SCY){
-
-
-	uint8_t tile_offset = (((SCY + ly) / 8) * 32) + (SCX / 8);			                   	   // gives the address offset in the tile map
-	uint8_t line_offset = (SCY % 8) * 2;									                   // gives the line offset in the tile
-	uint8_t pixl_offset = SCX % 8;											                   // gives current pixel offset
-
-	uint16_t tile_data = getTileLineData(tile_offset, line_offset);           // tile data holds tile line information
-
-		for(int j = 0; j < 160; j++){
-			switch ((tile_data & 0x00010001) >> pixl_offset){
-				case 0x000: gb_frame[j + (ly * 160)] = color_to_pallette[0]; break;
-				case 0x001: gb_frame[j + (ly * 160)] = color_to_pallette[2]; break;
-				case 0x100: gb_frame[j + (ly * 160)] = color_to_pallette[1]; break;
-				case 0x101: gb_frame[j + (ly * 160)] = color_to_pallette[3]; break;
-				default: break;
-			}
-
-			pixl_offset++;
-
-			if(pixl_offset == 8){
-				tile_offset++;
-				pixl_offset = 0;
-				tile_data = getTileLineData(tile_offset, line_offset);
-			}
-		}
 }
 
 void drawFrame(){
@@ -187,3 +170,36 @@ void setMode(uint8_t mode){
 		default:                                                                       break;
 	}
 }
+
+void draw_line(uint8_t ly, uint8_t SCX, uint8_t SCY){
+
+
+	uint16_t tile_offset = (((SCY + ly) / 8) * 32) + (SCX / 8);			                   	   // gives the address offset in the tile map
+	//uint8_t line_offset = (SCY % 8) * 2;									                   // gives the line offset in the tile
+	uint8_t line_offset = (((SCY % 8) + ly) % 8) * 2;
+	uint8_t pixl_offset = SCX % 8;											                   // gives current pixel offset
+
+	uint16_t tile_data = getTileLineData(tile_offset, line_offset);           // tile data holds tile line information
+
+		for(int j = 0; j < 160; j++){
+			switch ((tile_data << pixl_offset) & 0x8080){
+				case 0x0000: gb_frame[j + (ly * 160)] = color_to_pallette[0]; break;
+				case 0x0080: gb_frame[j + (ly * 160)] = color_to_pallette[2]; break;
+				case 0x8000: gb_frame[j + (ly * 160)] = color_to_pallette[1]; break;
+				case 0x8080: gb_frame[j + (ly * 160)] = color_to_pallette[3]; break;
+				default: break;
+			}
+
+			pixl_offset++;
+
+			if(pixl_offset == 8){
+				tile_offset++;
+				pixl_offset = 0;
+				tile_data = getTileLineData(tile_offset, line_offset);
+
+			}
+		}
+
+}
+
+
