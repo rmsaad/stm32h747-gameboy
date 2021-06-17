@@ -8,6 +8,7 @@
 #include "gbcpu.h"
 #include "gbmemory.h"
 #include "gbfunctions.h"
+//#include "Tetris.gb.h"
 
 #define SET   1
 #define RESET 0
@@ -24,6 +25,7 @@ uint8_t customDuration = 0;
 uint32_t tStates = 0;
 
 extern registers reg;
+extern unsigned char Tetris_gb[];
 
 /* Game Boy CPU instruction set */
 
@@ -1146,7 +1148,7 @@ void vLD_A_HLI(){     reg.A = ucGBMemoryRead(reg.HL); reg.HL++;}
 void vDECs_HL(){      reg.HL--;}
 void vINC_L(){        v8bitRegisterINC(&reg.L, &reg.F);}
 void vDEC_L(){        v8bitRegisterDEC(&reg.L, &reg.F);}
-void vLD_L_d8(){      reg.H = ucGBMemoryRead(reg.PC - 1);}
+void vLD_L_d8(){      reg.L = ucGBMemoryRead(reg.PC - 1);}
 void vCPL(){          reg.A = ~(reg.A); setbit(&reg.F, N_FLAG); setbit(&reg.F, H_FLAG);}
 
 /*********************0x3X*/
@@ -1695,6 +1697,8 @@ void vGBCPUboot(){
 		vGBCPUinstr(ucGBMemoryRead(reg.PC));
 	}else{
 		vGBMemoryPrint();
+		vGBMemoryLoad(Tetris_gb, 256);
+		vGBCPUinstr(ucGBMemoryRead(reg.PC));
 	}
 }
 

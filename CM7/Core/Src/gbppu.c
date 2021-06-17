@@ -138,8 +138,8 @@ void vCheckBackTileDisplaySel(){
 
 uint16_t getTileLineData(uint16_t tile_offset, uint8_t line_offset){
 	if (BackWinTileDataAddr == 0x8000){
-		return usGBMemoryReadShort(BackWinTileDataAddr + ucGBMemoryRead(BackTileDisplayAddr + tile_offset) + line_offset);
-		//return usGBMemoryReadShort(BackWinTileDataAddr + 0x192 + line_offset);
+		return usGBMemoryReadShort(BackWinTileDataAddr + (ucGBMemoryRead(BackTileDisplayAddr + tile_offset) * 0x10) + line_offset);
+		//return usGBMemoryReadShort(BackWinTileDataAddr + (ucGBMemoryRead(0x9910) * 0x10) + line_offset);
 	}else{
 		int8_t temp  = ucGBMemoryRead(BackTileDisplayAddr + tile_offset);
 		uint8_t temp2 = temp + 128;
@@ -171,24 +171,38 @@ void setMode(uint8_t mode){
 	}
 }
 
+void update_buffer(uint16_t res, int j, uint16_t amt){
+	for (int n = 1; n <= amt; n++){
+		switch (res){
+				case 0x0000: gb_frame[j + (2 * ly * amt * 160) + (amt * 160 * n)] = color_to_pallette[0]; gb_frame[(j+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[0]; break;
+				case 0x0080: gb_frame[j + (2 * ly * amt * 160) + (amt * 160 * n)] = color_to_pallette[2]; gb_frame[(j+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[2]; break;
+				case 0x8000: gb_frame[j + (2 * ly * amt * 160) + (amt * 160 * n)] = color_to_pallette[1]; gb_frame[(j+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[1]; break;
+				case 0x8080: gb_frame[j + (2 * ly * amt * 160) + (amt * 160 * n)] = color_to_pallette[3]; gb_frame[(j+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[3]; break;
+				default: break;
+			}
+	}
+
+}
+
 void draw_line(uint8_t ly, uint8_t SCX, uint8_t SCY){
 
 
 	uint16_t tile_offset = (((SCY + ly) / 8) * 32) + (SCX / 8);			                   	   // gives the address offset in the tile map
-	//uint8_t line_offset = (SCY % 8) * 2;									                   // gives the line offset in the tile
-	uint8_t line_offset = (((SCY % 8) + ly) % 8) * 2;
+	uint8_t line_offset = (((SCY % 8) + ly) % 8) * 2;										   // gives the line offset in the tile
 	uint8_t pixl_offset = SCX % 8;											                   // gives current pixel offset
 
 	uint16_t tile_data = getTileLineData(tile_offset, line_offset);           // tile data holds tile line information
 
-		for(int j = 0; j < 160; j++){
-			switch ((tile_data << pixl_offset) & 0x8080){
-				case 0x0000: gb_frame[j + (ly * 160)] = color_to_pallette[0]; break;
-				case 0x0080: gb_frame[j + (ly * 160)] = color_to_pallette[2]; break;
-				case 0x8000: gb_frame[j + (ly * 160)] = color_to_pallette[1]; break;
-				case 0x8080: gb_frame[j + (ly * 160)] = color_to_pallette[3]; break;
-				default: break;
-			}
+		for(int j = 0; j < 160*2; j+= 2){
+
+			update_buffer(((tile_data << pixl_offset) & 0x8080), j,  2);
+//			switch ((tile_data << pixl_offset) & 0x8080){
+//				case 0x0000: gb_frame[j + (ly * 160)] = color_to_pallette[0]; break;
+//				case 0x0080: gb_frame[j + (ly * 160)] = color_to_pallette[2]; break;
+//				case 0x8000: gb_frame[j + (ly * 160)] = color_to_pallette[1]; break;
+//				case 0x8080: gb_frame[j + (ly * 160)] = color_to_pallette[3]; break;
+//				default: break;
+//			}
 
 			pixl_offset++;
 
@@ -198,6 +212,7 @@ void draw_line(uint8_t ly, uint8_t SCX, uint8_t SCY){
 				tile_data = getTileLineData(tile_offset, line_offset);
 
 			}
+
 		}
 
 }
