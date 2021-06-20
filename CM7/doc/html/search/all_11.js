@@ -1,0 +1,22 @@
+var searchData=
+[
+  ['ucgbfunctionreshl_108',['ucGBFunctionRESHL',['../gbfunctions_8h.html#af9ef39642fcac89eb9630e052916a0b8',1,'ucGBFunctionRESHL(uint16_t regHLaddr, uint8_t bit):&#160;gbfunctions.c'],['../gbfunctions_8c.html#af9ef39642fcac89eb9630e052916a0b8',1,'ucGBFunctionRESHL(uint16_t regHLaddr, uint8_t bit):&#160;gbfunctions.c']]],
+  ['ucgbfunctionrl_109',['ucGBFunctionRL',['../gbfunctions_8h.html#ad62cde0852d4b8c6613fcd313d886d07',1,'ucGBFunctionRL(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c'],['../gbfunctions_8c.html#ad62cde0852d4b8c6613fcd313d886d07',1,'ucGBFunctionRL(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c']]],
+  ['ucgbfunctionrlc_110',['ucGBFunctionRLC',['../gbfunctions_8h.html#a1da098d4b25fcdf39d85cc13a0f9d01c',1,'ucGBFunctionRLC(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c'],['../gbfunctions_8c.html#a1da098d4b25fcdf39d85cc13a0f9d01c',1,'ucGBFunctionRLC(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c']]],
+  ['ucgbfunctionrr_111',['ucGBFunctionRR',['../gbfunctions_8h.html#a1ff282f802f795c2aa446c8291588229',1,'ucGBFunctionRR(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c'],['../gbfunctions_8c.html#a1ff282f802f795c2aa446c8291588229',1,'ucGBFunctionRR(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c']]],
+  ['ucgbfunctionrrc_112',['ucGBFunctionRRC',['../gbfunctions_8h.html#a7b58cb2fea56fde673dbd4184b6c5a88',1,'ucGBFunctionRRC(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c'],['../gbfunctions_8c.html#a7b58cb2fea56fde673dbd4184b6c5a88',1,'ucGBFunctionRRC(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c']]],
+  ['ucgbfunctionsethl_113',['ucGBFunctionSETHL',['../gbfunctions_8h.html#ae3ede3f0dacb7bf8535f9a8a1600cbc2',1,'ucGBFunctionSETHL(uint16_t regHLaddr, uint8_t bit):&#160;gbfunctions.c'],['../gbfunctions_8c.html#ae3ede3f0dacb7bf8535f9a8a1600cbc2',1,'ucGBFunctionSETHL(uint16_t regHLaddr, uint8_t bit):&#160;gbfunctions.c']]],
+  ['ucgbfunctionsla_114',['ucGBFunctionSLA',['../gbfunctions_8h.html#aefeb346bb9e064ad3510fb792023ab30',1,'ucGBFunctionSLA(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c'],['../gbfunctions_8c.html#aefeb346bb9e064ad3510fb792023ab30',1,'ucGBFunctionSLA(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c']]],
+  ['ucgbfunctionsra_115',['ucGBFunctionSRA',['../gbfunctions_8h.html#aaee6bebb882310ea433b1d9b7835889e',1,'ucGBFunctionSRA(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c'],['../gbfunctions_8c.html#aaee6bebb882310ea433b1d9b7835889e',1,'ucGBFunctionSRA(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c']]],
+  ['ucgbfunctionsrl_116',['ucGBFunctionSRL',['../gbfunctions_8h.html#a3a337ebf04c67d7f432079a621759512',1,'ucGBFunctionSRL(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c'],['../gbfunctions_8c.html#a3a337ebf04c67d7f432079a621759512',1,'ucGBFunctionSRL(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c']]],
+  ['ucgbfunctionswap_117',['ucGBFunctionSWAP',['../gbfunctions_8h.html#a56db189977b0d60a73e2648015377bc2',1,'ucGBFunctionSWAP(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c'],['../gbfunctions_8c.html#a56db189977b0d60a73e2648015377bc2',1,'ucGBFunctionSWAP(uint8_t regValue, uint8_t *flagReg):&#160;gbfunctions.c']]],
+  ['ucgbmemoryread_118',['ucGBMemoryRead',['../gbmemory_8h.html#a683a109d784f5984037d1484e7d3cc33',1,'ucGBMemoryRead(uint16_t address):&#160;gbmemory.c'],['../gbmemory_8c.html#a683a109d784f5984037d1484e7d3cc33',1,'ucGBMemoryRead(uint16_t address):&#160;gbmemory.c']]],
+  ['uchalted_119',['ucHALTED',['../gbcpu_8c.html#a1454b651edb9341cc0188aaf23a14c5a',1,'gbcpu.c']]],
+  ['ucinterruptmasterenable_120',['ucInterruptMasterEnable',['../gbcpu_8c.html#a3ace942a73e671a89d3aea57e40f2bc4',1,'gbcpu.c']]],
+  ['uconecycleinterruptdelay_121',['ucOneCycleInterruptDelay',['../gbcpu_8c.html#a512aecfd902ad0c01faa6010ad2dbd86',1,'gbcpu.c']]],
+  ['ucscx_122',['ucSCX',['../gbppu_8c.html#ae5e216d8560de7f552ff38054454d770',1,'gbppu.c']]],
+  ['ucscy_123',['ucSCY',['../gbppu_8c.html#ad94990c5a69db5f8469559e1ef342346',1,'gbppu.c']]],
+  ['ucstopped_124',['ucSTOPPED',['../gbcpu_8c.html#a6bba2533b946ce2b9209675e0a5d34c3',1,'gbcpu.c']]],
+  ['update_5fbuffer_125',['update_buffer',['../gbppu_8c.html#a5731999f5c834ee91b2b0f5cc075a8dc',1,'gbppu.c']]],
+  ['usgbmemoryreadshort_126',['usGBMemoryReadShort',['../gbmemory_8h.html#ab2a72e369d5605ff01fdae3218ebd550',1,'usGBMemoryReadShort(uint16_t address):&#160;gbmemory.c'],['../gbmemory_8c.html#ab2a72e369d5605ff01fdae3218ebd550',1,'usGBMemoryReadShort(uint16_t address):&#160;gbmemory.c']]]
+];

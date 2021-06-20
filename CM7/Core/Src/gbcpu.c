@@ -1,9 +1,14 @@
-/*
- * gbcpu.c
- *
- *  Created on: Mar 28, 2021
- *      Author: Rami
- */
+/**
+  ******************************************************************************
+  * @file           : gbcpu.c
+  * @brief          : Gameboy CPU Functionality
+  * @author         : Rami
+  * @date           : Mar 28, 2021
+  *
+  ******************************************************************************
+  *
+  ******************************************************************************
+  */
 
 #include "gbcpu.h"
 #include "gbmemory.h"
@@ -12,6 +17,22 @@
 
 #define SET   1
 #define RESET 0
+
+#define VBLANK_INTERRUPT  (1 << 0)
+#define LCDSTAT_INTERRUPT (1 << 1)
+#define TIMER_INTERRUPT   (1 << 2)
+#define SERIAL_INTERRUPT  (1 << 3)
+#define JOYPAD_INTERRUPT  (1 << 4)
+
+#define IE_ADDR           0xFF0F
+#define IF_ADDR           0xFFFF
+
+#define VBLANK_VECTOR     0x0040
+#define LCDSTAT_VECTOR    0x0048
+#define TIMER_VECTOR      0x0050
+#define SERIAL_VECTOR     0x0058
+#define JOYPAD_VECTOR     0x0060
+
 //#include "Tetris.gb.h"
 //#include "dmg_boot.bin.h"
 
@@ -20,12 +41,16 @@
 
 uint8_t ucSTOPPED = 0;
 uint8_t ucHALTED = 0;
-uint8_t InterruptDisabled = 0;
+uint8_t ucInterruptMasterEnable = 0;
+uint8_t ucOneCycleInterruptDelay = 0;
 uint8_t customDuration = 0;
-uint32_t tStates = 0;
-
+uint8_t tStates = 0;
+uint8_t print = 0;
+uint8_t num = 0;
+uint64_t numcount;
 extern registers reg;
 extern unsigned char Tetris_gb[];
+extern unsigned char cpu_instrs_gb[];
 
 /* Game Boy CPU instruction set */
 
@@ -1341,7 +1366,7 @@ void vPUSH_DE(){      vGBFunctionPUSH(&reg.SP, &reg.DE);}
 void vSUB_d8(){       vGBFunctionSUB(&reg.A, &reg.F, ucGBMemoryRead(reg.PC - 1));}
 void vRST_10H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0010;}
 void vRET_C(){        customDuration =(checkbit(reg.F, C_FLAG)) ?  20 : 8; if(checkbit(reg.F, C_FLAG)) vGBFunctionRET(&reg.SP, &reg.PC);}
-void vRETI(){         vGBFunctionRET(&reg.SP, &reg.PC); InterruptDisabled = 0;}
+void vRETI(){         ucInterruptMasterEnable = 1; vGBFunctionRET(&reg.SP, &reg.PC);}
 void vJP_C_a16(){     customDuration = vGBFunctionJP_C_a16(&reg.PC, &reg.F, concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
 // -----------
 void vCALL_C_a16(){   customDuration = vGBFunctionCALL_C_a16(&reg.PC, &reg.F, &reg.SP);}
@@ -1371,7 +1396,7 @@ void vRST_28H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0028;}
 void vLDH_A_a8(){     reg.A = ucGBMemoryRead(0xFF00 + ucGBMemoryRead(reg.PC - 1));}
 void vPOP_AF(){       vGBFunctionPOP(&reg.SP, &reg.AF); reg.AF &= 0xFFF0;}
 void vLD_A_fC(){      reg.A = ucGBMemoryRead(0xFF00 + reg.C);}
-void vDI(){           InterruptDisabled = 1;}
+void vDI(){           ucInterruptMasterEnable = 0;}
 // -----------
 void vPUSH_AF(){      vGBFunctionPUSH(&reg.SP, &reg.AF);}
 void vOR_d8(){        reg.A |= ucGBMemoryRead(reg.PC - 1); reg.F = (reg.A == 0) ? 0x80 : 0x00;}
@@ -1379,7 +1404,7 @@ void vRST_30H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0030;}
 void vLDs_HL_SP_r8(){ vGBFunctionLD_HL_SP_r8(&reg.HL, &reg.SP, &reg.F, ucGBMemoryRead(reg.PC - 1));}
 void vLDs_SP_HL(){    reg.SP = reg.HL;}
 void vLD_A_a16(){     reg.A = ucGBMemoryRead(concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
-void vEI(){           InterruptDisabled = 0;}
+void vEI(){           ucInterruptMasterEnable = 1;}
 // -----------
 // -----------
 void vCP_d8(){        vGBFunctionCP(reg.A, &reg.F, ucGBMemoryRead(reg.PC - 1));}
@@ -1675,44 +1700,74 @@ void vSET_7_L(){      setbit(&reg.L, 7);}
 void vSET_7_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionSETHL(reg.HL, 7));}
 void vSET_7_A(){      setbit(&reg.A, 7);}
 
-void vGBCPUreset(){
-	// TEMP until OPCODES implemented
-	reg.PC = 0x100;
-	reg.SP = 0xFFFE;
-	reg.AF = 0x01B0;
-	reg.BC = 0x0013;
-	reg.DE = 0x00D8;
-	reg.HL = 0x014D;
-}
-
-void vGBCPUTestInstr(uint8_t opcode){
-	vGBMemorySetOP(opcode);
-	reg.HL = 0x0800;
-	reg.BC = 0x0800;
-	((void (*)(void))instructions[opcode].instr)();
+uint8_t ucGetTstate(){
+	return tStates;
 }
 
 void vGBCPUboot(){
 	if(reg.PC <= 0xFF){
 		vGBCPUinstr(ucGBMemoryRead(reg.PC));
 	}else{
-		vGBMemoryPrint();
-		vGBMemoryLoad(Tetris_gb, 256);
+		numcount++;
+		static int n = 0;
+		if(n == 0){
+			vGBMemoryLoad(Tetris_gb, 256);
+			//vGBMemoryLoad(cpu_instrs_gb, 256);
+			//vGBMemoryWrite(0xFF00, 0xFF);
+			//vGBMemoryWrite(0xFF0F, 0xE1);
+			n = 1;
+		}
 		vGBCPUinstr(ucGBMemoryRead(reg.PC));
+		//vGBMemoryPrint();
+	}
+}
+
+void vGBCPUInterruptHandler(){
+	if(ucOneCycleInterruptDelay == 1){
+		if(ucGBMemoryRead(IE_ADDR) && ucGBMemoryRead(IF_ADDR)){
+			ucInterruptMasterEnable = 0;
+			ucOneCycleInterruptDelay = 0;
+			uint8_t InterruptSetandEn = ucGBMemoryRead(IE_ADDR) & ucGBMemoryRead(IF_ADDR);
+			if      (InterruptSetandEn &  VBLANK_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 0); vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = VBLANK_VECTOR;
+			}else if(InterruptSetandEn & LCDSTAT_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 1); vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = LCDSTAT_VECTOR;
+			}else if(InterruptSetandEn &   TIMER_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 2); vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = TIMER_VECTOR;
+			}else if(InterruptSetandEn &  SERIAL_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 3); vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = SERIAL_VECTOR;
+			}else if(InterruptSetandEn &  JOYPAD_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 4); vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = JOYPAD_VECTOR;
+			}
+
+			tStates += 5*4;
+		}
+
+	}else{
+		ucOneCycleInterruptDelay++;
 	}
 }
 
 void vGBCPUinstr(uint8_t opcode){
+
+	if(numcount == 112000){
+		num = 5;
+	}
 	vGBMemorySetOP(opcode);
 
 	reg.PC += (opcode != 0xCB) ? instructions[opcode].bytes : prefix_instructions[ucGBMemoryRead(reg.PC + 1)].bytes;
 	((void (*)(void))instructions[opcode].instr)();
 
 	if (opcode == 0xCB){
-		tStates += prefix_instructions[ucGBMemoryRead(reg.PC - 1)].Tstate;
+		tStates = prefix_instructions[ucGBMemoryRead(reg.PC - 1)].Tstate;
 	}else if(instructions[opcode].Tstate == 255){
-		tStates += customDuration;
+		tStates = customDuration;
 	}else{
-		tStates += instructions[opcode].Tstate;
+		tStates = instructions[opcode].Tstate;
+	}
+
+	if(ucInterruptMasterEnable == 1)
+			vGBCPUInterruptHandler();
+
+	//if( print == 1)
+	//	vGBMemoryPrint();
+
+	if(reg.PC == 0x2CA){
+		print = 1;
 	}
 }

@@ -1,0 +1,412 @@
+\hypertarget{gbppu_8c}{}\doxysection{Core/\+Src/gbppu.c File Reference}
+\label{gbppu_8c}\index{Core/Src/gbppu.c@{Core/Src/gbppu.c}}
+{\ttfamily \#include \char`\"{}gbcpu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gbmemory.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32h7\+\_\+display.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_adc4559afdb0535cfebadef1c707a2f91}{MODE\+\_\+0}}~0
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_adaf03329d7f4a4ac6ac043bf481db786}{MODE\+\_\+1}}~1
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_aced5757ab7a0d940fced00f3dd123fa3}{MODE\+\_\+2}}~2
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_aeb99b4257cb3cd9fb539529a1bd2d9ca}{MODE\+\_\+3}}~3
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_a850b2f07a67b73890889e63fb8a49fda}{BACKGROUND}}~0
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_a58dde5b4c75245b4660a165318cac36b}{WINDOW}}~1
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_af0ee9b6704f1841b6c367aa080abf0a5}{SPRITE}}~2
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_a18e1bab2a52b927b821c0807e888713f}{LCDC\+\_\+\+ADDR}}~0x\+FF40
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_a1191e4b031adfcae8ad4db8c4d3e2e52}{STAT\+\_\+\+ADDR}}~0x\+FF41
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_a60faa4a76be76f1225943d30890edb9c}{SCY\+\_\+\+ADDR}}~0x\+FF42
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_ad5f5a5652b98cac183de3f7b5c392c99}{SCX\+\_\+\+ADDR}}~0x\+FF43
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_af4ea31360c793f1b3f40ded874037888}{LY\+\_\+\+ADDR}}~0x\+FF44
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_a513b24e148bace31b7175c9218024d13}{LYC\+\_\+\+ADDR}}~0x\+FF45
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_aab0434639adf9081a0cd37b8786d60d7}{BGP\+\_\+\+ADDR}}~0x\+FF47
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_a9e50ff753d8028c3a8d7c10923046648}{TILE\+\_\+\+DATA\+\_\+\+UNSIGNED\+\_\+\+ADDR}}~0x8000
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_a04c206cb97e025011af670d126634a54}{TILE\+\_\+\+DATA\+\_\+\+SIGNED\+\_\+\+ADDR}}~0x8800
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_a994598b0c2b8ff8fbc8508afe6aee405}{TILE\+\_\+\+MAP\+\_\+\+LOCATION\+\_\+\+LOW}}~0x9800
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_adfbbcc1f3889a48c76c28003ec967e86}{TILE\+\_\+\+MAP\+\_\+\+LOCATION\+\_\+\+HIGH}}~0x9\+C00
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_a23ba77349efe58f6892458fde23203ae}{DARKEST\+\_\+\+GREEN}}~0\+XFF0\+F380\+FUL
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_a2ebb0bf1d379e615bda6e25cccf0f08f}{DARK\+\_\+\+GREEN}}~0\+XFF306230\+UL
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_a5a7142ee95ebc63218ed3aac2ae06b13}{LIGHT\+\_\+\+GREEN}}~0\+XFF8\+BAC0\+FUL
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_aa7340b5ab80d1a8df9c9d53948fcbd76}{LIGHTEST\+\_\+\+GREEN}}~0\+XFF9\+BBC0\+FUL
+\item 
+\#define \mbox{\hyperlink{gbppu_8c_a6a7f90395054dfa1a2f6521213aad848}{SRAM1}}~0x\+D1000000\+UL
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gbppu_8c_a9c60bc3bb6cc79d1ad3ce2b6fe18acec}{v\+Check\+BGP}} ()
+\item 
+void \mbox{\hyperlink{gbppu_8c_a4cf485e9accf6249e0bb79f663990fbe}{LYC\+\_\+check}} (uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ab60dac6a688a304987c96312a05243ae}{ly}})
+\item 
+void \mbox{\hyperlink{gbppu_8c_a5d0653e9369208f1125d417a3ae32283}{set\+Mode}} (uint8\+\_\+t mode)
+\item 
+void \mbox{\hyperlink{gbppu_8c_a3bfbc6d97a530116deeb24b5791611c4}{draw\+\_\+line}} (uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ab60dac6a688a304987c96312a05243ae}{ly}}, uint8\+\_\+t SCX, uint8\+\_\+t SCY)
+\item 
+void \mbox{\hyperlink{gbppu_8c_a5221e9b7393492793b0fdabd162c5c3d}{v\+Check\+Back\+Win\+Tile\+Data\+Sel}} ()
+\begin{DoxyCompactList}\small\item\em {\itshape Read LCDC Register to find appropriate Background \& Tile Data Address} \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbppu_8c_a62431ac813ce57bb411b5c0b59877ac1}{v\+Check\+Back\+Tile\+Display\+Sel}} ()
+\begin{DoxyCompactList}\small\item\em This function Reads from the LCDC Register and depending on the value of the 3rd bit, it will change the Background Tile Display Address to 0X9\+C00 if it is high and 0x9800 if it low. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbppu_8c_a112e995f6616336eac038c853aa5ac35}{gb\+PPUStep}} ()
+\begin{DoxyCompactList}\small\item\em The application entry point. \end{DoxyCompactList}\item 
+uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a2ecc49c3dacecef5170f4dc2e93e1e1d}{get\+Tile\+Line\+Data}} (uint16\+\_\+t tile\+\_\+offset, uint8\+\_\+t line\+\_\+offset)
+\begin{DoxyCompactList}\small\item\em Finds Specific line of a tile using the tile\+\_\+offset and line\+\_\+offset. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbppu_8c_a5731999f5c834ee91b2b0f5cc075a8dc}{update\+\_\+buffer}} (uint16\+\_\+t res, int j, uint16\+\_\+t amt)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a7f102df4d72992d5d8593dc897080417}{Back\+Win\+Tile\+Data\+Addr}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a81d3c3d311f9043a2fcc537ed2966d32}{Back\+Tile\+Display\+Addr}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ad11c3137711cc547aa65686fa2c98fc9}{Mode}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ad94990c5a69db5f8469559e1ef342346}{uc\+SCY}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ae5e216d8560de7f552ff38054454d770}{uc\+SCX}}
+\item 
+uint32\+\_\+t \mbox{\hyperlink{gbppu_8c_a342494b907e8a7bafe144bd4f3d9afbb}{t\+States}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ab60dac6a688a304987c96312a05243ae}{ly}} = 0
+\item 
+uint32\+\_\+t \mbox{\hyperlink{gbppu_8c_a38b9ca59b88390e1753b4aaf186fd505}{color\+\_\+to\+\_\+pallette}} \mbox{[}4\mbox{]}
+\item 
+uint32\+\_\+t $\ast$ \mbox{\hyperlink{gbppu_8c_ae12b5e9abdfc0b2a9146a58445760a1b}{gb\+\_\+frame}} = (uint32\+\_\+t$\ast$)\mbox{\hyperlink{gbppu_8c_a6a7f90395054dfa1a2f6521213aad848}{SRAM1}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gbppu_8c_a850b2f07a67b73890889e63fb8a49fda}\label{gbppu_8c_a850b2f07a67b73890889e63fb8a49fda}} 
+\index{gbppu.c@{gbppu.c}!BACKGROUND@{BACKGROUND}}
+\index{BACKGROUND@{BACKGROUND}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{BACKGROUND}{BACKGROUND}}
+{\footnotesize\ttfamily \#define BACKGROUND~0}
+
+\mbox{\Hypertarget{gbppu_8c_aab0434639adf9081a0cd37b8786d60d7}\label{gbppu_8c_aab0434639adf9081a0cd37b8786d60d7}} 
+\index{gbppu.c@{gbppu.c}!BGP\_ADDR@{BGP\_ADDR}}
+\index{BGP\_ADDR@{BGP\_ADDR}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{BGP\_ADDR}{BGP\_ADDR}}
+{\footnotesize\ttfamily \#define BGP\+\_\+\+ADDR~0x\+FF47}
+
+\mbox{\Hypertarget{gbppu_8c_a2ebb0bf1d379e615bda6e25cccf0f08f}\label{gbppu_8c_a2ebb0bf1d379e615bda6e25cccf0f08f}} 
+\index{gbppu.c@{gbppu.c}!DARK\_GREEN@{DARK\_GREEN}}
+\index{DARK\_GREEN@{DARK\_GREEN}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{DARK\_GREEN}{DARK\_GREEN}}
+{\footnotesize\ttfamily \#define DARK\+\_\+\+GREEN~0\+XFF306230\+UL}
+
+\mbox{\Hypertarget{gbppu_8c_a23ba77349efe58f6892458fde23203ae}\label{gbppu_8c_a23ba77349efe58f6892458fde23203ae}} 
+\index{gbppu.c@{gbppu.c}!DARKEST\_GREEN@{DARKEST\_GREEN}}
+\index{DARKEST\_GREEN@{DARKEST\_GREEN}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{DARKEST\_GREEN}{DARKEST\_GREEN}}
+{\footnotesize\ttfamily \#define DARKEST\+\_\+\+GREEN~0\+XFF0\+F380\+FUL}
+
+\mbox{\Hypertarget{gbppu_8c_a18e1bab2a52b927b821c0807e888713f}\label{gbppu_8c_a18e1bab2a52b927b821c0807e888713f}} 
+\index{gbppu.c@{gbppu.c}!LCDC\_ADDR@{LCDC\_ADDR}}
+\index{LCDC\_ADDR@{LCDC\_ADDR}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{LCDC\_ADDR}{LCDC\_ADDR}}
+{\footnotesize\ttfamily \#define LCDC\+\_\+\+ADDR~0x\+FF40}
+
+\mbox{\Hypertarget{gbppu_8c_a5a7142ee95ebc63218ed3aac2ae06b13}\label{gbppu_8c_a5a7142ee95ebc63218ed3aac2ae06b13}} 
+\index{gbppu.c@{gbppu.c}!LIGHT\_GREEN@{LIGHT\_GREEN}}
+\index{LIGHT\_GREEN@{LIGHT\_GREEN}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{LIGHT\_GREEN}{LIGHT\_GREEN}}
+{\footnotesize\ttfamily \#define LIGHT\+\_\+\+GREEN~0\+XFF8\+BAC0\+FUL}
+
+\mbox{\Hypertarget{gbppu_8c_aa7340b5ab80d1a8df9c9d53948fcbd76}\label{gbppu_8c_aa7340b5ab80d1a8df9c9d53948fcbd76}} 
+\index{gbppu.c@{gbppu.c}!LIGHTEST\_GREEN@{LIGHTEST\_GREEN}}
+\index{LIGHTEST\_GREEN@{LIGHTEST\_GREEN}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{LIGHTEST\_GREEN}{LIGHTEST\_GREEN}}
+{\footnotesize\ttfamily \#define LIGHTEST\+\_\+\+GREEN~0\+XFF9\+BBC0\+FUL}
+
+\mbox{\Hypertarget{gbppu_8c_af4ea31360c793f1b3f40ded874037888}\label{gbppu_8c_af4ea31360c793f1b3f40ded874037888}} 
+\index{gbppu.c@{gbppu.c}!LY\_ADDR@{LY\_ADDR}}
+\index{LY\_ADDR@{LY\_ADDR}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{LY\_ADDR}{LY\_ADDR}}
+{\footnotesize\ttfamily \#define LY\+\_\+\+ADDR~0x\+FF44}
+
+\mbox{\Hypertarget{gbppu_8c_a513b24e148bace31b7175c9218024d13}\label{gbppu_8c_a513b24e148bace31b7175c9218024d13}} 
+\index{gbppu.c@{gbppu.c}!LYC\_ADDR@{LYC\_ADDR}}
+\index{LYC\_ADDR@{LYC\_ADDR}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{LYC\_ADDR}{LYC\_ADDR}}
+{\footnotesize\ttfamily \#define LYC\+\_\+\+ADDR~0x\+FF45}
+
+\mbox{\Hypertarget{gbppu_8c_adc4559afdb0535cfebadef1c707a2f91}\label{gbppu_8c_adc4559afdb0535cfebadef1c707a2f91}} 
+\index{gbppu.c@{gbppu.c}!MODE\_0@{MODE\_0}}
+\index{MODE\_0@{MODE\_0}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{MODE\_0}{MODE\_0}}
+{\footnotesize\ttfamily \#define MODE\+\_\+0~0}
+
+\mbox{\Hypertarget{gbppu_8c_adaf03329d7f4a4ac6ac043bf481db786}\label{gbppu_8c_adaf03329d7f4a4ac6ac043bf481db786}} 
+\index{gbppu.c@{gbppu.c}!MODE\_1@{MODE\_1}}
+\index{MODE\_1@{MODE\_1}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{MODE\_1}{MODE\_1}}
+{\footnotesize\ttfamily \#define MODE\+\_\+1~1}
+
+\mbox{\Hypertarget{gbppu_8c_aced5757ab7a0d940fced00f3dd123fa3}\label{gbppu_8c_aced5757ab7a0d940fced00f3dd123fa3}} 
+\index{gbppu.c@{gbppu.c}!MODE\_2@{MODE\_2}}
+\index{MODE\_2@{MODE\_2}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{MODE\_2}{MODE\_2}}
+{\footnotesize\ttfamily \#define MODE\+\_\+2~2}
+
+\mbox{\Hypertarget{gbppu_8c_aeb99b4257cb3cd9fb539529a1bd2d9ca}\label{gbppu_8c_aeb99b4257cb3cd9fb539529a1bd2d9ca}} 
+\index{gbppu.c@{gbppu.c}!MODE\_3@{MODE\_3}}
+\index{MODE\_3@{MODE\_3}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{MODE\_3}{MODE\_3}}
+{\footnotesize\ttfamily \#define MODE\+\_\+3~3}
+
+\mbox{\Hypertarget{gbppu_8c_ad5f5a5652b98cac183de3f7b5c392c99}\label{gbppu_8c_ad5f5a5652b98cac183de3f7b5c392c99}} 
+\index{gbppu.c@{gbppu.c}!SCX\_ADDR@{SCX\_ADDR}}
+\index{SCX\_ADDR@{SCX\_ADDR}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{SCX\_ADDR}{SCX\_ADDR}}
+{\footnotesize\ttfamily \#define SCX\+\_\+\+ADDR~0x\+FF43}
+
+\mbox{\Hypertarget{gbppu_8c_a60faa4a76be76f1225943d30890edb9c}\label{gbppu_8c_a60faa4a76be76f1225943d30890edb9c}} 
+\index{gbppu.c@{gbppu.c}!SCY\_ADDR@{SCY\_ADDR}}
+\index{SCY\_ADDR@{SCY\_ADDR}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{SCY\_ADDR}{SCY\_ADDR}}
+{\footnotesize\ttfamily \#define SCY\+\_\+\+ADDR~0x\+FF42}
+
+\mbox{\Hypertarget{gbppu_8c_af0ee9b6704f1841b6c367aa080abf0a5}\label{gbppu_8c_af0ee9b6704f1841b6c367aa080abf0a5}} 
+\index{gbppu.c@{gbppu.c}!SPRITE@{SPRITE}}
+\index{SPRITE@{SPRITE}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{SPRITE}{SPRITE}}
+{\footnotesize\ttfamily \#define SPRITE~2}
+
+\mbox{\Hypertarget{gbppu_8c_a6a7f90395054dfa1a2f6521213aad848}\label{gbppu_8c_a6a7f90395054dfa1a2f6521213aad848}} 
+\index{gbppu.c@{gbppu.c}!SRAM1@{SRAM1}}
+\index{SRAM1@{SRAM1}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{SRAM1}{SRAM1}}
+{\footnotesize\ttfamily \#define SRAM1~0x\+D1000000\+UL}
+
+\mbox{\Hypertarget{gbppu_8c_a1191e4b031adfcae8ad4db8c4d3e2e52}\label{gbppu_8c_a1191e4b031adfcae8ad4db8c4d3e2e52}} 
+\index{gbppu.c@{gbppu.c}!STAT\_ADDR@{STAT\_ADDR}}
+\index{STAT\_ADDR@{STAT\_ADDR}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{STAT\_ADDR}{STAT\_ADDR}}
+{\footnotesize\ttfamily \#define STAT\+\_\+\+ADDR~0x\+FF41}
+
+\mbox{\Hypertarget{gbppu_8c_a04c206cb97e025011af670d126634a54}\label{gbppu_8c_a04c206cb97e025011af670d126634a54}} 
+\index{gbppu.c@{gbppu.c}!TILE\_DATA\_SIGNED\_ADDR@{TILE\_DATA\_SIGNED\_ADDR}}
+\index{TILE\_DATA\_SIGNED\_ADDR@{TILE\_DATA\_SIGNED\_ADDR}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{TILE\_DATA\_SIGNED\_ADDR}{TILE\_DATA\_SIGNED\_ADDR}}
+{\footnotesize\ttfamily \#define TILE\+\_\+\+DATA\+\_\+\+SIGNED\+\_\+\+ADDR~0x8800}
+
+\mbox{\Hypertarget{gbppu_8c_a9e50ff753d8028c3a8d7c10923046648}\label{gbppu_8c_a9e50ff753d8028c3a8d7c10923046648}} 
+\index{gbppu.c@{gbppu.c}!TILE\_DATA\_UNSIGNED\_ADDR@{TILE\_DATA\_UNSIGNED\_ADDR}}
+\index{TILE\_DATA\_UNSIGNED\_ADDR@{TILE\_DATA\_UNSIGNED\_ADDR}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{TILE\_DATA\_UNSIGNED\_ADDR}{TILE\_DATA\_UNSIGNED\_ADDR}}
+{\footnotesize\ttfamily \#define TILE\+\_\+\+DATA\+\_\+\+UNSIGNED\+\_\+\+ADDR~0x8000}
+
+\mbox{\Hypertarget{gbppu_8c_adfbbcc1f3889a48c76c28003ec967e86}\label{gbppu_8c_adfbbcc1f3889a48c76c28003ec967e86}} 
+\index{gbppu.c@{gbppu.c}!TILE\_MAP\_LOCATION\_HIGH@{TILE\_MAP\_LOCATION\_HIGH}}
+\index{TILE\_MAP\_LOCATION\_HIGH@{TILE\_MAP\_LOCATION\_HIGH}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{TILE\_MAP\_LOCATION\_HIGH}{TILE\_MAP\_LOCATION\_HIGH}}
+{\footnotesize\ttfamily \#define TILE\+\_\+\+MAP\+\_\+\+LOCATION\+\_\+\+HIGH~0x9\+C00}
+
+\mbox{\Hypertarget{gbppu_8c_a994598b0c2b8ff8fbc8508afe6aee405}\label{gbppu_8c_a994598b0c2b8ff8fbc8508afe6aee405}} 
+\index{gbppu.c@{gbppu.c}!TILE\_MAP\_LOCATION\_LOW@{TILE\_MAP\_LOCATION\_LOW}}
+\index{TILE\_MAP\_LOCATION\_LOW@{TILE\_MAP\_LOCATION\_LOW}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{TILE\_MAP\_LOCATION\_LOW}{TILE\_MAP\_LOCATION\_LOW}}
+{\footnotesize\ttfamily \#define TILE\+\_\+\+MAP\+\_\+\+LOCATION\+\_\+\+LOW~0x9800}
+
+\mbox{\Hypertarget{gbppu_8c_a58dde5b4c75245b4660a165318cac36b}\label{gbppu_8c_a58dde5b4c75245b4660a165318cac36b}} 
+\index{gbppu.c@{gbppu.c}!WINDOW@{WINDOW}}
+\index{WINDOW@{WINDOW}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{WINDOW}{WINDOW}}
+{\footnotesize\ttfamily \#define WINDOW~1}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{gbppu_8c_a3bfbc6d97a530116deeb24b5791611c4}\label{gbppu_8c_a3bfbc6d97a530116deeb24b5791611c4}} 
+\index{gbppu.c@{gbppu.c}!draw\_line@{draw\_line}}
+\index{draw\_line@{draw\_line}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{draw\_line()}{draw\_line()}}
+{\footnotesize\ttfamily void draw\+\_\+line (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ly,  }\item[{uint8\+\_\+t}]{SCX,  }\item[{uint8\+\_\+t}]{SCY }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em ly} & \\
+\hline
+{\em SCX} & \\
+\hline
+{\em SCY} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{gbppu_8c_a112e995f6616336eac038c853aa5ac35}\label{gbppu_8c_a112e995f6616336eac038c853aa5ac35}} 
+\index{gbppu.c@{gbppu.c}!gbPPUStep@{gbPPUStep}}
+\index{gbPPUStep@{gbPPUStep}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{gbPPUStep()}{gbPPUStep()}}
+{\footnotesize\ttfamily void gb\+PPUStep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+The application entry point. 
+
+this function steps the gpu by some cycles \mbox{\Hypertarget{gbppu_8c_a2ecc49c3dacecef5170f4dc2e93e1e1d}\label{gbppu_8c_a2ecc49c3dacecef5170f4dc2e93e1e1d}} 
+\index{gbppu.c@{gbppu.c}!getTileLineData@{getTileLineData}}
+\index{getTileLineData@{getTileLineData}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{getTileLineData()}{getTileLineData()}}
+{\footnotesize\ttfamily uint16\+\_\+t get\+Tile\+Line\+Data (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{tile\+\_\+offset,  }\item[{uint8\+\_\+t}]{line\+\_\+offset }\end{DoxyParamCaption})}
+
+
+
+Finds Specific line of a tile using the tile\+\_\+offset and line\+\_\+offset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tile\+\_\+offset} & \\
+\hline
+{\em line\+\_\+offset} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+uint16\+\_\+t data containing the color information of each pixel of a particular line belonging to a tile in the Gameboy\textquotesingle{}s VRAM 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbppu_8c_a4cf485e9accf6249e0bb79f663990fbe}\label{gbppu_8c_a4cf485e9accf6249e0bb79f663990fbe}} 
+\index{gbppu.c@{gbppu.c}!LYC\_check@{LYC\_check}}
+\index{LYC\_check@{LYC\_check}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{LYC\_check()}{LYC\_check()}}
+{\footnotesize\ttfamily void LYC\+\_\+check (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ly }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em ly} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{gbppu_8c_a5d0653e9369208f1125d417a3ae32283}\label{gbppu_8c_a5d0653e9369208f1125d417a3ae32283}} 
+\index{gbppu.c@{gbppu.c}!setMode@{setMode}}
+\index{setMode@{setMode}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{setMode()}{setMode()}}
+{\footnotesize\ttfamily void set\+Mode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mode }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em mode} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{gbppu_8c_a5731999f5c834ee91b2b0f5cc075a8dc}\label{gbppu_8c_a5731999f5c834ee91b2b0f5cc075a8dc}} 
+\index{gbppu.c@{gbppu.c}!update\_buffer@{update\_buffer}}
+\index{update\_buffer@{update\_buffer}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{update\_buffer()}{update\_buffer()}}
+{\footnotesize\ttfamily void update\+\_\+buffer (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{res,  }\item[{int}]{j,  }\item[{uint16\+\_\+t}]{amt }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em res} & \\
+\hline
+{\em j} & \\
+\hline
+{\em amt} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{gbppu_8c_a62431ac813ce57bb411b5c0b59877ac1}\label{gbppu_8c_a62431ac813ce57bb411b5c0b59877ac1}} 
+\index{gbppu.c@{gbppu.c}!vCheckBackTileDisplaySel@{vCheckBackTileDisplaySel}}
+\index{vCheckBackTileDisplaySel@{vCheckBackTileDisplaySel}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{vCheckBackTileDisplaySel()}{vCheckBackTileDisplaySel()}}
+{\footnotesize\ttfamily void v\+Check\+Back\+Tile\+Display\+Sel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+This function Reads from the LCDC Register and depending on the value of the 3rd bit, it will change the Background Tile Display Address to 0X9\+C00 if it is high and 0x9800 if it low. 
+
+\mbox{\Hypertarget{gbppu_8c_a5221e9b7393492793b0fdabd162c5c3d}\label{gbppu_8c_a5221e9b7393492793b0fdabd162c5c3d}} 
+\index{gbppu.c@{gbppu.c}!vCheckBackWinTileDataSel@{vCheckBackWinTileDataSel}}
+\index{vCheckBackWinTileDataSel@{vCheckBackWinTileDataSel}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{vCheckBackWinTileDataSel()}{vCheckBackWinTileDataSel()}}
+{\footnotesize\ttfamily void v\+Check\+Back\+Win\+Tile\+Data\+Sel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+{\itshape Read LCDC Register to find appropriate Background \& Tile Data Address} 
+
+This function Reads from the LCDC Register and depending on the value of the 4th bit, it will change the Background \& Window Tile Data Select Address to 0x8000 if it is high and 0x8800 if it is low \begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Background \& Window Tile Data Select should be 0x9000 on a low 4th bit in a real Gameboy, but it is much simpler to implement this way with emulation, the 0x400 offset is accounted for in \mbox{\hyperlink{gbppu_8c_a2ecc49c3dacecef5170f4dc2e93e1e1d}{get\+Tile\+Line\+Data()}} 
+\end{DoxyNote}
+\mbox{\Hypertarget{gbppu_8c_a9c60bc3bb6cc79d1ad3ce2b6fe18acec}\label{gbppu_8c_a9c60bc3bb6cc79d1ad3ce2b6fe18acec}} 
+\index{gbppu.c@{gbppu.c}!vCheckBGP@{vCheckBGP}}
+\index{vCheckBGP@{vCheckBGP}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{vCheckBGP()}{vCheckBGP()}}
+{\footnotesize\ttfamily void v\+Check\+BGP (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{gbppu_8c_a81d3c3d311f9043a2fcc537ed2966d32}\label{gbppu_8c_a81d3c3d311f9043a2fcc537ed2966d32}} 
+\index{gbppu.c@{gbppu.c}!BackTileDisplayAddr@{BackTileDisplayAddr}}
+\index{BackTileDisplayAddr@{BackTileDisplayAddr}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{BackTileDisplayAddr}{BackTileDisplayAddr}}
+{\footnotesize\ttfamily uint16\+\_\+t Back\+Tile\+Display\+Addr}
+
+\mbox{\Hypertarget{gbppu_8c_a7f102df4d72992d5d8593dc897080417}\label{gbppu_8c_a7f102df4d72992d5d8593dc897080417}} 
+\index{gbppu.c@{gbppu.c}!BackWinTileDataAddr@{BackWinTileDataAddr}}
+\index{BackWinTileDataAddr@{BackWinTileDataAddr}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{BackWinTileDataAddr}{BackWinTileDataAddr}}
+{\footnotesize\ttfamily uint16\+\_\+t Back\+Win\+Tile\+Data\+Addr}
+
+\mbox{\Hypertarget{gbppu_8c_a38b9ca59b88390e1753b4aaf186fd505}\label{gbppu_8c_a38b9ca59b88390e1753b4aaf186fd505}} 
+\index{gbppu.c@{gbppu.c}!color\_to\_pallette@{color\_to\_pallette}}
+\index{color\_to\_pallette@{color\_to\_pallette}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{color\_to\_pallette}{color\_to\_pallette}}
+{\footnotesize\ttfamily uint32\+\_\+t color\+\_\+to\+\_\+pallette\mbox{[}4\mbox{]}}
+
+\mbox{\Hypertarget{gbppu_8c_ae12b5e9abdfc0b2a9146a58445760a1b}\label{gbppu_8c_ae12b5e9abdfc0b2a9146a58445760a1b}} 
+\index{gbppu.c@{gbppu.c}!gb\_frame@{gb\_frame}}
+\index{gb\_frame@{gb\_frame}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{gb\_frame}{gb\_frame}}
+{\footnotesize\ttfamily uint32\+\_\+t$\ast$ gb\+\_\+frame = (uint32\+\_\+t$\ast$)\mbox{\hyperlink{gbppu_8c_a6a7f90395054dfa1a2f6521213aad848}{SRAM1}}}
+
+\mbox{\Hypertarget{gbppu_8c_ab60dac6a688a304987c96312a05243ae}\label{gbppu_8c_ab60dac6a688a304987c96312a05243ae}} 
+\index{gbppu.c@{gbppu.c}!ly@{ly}}
+\index{ly@{ly}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{ly}{ly}}
+{\footnotesize\ttfamily uint8\+\_\+t ly = 0}
+
+\mbox{\Hypertarget{gbppu_8c_ad11c3137711cc547aa65686fa2c98fc9}\label{gbppu_8c_ad11c3137711cc547aa65686fa2c98fc9}} 
+\index{gbppu.c@{gbppu.c}!Mode@{Mode}}
+\index{Mode@{Mode}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{Mode}{Mode}}
+{\footnotesize\ttfamily uint8\+\_\+t Mode}
+
+\mbox{\Hypertarget{gbppu_8c_a342494b907e8a7bafe144bd4f3d9afbb}\label{gbppu_8c_a342494b907e8a7bafe144bd4f3d9afbb}} 
+\index{gbppu.c@{gbppu.c}!tStates@{tStates}}
+\index{tStates@{tStates}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{tStates}{tStates}}
+{\footnotesize\ttfamily uint32\+\_\+t t\+States\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{gbppu_8c_ae5e216d8560de7f552ff38054454d770}\label{gbppu_8c_ae5e216d8560de7f552ff38054454d770}} 
+\index{gbppu.c@{gbppu.c}!ucSCX@{ucSCX}}
+\index{ucSCX@{ucSCX}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{ucSCX}{ucSCX}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+SCX}
+
+\mbox{\Hypertarget{gbppu_8c_ad94990c5a69db5f8469559e1ef342346}\label{gbppu_8c_ad94990c5a69db5f8469559e1ef342346}} 
+\index{gbppu.c@{gbppu.c}!ucSCY@{ucSCY}}
+\index{ucSCY@{ucSCY}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{ucSCY}{ucSCY}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+SCY}
+

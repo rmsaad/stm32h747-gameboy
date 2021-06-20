@@ -1,0 +1,92 @@
+\hypertarget{gbcpu_8h}{}\doxysection{Core/\+Inc/gbcpu.h File Reference}
+\label{gbcpu_8h}\index{Core/Inc/gbcpu.h@{Core/Inc/gbcpu.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_assembly___instr}{Assembly\+\_\+\+Instr}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gbcpu_8h_a53a7db1c6b43d8626d6fb547dc2cc1cb}{Z\+\_\+\+FLAG}}~7
+\item 
+\#define \mbox{\hyperlink{gbcpu_8h_a6de466ba75c7d109f8efb7598c10047f}{N\+\_\+\+FLAG}}~6
+\item 
+\#define \mbox{\hyperlink{gbcpu_8h_abb182b0bdbed48570d905d7f5ee90849}{H\+\_\+\+FLAG}}~5
+\item 
+\#define \mbox{\hyperlink{gbcpu_8h_aa29c80f7f7f901ec7a2c57887f56585d}{C\+\_\+\+FLAG}}~4
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gbcpu_8h_a960a91350e7e155d24794c6e62fd139a}{v\+GBCPUreset}} ()
+\item 
+void \mbox{\hyperlink{gbcpu_8h_a5a2a7acf3888505856cdea35b8cea29e}{v\+GBCPUboot}} ()
+\item 
+void \mbox{\hyperlink{gbcpu_8h_afdff24ca2343b342a41a4aa48286839c}{v\+GBCPUTest\+Instr}} (uint8\+\_\+t opcode)
+\item 
+void \mbox{\hyperlink{gbcpu_8h_a1287756051fb8c1e853804ee9088dd0d}{v\+GBCPUinstr}} (uint8\+\_\+t opcode)
+\item 
+void \mbox{\hyperlink{gbcpu_8h_ad7321a705dfcb15e2f273551dc839594}{v\+Stopped\+Flag}} (uint8\+\_\+t condition)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gbcpu_8h_aa29c80f7f7f901ec7a2c57887f56585d}\label{gbcpu_8h_aa29c80f7f7f901ec7a2c57887f56585d}} 
+\index{gbcpu.h@{gbcpu.h}!C\_FLAG@{C\_FLAG}}
+\index{C\_FLAG@{C\_FLAG}!gbcpu.h@{gbcpu.h}}
+\doxysubsubsection{\texorpdfstring{C\_FLAG}{C\_FLAG}}
+{\footnotesize\ttfamily \#define C\+\_\+\+FLAG~4}
+
+\mbox{\Hypertarget{gbcpu_8h_abb182b0bdbed48570d905d7f5ee90849}\label{gbcpu_8h_abb182b0bdbed48570d905d7f5ee90849}} 
+\index{gbcpu.h@{gbcpu.h}!H\_FLAG@{H\_FLAG}}
+\index{H\_FLAG@{H\_FLAG}!gbcpu.h@{gbcpu.h}}
+\doxysubsubsection{\texorpdfstring{H\_FLAG}{H\_FLAG}}
+{\footnotesize\ttfamily \#define H\+\_\+\+FLAG~5}
+
+\mbox{\Hypertarget{gbcpu_8h_a6de466ba75c7d109f8efb7598c10047f}\label{gbcpu_8h_a6de466ba75c7d109f8efb7598c10047f}} 
+\index{gbcpu.h@{gbcpu.h}!N\_FLAG@{N\_FLAG}}
+\index{N\_FLAG@{N\_FLAG}!gbcpu.h@{gbcpu.h}}
+\doxysubsubsection{\texorpdfstring{N\_FLAG}{N\_FLAG}}
+{\footnotesize\ttfamily \#define N\+\_\+\+FLAG~6}
+
+\mbox{\Hypertarget{gbcpu_8h_a53a7db1c6b43d8626d6fb547dc2cc1cb}\label{gbcpu_8h_a53a7db1c6b43d8626d6fb547dc2cc1cb}} 
+\index{gbcpu.h@{gbcpu.h}!Z\_FLAG@{Z\_FLAG}}
+\index{Z\_FLAG@{Z\_FLAG}!gbcpu.h@{gbcpu.h}}
+\doxysubsubsection{\texorpdfstring{Z\_FLAG}{Z\_FLAG}}
+{\footnotesize\ttfamily \#define Z\+\_\+\+FLAG~7}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{gbcpu_8h_a5a2a7acf3888505856cdea35b8cea29e}\label{gbcpu_8h_a5a2a7acf3888505856cdea35b8cea29e}} 
+\index{gbcpu.h@{gbcpu.h}!vGBCPUboot@{vGBCPUboot}}
+\index{vGBCPUboot@{vGBCPUboot}!gbcpu.h@{gbcpu.h}}
+\doxysubsubsection{\texorpdfstring{vGBCPUboot()}{vGBCPUboot()}}
+{\footnotesize\ttfamily void v\+GBCPUboot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gbcpu_8h_a1287756051fb8c1e853804ee9088dd0d}\label{gbcpu_8h_a1287756051fb8c1e853804ee9088dd0d}} 
+\index{gbcpu.h@{gbcpu.h}!vGBCPUinstr@{vGBCPUinstr}}
+\index{vGBCPUinstr@{vGBCPUinstr}!gbcpu.h@{gbcpu.h}}
+\doxysubsubsection{\texorpdfstring{vGBCPUinstr()}{vGBCPUinstr()}}
+{\footnotesize\ttfamily void v\+GBCPUinstr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{opcode }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gbcpu_8h_a960a91350e7e155d24794c6e62fd139a}\label{gbcpu_8h_a960a91350e7e155d24794c6e62fd139a}} 
+\index{gbcpu.h@{gbcpu.h}!vGBCPUreset@{vGBCPUreset}}
+\index{vGBCPUreset@{vGBCPUreset}!gbcpu.h@{gbcpu.h}}
+\doxysubsubsection{\texorpdfstring{vGBCPUreset()}{vGBCPUreset()}}
+{\footnotesize\ttfamily void v\+GBCPUreset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gbcpu_8h_afdff24ca2343b342a41a4aa48286839c}\label{gbcpu_8h_afdff24ca2343b342a41a4aa48286839c}} 
+\index{gbcpu.h@{gbcpu.h}!vGBCPUTestInstr@{vGBCPUTestInstr}}
+\index{vGBCPUTestInstr@{vGBCPUTestInstr}!gbcpu.h@{gbcpu.h}}
+\doxysubsubsection{\texorpdfstring{vGBCPUTestInstr()}{vGBCPUTestInstr()}}
+{\footnotesize\ttfamily void v\+GBCPUTest\+Instr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{opcode }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gbcpu_8h_ad7321a705dfcb15e2f273551dc839594}\label{gbcpu_8h_ad7321a705dfcb15e2f273551dc839594}} 
+\index{gbcpu.h@{gbcpu.h}!vStoppedFlag@{vStoppedFlag}}
+\index{vStoppedFlag@{vStoppedFlag}!gbcpu.h@{gbcpu.h}}
+\doxysubsubsection{\texorpdfstring{vStoppedFlag()}{vStoppedFlag()}}
+{\footnotesize\ttfamily void v\+Stopped\+Flag (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{condition }\end{DoxyParamCaption})}
+

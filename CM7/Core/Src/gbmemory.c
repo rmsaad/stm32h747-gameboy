@@ -25,23 +25,33 @@ void vGBMemoryLoad(const void* data, uint32_t size){
 }
 
 void vGBMemoryWrite(uint16_t address, uint8_t data){
+	if((ucGBMemoryRead(0xFF41) & 0x03)  == 0x03 && address >= 0x8000 && address < 0xA000)
+		return;
 	mem.ram[address] = data;
 }
 
 void vGBMemorySetBit(uint16_t address, uint8_t bit){
+	if((ucGBMemoryRead(0xFF41) & 0x03)  == 0x03 && address >= 0x8000 && address < 0xA000)
+		return;
 	mem.ram[address] |= (0x1 << bit);
 }
 
 void vGBMemoryResetBit(uint16_t address, uint8_t bit){
+	if((ucGBMemoryRead(0xFF41) & 0x03)  == 0x03 && address >= 0x8000 && address < 0xA000)
+		return;
 	mem.ram[address] &= ~(0x1 << bit);
 }
 
 // reads a location from memory map
 uint8_t ucGBMemoryRead(uint16_t address){
+//	if((ucGBMemoryRead(0xFF41) & 0x03)  == 0x03 && address >= 0x8000 && address < 0xA000)
+//			return 0xFF;
 	return mem.ram[address];
 }
 
 uint16_t usGBMemoryReadShort(uint16_t address){
+//	if((ucGBMemoryRead(0xFF41) & 0x03)  == 0x03 && address >= 0x8000 && address < 0xA000)
+//			return 0xFFFF;
 	return *((uint16_t*) &mem.ram[address]);
 }
 

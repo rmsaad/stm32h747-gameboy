@@ -30,6 +30,8 @@
 #include "stm32h7_display.h"
 #include <string.h>
 #include <stdio.h>
+#include "cpu_instrs.gb.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -65,7 +67,7 @@ LTDC_HandleTypeDef hltdc;
 
 /* USER CODE BEGIN PV */
 extern unsigned char Tetris_gb[];
-
+extern unsigned char cpu_instrs_gb[];
 
 /* USER CODE END PV */
 
@@ -166,8 +168,10 @@ Error_Handler();
 
 
   vGBMemoryLoad(Tetris_gb, 32768);
+  //vGBMemoryLoad(cpu_instrs_gb, 32768);
   vGBMemoryLoad(dmg_boot_bin, 256);													// load boot rom into approiate place in memory map
 
+  vSetFrameBuffer();
   while (1)
   {
 

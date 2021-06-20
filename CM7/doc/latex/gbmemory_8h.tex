@@ -1,0 +1,80 @@
+\hypertarget{gbmemory_8h}{}\doxysection{Core/\+Inc/gbmemory.h File Reference}
+\label{gbmemory_8h}\index{Core/Inc/gbmemory.h@{Core/Inc/gbmemory.h}}
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structregisters}{registers}}
+\item 
+struct \mbox{\hyperlink{structmemory}{memory}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gbmemory_8h_a781a62ea8b011b95fb4f0866a52a39ae}{v\+GBMemory\+Load}} (const void $\ast$data, uint32\+\_\+t size)
+\item 
+void \mbox{\hyperlink{gbmemory_8h_a13d1367ada996283c71324bcfe8c1e3e}{v\+GBMemory\+Write}} (uint16\+\_\+t address, uint8\+\_\+t data)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{gbmemory_8h_a683a109d784f5984037d1484e7d3cc33}{uc\+GBMemory\+Read}} (uint16\+\_\+t address)
+\item 
+uint16\+\_\+t \mbox{\hyperlink{gbmemory_8h_ab2a72e369d5605ff01fdae3218ebd550}{us\+GBMemory\+Read\+Short}} (uint16\+\_\+t address)
+\item 
+void \mbox{\hyperlink{gbmemory_8h_a88bea6ceedc1e06c9c25290a1e477d0b}{v\+GBMemory\+Set\+Bit}} (uint16\+\_\+t address, uint8\+\_\+t bit)
+\item 
+void \mbox{\hyperlink{gbmemory_8h_ae323c2e5d359578d03e43281ff20d9ed}{v\+GBMemory\+Reset\+Bit}} (uint16\+\_\+t address, uint8\+\_\+t bit)
+\item 
+void \mbox{\hyperlink{gbmemory_8h_a285b9be84f8c4b08b2a307aab5b90c5a}{v\+GBMemory\+Print}} ()
+\item 
+void \mbox{\hyperlink{gbmemory_8h_aa60061694f25f3c06249a4174c561b3a}{v\+GBMemory\+Set\+OP}} (uint8\+\_\+t op)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{gbmemory_8h_a683a109d784f5984037d1484e7d3cc33}\label{gbmemory_8h_a683a109d784f5984037d1484e7d3cc33}} 
+\index{gbmemory.h@{gbmemory.h}!ucGBMemoryRead@{ucGBMemoryRead}}
+\index{ucGBMemoryRead@{ucGBMemoryRead}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{ucGBMemoryRead()}{ucGBMemoryRead()}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+GBMemory\+Read (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gbmemory_8h_ab2a72e369d5605ff01fdae3218ebd550}\label{gbmemory_8h_ab2a72e369d5605ff01fdae3218ebd550}} 
+\index{gbmemory.h@{gbmemory.h}!usGBMemoryReadShort@{usGBMemoryReadShort}}
+\index{usGBMemoryReadShort@{usGBMemoryReadShort}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{usGBMemoryReadShort()}{usGBMemoryReadShort()}}
+{\footnotesize\ttfamily uint16\+\_\+t us\+GBMemory\+Read\+Short (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gbmemory_8h_a781a62ea8b011b95fb4f0866a52a39ae}\label{gbmemory_8h_a781a62ea8b011b95fb4f0866a52a39ae}} 
+\index{gbmemory.h@{gbmemory.h}!vGBMemoryLoad@{vGBMemoryLoad}}
+\index{vGBMemoryLoad@{vGBMemoryLoad}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{vGBMemoryLoad()}{vGBMemoryLoad()}}
+{\footnotesize\ttfamily void v\+GBMemory\+Load (\begin{DoxyParamCaption}\item[{const void $\ast$}]{data,  }\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gbmemory_8h_a285b9be84f8c4b08b2a307aab5b90c5a}\label{gbmemory_8h_a285b9be84f8c4b08b2a307aab5b90c5a}} 
+\index{gbmemory.h@{gbmemory.h}!vGBMemoryPrint@{vGBMemoryPrint}}
+\index{vGBMemoryPrint@{vGBMemoryPrint}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{vGBMemoryPrint()}{vGBMemoryPrint()}}
+{\footnotesize\ttfamily void v\+GBMemory\+Print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gbmemory_8h_ae323c2e5d359578d03e43281ff20d9ed}\label{gbmemory_8h_ae323c2e5d359578d03e43281ff20d9ed}} 
+\index{gbmemory.h@{gbmemory.h}!vGBMemoryResetBit@{vGBMemoryResetBit}}
+\index{vGBMemoryResetBit@{vGBMemoryResetBit}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{vGBMemoryResetBit()}{vGBMemoryResetBit()}}
+{\footnotesize\ttfamily void v\+GBMemory\+Reset\+Bit (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gbmemory_8h_a88bea6ceedc1e06c9c25290a1e477d0b}\label{gbmemory_8h_a88bea6ceedc1e06c9c25290a1e477d0b}} 
+\index{gbmemory.h@{gbmemory.h}!vGBMemorySetBit@{vGBMemorySetBit}}
+\index{vGBMemorySetBit@{vGBMemorySetBit}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{vGBMemorySetBit()}{vGBMemorySetBit()}}
+{\footnotesize\ttfamily void v\+GBMemory\+Set\+Bit (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gbmemory_8h_aa60061694f25f3c06249a4174c561b3a}\label{gbmemory_8h_aa60061694f25f3c06249a4174c561b3a}} 
+\index{gbmemory.h@{gbmemory.h}!vGBMemorySetOP@{vGBMemorySetOP}}
+\index{vGBMemorySetOP@{vGBMemorySetOP}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{vGBMemorySetOP()}{vGBMemorySetOP()}}
+{\footnotesize\ttfamily void v\+GBMemory\+Set\+OP (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{op }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gbmemory_8h_a13d1367ada996283c71324bcfe8c1e3e}\label{gbmemory_8h_a13d1367ada996283c71324bcfe8c1e3e}} 
+\index{gbmemory.h@{gbmemory.h}!vGBMemoryWrite@{vGBMemoryWrite}}
+\index{vGBMemoryWrite@{vGBMemoryWrite}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{vGBMemoryWrite()}{vGBMemoryWrite()}}
+{\footnotesize\ttfamily void v\+GBMemory\+Write (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+

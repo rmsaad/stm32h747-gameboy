@@ -766,4 +766,3 @@ g_pfnVectors:
    .thumb_set WAKEUP_PIN_IRQHandler,Default_Handler
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
-

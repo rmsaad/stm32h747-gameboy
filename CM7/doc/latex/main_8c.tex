@@ -1,0 +1,179 @@
+\hypertarget{main_8c}{}\doxysection{Core/\+Src/main.c File Reference}
+\label{main_8c}\index{Core/Src/main.c@{Core/Src/main.c}}
+
+
+\+: Main program body  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gbmemory.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gbcpu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gbppu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Tetris.\+gb.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}dmg\+\_\+boot.\+bin.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}stm32h7\+\_\+display.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}cpu\+\_\+instrs.\+gb.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{main_8c_a66761607ebca2d7b18eb6adfbd0891a7}{HSEM\+\_\+\+ID\+\_\+0}}~(0U) /$\ast$ HW semaphore 0$\ast$/
+\item 
+\#define \mbox{\hyperlink{main_8c_a23ba77349efe58f6892458fde23203ae}{DARKEST\+\_\+\+GREEN}}~0\+XFF0\+F380\+FUL
+\item 
+\#define \mbox{\hyperlink{main_8c_a2ebb0bf1d379e615bda6e25cccf0f08f}{DARK\+\_\+\+GREEN}}~0\+XFF306230\+UL
+\item 
+\#define \mbox{\hyperlink{main_8c_a5a7142ee95ebc63218ed3aac2ae06b13}{LIGHT\+\_\+\+GREEN}}~0\+XFF8\+BAC0\+FUL
+\item 
+\#define \mbox{\hyperlink{main_8c_aa7340b5ab80d1a8df9c9d53948fcbd76}{LIGHTEST\+\_\+\+GREEN}}~0\+XFF9\+BBC0\+FUL
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8c_a70af21c671abfcc773614a9a4f63d920}{System\+Clock\+\_\+\+Config}} (void)
+\begin{DoxyCompactList}\small\item\em System Clock Configuration The system Clock is configured as follow \+: System Clock source = PLL (HSE) SYSCLK(\+Hz) = 400000000 (CM7 CPU Clock) HCLK(\+Hz) = 200000000 (CM4 CPU, AXI and AHBs Clock) AHB Prescaler = 2 D1 APB3 Prescaler = 2 (APB3 Clock 100MHz) D2 APB1 Prescaler = 2 (APB1 Clock 100MHz) D2 APB2 Prescaler = 2 (APB2 Clock 100MHz) D3 APB4 Prescaler = 2 (APB4 Clock 100MHz) HSE Frequency(\+Hz) = 25000000 PLL\+\_\+M = 5 PLL\+\_\+N = 160 PLL\+\_\+P = 2 PLL\+\_\+Q = 4 PLL\+\_\+R = 2 VDD(\+V) = 3.\+3 Flash Latency(\+WS) = 4. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a1730ffe1e560465665eb47d9264826f9}{Error\+\_\+\+Handler}} (void)
+\begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
+\begin{DoxyCompactList}\small\item\em The application entry point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+DSI\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{main_8c_a9f89250426445e449addaba744aa17d0}{hdsi}}
+\item 
+LTDC\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{main_8c_a9ede3a77755ec81a9be03423cb915b05}{hltdc}}
+\item 
+unsigned char \mbox{\hyperlink{main_8c_afe3ea09366bfb79efb01c0760cbd448e}{Tetris\+\_\+gb}} \mbox{[}$\,$\mbox{]}
+\item 
+unsigned char \mbox{\hyperlink{main_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+\_\+instrs\+\_\+gb}} \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: Main program body 
+
+\begin{DoxyAuthor}{Author}
+Rami 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+Jun 11, 2021
+\end{DoxyDate}
+\begin{DoxyAttention}{Attention}
+
+\end{DoxyAttention}
+\doxysubsubsection*{\begin{center}\copyright{} Copyright (c) 2021 STMicroelectronics. All rights reserved.\end{center} }
+
+This software component is licensed by ST under BSD 3-\/Clause license, the \char`\"{}\+License\char`\"{}; You may not use this file except in compliance with the License. You may obtain a copy of the License at\+: opensource.\+org/licenses/\+BSD-\/3-\/\+Clause 
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{main_8c_a2ebb0bf1d379e615bda6e25cccf0f08f}\label{main_8c_a2ebb0bf1d379e615bda6e25cccf0f08f}} 
+\index{main.c@{main.c}!DARK\_GREEN@{DARK\_GREEN}}
+\index{DARK\_GREEN@{DARK\_GREEN}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{DARK\_GREEN}{DARK\_GREEN}}
+{\footnotesize\ttfamily \#define DARK\+\_\+\+GREEN~0\+XFF306230\+UL}
+
+\mbox{\Hypertarget{main_8c_a23ba77349efe58f6892458fde23203ae}\label{main_8c_a23ba77349efe58f6892458fde23203ae}} 
+\index{main.c@{main.c}!DARKEST\_GREEN@{DARKEST\_GREEN}}
+\index{DARKEST\_GREEN@{DARKEST\_GREEN}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{DARKEST\_GREEN}{DARKEST\_GREEN}}
+{\footnotesize\ttfamily \#define DARKEST\+\_\+\+GREEN~0\+XFF0\+F380\+FUL}
+
+\mbox{\Hypertarget{main_8c_a66761607ebca2d7b18eb6adfbd0891a7}\label{main_8c_a66761607ebca2d7b18eb6adfbd0891a7}} 
+\index{main.c@{main.c}!HSEM\_ID\_0@{HSEM\_ID\_0}}
+\index{HSEM\_ID\_0@{HSEM\_ID\_0}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{HSEM\_ID\_0}{HSEM\_ID\_0}}
+{\footnotesize\ttfamily \#define HSEM\+\_\+\+ID\+\_\+0~(0U) /$\ast$ HW semaphore 0$\ast$/}
+
+\mbox{\Hypertarget{main_8c_a5a7142ee95ebc63218ed3aac2ae06b13}\label{main_8c_a5a7142ee95ebc63218ed3aac2ae06b13}} 
+\index{main.c@{main.c}!LIGHT\_GREEN@{LIGHT\_GREEN}}
+\index{LIGHT\_GREEN@{LIGHT\_GREEN}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LIGHT\_GREEN}{LIGHT\_GREEN}}
+{\footnotesize\ttfamily \#define LIGHT\+\_\+\+GREEN~0\+XFF8\+BAC0\+FUL}
+
+\mbox{\Hypertarget{main_8c_aa7340b5ab80d1a8df9c9d53948fcbd76}\label{main_8c_aa7340b5ab80d1a8df9c9d53948fcbd76}} 
+\index{main.c@{main.c}!LIGHTEST\_GREEN@{LIGHTEST\_GREEN}}
+\index{LIGHTEST\_GREEN@{LIGHTEST\_GREEN}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{LIGHTEST\_GREEN}{LIGHTEST\_GREEN}}
+{\footnotesize\ttfamily \#define LIGHTEST\+\_\+\+GREEN~0\+XFF9\+BBC0\+FUL}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_a1730ffe1e560465665eb47d9264826f9}\label{main_8c_a1730ffe1e560465665eb47d9264826f9}} 
+\index{main.c@{main.c}!Error\_Handler@{Error\_Handler}}
+\index{Error\_Handler@{Error\_Handler}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Error\_Handler()}{Error\_Handler()}}
+{\footnotesize\ttfamily void Error\+\_\+\+Handler (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+This function is executed in case of error occurrence. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
+\index{main.c@{main.c}!main@{main}}
+\index{main@{main}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+The application entry point. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em int} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_a70af21c671abfcc773614a9a4f63d920}\label{main_8c_a70af21c671abfcc773614a9a4f63d920}} 
+\index{main.c@{main.c}!SystemClock\_Config@{SystemClock\_Config}}
+\index{SystemClock\_Config@{SystemClock\_Config}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{SystemClock\_Config()}{SystemClock\_Config()}}
+{\footnotesize\ttfamily void System\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+System Clock Configuration The system Clock is configured as follow \+: System Clock source = PLL (HSE) SYSCLK(\+Hz) = 400000000 (CM7 CPU Clock) HCLK(\+Hz) = 200000000 (CM4 CPU, AXI and AHBs Clock) AHB Prescaler = 2 D1 APB3 Prescaler = 2 (APB3 Clock 100MHz) D2 APB1 Prescaler = 2 (APB1 Clock 100MHz) D2 APB2 Prescaler = 2 (APB2 Clock 100MHz) D3 APB4 Prescaler = 2 (APB4 Clock 100MHz) HSE Frequency(\+Hz) = 25000000 PLL\+\_\+M = 5 PLL\+\_\+N = 160 PLL\+\_\+P = 2 PLL\+\_\+Q = 4 PLL\+\_\+R = 2 VDD(\+V) = 3.\+3 Flash Latency(\+WS) = 4. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em None} & \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+$<$ Supply configuration update enable
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{main_8c_af89e88e043f6fd16b85f1bfe1f24c11f}\label{main_8c_af89e88e043f6fd16b85f1bfe1f24c11f}} 
+\index{main.c@{main.c}!cpu\_instrs\_gb@{cpu\_instrs\_gb}}
+\index{cpu\_instrs\_gb@{cpu\_instrs\_gb}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{cpu\_instrs\_gb}{cpu\_instrs\_gb}}
+{\footnotesize\ttfamily unsigned char cpu\+\_\+instrs\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{main_8c_a9f89250426445e449addaba744aa17d0}\label{main_8c_a9f89250426445e449addaba744aa17d0}} 
+\index{main.c@{main.c}!hdsi@{hdsi}}
+\index{hdsi@{hdsi}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{hdsi}{hdsi}}
+{\footnotesize\ttfamily DSI\+\_\+\+Handle\+Type\+Def hdsi}
+
+\mbox{\Hypertarget{main_8c_a9ede3a77755ec81a9be03423cb915b05}\label{main_8c_a9ede3a77755ec81a9be03423cb915b05}} 
+\index{main.c@{main.c}!hltdc@{hltdc}}
+\index{hltdc@{hltdc}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{hltdc}{hltdc}}
+{\footnotesize\ttfamily LTDC\+\_\+\+Handle\+Type\+Def hltdc}
+
+\mbox{\Hypertarget{main_8c_afe3ea09366bfb79efb01c0760cbd448e}\label{main_8c_afe3ea09366bfb79efb01c0760cbd448e}} 
+\index{main.c@{main.c}!Tetris\_gb@{Tetris\_gb}}
+\index{Tetris\_gb@{Tetris\_gb}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Tetris\_gb}{Tetris\_gb}}
+{\footnotesize\ttfamily unsigned char Tetris\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
