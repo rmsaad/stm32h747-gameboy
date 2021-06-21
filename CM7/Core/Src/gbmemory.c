@@ -19,12 +19,18 @@ void vGBMemorySetOP(uint8_t op){
 	current_op = op;
 }
 
+void vGBMemoryInit(){
+	mem.ram[0xFF00] = 0xCF;
+}
+
 // loads data into memory map
 void vGBMemoryLoad(const void* data, uint32_t size){
 	memcpy(mem.ram , data, size);
 }
 
 void vGBMemoryWrite(uint16_t address, uint8_t data){
+	if(address == 0xFF00)
+		return;
 	if((ucGBMemoryRead(0xFF41) & 0x03)  == 0x03 && address >= 0x8000 && address < 0xA000)
 		return;
 	mem.ram[address] = data;

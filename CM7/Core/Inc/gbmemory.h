@@ -62,6 +62,6 @@ void vGBMemorySetBit(uint16_t address, uint8_t bit);
 void vGBMemoryResetBit(uint16_t address, uint8_t bit);
 void vGBMemoryPrint();
 void vGBMemorySetOP(uint8_t op);
-
+void vGBMemoryInit();
 #endif /* INC_GBMEMORY_H_ */
 
