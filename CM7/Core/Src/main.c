@@ -151,9 +151,10 @@ Error_Handler();
 
   /* Initialize all configured peripherals */
   MX_GPIO_Init();
-  //MX_ADC1_Init();
+
   /* USER CODE BEGIN 2 */
   vLEDInit();
+  MX_ADC1_Init();
   BSP_LCD_Init(0, LCD_ORIENTATION_LANDSCAPE);
 
   UTIL_LCD_SetFuncDriver(&LCD_Driver);
