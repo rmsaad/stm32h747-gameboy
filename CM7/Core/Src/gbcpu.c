@@ -24,8 +24,8 @@
 #define SERIAL_INTERRUPT  (1 << 3)
 #define JOYPAD_INTERRUPT  (1 << 4)
 
-#define IE_ADDR           0xFF0F
-#define IF_ADDR           0xFFFF
+#define IF_ADDR           0xFF0F
+#define IE_ADDR           0xFFFF
 
 #define VBLANK_VECTOR     0x0040
 #define LCDSTAT_VECTOR    0x0048
@@ -1713,8 +1713,6 @@ void vGBCPUboot(){
 		if(n == 0){
 			vGBMemoryLoad(Tetris_gb, 256);
 			//vGBMemoryLoad(cpu_instrs_gb, 256);
-			//vGBMemoryWrite(0xFF00, 0xFF);
-			//vGBMemoryWrite(0xFF0F, 0xE1);
 			n = 1;
 		}
 		vGBCPUinstr(ucGBMemoryRead(reg.PC));
@@ -1724,7 +1722,7 @@ void vGBCPUboot(){
 
 void vGBCPUInterruptHandler(){
 	if(ucOneCycleInterruptDelay == 1){
-		if(ucGBMemoryRead(IE_ADDR) && ucGBMemoryRead(IF_ADDR)){
+		if(ucGBMemoryRead(IE_ADDR) & ucGBMemoryRead(IF_ADDR) & 0x1F){
 			ucInterruptMasterEnable = 0;
 			ucOneCycleInterruptDelay = 0;
 			uint8_t InterruptSetandEn = ucGBMemoryRead(IE_ADDR) & ucGBMemoryRead(IF_ADDR);
@@ -1745,7 +1743,7 @@ void vGBCPUInterruptHandler(){
 
 void vGBCPUinstr(uint8_t opcode){
 
-	if(numcount == 112000){
+	if(reg.PC == 0x40){
 		num = 5;
 	}
 	vGBMemorySetOP(opcode);

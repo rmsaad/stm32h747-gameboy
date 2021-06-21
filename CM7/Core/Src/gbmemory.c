@@ -21,6 +21,7 @@ void vGBMemorySetOP(uint8_t op){
 
 void vGBMemoryInit(){
 	mem.ram[0xFF00] = 0xCF;
+	mem.ram[0xFF0F] = 0xE1;
 }
 
 // loads data into memory map

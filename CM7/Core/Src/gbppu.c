@@ -115,6 +115,7 @@ void gbPPUStep(){
 
 		if (ly > 143){													// vblank
 			setMode(MODE_1);
+			vGBMemorySetBit(0xFF0F, 0);
 		}else{
 			if (tStatesTotal <= 80 && Mode != MODE_2)											// oam
 				setMode(MODE_2);
@@ -235,8 +236,8 @@ void update_buffer(uint16_t res, int pixelPos, uint16_t amt){
 	for (int n = 1; n <= amt; n++){
 		switch (res){
 				case 0x0000: gb_frame[pixelPos + (2 * ly * amt * 160) + (amt * 160 * n)] = color_to_pallette[0]; gb_frame[(pixelPos+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[0]; break;
-				case 0x0080: gb_frame[pixelPos + (2 * ly * amt * 160) + (amt * 160 * n)] = color_to_pallette[2]; gb_frame[(pixelPos+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[2]; break;
-				case 0x8000: gb_frame[pixelPos + (2 * ly * amt * 160) + (amt * 160 * n)] = color_to_pallette[1]; gb_frame[(pixelPos+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[1]; break;
+				case 0x0080: gb_frame[pixelPos + (2 * ly * amt * 160) + (amt * 160 * n)] = color_to_pallette[1]; gb_frame[(pixelPos+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[1]; break;
+				case 0x8000: gb_frame[pixelPos + (2 * ly * amt * 160) + (amt * 160 * n)] = color_to_pallette[2]; gb_frame[(pixelPos+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[2]; break;
 				case 0x8080: gb_frame[pixelPos + (2 * ly * amt * 160) + (amt * 160 * n)] = color_to_pallette[3]; gb_frame[(pixelPos+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[3]; break;
 				default: break;
 			}
