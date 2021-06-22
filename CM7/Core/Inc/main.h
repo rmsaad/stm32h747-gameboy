@@ -36,6 +36,26 @@
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
 
+#define OSC32_OUT_Pin GPIO_PIN_15
+#define OSC32_OUT_GPIO_Port GPIOC
+#define OSC32_IN_Pin GPIO_PIN_14
+#define OSC32_IN_GPIO_Port GPIOC
+#define CEC_CK_MCO1_Pin GPIO_PIN_8
+#define CEC_CK_MCO1_GPIO_Port GPIOA
+#define OSC_OUT_Pin GPIO_PIN_1
+#define OSC_OUT_GPIO_Port GPIOH
+#define OSC_IN_Pin GPIO_PIN_0
+#define OSC_IN_GPIO_Port GPIOH
+#define ARD_A1_Pin GPIO_PIN_10
+#define ARD_A1_GPIO_Port GPIOF
+#define ARD_A4_Pin GPIO_PIN_2
+#define ARD_A4_GPIO_Port GPIOC
+#define ARD_A5_Pin GPIO_PIN_3
+#define ARD_A5_GPIO_Port GPIOC
+#define ARD_A2_Pin GPIO_PIN_0
+#define ARD_A2_GPIO_Port GPIOA
+#define ARD_A3_Pin GPIO_PIN_1
+#define ARD_A3_GPIO_Port GPIOA
 #endif /* __MAIN_H */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
