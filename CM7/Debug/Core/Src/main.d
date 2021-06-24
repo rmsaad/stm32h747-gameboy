@@ -37,18 +37,25 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_dsi.h \
  ../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr.h \
  ../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h \
+ C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sai.h \
+ C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sai_ex.h \
  C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sdram.h \
  C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_fmc.h \
  C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h \
  C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h \
- C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery.h \
+ C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_audio.h \
  ../Core/Inc/stm32h747i_discovery_conf.h \
  C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_errno.h \
+ c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\drivers\bsp\components\wm8994\wm8994.h \
+ c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\drivers\bsp\components\wm8994\wm8994_reg.h \
+ ../../Drivers/CMSIS/Include/cmsis_compiler.h \
+ c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\drivers\bsp\components\common\audio.h \
+ C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Middlewares/ST/STM32_Audio/Addons/PDM/Inc/pdm2pcm_glo.h \
+ C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery.h \
  C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_lcd.h \
  C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/Components/Common/lcd.h \
  c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\drivers\bsp\components\otm8009a\otm8009a.h \
  c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\drivers\bsp\components\otm8009a\otm8009a_reg.h \
- ../../Drivers/CMSIS/Include/cmsis_compiler.h \
  c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\drivers\bsp\components\adv7533\adv7533.h \
  c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\drivers\bsp\components\adv7533\adv7533_reg.h \
  C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_sdram.h \
@@ -140,6 +147,10 @@ C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/STM32H7xx_HAL_
 
 ../../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_pwr_ex.h:
 
+C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sai.h:
+
+C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sai_ex.h:
+
 C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_sdram.h:
 
 C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_fmc.h:
@@ -148,11 +159,23 @@ C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/STM32H7xx_HAL_
 
 C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h:
 
-C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery.h:
+C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_audio.h:
 
 ../Core/Inc/stm32h747i_discovery_conf.h:
 
 C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_errno.h:
+
+c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\drivers\bsp\components\wm8994\wm8994.h:
+
+c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\drivers\bsp\components\wm8994\wm8994_reg.h:
+
+../../Drivers/CMSIS/Include/cmsis_compiler.h:
+
+c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\drivers\bsp\components\common\audio.h:
+
+C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Middlewares/ST/STM32_Audio/Addons/PDM/Inc/pdm2pcm_glo.h:
+
+C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery.h:
 
 C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_lcd.h:
 
@@ -161,8 +184,6 @@ C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/Components
 c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\drivers\bsp\components\otm8009a\otm8009a.h:
 
 c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\drivers\bsp\components\otm8009a\otm8009a_reg.h:
-
-../../Drivers/CMSIS/Include/cmsis_compiler.h:
 
 c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\drivers\bsp\components\adv7533\adv7533.h:
 

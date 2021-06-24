@@ -15,6 +15,9 @@ registers reg;
 memory mem;
 uint8_t current_op;
 
+extern ADC_HandleTypeDef hadc1;
+extern ADC_HandleTypeDef hadc3;
+
 void vGBMemorySetOP(uint8_t op){
 	current_op = op;
 }
@@ -29,36 +32,64 @@ void vGBMemoryLoad(const void* data, uint32_t size){
 	memcpy(mem.ram , data, size);
 }
 
-void vGBMemoryWrite(uint16_t address, uint8_t data){
-	if(address == 0xFF00)
+void vGBMemoryJoypad(uint8_t data){
+	uint32_t value;
+
+	if((data >> 4) & 0x1){
+		HAL_ADC_Start(&hadc1);
+		HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+	    value = HAL_ADC_GetValue(&hadc1) >> 12;
+	}else if((data >> 4) & 0x2){
+		HAL_ADC_Start(&hadc3);
+		HAL_ADC_PollForConversion(&hadc3, HAL_MAX_DELAY);
+		value = HAL_ADC_GetValue(&hadc3) >> 12;
+	}else{
 		return;
-	if((ucGBMemoryRead(0xFF41) & 0x03)  == 0x03 && address >= 0x8000 && address < 0xA000)
+	}
+
+	if(value == 0xf){
+		return;
+	}
+
+	if((value >> 3) & 0x1){
+		mem.ram[JOY_ADDR] &= ~(0x4);
+	}else if((value & 0x6) == 0x6){
+		mem.ram[JOY_ADDR] &= ~(0x8);
+	}else if(value > 0x2){
+	    mem.ram[JOY_ADDR] &= ~(0x2);
+	}else{
+		mem.ram[JOY_ADDR] &= ~(0x1);
+	}
+}
+
+void vGBMemoryWrite(uint16_t address, uint8_t data){
+	if(address == JOY_ADDR){
+		vGBMemoryJoypad(data);
+		return;
+	}
+	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
 		return;
 	mem.ram[address] = data;
 }
 
 void vGBMemorySetBit(uint16_t address, uint8_t bit){
-	if((ucGBMemoryRead(0xFF41) & 0x03)  == 0x03 && address >= 0x8000 && address < 0xA000)
+	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
 		return;
 	mem.ram[address] |= (0x1 << bit);
 }
 
 void vGBMemoryResetBit(uint16_t address, uint8_t bit){
-	if((ucGBMemoryRead(0xFF41) & 0x03)  == 0x03 && address >= 0x8000 && address < 0xA000)
+	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
 		return;
 	mem.ram[address] &= ~(0x1 << bit);
 }
 
 // reads a location from memory map
 uint8_t ucGBMemoryRead(uint16_t address){
-//	if((ucGBMemoryRead(0xFF41) & 0x03)  == 0x03 && address >= 0x8000 && address < 0xA000)
-//			return 0xFF;
 	return mem.ram[address];
 }
 
 uint16_t usGBMemoryReadShort(uint16_t address){
-//	if((ucGBMemoryRead(0xFF41) & 0x03)  == 0x03 && address >= 0x8000 && address < 0xA000)
-//			return 0xFFFF;
 	return *((uint16_t*) &mem.ram[address]);
 }
 

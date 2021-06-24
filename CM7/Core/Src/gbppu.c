@@ -16,33 +16,10 @@
 #include "string.h"
 #include "stm32h7_display.h"
 
-// ppu modes
-#define MODE_0 0    // HBLANK
-#define MODE_1 1    // VBLANK
-#define MODE_2 2    // accessing OAM
-#define MODE_3 3    // accessing VRAM
-
 // colors
 #define BACKGROUND 0
 #define WINDOW     1
 #define SPRITE     2
-
-// Drawing Related Register Addresses
-#define LCDC_ADDR 0xFF40
-#define STAT_ADDR 0xFF41
-#define SCY_ADDR  0xFF42
-#define SCX_ADDR  0xFF43
-#define LY_ADDR   0xFF44
-#define LYC_ADDR  0xFF45
-#define BGP_ADDR  0xFF47
-
-// LCDC BIT 4, TILE DATA BASE ADDRESSES
-#define TILE_DATA_UNSIGNED_ADDR 0x8000
-#define TILE_DATA_SIGNED_ADDR   0x8800
-
-// LCDC BIT 3, TILE MAP OFFSETS BASES ADDRESSES
-#define TILE_MAP_LOCATION_LOW  0x9800
-#define TILE_MAP_LOCATION_HIGH 0x9C00
 
 #define DARKEST_GREEN  0XFF0F380FUL
 #define DARK_GREEN     0XFF306230UL

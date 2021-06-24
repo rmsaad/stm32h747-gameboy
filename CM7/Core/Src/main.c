@@ -71,7 +71,7 @@ LTDC_HandleTypeDef hltdc;
 /* USER CODE BEGIN PV */
 extern unsigned char Tetris_gb[];
 extern unsigned char cpu_instrs_gb[];
-
+extern const unsigned char audio_sample_bin[];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -80,7 +80,6 @@ void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_ADC3_Init(void);
-static void MX_I2S3_Init(void);
 /* USER CODE BEGIN PFP */
 void Error_Handler(void);
 static void vLEDInit(void);
@@ -160,14 +159,12 @@ Error_Handler();
   vLEDInit();
   MX_ADC1_Init();
   MX_ADC3_Init();
-  MX_I2S3_Init();
+  //MX_I2S3_Init();
   BSP_LCD_Init(0, LCD_ORIENTATION_LANDSCAPE);
 
   UTIL_LCD_SetFuncDriver(&LCD_Driver);
   UTIL_LCD_SetLayer(0);
   UTIL_LCD_Clear(UTIL_LCD_COLOR_WHITE);
-
-
 
 
 
@@ -177,23 +174,24 @@ Error_Handler();
   UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_BLUE);
   UTIL_LCD_SetFont(&Font24);
 
+//  BSP_AUDIO_Init_t AudioInit;
+//  AudioInit.BitsPerSample = 16;
+//  AudioInit.ChannelsNbr = 2;
+//  AudioInit.SampleRate = AUDIO_FREQUENCY_8K;
+//  AudioInit.Volume = 70;
+//  AudioInit.Device = AUDIO_OUT_DEVICE_HEADPHONE;
+//  BSP_AUDIO_OUT_Init(0, &AudioInit);
+//  size_t n = sizeof(audio_sample_bin)/sizeof(audio_sample_bin[0]);
+//  uint64_t data = BSP_AUDIO_OUT_Play(0, &audio_sample_bin[0], 130000);
 
 
   vGBMemoryLoad(Tetris_gb, 32768);
   //vGBMemoryLoad(cpu_instrs_gb, 32768);
-  vGBMemoryLoad(dmg_boot_bin, 256);													// load boot rom into approiate place in memory map
+  vGBMemoryLoad(dmg_boot_bin, 256);													// load boot rom into appropriate place in memory map
   vGBMemoryInit();
   vSetFrameBuffer();
   while (1)
   {
-
-	 //HAL_ADC_Start(&hadc3);
-	 //HAL_ADC_PollForConversion(&hadc3, HAL_MAX_DELAY);
-	 //uint32_t value = HAL_ADC_GetValue(&hadc3);
-	 //char temp[15];
-	 //sprintf(temp,"test value %u",value);
-	 //UTIL_LCD_DisplayStringAt(500, LINE(2), (uint8_t *) temp, LEFT_MODE);
-	 //HAL_Delay(500);
 	  //if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) != 0){									// read the button input
 		  //HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_14);										// toggle debug light
 		  vGBCPUboot();
@@ -256,7 +254,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLFRACN = 0;
   RCC_OscInitStruct.PLL.PLLP = 2;
   RCC_OscInitStruct.PLL.PLLR = 2;
-  RCC_OscInitStruct.PLL.PLLQ = 4;
+  RCC_OscInitStruct.PLL.PLLQ = 16;						// changed from 4 to 16 to make i2s work
 
   RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
   RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_2;
@@ -451,41 +449,6 @@ static void MX_ADC3_Init(void)
 
 }
 
-/**
-  * @brief I2S3 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_I2S3_Init(void)
-{
-
-  /* USER CODE BEGIN I2S3_Init 0 */
-
-  /* USER CODE END I2S3_Init 0 */
-
-  /* USER CODE BEGIN I2S3_Init 1 */
-
-  /* USER CODE END I2S3_Init 1 */
-  hi2s3.Instance = SPI3;
-  hi2s3.Init.Mode = I2S_MODE_MASTER_TX;
-  hi2s3.Init.Standard = I2S_STANDARD_PHILIPS;
-  hi2s3.Init.DataFormat = I2S_DATAFORMAT_16B;
-  hi2s3.Init.MCLKOutput = I2S_MCLKOUTPUT_DISABLE;
-  hi2s3.Init.AudioFreq = I2S_AUDIOFREQ_8K;
-  hi2s3.Init.CPOL = I2S_CPOL_LOW;
-  hi2s3.Init.FirstBit = I2S_FIRSTBIT_MSB;
-  hi2s3.Init.WSInversion = I2S_WS_INVERSION_DISABLE;
-  hi2s3.Init.Data24BitAlignment = I2S_DATA_24BIT_ALIGNMENT_RIGHT;
-  hi2s3.Init.MasterKeepIOState = I2S_MASTER_KEEP_IO_STATE_DISABLE;
-  if (HAL_I2S_Init(&hi2s3) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN I2S3_Init 2 */
-
-  /* USER CODE END I2S3_Init 2 */
-
-}
 
 /**
   * @brief GPIO Initialization Function
