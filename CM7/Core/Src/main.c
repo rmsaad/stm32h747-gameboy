@@ -22,15 +22,16 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include <string.h>
+#include <stdio.h>
 #include "gbmemory.h"
 #include "gbcpu.h"
 #include "gbppu.h"
-#include "Tetris.gb.h"
-#include "dmg_boot.bin.h"
 #include "stm32h7_display.h"
-#include <string.h>
-#include <stdio.h>
+#include "dmg_boot.bin.h"
+#include "Tetris.gb.h"
 #include "cpu_instrs.gb.h"
+#include "Alleyway.gb.h"
 #include "audio_sample.bin.h"
 /* USER CODE END Includes */
 
@@ -69,9 +70,11 @@ I2S_HandleTypeDef hi2s3;
 LTDC_HandleTypeDef hltdc;
 
 /* USER CODE BEGIN PV */
-extern unsigned char Tetris_gb[];
-extern unsigned char cpu_instrs_gb[];
+extern const unsigned char Tetris_gb[];
+extern const unsigned char cpu_instrs_gb[];
+extern const unsigned char Alleyway_gb[];
 extern const unsigned char audio_sample_bin[];
+const unsigned char* rom = &Tetris_gb[0];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -88,7 +91,9 @@ static void vLEDInit(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+const unsigned char* getRomPointer(){
+	return rom;
+}
 /* USER CODE END 0 */
 
 /**
@@ -159,7 +164,6 @@ Error_Handler();
   vLEDInit();
   MX_ADC1_Init();
   MX_ADC3_Init();
-  //MX_I2S3_Init();
   BSP_LCD_Init(0, LCD_ORIENTATION_LANDSCAPE);
 
   UTIL_LCD_SetFuncDriver(&LCD_Driver);
@@ -167,9 +171,6 @@ Error_Handler();
   UTIL_LCD_Clear(UTIL_LCD_COLOR_WHITE);
 
 
-
-  //UTIL_LCD_FillRect(0, 0, 160*3, 480, UTIL_LCD_COLOR_BLACK);
-  //UTIL_LCD_FillRect(0, (480 - (144*3))/2, 160*3, 144*3, LIGHTEST_GREEN);
   UTIL_LCD_SetBackColor(UTIL_LCD_COLOR_WHITE);
   UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_BLUE);
   UTIL_LCD_SetFont(&Font24);
@@ -185,20 +186,15 @@ Error_Handler();
 //  uint64_t data = BSP_AUDIO_OUT_Play(0, &audio_sample_bin[0], 130000);
 
 
-  vGBMemoryLoad(Tetris_gb, 32768);
-  //vGBMemoryLoad(cpu_instrs_gb, 32768);
+  vGBMemoryLoad(rom, 32768);														// load rom into memory
   vGBMemoryLoad(dmg_boot_bin, 256);													// load boot rom into appropriate place in memory map
+
   vGBMemoryInit();
   vSetFrameBuffer();
   while (1)
   {
-	  //if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) != 0){									// read the button input
-		  //HAL_GPIO_TogglePin(GPIOI, GPIO_PIN_14);										// toggle debug light
-		  vGBCPUboot();
-		  gbPPUStep();
-		  //vGBMemoryPrint();
-	  //}
-  //HAL_Delay(10);
+	  vGBCPUboot();
+	  gbPPUStep();
   }
 
 }

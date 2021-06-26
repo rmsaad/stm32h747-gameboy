@@ -36,6 +36,7 @@
 #define LCD_FRAME_BUFFER        0xD0000000
 /* Exported macro ------------------------------------------------------------*/
 /* Exported functions ------------------------------------------------------- */
+const unsigned char* getRomPointer();
 
 #define OSC32_OUT_Pin GPIO_PIN_15
 #define OSC32_OUT_GPIO_Port GPIOC

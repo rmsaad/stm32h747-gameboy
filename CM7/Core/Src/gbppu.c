@@ -10,7 +10,8 @@
   ******************************************************************************
   */
 
-
+#include "main.h"
+#include "gbfunctions.h"
 #include "gbcpu.h"
 #include "gbmemory.h"
 #include "string.h"
@@ -32,8 +33,6 @@
 uint16_t BackWinTileDataAddr;
 uint16_t BackTileDisplayAddr;
 uint8_t Mode;
-uint8_t ucSCY;
-uint8_t ucSCX;
 
 uint32_t tStatesTotal;
 
@@ -74,6 +73,7 @@ void vSetFrameBuffer(){
 void gbPPUStep(){
 
 	if(ucGBMemoryRead(LCDC_ADDR) & 0x80){															// check MSB of LCDC for screen en
+
 		tStatesTotal += ucGetTstate();
 		if (tStatesTotal > 456){												// end of hblank or vblank
 			ly++;
@@ -82,6 +82,8 @@ void gbPPUStep(){
 				dummy2_code(gb_frame);
 				setMode(MODE_2);
 				ly = 0;
+				if(checkbit(ucGBMemoryRead(STAT_ADDR), 5))
+					vGBMemorySetBit(IF_ADDR, 1);
 			}
 
 			vGBMemoryWrite(LY_ADDR, ly);								// update LY register
@@ -92,7 +94,9 @@ void gbPPUStep(){
 
 		if (ly > 143){													// vblank
 			setMode(MODE_1);
-			vGBMemorySetBit(0xFF0F, 0);
+			if(checkbit(ucGBMemoryRead(STAT_ADDR), 4))
+				vGBMemorySetBit(IF_ADDR, 1);
+			vGBMemorySetBit(IF_ADDR, 0);
 		}else{
 			if (tStatesTotal <= 80 && Mode != MODE_2)											// oam
 				setMode(MODE_2);
@@ -100,12 +104,13 @@ void gbPPUStep(){
 				vCheckBGP();
 				vCheckBackWinTileDataSel();
 				vCheckBackTileDisplaySel();
-				ucSCY = ucGBMemoryRead(SCY_ADDR);
-				ucSCX = ucGBMemoryRead(SCX_ADDR);
-				vGBPPUDrawLine(ly, ucSCX, ucSCY);
+				vGBPPUDrawLine(ly, ucGBMemoryRead(SCX_ADDR), ucGBMemoryRead(SCY_ADDR));
 				setMode(MODE_3);
-			}else if(tStatesTotal > 252 && tStatesTotal <= 456 && Mode != MODE_0)										// hblank
+			}else if(tStatesTotal > 252 && tStatesTotal <= 456 && Mode != MODE_0){										// hblank
 				setMode(MODE_0);
+				if(checkbit(ucGBMemoryRead(STAT_ADDR), 3))
+					vGBMemorySetBit(IF_ADDR, 1);
+			}
 		}
 	}
 }
@@ -182,6 +187,8 @@ uint16_t getTileLineData(uint16_t tile_offset, uint8_t line_offset){
 void LYC_check(uint8_t ly){
 	if(ly == ucGBMemoryRead(LYC_ADDR)){
 		vGBMemorySetBit(STAT_ADDR, 2);
+		if(checkbit(ucGBMemoryRead(STAT_ADDR), 6))
+			vGBMemorySetBit(IF_ADDR, 1);
 	}else{
 		vGBMemoryResetBit(STAT_ADDR, 2);
 	}
@@ -210,16 +217,45 @@ void setMode(uint8_t mode){
  * @param amt
  */
 void update_buffer(uint16_t res, int pixelPos, uint16_t amt){
+	pixelPos *= amt;
 	for (int n = 1; n <= amt; n++){
 		switch (res){
-				case 0x0000: gb_frame[pixelPos + (2 * ly * amt * 160) + (amt * 160 * n)] = color_to_pallette[0]; gb_frame[(pixelPos+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[0]; break;
-				case 0x0080: gb_frame[pixelPos + (2 * ly * amt * 160) + (amt * 160 * n)] = color_to_pallette[1]; gb_frame[(pixelPos+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[1]; break;
-				case 0x8000: gb_frame[pixelPos + (2 * ly * amt * 160) + (amt * 160 * n)] = color_to_pallette[2]; gb_frame[(pixelPos+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[2]; break;
-				case 0x8080: gb_frame[pixelPos + (2 * ly * amt * 160) + (amt * 160 * n)] = color_to_pallette[3]; gb_frame[(pixelPos+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[3]; break;
+				case 0x0000: gb_frame[pixelPos + (2 * ly * amt * 160) + (amt * 160 * n)]  = gb_frame[(pixelPos+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[0]; break;
+				case 0x0080: gb_frame[pixelPos + (2 * ly * amt * 160) + (amt * 160 * n)]  = gb_frame[(pixelPos+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[1]; break;
+				case 0x8000: gb_frame[pixelPos + (2 * ly * amt * 160) + (amt * 160 * n)]  = gb_frame[(pixelPos+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[2]; break;
+				case 0x8080: gb_frame[pixelPos + (2 * ly * amt * 160) + (amt * 160 * n)]  = gb_frame[(pixelPos+1) + (2 * ly * amt * 160)  + (amt * 160 * n)] = color_to_pallette[3]; break;
 				default: break;
 			}
 	}
 
+}
+
+void vGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY){
+	uint16_t tile_offset = (((SCY + ly) / 8) * 32) + (SCX / 8);			                   	   // gives the address offset in the tile map
+	uint8_t line_offset = (((SCY % 8) + ly) % 8) * 2;										   // gives the line offset in the tile
+	uint8_t pixl_offset = SCX % 8;											                   // gives current pixel offset
+
+	uint16_t tile_data = getTileLineData(tile_offset, line_offset);                            // tile data holds tile line information
+
+	for(int j = 0; j < 160; j++){
+
+		update_buffer(((tile_data << pixl_offset) & 0x8080), j,  2);
+		pixl_offset++;
+
+		if(pixl_offset == 8){
+			tile_offset++;
+			pixl_offset = 0;
+			tile_data = getTileLineData(tile_offset, line_offset);
+
+		}
+
+	}
+}
+
+void vGBPPUDrawLineWindow(uint8_t ly){
+}
+
+void vGBPPUDrawLineObjects(){
 }
 
 /**
@@ -232,26 +268,13 @@ void update_buffer(uint16_t res, int pixelPos, uint16_t amt){
  */
 void vGBPPUDrawLine(uint8_t ly, uint8_t SCX, uint8_t SCY){
 
-	uint16_t tile_offset = (((SCY + ly) / 8) * 32) + (SCX / 8);			                   	   // gives the address offset in the tile map
-	uint8_t line_offset = (((SCY % 8) + ly) % 8) * 2;										   // gives the line offset in the tile
-	uint8_t pixl_offset = SCX % 8;											                   // gives current pixel offset
-
-	uint16_t tile_data = getTileLineData(tile_offset, line_offset);                            // tile data holds tile line information
-
-		for(int j = 0; j < 160*2; j+= 2){
-
-			update_buffer(((tile_data << pixl_offset) & 0x8080), j,  2);
-			pixl_offset++;
-
-			if(pixl_offset == 8){
-				tile_offset++;
-				pixl_offset = 0;
-				tile_data = getTileLineData(tile_offset, line_offset);
-
-			}
-
-		}
-
+	if(ucGBMemoryRead(LCDC_ADDR) & 0x01){
+		vGBPPUDrawLineBackground(ly, SCX, SCY);
+		if(ucGBMemoryRead(LCDC_ADDR) & 0x20)
+			vGBPPUDrawLineWindow(ly);
+	}
+	if(ucGBMemoryRead(LCDC_ADDR) & 0x02)
+		vGBPPUDrawLineObjects();
 }
 
 

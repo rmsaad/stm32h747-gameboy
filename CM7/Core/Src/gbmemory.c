@@ -18,20 +18,43 @@ uint8_t current_op;
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc3;
 
+/**
+ * @brief Set the current opcode for Debug Printing to LCD screen. See vGBMemoryPrint();
+ * @param op current opcode.
+ * @return Nothing
+ */
 void vGBMemorySetOP(uint8_t op){
 	current_op = op;
 }
 
+/**
+ * @brief Initialize certain Gameboy registers with their correct information.
+ * @details At start up the Joypad Register should read 0xCF to denote that no Joypad buttons are being pressed. The IF register should read
+ * 			0xE1 to set the appropriate flags.
+ * @return Nothing
+ */
 void vGBMemoryInit(){
 	mem.ram[0xFF00] = 0xCF;
 	mem.ram[0xFF0F] = 0xE1;
 }
 
-// loads data into memory map
-void vGBMemoryLoad(const void* data, uint32_t size){
-	memcpy(mem.ram , data, size);
+
+/**
+ * @brief Loads data of amount bytes into Memory maps from mem.ram[0] to mem.ram[bytes - 1].
+ * @param data data to be loaded into memory map.
+ * @param size amount of bytes.
+ * @return Nothing
+ */
+void vGBMemoryLoad(const void* data, uint32_t bytes){
+	memcpy(mem.ram , data, bytes);
 }
 
+/**
+ * @brief Handles any writes to the Joypad Register 0xFF00
+ * @details
+ * @param data data trying to be written to Joypad Register.
+ * @return Nothing
+ */
 void vGBMemoryJoypad(uint8_t data){
 	uint32_t value;
 
@@ -62,6 +85,12 @@ void vGBMemoryJoypad(uint8_t data){
 	}
 }
 
+/**
+ * @brief
+ * @details
+ * @param address
+ * @param data
+ */
 void vGBMemoryWrite(uint16_t address, uint8_t data){
 	if(address == JOY_ADDR){
 		vGBMemoryJoypad(data);
@@ -72,27 +101,49 @@ void vGBMemoryWrite(uint16_t address, uint8_t data){
 	mem.ram[address] = data;
 }
 
+/**
+ *
+ * @param address
+ * @param bit
+ */
 void vGBMemorySetBit(uint16_t address, uint8_t bit){
 	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
 		return;
 	mem.ram[address] |= (0x1 << bit);
 }
 
+/**
+ *
+ * @param address
+ * @param bit
+ */
 void vGBMemoryResetBit(uint16_t address, uint8_t bit){
 	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
 		return;
 	mem.ram[address] &= ~(0x1 << bit);
 }
 
-// reads a location from memory map
+/**
+ *
+ * @param address
+ * @return
+ */
 uint8_t ucGBMemoryRead(uint16_t address){
 	return mem.ram[address];
 }
 
+/**
+ *
+ * @param address
+ * @return
+ */
 uint16_t usGBMemoryReadShort(uint16_t address){
 	return *((uint16_t*) &mem.ram[address]);
 }
 
+/**
+ *
+ */
 void vGBMemoryPrint(){
 	char temp[15];
 	sprintf(temp,"Opcode: 0x%.2x", current_op);

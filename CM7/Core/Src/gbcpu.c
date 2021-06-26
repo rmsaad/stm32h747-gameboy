@@ -10,10 +10,10 @@
   ******************************************************************************
   */
 
+#include "main.h"
 #include "gbcpu.h"
 #include "gbmemory.h"
 #include "gbfunctions.h"
-//#include "Tetris.gb.h"
 
 #define SET   1
 #define RESET 0
@@ -24,18 +24,11 @@
 #define SERIAL_INTERRUPT  (1 << 3)
 #define JOYPAD_INTERRUPT  (1 << 4)
 
-#define IF_ADDR           0xFF0F
-#define IE_ADDR           0xFFFF
-
 #define VBLANK_VECTOR     0x0040
 #define LCDSTAT_VECTOR    0x0048
 #define TIMER_VECTOR      0x0050
 #define SERIAL_VECTOR     0x0058
 #define JOYPAD_VECTOR     0x0060
-
-//#include "Tetris.gb.h"
-//#include "dmg_boot.bin.h"
-
 
 /* Private variables ---------------------------------------------------------*/
 
@@ -49,6 +42,7 @@ uint8_t print = 0;
 uint8_t num = 0;
 uint64_t numcount;
 extern registers reg;
+extern const unsigned char Alleyway_gb[];
 extern unsigned char Tetris_gb[];
 extern unsigned char cpu_instrs_gb[];
 
@@ -1711,8 +1705,7 @@ void vGBCPUboot(){
 		numcount++;
 		static int n = 0;
 		if(n == 0){
-			vGBMemoryLoad(Tetris_gb, 256);
-			//vGBMemoryLoad(cpu_instrs_gb, 256);
+			vGBMemoryLoad(getRomPointer(), 256);
 			n = 1;
 		}
 		vGBCPUinstr(ucGBMemoryRead(reg.PC));
@@ -1764,8 +1757,4 @@ void vGBCPUinstr(uint8_t opcode){
 
 	//if( print == 1)
 	//	vGBMemoryPrint();
-
-	if(reg.PC == 0x2CA){
-		print = 1;
-	}
 }
