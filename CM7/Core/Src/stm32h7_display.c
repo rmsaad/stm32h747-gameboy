@@ -94,13 +94,13 @@ void CopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t
   }
 }
 
-void dummy2_code(uint32_t* gb_frame){
-	CopyBuffer((uint32_t *) gb_frame, (uint32_t *)Buffers[0], 0, 0, 160 * 2, 144 * 2);
+void displayFrameBuffer(uint32_t* gb_frame, uint8_t scaleAmount){
+	CopyBuffer((uint32_t *) gb_frame, (uint32_t *)Buffers[0], 0, (480 - (144*3))/2, 160 * scaleAmount, 144 * scaleAmount);
 	LTDC_LAYER(&hlcd_ltdc, 0)->CFBAR = ((uint32_t)Buffers[0]);
 	 //__HAL_LTDC_RELOAD_CONFIG(&hlcd_ltdc);
 }
 
-void dummy_code(){
+void displayDoubleBuffer(){
 	HAL_LTDC_ProgramLineEvent(&hlcd_ltdc, 0);
 	  CopyBuffer((uint32_t *)Buffers[0], (uint32_t *)Buffers[1], 0, 0, LCD_X_Size, LCD_Y_Size);
 

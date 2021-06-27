@@ -11,10 +11,15 @@
 #include "main.h"
 #include "gbmemory.h"
 
+//#define SRAM2		   0xD2000000UL
+// use this to access d2_sram
+//memory *mem = (uint32_t*)SRAM2;
+
 registers reg;
 memory mem;
 uint8_t current_op;
-
+uint8_t joypadSELdir;
+uint8_t joypadSELbut;
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc3;
 
@@ -55,34 +60,37 @@ void vGBMemoryLoad(const void* data, uint32_t bytes){
  * @param data data trying to be written to Joypad Register.
  * @return Nothing
  */
-void vGBMemoryJoypad(uint8_t data){
-	uint32_t value;
+uint8_t vGBMemoryJoypad(){
+	uint32_t value = 0;
+	uint8_t mask = 0;
 
-	if((data >> 4) & 0x1){
-		HAL_ADC_Start(&hadc1);
-		HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
-	    value = HAL_ADC_GetValue(&hadc1) >> 12;
-	}else if((data >> 4) & 0x2){
-		HAL_ADC_Start(&hadc3);
-		HAL_ADC_PollForConversion(&hadc3, HAL_MAX_DELAY);
-		value = HAL_ADC_GetValue(&hadc3) >> 12;
-	}else{
-		return;
+	if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) != 0){
+		if(joypadSELbut == 0x20){
+			return 0xC0 | (0xF^0x8) | (joypadSELbut | joypadSELdir);
+		}
 	}
 
-	if(value == 0xf){
-		return;
-	}
+//	if(joypadSELdir == 0x10){
+//		HAL_ADC_Start(&hadc3);
+//		HAL_ADC_PollForConversion(&hadc3, HAL_MAX_DELAY);
+//	    value = HAL_ADC_GetValue(&hadc3) >> 12;
+//	}else if(joypadSELbut == 0x20){
+//		HAL_ADC_Start(&hadc1);
+//		HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+//		value = HAL_ADC_GetValue(&hadc1) >> 12;
+//	}
 
-	if((value >> 3) & 0x1){
-		mem.ram[JOY_ADDR] &= ~(0x4);
-	}else if((value & 0x6) == 0x6){
-		mem.ram[JOY_ADDR] &= ~(0x8);
-	}else if(value > 0x2){
-	    mem.ram[JOY_ADDR] &= ~(0x2);
-	}else{
-		mem.ram[JOY_ADDR] &= ~(0x1);
-	}
+//	if((value >> 3) & 0x1){
+//		mask = (0x4);
+//	}else if((value & 0x6) == 0x6){
+//		mask = (0x8);
+//	}else if(value > 0x2){
+//	    mask = (0x2);
+//	}else{
+//		mask = (0x1);
+//	}
+
+	return 0xC0 | (0xF^mask) | (joypadSELbut | joypadSELdir);
 }
 
 /**
@@ -93,10 +101,15 @@ void vGBMemoryJoypad(uint8_t data){
  */
 void vGBMemoryWrite(uint16_t address, uint8_t data){
 	if(address == JOY_ADDR){
-		vGBMemoryJoypad(data);
+		if((data >> 4) & 0x1)
+			joypadSELdir = data & 0x10;
+		else if((data >> 4) & 0x2)
+			joypadSELbut = data & 0x20;
 		return;
 	}
 	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
+		return;
+	if((address >= 0x0000 && address < 0x8000))
 		return;
 	mem.ram[address] = data;
 }
@@ -129,6 +142,10 @@ void vGBMemoryResetBit(uint16_t address, uint8_t bit){
  * @return
  */
 uint8_t ucGBMemoryRead(uint16_t address){
+	if(address == JOY_ADDR){
+		return vGBMemoryJoypad();
+
+	}
 	return mem.ram[address];
 }
 

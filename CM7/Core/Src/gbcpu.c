@@ -1736,8 +1736,8 @@ void vGBCPUInterruptHandler(){
 
 void vGBCPUinstr(uint8_t opcode){
 
-	if(reg.PC == 0x40){
-		num = 5;
+	if(reg.PC == 0x7f86){
+		num++;
 	}
 	vGBMemorySetOP(opcode);
 

@@ -32,7 +32,7 @@
 #include "Tetris.gb.h"
 #include "cpu_instrs.gb.h"
 #include "Alleyway.gb.h"
-#include "audio_sample.bin.h"
+//#include "audio_sample.bin.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -169,7 +169,7 @@ Error_Handler();
   UTIL_LCD_SetFuncDriver(&LCD_Driver);
   UTIL_LCD_SetLayer(0);
   UTIL_LCD_Clear(UTIL_LCD_COLOR_WHITE);
-
+  UTIL_LCD_FillRect(0, 0, 160*3, 480, UTIL_LCD_COLOR_BLACK);
 
   UTIL_LCD_SetBackColor(UTIL_LCD_COLOR_WHITE);
   UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_BLUE);
