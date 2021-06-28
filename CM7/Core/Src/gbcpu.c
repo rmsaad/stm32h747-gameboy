@@ -1125,7 +1125,7 @@ void vINC_B(){        v8bitRegisterINC(&reg.B, &reg.F);}
 void vDEC_B(){        v8bitRegisterDEC(&reg.B, &reg.F);}
 void vLD_B_d8(){      reg.B = ucGBMemoryRead(reg.PC - 1);}
 void vRLCA(){         vGBFunctionRLCA(&reg.A, &reg.F);}
-void vLDs_a16_SP(){   vGBMemoryWrite(concat_16bit_bigEndian(ucGBMemoryRead(reg.PC -2), ucGBMemoryRead(reg.PC - 1)), reg.SP);}
+void vLDs_a16_SP(){   vGBMemoryWriteShort(concat_16bit_bigEndian(ucGBMemoryRead(reg.PC -2), ucGBMemoryRead(reg.PC - 1)), reg.SP);}
 void vADDs_HL_BC(){   vGBFunction16bitADD(&reg.HL, reg.BC, &reg.F);}
 void vLD_A_BC(){      reg.A = ucGBMemoryRead(reg.BC);}
 void vDECs_BC(){      reg.BC--;}

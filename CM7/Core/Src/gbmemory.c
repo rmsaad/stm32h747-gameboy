@@ -109,11 +109,19 @@ void vGBMemoryWrite(uint16_t address, uint8_t data){
 	}
 	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
 		return;
+
+	if(address >= 0xE000 && address < 0xFE00)
+		mem.ram[address - 0x2000] = data;
+
 	if((address >= 0x0000 && address < 0x8000))
 		return;
 	mem.ram[address] = data;
 }
 
+void vGBMemoryWriteShort(uint16_t address, uint16_t data){
+	vGBMemoryWrite(address,   data & 0xFF);
+	vGBMemoryWrite(address+1, data >> 8);
+}
 /**
  *
  * @param address
@@ -122,6 +130,10 @@ void vGBMemoryWrite(uint16_t address, uint8_t data){
 void vGBMemorySetBit(uint16_t address, uint8_t bit){
 	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
 		return;
+
+	if(address >= 0xE000 && address < 0xFE00)
+		mem.ram[address - 0x2000] |= (0x1 << bit);
+
 	mem.ram[address] |= (0x1 << bit);
 }
 
@@ -133,6 +145,10 @@ void vGBMemorySetBit(uint16_t address, uint8_t bit){
 void vGBMemoryResetBit(uint16_t address, uint8_t bit){
 	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
 		return;
+
+	if(address >= 0xE000 && address < 0xFE00)
+		mem.ram[address - 0x2000] &= ~(0x1 << bit);
+
 	mem.ram[address] &= ~(0x1 << bit);
 }
 
@@ -144,10 +160,14 @@ void vGBMemoryResetBit(uint16_t address, uint8_t bit){
 uint8_t ucGBMemoryRead(uint16_t address){
 	if(address == JOY_ADDR){
 		return vGBMemoryJoypad();
-
 	}
+
+	if(address >= 0xE000 && address < 0xFE00)
+		return mem.ram[address - 0x2000];
+
 	return mem.ram[address];
 }
+
 
 /**
  *
@@ -155,7 +175,7 @@ uint8_t ucGBMemoryRead(uint16_t address){
  * @return
  */
 uint16_t usGBMemoryReadShort(uint16_t address){
-	return *((uint16_t*) &mem.ram[address]);
+	return concat_16bit_bigEndian(mem.ram[address], mem.ram[address+1]);
 }
 
 /**

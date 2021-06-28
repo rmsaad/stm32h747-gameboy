@@ -111,7 +111,6 @@ gbcpu.c:1175:6:vLDs_SP_d16	16	static
 gbcpu.c:1339:6:vJP_a16	16	static
 gbcpu.c:1400:6:vLD_A_a16	16	static
 gbcpu.c:1122:6:vLD_BC_A	0	static
-gbcpu.c:1128:6:vLDs_a16_SP	16	static
 gbcpu.c:1140:6:vLD_DE_A	0	static
 gbcpu.c:1158:6:vLD_HLI_A	8	static
 gbcpu.c:1176:6:vLD_HLD_A	8	static
@@ -141,6 +140,7 @@ gbcpu.c:1161:6:vDEC_H	0	static
 gbcpu.c:1169:6:vDEC_L	0	static
 gbcpu.c:1187:6:vDEC_A	0	static
 gbcpu.c:1127:6:vRLCA	0	static
+gbcpu.c:1128:6:vLDs_a16_SP	16	static
 gbcpu.c:1129:6:vADDs_HL_BC	0	static
 gbcpu.c:1147:6:vADDs_HL_DE	0	static
 gbcpu.c:1165:6:vADDs_HL_HL	0	static

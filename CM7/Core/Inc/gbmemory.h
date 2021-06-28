@@ -28,6 +28,10 @@
 #define LY_ADDR   0xFF44
 #define LYC_ADDR  0xFF45
 #define BGP_ADDR  0xFF47
+#define OBP0_ADDR 0xFF48
+#define OBP1_ADDR 0xFF49
+#define WY_ADDR   0xFF4A
+#define WX_ADDR   0xFF4B
 
 #define IF_ADDR   0xFF0F
 #define IE_ADDR   0xFFFF
@@ -86,6 +90,7 @@ typedef struct{
 
 void vGBMemoryLoad(const void* data, uint32_t size);
 void vGBMemoryWrite(uint16_t address, uint8_t data);
+void vGBMemoryWriteShort(uint16_t address, uint16_t data);
 uint8_t ucGBMemoryRead(uint16_t address);
 uint16_t usGBMemoryReadShort(uint16_t address);
 void vGBMemorySetBit(uint16_t address, uint8_t bit);

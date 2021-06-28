@@ -49,8 +49,9 @@ void vCheckBGP();
 void LYC_check(uint8_t ly);
 void setMode(uint8_t mode);
 void vGBPPUDrawLine(uint8_t ly, uint8_t SCX, uint8_t SCY);
-void vCheckBackWinTileDataSel();
-void vCheckBackTileDisplaySel();
+uint16_t usGetBackWinTileDataSel();
+uint16_t usGetBackTileDisplaySel();
+uint16_t usGetWinTileDisplaySel();
 
 /**
  * @brief Zeros All Memory in the Frame Buffer
@@ -103,8 +104,6 @@ void gbPPUStep(){
 				setMode(MODE_2);
 			else if(tStatesTotal > 80 && tStatesTotal <= 252 && Mode != MODE_3){										// vram
 				vCheckBGP();
-				vCheckBackWinTileDataSel();
-				vCheckBackTileDisplaySel();
 				vGBPPUDrawLine(ly, ucGBMemoryRead(SCX_ADDR), ucGBMemoryRead(SCY_ADDR));
 
 				setMode(MODE_3);
@@ -145,8 +144,8 @@ void vCheckBGP(){
  * @note Background & Window Tile Data Select should be 0x9000 on a low 4th bit in a real Gameboy,
  * but it is much simpler to implement this way with emulation, the  0x400 offset is accounted for in getTileLineData()
  */
-void vCheckBackWinTileDataSel(){
-	BackWinTileDataAddr = (ucGBMemoryRead(LCDC_ADDR) & 0x10) ? TILE_DATA_UNSIGNED_ADDR : TILE_DATA_SIGNED_ADDR;
+uint16_t usGetBackWinTileDataSel(){
+	return (ucGBMemoryRead(LCDC_ADDR) & 0x10) ? TILE_DATA_UNSIGNED_ADDR : TILE_DATA_SIGNED_ADDR;
 }
 
 /**
@@ -155,8 +154,15 @@ void vCheckBackWinTileDataSel(){
  * Display Address to 0X9C00 on high or to 0x9800 on low.
  * @return Nothing
  */
-void vCheckBackTileDisplaySel(){
-	BackTileDisplayAddr = (ucGBMemoryRead(LCDC_ADDR) & 0x08) ? TILE_MAP_LOCATION_HIGH : TILE_MAP_LOCATION_LOW;
+uint16_t usGetBackTileDisplaySel(){
+	return (ucGBMemoryRead(LCDC_ADDR) & 0x08) ? TILE_MAP_LOCATION_HIGH : TILE_MAP_LOCATION_LOW;
+}
+
+/**
+ *
+ */
+uint16_t usGetWinTileDisplaySel(){
+	return (ucGBMemoryRead(LCDC_ADDR) & 0x40) ? TILE_MAP_LOCATION_HIGH : TILE_MAP_LOCATION_LOW;
 }
 
 /**
@@ -166,16 +172,13 @@ void vCheckBackTileDisplaySel(){
  * @param line_offset gives the line offset in the tile
  * @return uint16_t data containing the color information of each pixel of a particular line belonging to a tile in the Gameboy's VRAM
  */
-uint16_t getTileLineData(uint16_t tile_offset, uint8_t line_offset){
-	if (BackWinTileDataAddr == 0x8000){
-		return usGBMemoryReadShort(BackWinTileDataAddr + (ucGBMemoryRead(BackTileDisplayAddr + tile_offset) * 0x10) + line_offset);
-		//return usGBMemoryReadShort(0x8000 + 0x190 + line_offset);
+uint16_t getTileLineData(uint16_t tile_offset, uint8_t line_offset, uint16_t TileDataAddr, uint16_t DisplayAddr){
+	if (TileDataAddr == 0x8000){
+		return usGBMemoryReadShort(TileDataAddr + (ucGBMemoryRead(DisplayAddr + tile_offset) * 0x10) + line_offset);
 	}else{
-		int8_t temp  = (int8_t)(ucGBMemoryRead(BackTileDisplayAddr + tile_offset));
+		int8_t temp  = (int8_t)(ucGBMemoryRead(DisplayAddr + tile_offset));
 		uint16_t temp2 =( temp + 128) * 0x10;
-		return usGBMemoryReadShort(BackWinTileDataAddr + temp2 + line_offset);
-		//return usGBMemoryReadShort(BackWinTileDataAddr + (ucGBMemoryRead(0x9910) * 0x10) + line_offset);
-		//return usGBMemoryReadShort(0x8000 + 0x190 + line_offset);
+		return usGBMemoryReadShort(TileDataAddr + temp2 + line_offset);
 	}
 
 }
@@ -235,12 +238,12 @@ void update_buffer(uint16_t res, int pixelPos){
 
 }
 
-void vGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY){
+void vGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY, uint16_t TileDataAddr, uint16_t DisplayAddr){
 	uint16_t tile_offset = (((uint8_t)(SCY + ly) / 8) * 32) + (SCX / 8);			           // gives the address offset in the tile map
 	uint8_t line_offset = (((SCY % 8) + ly) % 8) * 2;										   // gives the line offset in the tile
 	uint8_t pixl_offset = SCX % 8;											                   // gives current pixel offset
 
-	uint16_t tile_data = getTileLineData(tile_offset, line_offset);                            // tile data holds tile line information
+	uint16_t tile_data = getTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);                            // tile data holds tile line information
 
 	for(int j = 0; j < 160; j++){
 
@@ -250,14 +253,36 @@ void vGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY){
 		if(pixl_offset == 8){
 			tile_offset++;
 			pixl_offset = 0;
-			tile_data = getTileLineData(tile_offset, line_offset);
+			tile_data = getTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);
 
 		}
 
 	}
 }
 
-void vGBPPUDrawLineWindow(uint8_t ly){
+void vGBPPUDrawLineWindow(uint8_t ly, uint8_t WX, uint8_t WY, uint16_t TileDataAddr, uint16_t DisplayAddr){
+	if(WY > ly || WY > 143 || WX > 166)
+		return;
+
+	uint16_t tile_offset = (((uint8_t)(ly - WY) / 8) * 32);			           // gives the address offset in the tile map
+	uint8_t line_offset = (((ly - WY) % 8)) * 2;										   // gives the line offset in the tile
+	uint8_t pixl_offset = (WX - 7) % 8;											                   // gives current pixel offset
+
+	uint16_t tile_data = getTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);                            // tile data holds tile line information
+
+	for(int j = (WX - 7); j < 160; j++){
+
+			update_buffer(((tile_data << pixl_offset) & 0x8080), j);
+			pixl_offset++;
+
+			if(pixl_offset == 8){
+				tile_offset++;
+				pixl_offset = 0;
+				tile_data = getTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);
+
+			}
+
+		}
 }
 
 void vGBPPUDrawLineObjects(){
@@ -273,10 +298,12 @@ void vGBPPUDrawLineObjects(){
  */
 void vGBPPUDrawLine(uint8_t ly, uint8_t SCX, uint8_t SCY){
 
+	uint16_t TileDataAddr = usGetBackWinTileDataSel();
+
 	if(ucGBMemoryRead(LCDC_ADDR) & 0x01){
-		vGBPPUDrawLineBackground(ly, SCX, SCY);
+		vGBPPUDrawLineBackground(ly, SCX, SCY, TileDataAddr, usGetBackTileDisplaySel());
 		if(ucGBMemoryRead(LCDC_ADDR) & 0x20)
-			vGBPPUDrawLineWindow(ly);
+			vGBPPUDrawLineWindow(ly, ucGBMemoryRead(WX_ADDR), ucGBMemoryRead(WY_ADDR), TileDataAddr, usGetWinTileDisplaySel());
 	}
 	if(ucGBMemoryRead(LCDC_ADDR) & 0x02)
 		vGBPPUDrawLineObjects();
