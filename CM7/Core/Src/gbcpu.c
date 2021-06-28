@@ -1347,7 +1347,7 @@ void vJP_Z_a16(){     customDuration = vGBFunctionJP_Z_a16(&reg.PC, &reg.F, conc
 void vPREFIX(){       ((void (*)(void))prefix_instructions[ucGBMemoryRead(reg.PC - 1)].instr)();}
 void vCALL_Z_a16(){   customDuration = vGBFunctionCALL_Z_a16(&reg.PC, &reg.F, &reg.SP);}
 void vCALL_a16(){     vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1));}
-void vADC_A_d8(){     vGBFunctionADD(&reg.A, &reg.F, ucGBMemoryRead(reg.PC - 1));}
+void vADC_A_d8(){     vGBFunctionADC(&reg.A, &reg.F, ucGBMemoryRead(reg.PC - 1));}
 void vRST_08H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0008;}
 
 /*********************0xDX*/
@@ -1486,7 +1486,7 @@ void vBIT_0_E(){      vGBFunctionBIT(reg.E, 0, &reg.F);}
 void vBIT_0_H(){      vGBFunctionBIT(reg.H, 0, &reg.F);}
 void vBIT_0_L(){      vGBFunctionBIT(reg.L, 0, &reg.F);}
 void vBIT_0_HL(){     vGBFunctionBIT(ucGBMemoryRead(reg.HL), 0, &reg.F);}
-void vBIT_0_A(){      vGBFunctionBIT(reg.A, 1, &reg.F);}
+void vBIT_0_A(){      vGBFunctionBIT(reg.A, 0, &reg.F);}
 void vBIT_1_B(){      vGBFunctionBIT(reg.B, 1, &reg.F);}
 void vBIT_1_C(){      vGBFunctionBIT(reg.C, 1, &reg.F);}
 void vBIT_1_D(){      vGBFunctionBIT(reg.D, 1, &reg.F);}

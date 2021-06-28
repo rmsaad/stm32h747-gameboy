@@ -32,6 +32,15 @@
 #include "Tetris.gb.h"
 #include "cpu_instrs.gb.h"
 #include "Alleyway.gb.h"
+#include "Test3.gb.h"
+#include "Test4.gb.h"
+#include "Test5.gb.h"
+#include "Test6.gb.h"
+#include "Test7.gb.h"
+#include "Test8.gb.h"
+#include "Test9.gb.h"
+#include "Test10.gb.h"
+#include "Test11.gb.h"
 //#include "audio_sample.bin.h"
 /* USER CODE END Includes */
 
@@ -73,8 +82,16 @@ LTDC_HandleTypeDef hltdc;
 extern const unsigned char Tetris_gb[];
 extern const unsigned char cpu_instrs_gb[];
 extern const unsigned char Alleyway_gb[];
-extern const unsigned char audio_sample_bin[];
-const unsigned char* rom = &Tetris_gb[0];
+extern const unsigned char Test3_gb[];  //Stuck
+extern const unsigned char Test4_gb[];  //Passed
+extern const unsigned char Test5_gb[];  //Passed
+extern const unsigned char Test6_gb[];  //Passed
+extern const unsigned char Test7_gb[];  //Stuck looping
+extern const unsigned char Test8_gb[];  //Stuck looping
+extern const unsigned char Test9_gb[];  //Passed
+extern const unsigned char Test10_gb[]; //Passed
+extern const unsigned char Test11_gb[]; //Passed
+const unsigned char* rom = &Test8_gb[0];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/

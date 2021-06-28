@@ -278,7 +278,6 @@ gbcpu.c:1269:6:vADD_A_L	0	static
 gbcpu.c:1270:6:vADD_A_HL	8	static
 gbcpu.c:1271:6:vADD_A_A	0	static
 gbcpu.c:1342:6:vADD_A_d8	8	static
-gbcpu.c:1350:6:vADC_A_d8	0	static
 gbcpu.c:1272:6:vADC_A_B	0	static
 gbcpu.c:1273:6:vADC_A_C	0	static
 gbcpu.c:1274:6:vADC_A_D	0	static
@@ -287,6 +286,7 @@ gbcpu.c:1276:6:vADC_A_H	0	static
 gbcpu.c:1277:6:vADC_A_L	0	static
 gbcpu.c:1278:6:vADC_A_HL	8	static
 gbcpu.c:1279:6:vADC_A_A	0	static
+gbcpu.c:1350:6:vADC_A_d8	8	static
 gbcpu.c:1282:6:vSUB_B	0	static
 gbcpu.c:1283:6:vSUB_C	0	static
 gbcpu.c:1284:6:vSUB_D	0	static
@@ -415,7 +415,6 @@ gbcpu.c:1486:6:vBIT_0_H	0	static
 gbcpu.c:1487:6:vBIT_0_L	0	static
 gbcpu.c:1488:6:vBIT_0_HL	8	static
 gbcpu.c:1489:6:vBIT_0_A	0	static
-gbcpu.c:1497:6:vBIT_1_A	0	static
 gbcpu.c:1490:6:vBIT_1_B	0	static
 gbcpu.c:1491:6:vBIT_1_C	0	static
 gbcpu.c:1492:6:vBIT_1_D	0	static
@@ -423,6 +422,7 @@ gbcpu.c:1493:6:vBIT_1_E	0	static
 gbcpu.c:1494:6:vBIT_1_H	0	static
 gbcpu.c:1495:6:vBIT_1_L	0	static
 gbcpu.c:1496:6:vBIT_1_HL	8	static
+gbcpu.c:1497:6:vBIT_1_A	0	static
 gbcpu.c:1500:6:vBIT_2_B	0	static
 gbcpu.c:1501:6:vBIT_2_C	0	static
 gbcpu.c:1502:6:vBIT_2_D	0	static
