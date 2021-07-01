@@ -1718,6 +1718,7 @@ void vGBCPUInterruptHandler(){
 		if(ucGBMemoryRead(IE_ADDR) & ucGBMemoryRead(IF_ADDR) & 0x1F){
 			ucInterruptMasterEnable = 0;
 			ucOneCycleInterruptDelay = 0;
+			ucHALTED = 0;
 			uint8_t InterruptSetandEn = ucGBMemoryRead(IE_ADDR) & ucGBMemoryRead(IF_ADDR);
 			if      (InterruptSetandEn &  VBLANK_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 0); vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = VBLANK_VECTOR;
 			}else if(InterruptSetandEn & LCDSTAT_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 1); vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = LCDSTAT_VECTOR;
@@ -1739,22 +1740,24 @@ void vGBCPUinstr(uint8_t opcode){
 	if(reg.PC == 0x7f86){
 		num++;
 	}
-	vGBMemorySetOP(opcode);
 
-	reg.PC += (opcode != 0xCB) ? instructions[opcode].bytes : prefix_instructions[ucGBMemoryRead(reg.PC + 1)].bytes;
-	((void (*)(void))instructions[opcode].instr)();
+	if(!ucHALTED){
 
-	if (opcode == 0xCB){
-		tStates = prefix_instructions[ucGBMemoryRead(reg.PC - 1)].Tstate;
-	}else if(instructions[opcode].Tstate == 255){
-		tStates = customDuration;
-	}else{
-		tStates = instructions[opcode].Tstate;
+		vGBMemorySetOP(opcode);
+
+		reg.PC += (opcode != 0xCB) ? instructions[opcode].bytes : prefix_instructions[ucGBMemoryRead(reg.PC + 1)].bytes;
+		((void (*)(void))instructions[opcode].instr)();
+
+		if (opcode == 0xCB){
+			tStates = prefix_instructions[ucGBMemoryRead(reg.PC - 1)].Tstate;
+		}else if(instructions[opcode].Tstate == 255){
+			tStates = customDuration;
+		}else{
+			tStates = instructions[opcode].Tstate;
+		}
 	}
 
 	if(ucInterruptMasterEnable == 1)
 			vGBCPUInterruptHandler();
 
-	//if( print == 1)
-	//	vGBMemoryPrint();
 }

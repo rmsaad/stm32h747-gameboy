@@ -16,8 +16,14 @@
 #define MODE_2 2    // accessing OAM
 #define MODE_3 3    // accessing VRAM
 
-#define CARTRAM_BASE 0xA000
-#define VRAM_BASE    0x8000
+#define CARTROM_BANK0 0x0000
+#define CARTROM_BANKX 0x4000
+#define VRAM_BASE     0x8000
+#define CARTRAM_BASE  0xA000
+#define GBRAM_BANK0   0xC000
+#define ECHORAM_BASE  0xE000
+#define OAM_BASE      0xFE00
+#define IO_BASE       0xFF00
 
 // Drawing Related Register Addresses
 #define JOY_ADDR  0xFF00

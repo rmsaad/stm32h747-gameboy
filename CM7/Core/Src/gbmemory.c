@@ -64,31 +64,31 @@ uint8_t vGBMemoryJoypad(){
 	uint32_t value = 0;
 	uint8_t mask = 0;
 
-	if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) != 0){
-		if(joypadSELbut == 0x20){
-			return 0xC0 | (0xF^0x8) | (joypadSELbut | joypadSELdir);
-		}
+//	if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) != 0){
+//		if(joypadSELbut == 0x20){
+//			return 0xC0 | (0xF^0x8) | (joypadSELbut | joypadSELdir);
+//		}
+//	}
+
+	if(joypadSELdir == 0x10){
+		HAL_ADC_Start(&hadc3);
+		HAL_ADC_PollForConversion(&hadc3, HAL_MAX_DELAY);
+	    value = HAL_ADC_GetValue(&hadc3) >> 12;
+	}else if(joypadSELbut == 0x20){
+		HAL_ADC_Start(&hadc1);
+		HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+		value = HAL_ADC_GetValue(&hadc1) >> 12;
 	}
 
-//	if(joypadSELdir == 0x10){
-//		HAL_ADC_Start(&hadc3);
-//		HAL_ADC_PollForConversion(&hadc3, HAL_MAX_DELAY);
-//	    value = HAL_ADC_GetValue(&hadc3) >> 12;
-//	}else if(joypadSELbut == 0x20){
-//		HAL_ADC_Start(&hadc1);
-//		HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
-//		value = HAL_ADC_GetValue(&hadc1) >> 12;
-//	}
-
-//	if((value >> 3) & 0x1){
-//		mask = (0x4);
-//	}else if((value & 0x6) == 0x6){
-//		mask = (0x8);
-//	}else if(value > 0x2){
-//	    mask = (0x2);
-//	}else{
-//		mask = (0x1);
-//	}
+	if((value >> 3) & 0x1){
+		mask = (0x4);
+	}else if((value & 0x6) == 0x6){
+		mask = (0x8);
+	}else if(value > 0x2){
+	    mask = (0x2);
+	}else{
+		mask = (0x1);
+	}
 
 	return 0xC0 | (0xF^mask) | (joypadSELbut | joypadSELdir);
 }
@@ -110,10 +110,10 @@ void vGBMemoryWrite(uint16_t address, uint8_t data){
 	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
 		return;
 
-	if(address >= 0xE000 && address < 0xFE00)
+	if(address >= ECHORAM_BASE && address < OAM_BASE)
 		mem.ram[address - 0x2000] = data;
 
-	if((address >= 0x0000 && address < 0x8000))
+	if((address >= CARTROM_BANK0 && address < VRAM_BASE))
 		return;
 	mem.ram[address] = data;
 }
@@ -131,8 +131,11 @@ void vGBMemorySetBit(uint16_t address, uint8_t bit){
 	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
 		return;
 
-	if(address >= 0xE000 && address < 0xFE00)
+	if(address >= ECHORAM_BASE && address < OAM_BASE)
 		mem.ram[address - 0x2000] |= (0x1 << bit);
+
+	if((address >= CARTROM_BANK0 && address < VRAM_BASE))
+		return;
 
 	mem.ram[address] |= (0x1 << bit);
 }
@@ -146,8 +149,11 @@ void vGBMemoryResetBit(uint16_t address, uint8_t bit){
 	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
 		return;
 
-	if(address >= 0xE000 && address < 0xFE00)
+	if(address >= ECHORAM_BASE && address < OAM_BASE)
 		mem.ram[address - 0x2000] &= ~(0x1 << bit);
+
+	if((address >= CARTROM_BANK0 && address < VRAM_BASE))
+		return;
 
 	mem.ram[address] &= ~(0x1 << bit);
 }
@@ -162,7 +168,7 @@ uint8_t ucGBMemoryRead(uint16_t address){
 		return vGBMemoryJoypad();
 	}
 
-	if(address >= 0xE000 && address < 0xFE00)
+	if(address >= ECHORAM_BASE && address < OAM_BASE)
 		return mem.ram[address - 0x2000];
 
 	return mem.ram[address];

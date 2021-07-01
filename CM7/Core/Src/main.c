@@ -91,7 +91,7 @@ extern const unsigned char Test8_gb[];  //Passed
 extern const unsigned char Test9_gb[];  //Passed
 extern const unsigned char Test10_gb[]; //Passed
 extern const unsigned char Test11_gb[]; //Passed
-const unsigned char* rom = &Alleyway_gb[0];
+const unsigned char* rom = &Tetris_gb[0];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -110,6 +110,23 @@ static void vLEDInit(void);
 /* USER CODE BEGIN 0 */
 const unsigned char* getRomPointer(){
 	return rom;
+}
+
+void testController(){
+	while(1){
+		 	 HAL_ADC_Start(&hadc3);
+			 HAL_ADC_PollForConversion(&hadc3, HAL_MAX_DELAY);
+			 uint32_t value = HAL_ADC_GetValue(&hadc3);
+			 HAL_ADC_Start(&hadc1);
+			 HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+			 uint32_t value2 = HAL_ADC_GetValue(&hadc1);
+			 char temp[15];
+			 sprintf(temp,"test value %x", (unsigned int)value);
+			 UTIL_LCD_DisplayStringAt(500, LINE(2), (uint8_t *) temp, LEFT_MODE);
+			 sprintf(temp,"test value %x", (unsigned int)value2);
+			 UTIL_LCD_DisplayStringAt(500, LINE(3), (uint8_t *) temp, LEFT_MODE);
+			 HAL_Delay(100);
+	}
 }
 /* USER CODE END 0 */
 
@@ -181,12 +198,13 @@ Error_Handler();
   vLEDInit();
   MX_ADC1_Init();
   MX_ADC3_Init();
+
   BSP_LCD_Init(0, LCD_ORIENTATION_LANDSCAPE);
 
   UTIL_LCD_SetFuncDriver(&LCD_Driver);
   UTIL_LCD_SetLayer(0);
   UTIL_LCD_Clear(UTIL_LCD_COLOR_WHITE);
-  UTIL_LCD_FillRect(0, 0, 160*3, 480, UTIL_LCD_COLOR_BLACK);
+  //UTIL_LCD_FillRect(0, 0, 160*3, 480, UTIL_LCD_COLOR_BLACK);
 
   UTIL_LCD_SetBackColor(UTIL_LCD_COLOR_WHITE);
   UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_BLUE);
@@ -201,7 +219,6 @@ Error_Handler();
 //  BSP_AUDIO_OUT_Init(0, &AudioInit);
 //  size_t n = sizeof(audio_sample_bin)/sizeof(audio_sample_bin[0]);
 //  uint64_t data = BSP_AUDIO_OUT_Play(0, &audio_sample_bin[0], 130000);
-
 
   vGBMemoryLoad(rom, 32768);														// load rom into memory
   vGBMemoryLoad(dmg_boot_bin, 256);													// load boot rom into appropriate place in memory map
