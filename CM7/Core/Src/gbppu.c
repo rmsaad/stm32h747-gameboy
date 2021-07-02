@@ -44,7 +44,7 @@ uint32_t OBP1ColorToPalette[4];
 
 // use this to access d2_sram
 uint32_t *gb_frame = (uint32_t*)SRAM1;
-uint8_t scaleAmount = 2;
+uint8_t scaleAmount = 3;
 
 /*Function Prototypes*/
 
@@ -57,13 +57,12 @@ void vGBPPUDrawLine(uint8_t ly, uint8_t SCX, uint8_t SCY);
 uint16_t usGetBackWinTileDataSel();
 uint16_t usGetBackTileDisplaySel();
 uint16_t usGetWinTileDisplaySel();
-
 /**
  * @brief Zeros All Memory in the Frame Buffer
  * @return Nothing
  */
 void vSetFrameBuffer(){
-	memset(gb_frame, 0, 160*144*4*3);
+	memset(gb_frame, 0, 160 * 144 * 4 * scaleAmount);
 }
 
 /**
@@ -253,6 +252,7 @@ void setMode(uint8_t mode){
  * @param amt
  */
 void update_buffer(uint16_t res, int pixelPos){
+	pixelPos *= scaleAmount;
 	for (int yStretch = 1; yStretch <= scaleAmount; yStretch++){
 		for(int xStretch = 0; xStretch < scaleAmount; xStretch++){
 			switch (res){
@@ -327,17 +327,17 @@ void vGBPPUDrawLineWindow(uint8_t ly, uint8_t WX, uint8_t WY, uint16_t TileDataA
 
 void vGBPPUDrawLineObjects(uint8_t ly){
 	for(int obj = 0; obj < 40; obj++){
-		uint8_t yCoordinate = ucGBMemoryRead(OAM_BASE + (obj*4)) - 14;
+		uint8_t yCoordinate = ucGBMemoryRead(OAM_BASE + (obj*4)) - 16;
 		uint8_t xCoordinate = ucGBMemoryRead(OAM_BASE + (obj*4) + 1) - 8;
 		uint8_t dataTile    = ucGBMemoryRead(OAM_BASE + (obj*4) + 2);
-		uint8_t objPrio     = checkbit((OAM_BASE + (obj*4) + 3), 7);
-		uint8_t objXFlip    = checkbit((OAM_BASE + (obj*4) + 3), 6);
-		uint8_t objYFlip    = checkbit((OAM_BASE + (obj*4) + 3), 5);
-		uint8_t objPalette  = checkbit((OAM_BASE + (obj*4) + 3), 4);
+		uint8_t objPrio     = checkbit(ucGBMemoryRead(OAM_BASE + (obj*4) + 3), 7);
+		uint8_t objYFlip    = checkbit(ucGBMemoryRead(OAM_BASE + (obj*4) + 3), 6);
+		uint8_t objXFlip    = checkbit(ucGBMemoryRead(OAM_BASE + (obj*4) + 3), 5);
+		uint8_t objPalette  = checkbit(ucGBMemoryRead(OAM_BASE + (obj*4) + 3), 4);
 
 		if(yCoordinate <= ly && (yCoordinate + 8) > ly){
 
-			uint8_t lineOffset = objYFlip ? (7 - (ly - yCoordinate)) : (ly - yCoordinate);
+			uint8_t lineOffset = objYFlip ? (7 - (ly - yCoordinate)) * 2 : (ly - yCoordinate) * 2;
 			uint16_t tile_data = usGBMemoryReadShort(TILE_DATA_UNSIGNED_ADDR + (dataTile * 0x10) + lineOffset);
 			uint32_t *palette = (objPalette) ? &OBP1ColorToPalette[0] : &OBP0ColorToPalette[0];
 
@@ -353,7 +353,7 @@ void vGBPPUDrawLineObjects(uint8_t ly){
 					case 0x8080: pixelData = palette[3]; break;
 				}
 
-				if(xCoordinate + pixelNum >= 0 && (xCoordinate + pixelNum) < 160 && pixelData != 0){
+				if(pixelData != 0 && xCoordinate + pixelNum >= 0 && (xCoordinate + pixelNum) < 160){
 					updateBufferObj(pixelData, xCoordinate + pixelNum);
 				}
 			}

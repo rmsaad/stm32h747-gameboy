@@ -80,15 +80,20 @@ uint8_t vGBMemoryJoypad(){
 		value = HAL_ADC_GetValue(&hadc1) >> 12;
 	}
 
-	if((value >> 3) & 0x1){
-		mask = (0x4);
-	}else if((value & 0x6) == 0x6){
-		mask = (0x8);
-	}else if(value > 0x2){
-	    mask = (0x2);
-	}else{
-		mask = (0x1);
+	if(value == 0xf)
+		mask = (0x0);
+	else{
+		if((value >> 3) & 0x1){
+			mask = (0x4);
+		}else if((value & 0x6) == 0x6){
+			mask = (0x8);
+		}else if(value > 0x2){
+			mask = (0x2);
+		}else{
+			mask = (0x1);
+		}
 	}
+
 
 	return 0xC0 | (0xF^mask) | (joypadSELbut | joypadSELdir);
 }
@@ -101,12 +106,14 @@ uint8_t vGBMemoryJoypad(){
  */
 void vGBMemoryWrite(uint16_t address, uint8_t data){
 	if(address == JOY_ADDR){
-		if((data >> 4) & 0x1)
-			joypadSELdir = data & 0x10;
-		else if((data >> 4) & 0x2)
-			joypadSELbut = data & 0x20;
-		return;
+		joypadSELdir = data & 0x10;
+		joypadSELbut = data & 0x20;
 	}
+
+	if(address == DMA_ADDR){
+		for(uint16_t i = 0; i < 40*4; i++) vGBMemoryWrite(OAM_BASE + i, ucGBMemoryRead((data << 8) + i));
+	}
+
 	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
 		return;
 

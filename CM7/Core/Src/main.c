@@ -29,6 +29,7 @@
 #include "gbppu.h"
 #include "stm32h7_display.h"
 #include "dmg_boot.bin.h"
+#include "bgbtest.gb.h"
 #include "Tetris.gb.h"
 #include "cpu_instrs.gb.h"
 #include "Alleyway.gb.h"
@@ -91,7 +92,8 @@ extern const unsigned char Test8_gb[];  //Passed
 extern const unsigned char Test9_gb[];  //Passed
 extern const unsigned char Test10_gb[]; //Passed
 extern const unsigned char Test11_gb[]; //Passed
-const unsigned char* rom = &Tetris_gb[0];
+extern const unsigned char bgbtest_gb[]; //Passed
+const unsigned char* rom = &Alleyway_gb[0];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/

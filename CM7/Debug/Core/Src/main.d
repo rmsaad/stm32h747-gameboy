@@ -66,11 +66,11 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\utilities\fonts\fonts.h \
  ../Core/Inc/gbmemory.h ../Core/Inc/gbcpu.h ../Core/Inc/gbppu.h \
  ../Core/Inc/stm32h7_display.h ../Core/Inc/dmg_boot.bin.h \
- ../Core/Inc/Tetris.gb.h ../Core/Inc/cpu_instrs.gb.h \
- ../Core/Inc/Alleyway.gb.h ../Core/Inc/Test3.gb.h ../Core/Inc/Test4.gb.h \
- ../Core/Inc/Test5.gb.h ../Core/Inc/Test6.gb.h ../Core/Inc/Test7.gb.h \
- ../Core/Inc/Test8.gb.h ../Core/Inc/Test9.gb.h ../Core/Inc/Test10.gb.h \
- ../Core/Inc/Test11.gb.h
+ ../Core/Inc/bgbtest.gb.h ../Core/Inc/Tetris.gb.h \
+ ../Core/Inc/cpu_instrs.gb.h ../Core/Inc/Alleyway.gb.h \
+ ../Core/Inc/Test3.gb.h ../Core/Inc/Test4.gb.h ../Core/Inc/Test5.gb.h \
+ ../Core/Inc/Test6.gb.h ../Core/Inc/Test7.gb.h ../Core/Inc/Test8.gb.h \
+ ../Core/Inc/Test9.gb.h ../Core/Inc/Test10.gb.h ../Core/Inc/Test11.gb.h
 
 ../Core/Inc/main.h:
 
@@ -213,6 +213,8 @@ c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\utilities\fonts\fonts.
 ../Core/Inc/stm32h7_display.h:
 
 ../Core/Inc/dmg_boot.bin.h:
+
+../Core/Inc/bgbtest.gb.h:
 
 ../Core/Inc/Tetris.gb.h:
 

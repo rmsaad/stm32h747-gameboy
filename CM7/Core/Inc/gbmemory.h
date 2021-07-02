@@ -33,6 +33,7 @@
 #define SCX_ADDR  0xFF43
 #define LY_ADDR   0xFF44
 #define LYC_ADDR  0xFF45
+#define DMA_ADDR  0xFF46
 #define BGP_ADDR  0xFF47
 #define OBP0_ADDR 0xFF48
 #define OBP1_ADDR 0xFF49

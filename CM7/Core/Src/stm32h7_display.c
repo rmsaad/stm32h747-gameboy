@@ -88,7 +88,7 @@ void CopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t
       if (HAL_DMA2D_Start(&hdma2d, source, destination, xsize, ysize) == HAL_OK)
       {
         /* Polling For DMA transfer */
-        HAL_DMA2D_PollForTransfer(&hdma2d, 100);
+        HAL_DMA2D_PollForTransfer(&hdma2d, 10);
       }
     }
   }
