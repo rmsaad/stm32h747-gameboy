@@ -122,6 +122,7 @@ void vGBMemoryWrite(uint16_t address, uint8_t data){
 
 	if((address >= CARTROM_BANK0 && address < VRAM_BASE))
 		return;
+
 	mem.ram[address] = data;
 }
 

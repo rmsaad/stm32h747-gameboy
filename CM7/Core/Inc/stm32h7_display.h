@@ -8,6 +8,7 @@
 #ifndef INC_STM32H7_DISPLAY_H_
 #define INC_STM32H7_DISPLAY_H_
 
+void stm32h7_displaySetPalette();
 void displayFrameBuffer(uint32_t* gb_frame, uint8_t scaleAmount);
 void displayDoubleBuffer();
 void CopyBuffer(uint32_t *pSrc,

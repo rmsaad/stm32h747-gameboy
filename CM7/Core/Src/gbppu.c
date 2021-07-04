@@ -37,15 +37,16 @@ uint8_t Mode;
 uint32_t tStatesTotal;
 
 uint8_t ly = 0;
-uint32_t BGPColorToPalette[4];
-uint32_t OBP0ColorToPalette[4];
-uint32_t OBP1ColorToPalette[4];
+uint8_t BGPColorToPalette[4];
+uint8_t OBP0ColorToPalette[4];
+uint8_t OBP1ColorToPalette[4];
 
 
 // use this to access d2_sram
-uint32_t *gb_frame = (uint32_t*)SRAM1;
+uint8_t *gb_frame = (uint8_t*)SRAM1;
 uint8_t scaleAmount = 3;
-
+uint32_t curLine;
+uint32_t lineadd;
 /*Function Prototypes*/
 
 void vCheckBGP();
@@ -128,11 +129,11 @@ void vCheckBGP(){
 	uint8_t BGP = ucGBMemoryRead(BGP_ADDR);
 	for(int i = 0; i < 4; i++){
 		switch ((BGP >> (i*2)) & 0x03) {
-			case 0: BGPColorToPalette[i] = LIGHTEST_GREEN; break;
-			case 1: BGPColorToPalette[i] = LIGHT_GREEN;    break;
-			case 2: BGPColorToPalette[i] = DARK_GREEN;     break;
-			case 3: BGPColorToPalette[i] = DARKEST_GREEN;  break;
-			default:                                       break;
+			case 0: BGPColorToPalette[i] = 1;  break;
+			case 1: BGPColorToPalette[i] = 2;  break;
+			case 2: BGPColorToPalette[i] = 3;  break;
+			case 3: BGPColorToPalette[i] = 4;  break;
+			default:                           break;
 		}
 
 	}
@@ -143,11 +144,11 @@ void vCheckOBP0(){
 	uint8_t BGP = ucGBMemoryRead(OBP0_ADDR);
 	for(int i = 0; i < 4; i++){
 		switch ((BGP >> (i*2)) & 0x03) {
-			case 0: OBP0ColorToPalette[i] = 0;              break;
-			case 1: OBP0ColorToPalette[i] = LIGHT_GREEN;    break;
-			case 2: OBP0ColorToPalette[i] = DARK_GREEN;     break;
-			case 3: OBP0ColorToPalette[i] = DARKEST_GREEN;  break;
-			default:                                        break;
+			case 0: OBP0ColorToPalette[i] = 0;    break;
+			case 1: OBP0ColorToPalette[i] = 2;    break;
+			case 2: OBP0ColorToPalette[i] = 3;    break;
+			case 3: OBP0ColorToPalette[i] = 4;    break;
+			default:                              break;
 		}
 
 	}
@@ -157,11 +158,11 @@ void vCheckOBP1(){
 	uint8_t BGP = ucGBMemoryRead(OBP1_ADDR);
 	for(int i = 0; i < 4; i++){
 		switch ((BGP >> (i*2)) & 0x03) {
-			case 0: OBP1ColorToPalette[i] = 0;              break;
-			case 1: OBP1ColorToPalette[i] = LIGHT_GREEN;    break;
-			case 2: OBP1ColorToPalette[i] = DARK_GREEN;     break;
-			case 3: OBP1ColorToPalette[i] = DARKEST_GREEN;  break;
-			default:                                        break;
+			case 0: OBP1ColorToPalette[i] = 0;  break;
+			case 1: OBP1ColorToPalette[i] = 2;  break;
+			case 2: OBP1ColorToPalette[i] = 3;  break;
+			case 3: OBP1ColorToPalette[i] = 4;  break;
+			default:                            break;
 		}
 
 	}
@@ -245,36 +246,10 @@ void setMode(uint8_t mode){
 	}
 }
 
-/**
- *
- * @param res
- * @param j
- * @param amt
- */
-void update_buffer(uint16_t res, int pixelPos){
-	pixelPos *= scaleAmount;
-	for (int yStretch = 1; yStretch <= scaleAmount; yStretch++){
-		for(int xStretch = 0; xStretch < scaleAmount; xStretch++){
-			switch (res){
-					case 0x0000: gb_frame[pixelPos + xStretch + (scaleAmount * ly * scaleAmount * 160) + (scaleAmount * 160 * yStretch)] = BGPColorToPalette[0]; break;
-					case 0x0080: gb_frame[pixelPos + xStretch + (scaleAmount * ly * scaleAmount * 160) + (scaleAmount * 160 * yStretch)] = BGPColorToPalette[1]; break;
-					case 0x8000: gb_frame[pixelPos + xStretch + (scaleAmount * ly * scaleAmount * 160) + (scaleAmount * 160 * yStretch)] = BGPColorToPalette[2]; break;
-					case 0x8080: gb_frame[pixelPos + xStretch + (scaleAmount * ly * scaleAmount * 160) + (scaleAmount * 160 * yStretch)] = BGPColorToPalette[3]; break;
-					default: break;
-			}
-		}
-
-	}
-
-}
-
 void updateBufferObj(uint32_t data, int pixelPos){
 	pixelPos *= scaleAmount;
-		for (int yStretch = 1; yStretch <= scaleAmount; yStretch++){
-			for(int xStretch = 0; xStretch < scaleAmount; xStretch++){
-				gb_frame[pixelPos + xStretch + (scaleAmount * ly * scaleAmount * 160) + (scaleAmount * 160 * yStretch)] = data;
-			}
-
+		for(int xStretch = 0; xStretch < scaleAmount; xStretch++){
+			gb_frame[pixelPos + xStretch + (curLine) + (lineadd)] = data;
 		}
 }
 
@@ -287,7 +262,16 @@ void vGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY, uint16_t Til
 
 	for(int j = 0; j < 160; j++){
 
-		update_buffer(((tile_data << pixl_offset) & 0x8080), j);
+		uint8_t pixelData;
+
+		switch (((tile_data << pixl_offset) & 0x8080)) {
+			case 0x0000: pixelData = BGPColorToPalette[0]; break;
+			case 0x0080: pixelData = BGPColorToPalette[1]; break;
+			case 0x8000: pixelData = BGPColorToPalette[2]; break;
+			case 0x8080: pixelData = BGPColorToPalette[3]; break;
+		}
+		updateBufferObj(pixelData, j);
+
 		pixl_offset++;
 
 		if(pixl_offset == 8){
@@ -311,8 +295,15 @@ void vGBPPUDrawLineWindow(uint8_t ly, uint8_t WX, uint8_t WY, uint16_t TileDataA
 	uint16_t tile_data = getTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);                            // tile data holds tile line information
 
 	for(int j = (WX - 7); j < 160; j++){
+		uint8_t pixelData = 0;
 
-			update_buffer(((tile_data << pixl_offset) & 0x8080), j);
+		switch (((tile_data << pixl_offset) & 0x8080)) {
+			case 0x0000: pixelData = BGPColorToPalette[0]; break;
+			case 0x0080: pixelData = BGPColorToPalette[1]; break;
+			case 0x8000: pixelData = BGPColorToPalette[2]; break;
+			case 0x8080: pixelData = BGPColorToPalette[3]; break;
+		}
+		updateBufferObj(pixelData, j);
 			pixl_offset++;
 
 			if(pixl_offset == 8){
@@ -339,12 +330,12 @@ void vGBPPUDrawLineObjects(uint8_t ly){
 
 			uint8_t lineOffset = objYFlip ? (7 - (ly - yCoordinate)) * 2 : (ly - yCoordinate) * 2;
 			uint16_t tile_data = usGBMemoryReadShort(TILE_DATA_UNSIGNED_ADDR + (dataTile * 0x10) + lineOffset);
-			uint32_t *palette = (objPalette) ? &OBP1ColorToPalette[0] : &OBP0ColorToPalette[0];
+			uint8_t *palette = (objPalette) ? &OBP1ColorToPalette[0] : &OBP0ColorToPalette[0];
 
 			for(int pixelNum = 0; pixelNum < 8; pixelNum++){
 
 				uint16_t colorInfo = (objXFlip) ? (((tile_data >> pixelNum) & 0x0101) << 7) : ((tile_data << pixelNum) & 0x8080);
-				uint32_t pixelData;
+				uint8_t pixelData = 0;
 
 				switch (colorInfo) {
 					case 0x0000: pixelData = palette[0]; break;
@@ -376,6 +367,8 @@ void vGBPPUDrawLine(uint8_t ly, uint8_t SCX, uint8_t SCY){
 	vCheckOBP0();
 	vCheckOBP1();
 	uint16_t TileDataAddr = usGetBackWinTileDataSel();
+	curLine = ly * scaleAmount * scaleAmount * 160;
+	lineadd = scaleAmount * 160;
 
 	if(ucGBMemoryRead(LCDC_ADDR) & 0x01){
 		vGBPPUDrawLineBackground(ly, SCX, SCY, TileDataAddr, usGetBackTileDisplaySel());
@@ -384,6 +377,10 @@ void vGBPPUDrawLine(uint8_t ly, uint8_t SCX, uint8_t SCY){
 	}
 	if(ucGBMemoryRead(LCDC_ADDR) & 0x02)
 		vGBPPUDrawLineObjects(ly);
+
+	// fix this later
+	memcpy(&gb_frame[curLine + lineadd + lineadd], &gb_frame[curLine+ lineadd], lineadd);
+	memcpy(&gb_frame[curLine + lineadd + lineadd + lineadd], &gb_frame[curLine + lineadd], lineadd);
 }
 
 

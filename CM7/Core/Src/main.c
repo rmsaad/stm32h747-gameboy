@@ -93,7 +93,7 @@ extern const unsigned char Test9_gb[];  //Passed
 extern const unsigned char Test10_gb[]; //Passed
 extern const unsigned char Test11_gb[]; //Passed
 extern const unsigned char bgbtest_gb[]; //Passed
-const unsigned char* rom = &Alleyway_gb[0];
+const unsigned char* rom = &Tetris_gb[0];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -200,6 +200,7 @@ Error_Handler();
   vLEDInit();
   MX_ADC1_Init();
   MX_ADC3_Init();
+  stm32h7_displaySetPalette();
 
   BSP_LCD_Init(0, LCD_ORIENTATION_LANDSCAPE);
 

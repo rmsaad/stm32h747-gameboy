@@ -3,9 +3,9 @@ gbmemory.c:41:6:vGBMemoryInit	4	static
 gbmemory.c:53:6:vGBMemoryLoad	0	static
 gbmemory.c:63:9:vGBMemoryJoypad	16	static
 gbmemory.c:107:6:vGBMemoryWrite	32	static
-gbmemory.c:128:6:vGBMemoryWriteShort	16	static
-gbmemory.c:137:6:vGBMemorySetBit	4	static
-gbmemory.c:155:6:vGBMemoryResetBit	8	static
-gbmemory.c:173:9:ucGBMemoryRead	0	static
-gbmemory.c:190:10:usGBMemoryReadShort	0	static
-gbmemory.c:197:6:vGBMemoryPrint	32	static
+gbmemory.c:129:6:vGBMemoryWriteShort	16	static
+gbmemory.c:138:6:vGBMemorySetBit	4	static
+gbmemory.c:156:6:vGBMemoryResetBit	8	static
+gbmemory.c:174:9:ucGBMemoryRead	0	static
+gbmemory.c:191:10:usGBMemoryReadShort	0	static
+gbmemory.c:198:6:vGBMemoryPrint	32	static
