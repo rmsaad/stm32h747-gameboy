@@ -1737,7 +1737,7 @@ void vGBCPUInterruptHandler(){
 
 void vGBCPUinstr(uint8_t opcode){
 
-	if(reg.PC == 0x7f86){
+	if(reg.PC == 0xb0000 && opcode == 0x24AE){
 		num++;
 	}
 

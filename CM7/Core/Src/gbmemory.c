@@ -114,8 +114,8 @@ void vGBMemoryWrite(uint16_t address, uint8_t data){
 		for(uint16_t i = 0; i < 40*4; i++) vGBMemoryWrite(OAM_BASE + i, ucGBMemoryRead((data << 8) + i));
 	}
 
-	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
-		return;
+//	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
+//		return;
 
 	if(address >= ECHORAM_BASE && address < OAM_BASE)
 		mem.ram[address - 0x2000] = data;
@@ -136,8 +136,8 @@ void vGBMemoryWriteShort(uint16_t address, uint16_t data){
  * @param bit
  */
 void vGBMemorySetBit(uint16_t address, uint8_t bit){
-	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
-		return;
+//	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
+//		return;
 
 	if(address >= ECHORAM_BASE && address < OAM_BASE)
 		mem.ram[address - 0x2000] |= (0x1 << bit);
@@ -154,8 +154,8 @@ void vGBMemorySetBit(uint16_t address, uint8_t bit){
  * @param bit
  */
 void vGBMemoryResetBit(uint16_t address, uint8_t bit){
-	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
-		return;
+//	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
+//		return;
 
 	if(address >= ECHORAM_BASE && address < OAM_BASE)
 		mem.ram[address - 0x2000] &= ~(0x1 << bit);

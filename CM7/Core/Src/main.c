@@ -93,7 +93,8 @@ extern const unsigned char Test9_gb[];  //Passed
 extern const unsigned char Test10_gb[]; //Passed
 extern const unsigned char Test11_gb[]; //Passed
 extern const unsigned char bgbtest_gb[]; //Passed
-const unsigned char* rom = &Tetris_gb[0];
+const unsigned char* rom = &Alleyway_gb[0];
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -102,6 +103,7 @@ void PeriphCommonClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_ADC1_Init(void);
 static void MX_ADC3_Init(void);
+static void MPU_Config(void);
 /* USER CODE BEGIN PFP */
 void Error_Handler(void);
 static void vLEDInit(void);
@@ -157,11 +159,12 @@ int main(void)
   /* MCU Configuration--------------------------------------------------------*/
 
   /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  MPU_Config();
   HAL_Init();
 
   /* USER CODE BEGIN Init */
   /* Enable I-Cache */
-    SCB_EnableICache();
+  SCB_EnableICache();
 
   /* Enable D-Cache */
   SCB_EnableDCache();
@@ -333,6 +336,31 @@ void SystemClock_Config(void)
   HAL_EnableCompensationCell();
 }
 
+static void MPU_Config(void)
+{
+	MPU_Region_InitTypeDef MPU_InitStruct;
+
+	/* Disable the MPU */
+	HAL_MPU_Disable();
+
+	/* Configure the MPU attributes as WT for SDRAM */
+	MPU_InitStruct.Enable = MPU_REGION_ENABLE;
+	MPU_InitStruct.BaseAddress = SDRAM_DEVICE_ADDR;
+	MPU_InitStruct.Size = MPU_REGION_SIZE_32MB;
+	MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;
+	MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
+	MPU_InitStruct.IsCacheable = MPU_ACCESS_CACHEABLE;
+	MPU_InitStruct.IsShareable = MPU_ACCESS_NOT_SHAREABLE;
+	MPU_InitStruct.Number = MPU_REGION_NUMBER0;
+	MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
+	MPU_InitStruct.SubRegionDisable = 0x00;
+	MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
+
+	HAL_MPU_ConfigRegion(&MPU_InitStruct);
+
+	/* Enable the MPU */
+	HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
+}
 
 /**
   * @brief Peripherals Common Clock Configuration

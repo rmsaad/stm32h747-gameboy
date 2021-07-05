@@ -107,19 +107,19 @@ void CopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t
     if(HAL_DMA2D_ConfigLayer(&hdma2d, 1) == HAL_OK)
     {
       if(HAL_DMA2D_CLUTLoad(&hdma2d, clut_cfg, 1) == HAL_OK){
-    	  HAL_DMA2D_PollForTransfer(&hdma2d, 100);
+    	  HAL_DMA2D_PollForTransfer(&hdma2d, 10);
 
 		  if (HAL_DMA2D_Start(&hdma2d, source, destination, xsize, ysize) == HAL_OK)
 		  {
 			/* Polling For DMA transfer */
-			HAL_DMA2D_PollForTransfer(&hdma2d, 100);
+			HAL_DMA2D_PollForTransfer(&hdma2d, 10);
 		  }
     }
     }
   }
 }
 
-void displayFrameBuffer(uint32_t* gb_frame, uint8_t scaleAmount){
+void displayFrameBuffer(uint8_t* gb_frame, uint8_t scaleAmount){
 	CopyBuffer((uint32_t *) gb_frame, (uint32_t *)Buffers[0], 0, (480 - (144*3))/2, 160 * scaleAmount, 144 * scaleAmount);
 	LTDC_LAYER(&hlcd_ltdc, 0)->CFBAR = ((uint32_t)Buffers[0]);
 	 //__HAL_LTDC_RELOAD_CONFIG(&hlcd_ltdc);

@@ -27,7 +27,7 @@
 #define LIGHT_GREEN    0XFF8BAC0FUL
 #define LIGHTEST_GREEN 0XFF9BBC0FUL
 
-#define SRAM1		   0xD1000000UL
+#define SRAM1		   0x30000000UL
 
 // Flags
 uint16_t BackWinTileDataAddr;
@@ -43,7 +43,10 @@ uint8_t OBP1ColorToPalette[4];
 
 
 // use this to access d2_sram
+
 uint8_t *gb_frame = (uint8_t*)SRAM1;
+//uint8_t gb_frame[144*160];
+
 uint8_t scaleAmount = 3;
 uint32_t curLine;
 uint32_t lineadd;
@@ -65,7 +68,7 @@ uint16_t usGetWinTileDisplaySel();
 void vSetFrameBuffer(){
 	memset(gb_frame, 0, 160 * 144 * 4 * scaleAmount);
 }
-
+//38912
 /**
   * @brief Steps the PPU by tStates
   * @details This function steps the PPU by the tStates variable if the screen enable (7th) bit of LCDC Register is high,
@@ -78,17 +81,21 @@ void vSetFrameBuffer(){
   * the current moment, more research into when and how often these Registers are updated must be conducted.
   */
 void gbPPUStep(){
-
+	static int n = 0;
 	if(ucGBMemoryRead(LCDC_ADDR) & 0x80){															// check MSB of LCDC for screen en
 		tStatesTotal += ucGetTstate();
 
 		if (tStatesTotal > 456){												// end of hblank or vblank
 			ly++;
-
+			LYC_check(ly);
 			if(ly > 153){												// end of vblank
-				displayFrameBuffer(gb_frame, scaleAmount);
+				if(n % 2){
+					displayFrameBuffer(gb_frame, scaleAmount);
+				}
+				n++;
 				setMode(MODE_2);
 				ly = 0;
+
 				if(checkbit(ucGBMemoryRead(STAT_ADDR), 5))
 					vGBMemorySetBit(IF_ADDR, 1);
 			}
@@ -96,8 +103,6 @@ void gbPPUStep(){
 			vGBMemoryWrite(LY_ADDR, ly);								// update LY register
 			tStatesTotal -= 456;
 		}
-
-		LYC_check(ly);
 
 		if (ly > 143){													// vblank
 			setMode(MODE_1);
@@ -108,7 +113,10 @@ void gbPPUStep(){
 			if (tStatesTotal <= 80 && Mode != MODE_2)											// oam
 				setMode(MODE_2);
 			else if(tStatesTotal > 80 && tStatesTotal <= 252 && Mode != MODE_3){										// vram
-				vGBPPUDrawLine(ly, ucGBMemoryRead(SCX_ADDR), ucGBMemoryRead(SCY_ADDR));
+
+				if (n % 2 == 0){
+					vGBPPUDrawLine(ly, ucGBMemoryRead(SCX_ADDR), ucGBMemoryRead(SCY_ADDR));
+				}
 
 				setMode(MODE_3);
 			}else if(tStatesTotal > 252 && tStatesTotal <= 456 && Mode != MODE_0){										// hblank
@@ -246,11 +254,13 @@ void setMode(uint8_t mode){
 	}
 }
 
-void updateBufferObj(uint32_t data, int pixelPos){
+void updateBufferObj(uint8_t data, int pixelPos){
 	pixelPos *= scaleAmount;
+	for (int yStretch = 1; yStretch <= scaleAmount; yStretch++){
 		for(int xStretch = 0; xStretch < scaleAmount; xStretch++){
-			gb_frame[pixelPos + xStretch + (curLine) + (lineadd)] = data;
+			gb_frame[pixelPos + xStretch + (curLine) + (lineadd * yStretch)] = data;
 		}
+	}
 }
 
 void vGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY, uint16_t TileDataAddr, uint16_t DisplayAddr){
@@ -378,9 +388,6 @@ void vGBPPUDrawLine(uint8_t ly, uint8_t SCX, uint8_t SCY){
 	if(ucGBMemoryRead(LCDC_ADDR) & 0x02)
 		vGBPPUDrawLineObjects(ly);
 
-	// fix this later
-	memcpy(&gb_frame[curLine + lineadd + lineadd], &gb_frame[curLine+ lineadd], lineadd);
-	memcpy(&gb_frame[curLine + lineadd + lineadd + lineadd], &gb_frame[curLine + lineadd], lineadd);
 }
 
 
