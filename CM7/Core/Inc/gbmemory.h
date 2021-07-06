@@ -27,6 +27,10 @@
 
 // Drawing Related Register Addresses
 #define JOY_ADDR  0xFF00
+#define DIV_ADDR  0xFF04
+#define TIMA_ADDR 0xFF05
+#define TMA_ADDR  0xFF06
+#define TAC_ADDR  0xFF07
 #define LCDC_ADDR 0xFF40
 #define STAT_ADDR 0xFF41
 #define SCY_ADDR  0xFF42
@@ -100,6 +104,7 @@ void vGBMemoryWrite(uint16_t address, uint8_t data);
 void vGBMemoryWriteShort(uint16_t address, uint16_t data);
 uint8_t ucGBMemoryRead(uint16_t address);
 uint16_t usGBMemoryReadShort(uint16_t address);
+void vGBMemoryIncTimers(uint8_t duration);
 void vGBMemorySetBit(uint16_t address, uint8_t bit);
 void vGBMemoryResetBit(uint16_t address, uint8_t bit);
 void vGBMemoryPrint();

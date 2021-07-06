@@ -82,7 +82,7 @@ void vSetFrameBuffer(){
   */
 void gbPPUStep(){
 	static int n = 0;
-	if(ucGBMemoryRead(LCDC_ADDR) & 0x80){															// check MSB of LCDC for screen en
+//me	if(ucGBMemoryRead(LCDC_ADDR) & 0x80){															// check MSB of LCDC for screen en
 		tStatesTotal += ucGetTstate();
 
 		if (tStatesTotal > 456){												// end of hblank or vblank
@@ -125,7 +125,7 @@ void gbPPUStep(){
 					vGBMemorySetBit(IF_ADDR, 1);
 			}
 		}
-	}
+//	}
 }
 
 /**

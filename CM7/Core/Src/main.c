@@ -42,6 +42,7 @@
 #include "Test9.gb.h"
 #include "Test10.gb.h"
 #include "Test11.gb.h"
+#include "instr_timing.gb.h"
 //#include "audio_sample.bin.h"
 /* USER CODE END Includes */
 
@@ -93,7 +94,8 @@ extern const unsigned char Test9_gb[];  //Passed
 extern const unsigned char Test10_gb[]; //Passed
 extern const unsigned char Test11_gb[]; //Passed
 extern const unsigned char bgbtest_gb[]; //Passed
-const unsigned char* rom = &Alleyway_gb[0];
+extern const unsigned char instr_timing_gb[];
+const unsigned char* rom = &instr_timing_gb[0];
 
 /* USER CODE END PV */
 

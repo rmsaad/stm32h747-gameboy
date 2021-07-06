@@ -926,7 +926,7 @@ Assembly_Instr prefix_instructions[256] = {
 		{vBIT_0_E,		2,	8},
 		{vBIT_0_H,		2,	8},
 		{vBIT_0_L,		2,	8},
-		{vBIT_0_HL,		2,	16},
+		{vBIT_0_HL,		2,	12},
 		{vBIT_0_A,		2,	8},
 		{vBIT_1_B,		2,	8},
 		{vBIT_1_C,		2,	8},
@@ -934,7 +934,7 @@ Assembly_Instr prefix_instructions[256] = {
 		{vBIT_1_E,		2,	8},
 		{vBIT_1_H,		2,	8},
 		{vBIT_1_L,		2,	8},
-		{vBIT_1_HL,		2,	16},
+		{vBIT_1_HL,		2,	12},
 		{vBIT_1_A,		2,	8},
 		{vBIT_2_B,		2,	8},
 		{vBIT_2_C,		2,	8},
@@ -942,7 +942,7 @@ Assembly_Instr prefix_instructions[256] = {
 		{vBIT_2_E,		2,	8},
 		{vBIT_2_H,		2,	8},
 		{vBIT_2_L,		2,	8},
-		{vBIT_2_HL,		2,	16},
+		{vBIT_2_HL,		2,	12},
 		{vBIT_2_A,		2,	8},
 		{vBIT_3_B,		2,	8},
 		{vBIT_3_C,		2,	8},
@@ -950,7 +950,7 @@ Assembly_Instr prefix_instructions[256] = {
 		{vBIT_3_E,		2,	8},
 		{vBIT_3_H,		2,	8},
 		{vBIT_3_L,		2,	8},
-		{vBIT_3_HL,		2,	16},
+		{vBIT_3_HL,		2,	12},
 		{vBIT_3_A,		2,	8},
 		{vBIT_4_B,		2,	8},
 		{vBIT_4_C,		2,	8},
@@ -958,7 +958,7 @@ Assembly_Instr prefix_instructions[256] = {
 		{vBIT_4_E,		2,	8},
 		{vBIT_4_H,		2,	8},
 		{vBIT_4_L,		2,	8},
-		{vBIT_4_HL,		2,	16},
+		{vBIT_4_HL,		2,	12},
 		{vBIT_4_A,		2,	8},
 		{vBIT_5_B,		2,	8},
 		{vBIT_5_C,		2,	8},
@@ -966,7 +966,7 @@ Assembly_Instr prefix_instructions[256] = {
 		{vBIT_5_E,		2,	8},
 		{vBIT_5_H,		2,	8},
 		{vBIT_5_L,		2,	8},
-		{vBIT_5_HL,		2,	16},
+		{vBIT_5_HL,		2,	12},
 		{vBIT_5_A,		2,	8},
 		{vBIT_6_B,		2,	8},
 		{vBIT_6_C,		2,	8},
@@ -974,7 +974,7 @@ Assembly_Instr prefix_instructions[256] = {
 		{vBIT_6_E,		2,	8},
 		{vBIT_6_H,		2,	8},
 		{vBIT_6_L,		2,	8},
-		{vBIT_6_HL,		2,	16},
+		{vBIT_6_HL,		2,	12},
 		{vBIT_6_A,		2,	8},
 		{vBIT_7_B,		2,	8},
 		{vBIT_7_C,		2,	8},
@@ -982,7 +982,7 @@ Assembly_Instr prefix_instructions[256] = {
 		{vBIT_7_E,		2,	8},
 		{vBIT_7_H,		2,	8},
 		{vBIT_7_L,		2,	8},
-		{vBIT_7_HL,		2,	16},
+		{vBIT_7_HL,		2,	12},
 		{vBIT_7_A,		2,	8},
 		{vRES_0_B,		2,	8},
 		{vRES_0_C,		2,	8},
@@ -1755,7 +1755,10 @@ void vGBCPUinstr(uint8_t opcode){
 		}else{
 			tStates = instructions[opcode].Tstate;
 		}
+
+		vGBMemoryIncTimers(tStates / 4);
 	}
+
 
 	if(ucInterruptMasterEnable == 1)
 			vGBCPUInterruptHandler();

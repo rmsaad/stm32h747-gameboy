@@ -20,6 +20,8 @@ memory mem;
 uint8_t current_op;
 uint8_t joypadSELdir;
 uint8_t joypadSELbut;
+uint8_t timerStopStart;
+uint8_t clockMode;
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc3;
 
@@ -39,8 +41,9 @@ void vGBMemorySetOP(uint8_t op){
  * @return Nothing
  */
 void vGBMemoryInit(){
-	mem.ram[0xFF00] = 0xCF;
-	mem.ram[0xFF0F] = 0xE1;
+	mem.ram[JOY_ADDR] = 0xCF;
+	mem.ram[IF_ADDR] = 0xE1;
+	vGBMemoryWrite(TAC_ADDR, 0xF8);
 }
 
 
@@ -63,12 +66,6 @@ void vGBMemoryLoad(const void* data, uint32_t bytes){
 uint8_t vGBMemoryJoypad(){
 	uint32_t value = 0;
 	uint8_t mask = 0;
-
-//	if(HAL_GPIO_ReadPin(GPIOC, GPIO_PIN_13) != 0){
-//		if(joypadSELbut == 0x20){
-//			return 0xC0 | (0xF^0x8) | (joypadSELbut | joypadSELdir);
-//		}
-//	}
 
 	if(joypadSELdir == 0x10){
 		HAL_ADC_Start(&hadc3);
@@ -94,7 +91,6 @@ uint8_t vGBMemoryJoypad(){
 		}
 	}
 
-
 	return 0xC0 | (0xF^mask) | (joypadSELbut | joypadSELdir);
 }
 
@@ -105,23 +101,41 @@ uint8_t vGBMemoryJoypad(){
  * @param data
  */
 void vGBMemoryWrite(uint16_t address, uint8_t data){
-	if(address == JOY_ADDR){
-		joypadSELdir = data & 0x10;
-		joypadSELbut = data & 0x20;
+
+	if(address >= 0xFF00){
+
+		if(address == JOY_ADDR){
+			joypadSELdir = data & 0x10;
+			joypadSELbut = data & 0x20;
+			return;
+		}
+
+		else if(address == DMA_ADDR){
+			for(uint16_t i = 0; i < 40*4; i++) vGBMemoryWrite(OAM_BASE + i, ucGBMemoryRead((data << 8) + i));
+			return;
+		}
+
+		else if(address == DIV_ADDR){
+			mem.ram[DIV_ADDR] = 0;
+			return;
+		}
+
+		else if(address == TAC_ADDR){
+			timerStopStart = checkbit(data, 2);
+			clockMode = (checkbit(data, 1) * 2) + checkbit(data, 0);
+			mem.ram[address] = data;
+			return;
+		}
+
 	}
-
-	if(address == DMA_ADDR){
-		for(uint16_t i = 0; i < 40*4; i++) vGBMemoryWrite(OAM_BASE + i, ucGBMemoryRead((data << 8) + i));
-	}
-
-//	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
-//		return;
-
-	if(address >= ECHORAM_BASE && address < OAM_BASE)
-		mem.ram[address - 0x2000] = data;
 
 	if((address >= CARTROM_BANK0 && address < VRAM_BASE))
+			return;
+
+	if(address >= ECHORAM_BASE && address < OAM_BASE){
+		mem.ram[address - 0x2000] = data;
 		return;
+	}
 
 	mem.ram[address] = data;
 }
@@ -136,9 +150,6 @@ void vGBMemoryWriteShort(uint16_t address, uint16_t data){
  * @param bit
  */
 void vGBMemorySetBit(uint16_t address, uint8_t bit){
-//	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
-//		return;
-
 	if(address >= ECHORAM_BASE && address < OAM_BASE)
 		mem.ram[address - 0x2000] |= (0x1 << bit);
 
@@ -154,8 +165,6 @@ void vGBMemorySetBit(uint16_t address, uint8_t bit){
  * @param bit
  */
 void vGBMemoryResetBit(uint16_t address, uint8_t bit){
-//	if(((ucGBMemoryRead(STAT_ADDR) & MODE_3)  == MODE_3) && (address >= VRAM_BASE && address < CARTRAM_BASE))
-//		return;
 
 	if(address >= ECHORAM_BASE && address < OAM_BASE)
 		mem.ram[address - 0x2000] &= ~(0x1 << bit);
@@ -172,8 +181,12 @@ void vGBMemoryResetBit(uint16_t address, uint8_t bit){
  * @return
  */
 uint8_t ucGBMemoryRead(uint16_t address){
-	if(address == JOY_ADDR){
-		return vGBMemoryJoypad();
+
+	if(address >= 0xFF00){
+		if(address == JOY_ADDR){
+			return vGBMemoryJoypad();
+		}
+
 	}
 
 	if(address >= ECHORAM_BASE && address < OAM_BASE)
@@ -190,6 +203,46 @@ uint8_t ucGBMemoryRead(uint16_t address){
  */
 uint16_t usGBMemoryReadShort(uint16_t address){
 	return concat_16bit_bigEndian(mem.ram[address], mem.ram[address+1]);
+}
+
+
+void vGBMemoryIncTimers(uint8_t durationMcycle){
+	static uint8_t timerDIV  = 0;
+	static uint8_t timerTIMA = 0;
+	static uint8_t oldTIMA   = 0;
+
+	if((timerDIV + (durationMcycle << 2)) > 255){
+		mem.ram[DIV_ADDR]++;
+	}
+
+	timerDIV += (durationMcycle << 2);
+
+	if(timerStopStart){
+		uint8_t curDuration = 0;
+
+		switch (clockMode) {
+			case 0x0: curDuration = (durationMcycle << 0);  break;
+			case 0x1: curDuration = (durationMcycle << 6);  break;
+			case 0x2: curDuration = (durationMcycle << 4);  break;
+			case 0x3: curDuration = (durationMcycle << 2);  break;
+			default:  break;
+		}
+
+		if(timerTIMA + curDuration > 255){
+			mem.ram[TIMA_ADDR]++;
+		}
+
+		timerTIMA += curDuration;
+
+
+		if(mem.ram[TIMA_ADDR] < oldTIMA){            // not working
+			mem.ram[TIMA_ADDR] = mem.ram[TMA_ADDR];
+			vGBMemorySetBit(IF_ADDR, 2);
+		}
+
+		oldTIMA = mem.ram[TIMA_ADDR];
+	}
+
 }
 
 /**
