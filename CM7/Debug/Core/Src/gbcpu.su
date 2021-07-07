@@ -501,6 +501,7 @@ gbcpu.c:1221:6:vLD_E_E	0	static
 gbcpu.c:1232:6:vLD_H_H	0	static
 gbcpu.c:1241:6:vLD_L_L	0	static
 gbcpu.c:1697:9:ucGetTstate	0	static
-gbcpu.c:1716:6:vGBCPUInterruptHandler	16	static
-gbcpu.c:1738:6:vGBCPUinstr	16	static
+gbcpu.c:1716:6:vGBCPUHaltedHandler	16	static
+gbcpu.c:1735:6:vGBCPUInterruptHandler	16	static
+gbcpu.c:1760:6:vGBCPUinstr	24	static
 gbcpu.c:1701:6:vGBCPUboot	16	static

@@ -1713,21 +1713,43 @@ void vGBCPUboot(){
 	}
 }
 
+void vGBCPUHaltedHandler(){
+	if(ucOneCycleInterruptDelay == 1){
+			if(ucGBMemoryRead(IE_ADDR) & ucGBMemoryRead(IF_ADDR) & 0x1F){
+				ucInterruptMasterEnable = 0;
+				ucOneCycleInterruptDelay = 0;
+				uint8_t InterruptSetandEn = ucGBMemoryRead(IE_ADDR) & ucGBMemoryRead(IF_ADDR);
+				if      (InterruptSetandEn &  VBLANK_INTERRUPT){ ucHALTED = 0;
+				}else if(InterruptSetandEn & LCDSTAT_INTERRUPT){ ucHALTED = 0;
+				}else if(InterruptSetandEn &   TIMER_INTERRUPT){ ucHALTED = 0;
+				}else if(InterruptSetandEn &  SERIAL_INTERRUPT){ ucHALTED = 0;
+				}else if(InterruptSetandEn &  JOYPAD_INTERRUPT){ ucHALTED = 0;
+				}
+			}
+
+	}else{
+		ucOneCycleInterruptDelay++;
+	}
+}
+
 void vGBCPUInterruptHandler(){
 	if(ucOneCycleInterruptDelay == 1){
 		if(ucGBMemoryRead(IE_ADDR) & ucGBMemoryRead(IF_ADDR) & 0x1F){
 			ucInterruptMasterEnable = 0;
 			ucOneCycleInterruptDelay = 0;
 			ucHALTED = 0;
+			uint8_t ucInterrTrig = 0;
 			uint8_t InterruptSetandEn = ucGBMemoryRead(IE_ADDR) & ucGBMemoryRead(IF_ADDR);
-			if      (InterruptSetandEn &  VBLANK_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 0); vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = VBLANK_VECTOR;
-			}else if(InterruptSetandEn & LCDSTAT_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 1); vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = LCDSTAT_VECTOR;
-			}else if(InterruptSetandEn &   TIMER_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 2); vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = TIMER_VECTOR;
-			}else if(InterruptSetandEn &  SERIAL_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 3); vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = SERIAL_VECTOR;
-			}else if(InterruptSetandEn &  JOYPAD_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 4); vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = JOYPAD_VECTOR;
+			if      (InterruptSetandEn &  VBLANK_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 0); vGBFunctionPUSH(&reg.SP, &reg.PC); ucInterrTrig = 1; reg.PC = VBLANK_VECTOR;
+			}else if(InterruptSetandEn & LCDSTAT_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 1); vGBFunctionPUSH(&reg.SP, &reg.PC); ucInterrTrig = 1; reg.PC = LCDSTAT_VECTOR;
+			}else if(InterruptSetandEn &   TIMER_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 2); vGBFunctionPUSH(&reg.SP, &reg.PC); ucInterrTrig = 1; reg.PC = TIMER_VECTOR;
+			}else if(InterruptSetandEn &  SERIAL_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 3); vGBFunctionPUSH(&reg.SP, &reg.PC); ucInterrTrig = 1; reg.PC = SERIAL_VECTOR;
+			}else if(InterruptSetandEn &  JOYPAD_INTERRUPT){ vGBMemoryResetBit(IF_ADDR, 4); vGBFunctionPUSH(&reg.SP, &reg.PC); ucInterrTrig = 1; reg.PC = JOYPAD_VECTOR;
 			}
 
-			tStates += 5*4;
+			if( ucInterrTrig == 1){
+				tStates += 5*4;
+			}
 		}
 
 	}else{
@@ -1737,7 +1759,7 @@ void vGBCPUInterruptHandler(){
 
 void vGBCPUinstr(uint8_t opcode){
 
-	if(reg.PC == 0x40){
+	if(reg.PC == 0xC36F){
 		num++;
 	}
 
@@ -1756,11 +1778,14 @@ void vGBCPUinstr(uint8_t opcode){
 			tStates = instructions[opcode].Tstate;
 		}
 
-		vGBMemoryIncTimers(tStates >> 2);
 	}
 
+	vGBMemoryIncTimers(tStates >> 2);
 
 	if(ucInterruptMasterEnable == 1)
-			vGBCPUInterruptHandler();
+		vGBCPUInterruptHandler();
+
+	if(ucHALTED == 1)
+		vGBCPUHaltedHandler();
 
 }

@@ -1,6 +1,6 @@
-main.c:117:22:getRomPointer	0	static
-main.c:121:6:testController	48	static
-main.c:266:6:SystemClock_Config	136	static,ignoring_inline_asm
-main.c:371:6:PeriphCommonClock_Config	208	static,ignoring_inline_asm
-main.c:143:5:main	104	static,ignoring_inline_asm
-main.c:571:6:Error_Handler	0	static,ignoring_inline_asm
+main.c:119:22:getRomPointer	0	static
+main.c:123:6:testController	48	static
+main.c:268:6:SystemClock_Config	136	static,ignoring_inline_asm
+main.c:373:6:PeriphCommonClock_Config	208	static,ignoring_inline_asm
+main.c:145:5:main	104	static,ignoring_inline_asm
+main.c:573:6:Error_Handler	0	static,ignoring_inline_asm
