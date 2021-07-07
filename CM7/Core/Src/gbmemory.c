@@ -211,14 +211,14 @@ void vGBMemoryIncTimers(uint8_t durationMcycle){
 	static uint8_t timerTIMA = 0;
 	static uint8_t oldTIMA   = 0;
 
-	if((timerDIV + (durationMcycle << 2)) > 255){
+	if((timerDIV + (durationMcycle << 2)) > 0xFF){
 		mem.ram[DIV_ADDR]++;
 	}
 
 	timerDIV += (durationMcycle << 2);
 
 	if(timerStopStart){
-		uint8_t curDuration = 0;
+		uint16_t curDuration = 0;
 
 		switch (clockMode) {
 			case 0x0: curDuration = (durationMcycle << 0);  break;
@@ -228,14 +228,18 @@ void vGBMemoryIncTimers(uint8_t durationMcycle){
 			default:  break;
 		}
 
-		if(timerTIMA + curDuration > 255){
+		if(timerTIMA + curDuration > 0xFF){
+			mem.ram[TIMA_ADDR]++;
+		}
+
+		if(timerTIMA + curDuration > 0x1FE){
 			mem.ram[TIMA_ADDR]++;
 		}
 
 		timerTIMA += curDuration;
 
 
-		if(mem.ram[TIMA_ADDR] < oldTIMA){            // not working
+		if(mem.ram[TIMA_ADDR] < 5 && oldTIMA == 0xFF){
 			mem.ram[TIMA_ADDR] = mem.ram[TMA_ADDR];
 			vGBMemorySetBit(IF_ADDR, 2);
 		}

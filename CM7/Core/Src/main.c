@@ -95,7 +95,7 @@ extern const unsigned char Test10_gb[]; //Passed
 extern const unsigned char Test11_gb[]; //Passed
 extern const unsigned char bgbtest_gb[]; //Passed
 extern const unsigned char instr_timing_gb[];
-const unsigned char* rom = &instr_timing_gb[0];
+const unsigned char* rom = &Tetris_gb[0];
 
 /* USER CODE END PV */
 

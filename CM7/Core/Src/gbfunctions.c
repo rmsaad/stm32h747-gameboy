@@ -275,28 +275,20 @@ uint8_t vGBFunctionCALL_C_a16(uint16_t *regPC, uint8_t *flagReg, uint16_t *regSP
 }
 
 void vGBFunctionADD_SP_r8(uint16_t *regSP, uint8_t *flagReg, uint8_t r8value){
-	//uint32_t tempRes = *regSP + (int8_t) r8value;
 	uint32_t tempRes = *regSP +r8value;
 	((tempRes & 0xFF) < (*regSP & 0xFF)) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG);
 	((tempRes & 0xF) < (*regSP & 0xF)) ? setbit(flagReg, H_FLAG): resetbit(flagReg, H_FLAG);
-	//(tempRes & 0xffff0000) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG);
-	//(((*regSP & 0x0F) + ((int8_t)r8value & 0x0F)) > 0x0F) ? setbit(flagReg, H_FLAG): resetbit(flagReg, H_FLAG);
 	resetbit(flagReg, Z_FLAG);
 	resetbit(flagReg, N_FLAG);
-	//*regSP = tempRes & 0xFFFF;
 	*regSP += (int8_t) r8value;
 }
 
 void vGBFunctionLD_HL_SP_r8(uint16_t *regHL, uint16_t *regSP, uint8_t *flagReg, uint8_t r8value){
-	//uint32_t tempRes = *regSP + (int8_t) r8value;
 	uint32_t tempRes = *regSP +r8value;
 	((tempRes & 0xFF) < (*regSP & 0xFF)) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG);
 	((tempRes & 0xF) < (*regSP & 0xF)) ? setbit(flagReg, H_FLAG): resetbit(flagReg, H_FLAG);
-	//(tempRes & 0xffff0000) ? setbit(flagReg, C_FLAG): resetbit(flagReg, C_FLAG);
-	//(((*regSP & 0x0F) + ((int8_t)r8value & 0x0F)) > 0x0F) ? setbit(flagReg, H_FLAG): resetbit(flagReg, H_FLAG);
 	resetbit(flagReg, Z_FLAG);
 	resetbit(flagReg, N_FLAG);
-	//*regHL = tempRes & 0xFFFF;
 	 *regHL = *regSP + (int8_t) r8value;
 }
 

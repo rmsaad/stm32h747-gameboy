@@ -1737,7 +1737,7 @@ void vGBCPUInterruptHandler(){
 
 void vGBCPUinstr(uint8_t opcode){
 
-	if(reg.PC == 0xb0000 && opcode == 0x24AE){
+	if(reg.PC == 0x40){
 		num++;
 	}
 
@@ -1756,7 +1756,7 @@ void vGBCPUinstr(uint8_t opcode){
 			tStates = instructions[opcode].Tstate;
 		}
 
-		vGBMemoryIncTimers(tStates / 4);
+		vGBMemoryIncTimers(tStates >> 2);
 	}
 
 

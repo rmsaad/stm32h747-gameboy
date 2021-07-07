@@ -10,4 +10,4 @@ gbmemory.c:103:6:vGBMemoryWrite	16	static
 gbmemory.c:143:6:vGBMemoryWriteShort	16	static
 gbmemory.c:204:10:usGBMemoryReadShort	0	static
 gbmemory.c:209:6:vGBMemoryIncTimers	16	static
-gbmemory.c:251:6:vGBMemoryPrint	32	static
+gbmemory.c:255:6:vGBMemoryPrint	32	static
