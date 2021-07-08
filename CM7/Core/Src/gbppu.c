@@ -89,7 +89,7 @@ void gbPPUStep(){
 			ly++;
 			LYC_check(ly);
 			if(ly > 153){												// end of vblank
-				if(n % 2){
+				if(n % 1 == 0){
 					displayFrameBuffer(gb_frame, scaleAmount);
 				}
 				n++;
@@ -114,7 +114,7 @@ void gbPPUStep(){
 				setMode(MODE_2);
 			else if(tStatesTotal > 80 && tStatesTotal <= 252 && Mode != MODE_3){										// vram
 
-				if (n % 2 == 0){
+				if (n % 1 == 0){
 					vGBPPUDrawLine(ly, ucGBMemoryRead(SCX_ADDR), ucGBMemoryRead(SCY_ADDR));
 				}
 
@@ -125,6 +125,9 @@ void gbPPUStep(){
 					vGBMemorySetBit(IF_ADDR, 1);
 			}
 		}
+	}else{
+		ly = 0;
+		vGBMemoryWrite(LY_ADDR, ly);
 	}
 }
 
@@ -272,7 +275,7 @@ void vGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY, uint16_t Til
 
 	for(int j = 0; j < 160; j++){
 
-		uint8_t pixelData;
+		uint8_t pixelData = 0;
 
 		switch (((tile_data << pixl_offset) & 0x8080)) {
 			case 0x0000: pixelData = BGPColorToPalette[0]; break;
@@ -384,6 +387,10 @@ void vGBPPUDrawLine(uint8_t ly, uint8_t SCX, uint8_t SCY){
 		vGBPPUDrawLineBackground(ly, SCX, SCY, TileDataAddr, usGetBackTileDisplaySel());
 		if(ucGBMemoryRead(LCDC_ADDR) & 0x20)
 			vGBPPUDrawLineWindow(ly, ucGBMemoryRead(WX_ADDR), ucGBMemoryRead(WY_ADDR), TileDataAddr, usGetWinTileDisplaySel());
+	}else{
+		for(int j = 0; j < 160; j++){
+			updateBufferObj(1, j);
+		}
 	}
 	if(ucGBMemoryRead(LCDC_ADDR) & 0x02)
 		vGBPPUDrawLineObjects(ly);

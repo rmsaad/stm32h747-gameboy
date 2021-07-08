@@ -41,6 +41,7 @@ uint8_t tStates = 0;
 uint8_t print = 0;
 uint8_t num = 0;
 uint64_t numcount;
+uint16_t pc = 0x01A3;
 extern registers reg;
 extern const unsigned char Alleyway_gb[];
 extern unsigned char Tetris_gb[];
@@ -1758,8 +1759,7 @@ void vGBCPUInterruptHandler(){
 }
 
 void vGBCPUinstr(uint8_t opcode){
-
-	if(reg.PC == 0xC36F){
+	if(reg.PC == pc){
 		num++;
 	}
 

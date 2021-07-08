@@ -10,6 +10,7 @@
 #include "gbfunctions.h"
 #include "main.h"
 #include "gbmemory.h"
+#include "gbMBC.h"
 
 //#define SRAM2		   0xD2000000UL
 // use this to access d2_sram
@@ -41,6 +42,7 @@ void vGBMemorySetOP(uint8_t op){
  * @return Nothing
  */
 void vGBMemoryInit(){
+	gbMBCsetControllerType(ucGBMemoryRead(0x147));
 	mem.ram[JOY_ADDR] = 0xCF;
 	mem.ram[IF_ADDR] = 0xE1;
 	vGBMemoryWrite(TAC_ADDR, 0xF8);
@@ -129,8 +131,11 @@ void vGBMemoryWrite(uint16_t address, uint8_t data){
 
 	}
 
-	if((address >= CARTROM_BANK0 && address < VRAM_BASE))
-			return;
+	if((address >= CARTROM_BANK0 && address < VRAM_BASE)){
+		gbMBCwrite(address, data);
+		return;
+	}
+
 
 	if(address >= ECHORAM_BASE && address < OAM_BASE){
 		mem.ram[address - 0x2000] = data;
@@ -187,6 +192,10 @@ uint8_t ucGBMemoryRead(uint16_t address){
 			return vGBMemoryJoypad();
 		}
 
+	}
+
+	if((address >= CARTROM_BANK0 && address < VRAM_BASE) && mem.ram[0xFF50] != 0){
+		return gbMBCreadBankX(address);
 	}
 
 	if(address >= ECHORAM_BASE && address < OAM_BASE)
