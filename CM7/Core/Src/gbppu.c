@@ -271,6 +271,7 @@ void vGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY, uint16_t Til
 	uint8_t line_offset = (((SCY % 8) + ly) % 8) * 2;										   // gives the line offset in the tile
 	uint8_t pixl_offset = SCX % 8;											                   // gives current pixel offset
 
+	uint16_t first_tile = tile_offset % 32;
 	uint16_t tile_data = getTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);                            // tile data holds tile line information
 
 	for(int j = 0; j < 160; j++){
@@ -290,7 +291,11 @@ void vGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY, uint16_t Til
 		if(pixl_offset == 8){
 			tile_offset++;
 			pixl_offset = 0;
-			tile_data = getTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);
+			if(first_tile + (tile_offset % 32) >= 12 && (tile_offset % 32) < first_tile)
+				tile_data = getTileLineData(tile_offset - 32, line_offset, TileDataAddr, DisplayAddr);
+			else
+				tile_data = getTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);
+
 
 		}
 
