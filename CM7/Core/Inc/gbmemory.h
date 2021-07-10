@@ -27,6 +27,8 @@
 
 // Drawing Related Register Addresses
 #define JOY_ADDR  0xFF00
+#define SB_ADDR	  0xFF01
+#define STC_ADDR  0xFF02
 #define DIV_ADDR  0xFF04
 #define TIMA_ADDR 0xFF05
 #define TMA_ADDR  0xFF06

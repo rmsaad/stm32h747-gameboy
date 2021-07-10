@@ -23,6 +23,7 @@ uint8_t joypadSELdir;
 uint8_t joypadSELbut;
 uint8_t timerStopStart;
 uint8_t clockMode;
+uint8_t dataTransFlag = 0;
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc3;
 
@@ -129,6 +130,13 @@ void vGBMemoryWrite(uint16_t address, uint8_t data){
 			return;
 		}
 
+		else if(address == STC_ADDR){
+			if(checkbit(data, 7))
+				dataTransFlag = 1;
+			mem.ram[address] = data;
+			return;
+		}
+
 	}
 
 	if((address >= CARTROM_BANK0 && address < VRAM_BASE)){
@@ -219,9 +227,20 @@ void vGBMemoryIncTimers(uint8_t durationMcycle){
 	static uint8_t timerDIV  = 0;
 	static uint8_t timerTIMA = 0;
 	static uint8_t oldTIMA   = 0;
+	static uint8_t timerDiv8k = 0;
 
 	if((timerDIV + (durationMcycle << 2)) > 0xFF){
 		mem.ram[DIV_ADDR]++;
+
+		if(dataTransFlag){
+			timerDiv8k++;
+			if(timerDiv8k == 0x10){
+				timerDiv8k = 0;
+				vGBMemoryResetBit(STC_ADDR, 7);
+				dataTransFlag = 0;
+				vGBMemorySetBit(IF_ADDR, 3);
+			}
+		}
 	}
 
 	timerDIV += (durationMcycle << 2);
