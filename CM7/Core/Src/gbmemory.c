@@ -200,6 +200,9 @@ uint8_t ucGBMemoryRead(uint16_t address){
 			return vGBMemoryJoypad();
 		}
 
+		if(address == SB_ADDR){
+			return 0xFF;
+		}
 	}
 
 	if((address >= CARTROM_BANK0 && address < VRAM_BASE) && mem.ram[0xFF50] != 0){

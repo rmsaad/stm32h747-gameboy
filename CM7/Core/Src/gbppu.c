@@ -105,11 +105,14 @@ void gbPPUStep(){
 		}
 
 		if (ly > 143){													// vblank
-			setMode(MODE_1);
-			if(checkbit(ucGBMemoryRead(STAT_ADDR), 4))
-				vGBMemorySetBit(IF_ADDR, 1);
-			if(ly == 144)
-				vGBMemorySetBit(IF_ADDR, 0);
+			if(Mode != MODE_1){
+				setMode(MODE_1);
+				if(checkbit(ucGBMemoryRead(STAT_ADDR), 4))
+					vGBMemorySetBit(IF_ADDR, 1);
+				if(ly == 0x90){
+					vGBMemorySetBit(IF_ADDR, 0);
+				}
+			}
 		}else{
 			if (tStatesTotal <= 80 && Mode != MODE_2)											// oam
 				setMode(MODE_2);
