@@ -33,16 +33,6 @@
 #include "Tetris.gb.h"
 #include "cpu_instrs.gb.h"
 #include "Alleyway.gb.h"
-#include "Test2.gb.h"
-#include "Test3.gb.h"
-#include "Test4.gb.h"
-#include "Test5.gb.h"
-#include "Test6.gb.h"
-#include "Test7.gb.h"
-#include "Test8.gb.h"
-#include "Test9.gb.h"
-#include "Test10.gb.h"
-#include "Test11.gb.h"
 #include "SML.gb.h"
 #include "instr_timing.gb.h"
 //#include "audio_sample.bin.h"
@@ -86,16 +76,6 @@ LTDC_HandleTypeDef hltdc;
 extern const unsigned char Tetris_gb[];
 extern const unsigned char cpu_instrs_gb[];
 extern const unsigned char Alleyway_gb[];
-extern const unsigned char Test2_gb[];
-extern const unsigned char Test3_gb[];  //Passed
-extern const unsigned char Test4_gb[];  //Passed
-extern const unsigned char Test5_gb[];  //Passed
-extern const unsigned char Test6_gb[];  //Passed
-extern const unsigned char Test7_gb[];  //Passed
-extern const unsigned char Test8_gb[];  //Passed
-extern const unsigned char Test9_gb[];  //Passed
-extern const unsigned char Test10_gb[]; //Passed
-extern const unsigned char Test11_gb[]; //Passed
 extern const unsigned char bgbtest_gb[]; //Passed
 extern const unsigned char instr_timing_gb[];
 extern const unsigned char SML_gb[];

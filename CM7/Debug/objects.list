@@ -3,6 +3,7 @@
 "Core/Src/gbcpu.o"
 "Core/Src/gbfunctions.o"
 "Core/Src/gbmemory.o"
+"Core/Src/gbpapu.o"
 "Core/Src/gbppu.o"
 "Core/Src/main.o"
 "Core/Src/stm32h7_display.o"

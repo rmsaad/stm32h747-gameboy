@@ -47,6 +47,7 @@ uint8_t OBP1ColorToPalette[4];
 uint8_t *gb_frame = (uint8_t*)SRAM1;
 //uint8_t gb_frame[144*160];
 
+uint8_t ucBGWINline[160];
 uint8_t scaleAmount = 3;
 uint32_t curLine;
 uint32_t lineadd;
@@ -283,10 +284,10 @@ void vGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY, uint16_t Til
 		uint8_t pixelData = 0;
 
 		switch (((tile_data << pixl_offset) & 0x8080)) {
-			case 0x0000: pixelData = BGPColorToPalette[0]; break;
-			case 0x0080: pixelData = BGPColorToPalette[1]; break;
-			case 0x8000: pixelData = BGPColorToPalette[2]; break;
-			case 0x8080: pixelData = BGPColorToPalette[3]; break;
+			case 0x0000: pixelData = BGPColorToPalette[0]; ucBGWINline[j] = 0; break;
+			case 0x0080: pixelData = BGPColorToPalette[1]; ucBGWINline[j] = 1; break;
+			case 0x8000: pixelData = BGPColorToPalette[2]; ucBGWINline[j] = 2; break;
+			case 0x8080: pixelData = BGPColorToPalette[3]; ucBGWINline[j] = 3; break;
 		}
 		updateBufferObj(pixelData, j);
 
@@ -320,10 +321,10 @@ void vGBPPUDrawLineWindow(uint8_t ly, uint8_t WX, uint8_t WY, uint16_t TileDataA
 		uint8_t pixelData = 0;
 
 		switch (((tile_data << pixl_offset) & 0x8080)) {
-			case 0x0000: pixelData = BGPColorToPalette[0]; break;
-			case 0x0080: pixelData = BGPColorToPalette[1]; break;
-			case 0x8000: pixelData = BGPColorToPalette[2]; break;
-			case 0x8080: pixelData = BGPColorToPalette[3]; break;
+			case 0x0000: pixelData = BGPColorToPalette[0]; ucBGWINline[j] = 0; break;
+			case 0x0080: pixelData = BGPColorToPalette[1]; ucBGWINline[j] = 1; break;
+			case 0x8000: pixelData = BGPColorToPalette[2]; ucBGWINline[j] = 2; break;
+			case 0x8080: pixelData = BGPColorToPalette[3]; ucBGWINline[j] = 3; break;
 		}
 		updateBufferObj(pixelData, j);
 			pixl_offset++;
@@ -367,7 +368,11 @@ void vGBPPUDrawLineObjects(uint8_t ly){
 				}
 
 				if(pixelData != 0 && xCoordinate + pixelNum >= 0 && (xCoordinate + pixelNum) < 160){
-					updateBufferObj(pixelData, xCoordinate + pixelNum);
+					if((objPrio) && ucBGWINline[xCoordinate + pixelNum]){
+
+					}else{
+						updateBufferObj(pixelData, xCoordinate + pixelNum);
+					}
 				}
 			}
 
