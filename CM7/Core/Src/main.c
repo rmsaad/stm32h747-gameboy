@@ -34,6 +34,7 @@
 #include "cpu_instrs.gb.h"
 #include "Alleyway.gb.h"
 #include "SML.gb.h"
+#include "KDL.gb.h"
 #include "instr_timing.gb.h"
 //#include "audio_sample.bin.h"
 /* USER CODE END Includes */
@@ -79,7 +80,8 @@ extern const unsigned char Alleyway_gb[];
 extern const unsigned char bgbtest_gb[]; //Passed
 extern const unsigned char instr_timing_gb[];
 extern const unsigned char SML_gb[];
-const unsigned char* rom = &Alleyway_gb[0];
+extern const unsigned char KDL_gb[];
+const unsigned char* rom = &KDL_gb[0];
 
 /* USER CODE END PV */
 

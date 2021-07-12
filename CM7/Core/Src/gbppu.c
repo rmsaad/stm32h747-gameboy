@@ -160,7 +160,7 @@ void vCheckOBP0(){
 	uint8_t BGP = ucGBMemoryRead(OBP0_ADDR);
 	for(int i = 0; i < 4; i++){
 		switch ((BGP >> (i*2)) & 0x03) {
-			case 0: OBP0ColorToPalette[i] = 0;    break;
+			case 0: OBP0ColorToPalette[i] = 1;    break;
 			case 1: OBP0ColorToPalette[i] = 2;    break;
 			case 2: OBP0ColorToPalette[i] = 3;    break;
 			case 3: OBP0ColorToPalette[i] = 4;    break;
@@ -174,7 +174,7 @@ void vCheckOBP1(){
 	uint8_t BGP = ucGBMemoryRead(OBP1_ADDR);
 	for(int i = 0; i < 4; i++){
 		switch ((BGP >> (i*2)) & 0x03) {
-			case 0: OBP1ColorToPalette[i] = 0;  break;
+			case 0: OBP1ColorToPalette[i] = 1;  break;
 			case 1: OBP1ColorToPalette[i] = 2;  break;
 			case 2: OBP1ColorToPalette[i] = 3;  break;
 			case 3: OBP1ColorToPalette[i] = 4;  break;
@@ -341,17 +341,20 @@ void vGBPPUDrawLineWindow(uint8_t ly, uint8_t WX, uint8_t WY, uint16_t TileDataA
 
 void vGBPPUDrawLineObjects(uint8_t ly){
 	for(int obj = 0; obj < 40; obj++){
-		uint8_t yCoordinate = ucGBMemoryRead(OAM_BASE + (obj*4)) - 16;
-		uint8_t xCoordinate = ucGBMemoryRead(OAM_BASE + (obj*4) + 1) - 8;
+		int16_t yCoordinate = ucGBMemoryRead(OAM_BASE + (obj*4)) - 16;
+		int16_t xCoordinate = ucGBMemoryRead(OAM_BASE + (obj*4) + 1) - 8;
 		uint8_t dataTile    = ucGBMemoryRead(OAM_BASE + (obj*4) + 2);
 		uint8_t objPrio     = checkbit(ucGBMemoryRead(OAM_BASE + (obj*4) + 3), 7);
 		uint8_t objYFlip    = checkbit(ucGBMemoryRead(OAM_BASE + (obj*4) + 3), 6);
 		uint8_t objXFlip    = checkbit(ucGBMemoryRead(OAM_BASE + (obj*4) + 3), 5);
 		uint8_t objPalette  = checkbit(ucGBMemoryRead(OAM_BASE + (obj*4) + 3), 4);
+		uint8_t objSize     = checkbit(ucGBMemoryRead(LCDC_ADDR), 2);
 
-		if(yCoordinate <= ly && (yCoordinate + 8) > ly){
+		uint8_t objHeight   = (objSize == 0) ? 8 : 16;
 
-			uint8_t lineOffset = objYFlip ? (7 - (ly - yCoordinate)) * 2 : (ly - yCoordinate) * 2;
+		if(yCoordinate <= ly && (yCoordinate + objHeight) > ly){
+
+			uint8_t lineOffset = objYFlip ? ((objHeight - 1) - (ly - yCoordinate)) * 2 : (ly - yCoordinate) * 2;
 			uint16_t tile_data = usGBMemoryReadShort(TILE_DATA_UNSIGNED_ADDR + (dataTile * 0x10) + lineOffset);
 			uint8_t *palette = (objPalette) ? &OBP1ColorToPalette[0] : &OBP0ColorToPalette[0];
 
@@ -361,7 +364,7 @@ void vGBPPUDrawLineObjects(uint8_t ly){
 				uint8_t pixelData = 0;
 
 				switch (colorInfo) {
-					case 0x0000: pixelData = palette[0]; break;
+					case 0x0000: pixelData = 0;          break;
 					case 0x0080: pixelData = palette[1]; break;
 					case 0x8000: pixelData = palette[2]; break;
 					case 0x8080: pixelData = palette[3]; break;

@@ -68,7 +68,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Core/Inc/stm32h7_display.h ../Core/Inc/dmg_boot.bin.h \
  ../Core/Inc/bgbtest.gb.h ../Core/Inc/Tetris.gb.h \
  ../Core/Inc/cpu_instrs.gb.h ../Core/Inc/Alleyway.gb.h \
- ../Core/Inc/SML.gb.h ../Core/Inc/instr_timing.gb.h
+ ../Core/Inc/SML.gb.h ../Core/Inc/KDL.gb.h ../Core/Inc/instr_timing.gb.h
 
 ../Core/Inc/main.h:
 
@@ -221,5 +221,7 @@ c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\utilities\fonts\fonts.
 ../Core/Inc/Alleyway.gb.h:
 
 ../Core/Inc/SML.gb.h:
+
+../Core/Inc/KDL.gb.h:
 
 ../Core/Inc/instr_timing.gb.h:

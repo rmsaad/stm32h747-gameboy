@@ -14,5 +14,5 @@ gbppu.c:310:6:vGBPPUDrawLineWindow.part.0	48	static
 gbppu.c:274:6:vGBPPUDrawLineBackground	64	static
 gbppu.c:310:6:vGBPPUDrawLineWindow	12	static
 gbppu.c:342:6:vGBPPUDrawLineObjects	48	static
-gbppu.c:391:6:vGBPPUDrawLine	32	static
+gbppu.c:394:6:vGBPPUDrawLine	32	static
 gbppu.c:84:6:gbPPUStep	24	static
