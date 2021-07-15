@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['window_1358',['WINDOW',['../gbppu_8c.html#a58dde5b4c75245b4660a165318cac36b',1,'gbppu.c']]]
+  ['reset_1596',['RESET',['../gbcpu_8c.html#ab702106cf3b3e96750b6845ded4e0299',1,'gbcpu.c']]]
 ];

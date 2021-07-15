@@ -93,12 +93,14 @@ $(document).ready(function(){initNavTree('main_8h.html',''); initResizable(); })
 
 <div class="header">
   <div class="summary">
-<a href="#define-members">Macros</a>  </div>
+<a href="#define-members">Macros</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">main.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;stm32h7xx_hal.h&quot;</code><br />
+<code>#include &quot;stm32h747i_discovery_audio.h&quot;</code><br />
 <code>#include &quot;stm32h747i_discovery.h&quot;</code><br />
 <code>#include &quot;stm32h747i_discovery_lcd.h&quot;</code><br />
 <code>#include &quot;stm32h747i_discovery_sdram.h&quot;</code><br />
@@ -111,8 +113,221 @@ $(document).ready(function(){initNavTree('main_8h.html',''); initResizable(); })
 Macros</h2></td></tr>
 <tr class="memitem:ae8edfa39002e08ee1d8221c81cebf925"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#ae8edfa39002e08ee1d8221c81cebf925">LCD_FRAME_BUFFER</a>&#160;&#160;&#160;0xD0000000</td></tr>
 <tr class="separator:ae8edfa39002e08ee1d8221c81cebf925"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18c6adbfa5ba251e0035de1ab8759767"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a18c6adbfa5ba251e0035de1ab8759767">OSC32_OUT_Pin</a>&#160;&#160;&#160;GPIO_PIN_15</td></tr>
+<tr class="separator:a18c6adbfa5ba251e0035de1ab8759767"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6d4a7b9fbeffdfc292fda3a6ce6dcad"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#aa6d4a7b9fbeffdfc292fda3a6ce6dcad">OSC32_OUT_GPIO_Port</a>&#160;&#160;&#160;GPIOC</td></tr>
+<tr class="separator:aa6d4a7b9fbeffdfc292fda3a6ce6dcad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf68748564227540c27167c46b3f6e26"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#aaf68748564227540c27167c46b3f6e26">OSC32_IN_Pin</a>&#160;&#160;&#160;GPIO_PIN_14</td></tr>
+<tr class="separator:aaf68748564227540c27167c46b3f6e26"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac07e935018ad2c6921b2d4efee07de5b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#ac07e935018ad2c6921b2d4efee07de5b">OSC32_IN_GPIO_Port</a>&#160;&#160;&#160;GPIOC</td></tr>
+<tr class="separator:ac07e935018ad2c6921b2d4efee07de5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15c3bdcd3639f929e204742c5faaadc5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a15c3bdcd3639f929e204742c5faaadc5">CEC_CK_MCO1_Pin</a>&#160;&#160;&#160;GPIO_PIN_8</td></tr>
+<tr class="separator:a15c3bdcd3639f929e204742c5faaadc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a594b70795ef73faaee8a60a24f00c3fe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a594b70795ef73faaee8a60a24f00c3fe">CEC_CK_MCO1_GPIO_Port</a>&#160;&#160;&#160;GPIOA</td></tr>
+<tr class="separator:a594b70795ef73faaee8a60a24f00c3fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad33432b95a8442eacddef186ba7f11fe"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#ad33432b95a8442eacddef186ba7f11fe">OSC_OUT_Pin</a>&#160;&#160;&#160;GPIO_PIN_1</td></tr>
+<tr class="separator:ad33432b95a8442eacddef186ba7f11fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ab4af1723cbb18e17bb3d18daa90bfc"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a4ab4af1723cbb18e17bb3d18daa90bfc">OSC_OUT_GPIO_Port</a>&#160;&#160;&#160;GPIOH</td></tr>
+<tr class="separator:a4ab4af1723cbb18e17bb3d18daa90bfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a363ad7fb205680f1af009a3091dc3f7a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a363ad7fb205680f1af009a3091dc3f7a">OSC_IN_Pin</a>&#160;&#160;&#160;GPIO_PIN_0</td></tr>
+<tr class="separator:a363ad7fb205680f1af009a3091dc3f7a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af3f08c0d640164c48175314bba5da48a"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#af3f08c0d640164c48175314bba5da48a">OSC_IN_GPIO_Port</a>&#160;&#160;&#160;GPIOH</td></tr>
+<tr class="separator:af3f08c0d640164c48175314bba5da48a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6018b6e7f6fbfa8a5b07b37eb467e47b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a6018b6e7f6fbfa8a5b07b37eb467e47b">ARD_A1_Pin</a>&#160;&#160;&#160;GPIO_PIN_10</td></tr>
+<tr class="separator:a6018b6e7f6fbfa8a5b07b37eb467e47b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a69eb4fed506ab9c6ba38e8ac501e7b40"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a69eb4fed506ab9c6ba38e8ac501e7b40">ARD_A1_GPIO_Port</a>&#160;&#160;&#160;GPIOF</td></tr>
+<tr class="separator:a69eb4fed506ab9c6ba38e8ac501e7b40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86a4509651cdc45e4a408f7af6cace31"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a86a4509651cdc45e4a408f7af6cace31">ARD_A4_Pin</a>&#160;&#160;&#160;GPIO_PIN_2</td></tr>
+<tr class="separator:a86a4509651cdc45e4a408f7af6cace31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91e1dc2f8ca907eb9359d1783aba7caf"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a91e1dc2f8ca907eb9359d1783aba7caf">ARD_A4_GPIO_Port</a>&#160;&#160;&#160;GPIOC</td></tr>
+<tr class="separator:a91e1dc2f8ca907eb9359d1783aba7caf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a657397b456604c233681deaf1c410cdb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a657397b456604c233681deaf1c410cdb">ARD_A5_Pin</a>&#160;&#160;&#160;GPIO_PIN_3</td></tr>
+<tr class="separator:a657397b456604c233681deaf1c410cdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a199ecde668a7dc139d5f26b65a6711b4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a199ecde668a7dc139d5f26b65a6711b4">ARD_A5_GPIO_Port</a>&#160;&#160;&#160;GPIOC</td></tr>
+<tr class="separator:a199ecde668a7dc139d5f26b65a6711b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5bd7a256d124e0f069502af5e518c7c0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a5bd7a256d124e0f069502af5e518c7c0">ARD_A2_Pin</a>&#160;&#160;&#160;GPIO_PIN_0</td></tr>
+<tr class="separator:a5bd7a256d124e0f069502af5e518c7c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58813358e80d09b98ba819daabef50f0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a58813358e80d09b98ba819daabef50f0">ARD_A2_GPIO_Port</a>&#160;&#160;&#160;GPIOA</td></tr>
+<tr class="separator:a58813358e80d09b98ba819daabef50f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a984177df76eadc0ffd718beddac634cb"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a984177df76eadc0ffd718beddac634cb">ARD_A3_Pin</a>&#160;&#160;&#160;GPIO_PIN_1</td></tr>
+<tr class="separator:a984177df76eadc0ffd718beddac634cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f94c9d0d47847ba562028026ed8dbc7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#a8f94c9d0d47847ba562028026ed8dbc7">ARD_A3_GPIO_Port</a>&#160;&#160;&#160;GPIOA</td></tr>
+<tr class="separator:a8f94c9d0d47847ba562028026ed8dbc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ac0e5fc84d3f0cbaee9ea71d6fbe0c31c"><td class="memItemLeft" align="right" valign="top">const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8h.html#ac0e5fc84d3f0cbaee9ea71d6fbe0c31c">getRomPointer</a> ()</td></tr>
+<tr class="separator:ac0e5fc84d3f0cbaee9ea71d6fbe0c31c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="a69eb4fed506ab9c6ba38e8ac501e7b40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a69eb4fed506ab9c6ba38e8ac501e7b40">&#9670;&nbsp;</a></span>ARD_A1_GPIO_Port</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARD_A1_GPIO_Port&#160;&#160;&#160;GPIOF</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a6018b6e7f6fbfa8a5b07b37eb467e47b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6018b6e7f6fbfa8a5b07b37eb467e47b">&#9670;&nbsp;</a></span>ARD_A1_Pin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARD_A1_Pin&#160;&#160;&#160;GPIO_PIN_10</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a58813358e80d09b98ba819daabef50f0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58813358e80d09b98ba819daabef50f0">&#9670;&nbsp;</a></span>ARD_A2_GPIO_Port</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARD_A2_GPIO_Port&#160;&#160;&#160;GPIOA</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5bd7a256d124e0f069502af5e518c7c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bd7a256d124e0f069502af5e518c7c0">&#9670;&nbsp;</a></span>ARD_A2_Pin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARD_A2_Pin&#160;&#160;&#160;GPIO_PIN_0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a8f94c9d0d47847ba562028026ed8dbc7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f94c9d0d47847ba562028026ed8dbc7">&#9670;&nbsp;</a></span>ARD_A3_GPIO_Port</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARD_A3_GPIO_Port&#160;&#160;&#160;GPIOA</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a984177df76eadc0ffd718beddac634cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a984177df76eadc0ffd718beddac634cb">&#9670;&nbsp;</a></span>ARD_A3_Pin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARD_A3_Pin&#160;&#160;&#160;GPIO_PIN_1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a91e1dc2f8ca907eb9359d1783aba7caf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91e1dc2f8ca907eb9359d1783aba7caf">&#9670;&nbsp;</a></span>ARD_A4_GPIO_Port</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARD_A4_GPIO_Port&#160;&#160;&#160;GPIOC</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a86a4509651cdc45e4a408f7af6cace31"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a86a4509651cdc45e4a408f7af6cace31">&#9670;&nbsp;</a></span>ARD_A4_Pin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARD_A4_Pin&#160;&#160;&#160;GPIO_PIN_2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a199ecde668a7dc139d5f26b65a6711b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a199ecde668a7dc139d5f26b65a6711b4">&#9670;&nbsp;</a></span>ARD_A5_GPIO_Port</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARD_A5_GPIO_Port&#160;&#160;&#160;GPIOC</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a657397b456604c233681deaf1c410cdb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a657397b456604c233681deaf1c410cdb">&#9670;&nbsp;</a></span>ARD_A5_Pin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ARD_A5_Pin&#160;&#160;&#160;GPIO_PIN_3</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a594b70795ef73faaee8a60a24f00c3fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a594b70795ef73faaee8a60a24f00c3fe">&#9670;&nbsp;</a></span>CEC_CK_MCO1_GPIO_Port</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CEC_CK_MCO1_GPIO_Port&#160;&#160;&#160;GPIOA</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a15c3bdcd3639f929e204742c5faaadc5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15c3bdcd3639f929e204742c5faaadc5">&#9670;&nbsp;</a></span>CEC_CK_MCO1_Pin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define CEC_CK_MCO1_Pin&#160;&#160;&#160;GPIO_PIN_8</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="ae8edfa39002e08ee1d8221c81cebf925"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae8edfa39002e08ee1d8221c81cebf925">&#9670;&nbsp;</a></span>LCD_FRAME_BUFFER</h2>
 
@@ -121,6 +336,136 @@ Macros</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">#define LCD_FRAME_BUFFER&#160;&#160;&#160;0xD0000000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac07e935018ad2c6921b2d4efee07de5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac07e935018ad2c6921b2d4efee07de5b">&#9670;&nbsp;</a></span>OSC32_IN_GPIO_Port</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OSC32_IN_GPIO_Port&#160;&#160;&#160;GPIOC</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aaf68748564227540c27167c46b3f6e26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf68748564227540c27167c46b3f6e26">&#9670;&nbsp;</a></span>OSC32_IN_Pin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OSC32_IN_Pin&#160;&#160;&#160;GPIO_PIN_14</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa6d4a7b9fbeffdfc292fda3a6ce6dcad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6d4a7b9fbeffdfc292fda3a6ce6dcad">&#9670;&nbsp;</a></span>OSC32_OUT_GPIO_Port</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OSC32_OUT_GPIO_Port&#160;&#160;&#160;GPIOC</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a18c6adbfa5ba251e0035de1ab8759767"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a18c6adbfa5ba251e0035de1ab8759767">&#9670;&nbsp;</a></span>OSC32_OUT_Pin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OSC32_OUT_Pin&#160;&#160;&#160;GPIO_PIN_15</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af3f08c0d640164c48175314bba5da48a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af3f08c0d640164c48175314bba5da48a">&#9670;&nbsp;</a></span>OSC_IN_GPIO_Port</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OSC_IN_GPIO_Port&#160;&#160;&#160;GPIOH</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a363ad7fb205680f1af009a3091dc3f7a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a363ad7fb205680f1af009a3091dc3f7a">&#9670;&nbsp;</a></span>OSC_IN_Pin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OSC_IN_Pin&#160;&#160;&#160;GPIO_PIN_0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a4ab4af1723cbb18e17bb3d18daa90bfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ab4af1723cbb18e17bb3d18daa90bfc">&#9670;&nbsp;</a></span>OSC_OUT_GPIO_Port</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OSC_OUT_GPIO_Port&#160;&#160;&#160;GPIOH</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad33432b95a8442eacddef186ba7f11fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad33432b95a8442eacddef186ba7f11fe">&#9670;&nbsp;</a></span>OSC_OUT_Pin</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define OSC_OUT_Pin&#160;&#160;&#160;GPIO_PIN_1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a id="ac0e5fc84d3f0cbaee9ea71d6fbe0c31c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0e5fc84d3f0cbaee9ea71d6fbe0c31c">&#9670;&nbsp;</a></span>getRomPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned char* getRomPointer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
         </tr>
       </table>
 </div><div class="memdoc">

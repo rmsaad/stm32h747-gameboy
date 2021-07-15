@@ -169,6 +169,16 @@ void DSI_IRQHandler(void)
   HAL_DSI_IRQHandler(&hlcd_dsi);
 }
 
+/**
+  * @brief  This function handles DMA2 Stream 1 interrupt request.
+  * @param  None
+  * @retval None
+  */
+void AUDIO_OUT_SAIx_DMAx_IRQHandler(void)
+{
+  BSP_AUDIO_OUT_IRQHandler(0);
+}
+
 /******************************************************************************/
 /*                 STM32H7xx Peripherals Interrupt Handlers                   */
 /*  Add here the Interrupt Handler for the used peripheral(s) (PPP), for the  */

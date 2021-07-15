@@ -1,0 +1,4 @@
+gbpapu.c:27:6:gbPAPUstartAudio	8	static
+gbpapu.c:41:6:gbPAPUStep	16	static
+gbpapu.c:56:6:BSP_AUDIO_OUT_HalfTransfer_CallBack	8	static
+gbpapu.c:61:6:BSP_AUDIO_OUT_TransferComplete_CallBack	8	static

@@ -415,14 +415,14 @@ $(document).ready(function(){initNavTree('globals_v.html',''); initResizable(); 
 <li>vCCF()
 : <a class="el" href="gbcpu_8c.html#af818af1a2c5a140debcee8ace2edb4b4">gbcpu.c</a>
 </li>
-<li>vCheckBackTileDisplaySel()
-: <a class="el" href="gbppu_8c.html#a62431ac813ce57bb411b5c0b59877ac1">gbppu.c</a>
-</li>
-<li>vCheckBackWinTileDataSel()
-: <a class="el" href="gbppu_8c.html#a5221e9b7393492793b0fdabd162c5c3d">gbppu.c</a>
-</li>
 <li>vCheckBGP()
 : <a class="el" href="gbppu_8c.html#a9c60bc3bb6cc79d1ad3ce2b6fe18acec">gbppu.c</a>
+</li>
+<li>vCheckOBP0()
+: <a class="el" href="gbppu_8c.html#aa2ef681b987822cb47e37790e56d3436">gbppu.c</a>
+</li>
+<li>vCheckOBP1()
+: <a class="el" href="gbppu_8c.html#a67d230bfe40052898d5e9b15bb8ec606">gbppu.c</a>
 </li>
 <li>vCP_A()
 : <a class="el" href="gbcpu_8c.html#a9970a9431e167d5e041a03db446c1bc4">gbcpu.c</a>
@@ -503,6 +503,9 @@ $(document).ready(function(){initNavTree('globals_v.html',''); initResizable(); 
 : <a class="el" href="gbcpu_8h.html#a5a2a7acf3888505856cdea35b8cea29e">gbcpu.h</a>
 , <a class="el" href="gbcpu_8c.html#a5a2a7acf3888505856cdea35b8cea29e">gbcpu.c</a>
 </li>
+<li>vGBCPUHaltedHandler()
+: <a class="el" href="gbcpu_8c.html#ad75cc9a2be9b4cbe1f40bb6533269cc7">gbcpu.c</a>
+</li>
 <li>vGBCPUinstr()
 : <a class="el" href="gbcpu_8h.html#a1287756051fb8c1e853804ee9088dd0d">gbcpu.h</a>
 , <a class="el" href="gbcpu_8c.html#a1287756051fb8c1e853804ee9088dd0d">gbcpu.c</a>
@@ -512,11 +515,9 @@ $(document).ready(function(){initNavTree('globals_v.html',''); initResizable(); 
 </li>
 <li>vGBCPUreset()
 : <a class="el" href="gbcpu_8h.html#a960a91350e7e155d24794c6e62fd139a">gbcpu.h</a>
-, <a class="el" href="gbcpu_8c.html#a960a91350e7e155d24794c6e62fd139a">gbcpu.c</a>
 </li>
 <li>vGBCPUTestInstr()
 : <a class="el" href="gbcpu_8h.html#afdff24ca2343b342a41a4aa48286839c">gbcpu.h</a>
-, <a class="el" href="gbcpu_8c.html#afdff24ca2343b342a41a4aa48286839c">gbcpu.c</a>
 </li>
 <li>vGBFunction16bitADD()
 : <a class="el" href="gbfunctions_8h.html#aecc878909ab184501b236520dfd09bdd">gbfunctions.h</a>
@@ -634,9 +635,20 @@ $(document).ready(function(){initNavTree('globals_v.html',''); initResizable(); 
 : <a class="el" href="gbfunctions_8h.html#aa22a9ca998563f11d1c87bc45b06d06d">gbfunctions.h</a>
 , <a class="el" href="gbfunctions_8c.html#aa22a9ca998563f11d1c87bc45b06d06d">gbfunctions.c</a>
 </li>
+<li>vGBMemoryIncTimers()
+: <a class="el" href="gbmemory_8h.html#ab7132a74c7fb5b524a8c1ed437a4f598">gbmemory.h</a>
+, <a class="el" href="gbmemory_8c.html#a5c4058a1ce58dac324455bcece180ef2">gbmemory.c</a>
+</li>
+<li>vGBMemoryInit()
+: <a class="el" href="gbmemory_8h.html#af37d720a8bbc5463b44ff37d0d5ff76d">gbmemory.h</a>
+, <a class="el" href="gbmemory_8c.html#af37d720a8bbc5463b44ff37d0d5ff76d">gbmemory.c</a>
+</li>
+<li>vGBMemoryJoypad()
+: <a class="el" href="gbmemory_8c.html#a2be37591fc93329042b7abe9310e841e">gbmemory.c</a>
+</li>
 <li>vGBMemoryLoad()
 : <a class="el" href="gbmemory_8h.html#a781a62ea8b011b95fb4f0866a52a39ae">gbmemory.h</a>
-, <a class="el" href="gbmemory_8c.html#a781a62ea8b011b95fb4f0866a52a39ae">gbmemory.c</a>
+, <a class="el" href="gbmemory_8c.html#a36e47a1e1bab8cb1cbe6050bdcc8b114">gbmemory.c</a>
 </li>
 <li>vGBMemoryPrint()
 : <a class="el" href="gbmemory_8h.html#a285b9be84f8c4b08b2a307aab5b90c5a">gbmemory.h</a>
@@ -657,6 +669,22 @@ $(document).ready(function(){initNavTree('globals_v.html',''); initResizable(); 
 <li>vGBMemoryWrite()
 : <a class="el" href="gbmemory_8h.html#a13d1367ada996283c71324bcfe8c1e3e">gbmemory.h</a>
 , <a class="el" href="gbmemory_8c.html#a13d1367ada996283c71324bcfe8c1e3e">gbmemory.c</a>
+</li>
+<li>vGBMemoryWriteShort()
+: <a class="el" href="gbmemory_8h.html#a1fa255c05819bee1cef2a587841ba9f0">gbmemory.h</a>
+, <a class="el" href="gbmemory_8c.html#a1fa255c05819bee1cef2a587841ba9f0">gbmemory.c</a>
+</li>
+<li>vGBPPUDrawLine()
+: <a class="el" href="gbppu_8c.html#a0d5f1084420a859dba5e9d70af910f15">gbppu.c</a>
+</li>
+<li>vGBPPUDrawLineBackground()
+: <a class="el" href="gbppu_8c.html#af309ec32c8042fe2f724137a40442c65">gbppu.c</a>
+</li>
+<li>vGBPPUDrawLineObjects()
+: <a class="el" href="gbppu_8c.html#a4a36a4a08cc1aebd45b5e8288eb3a60b">gbppu.c</a>
+</li>
+<li>vGBPPUDrawLineWindow()
+: <a class="el" href="gbppu_8c.html#a402e8e47c7ff5f18c2ac42940b2abcb7">gbppu.c</a>
 </li>
 <li>vHALT()
 : <a class="el" href="gbcpu_8c.html#ac727d5bb0c4938c3779d1ecc3d807905">gbcpu.c</a>
@@ -1070,6 +1098,10 @@ $(document).ready(function(){initNavTree('globals_v.html',''); initResizable(); 
 </li>
 <li>vPUSH_HL()
 : <a class="el" href="gbcpu_8c.html#ab71061359f650f3824c9def30548f80e">gbcpu.c</a>
+</li>
+<li>VRAM_BASE
+: <a class="el" href="gbmemory_8h.html#aeadafef31db261c22b19a64f82608fdb">gbmemory.h</a>
+, <a class="el" href="gb_m_b_c_8c.html#aeadafef31db261c22b19a64f82608fdb">gbMBC.c</a>
 </li>
 <li>vRES_0_A()
 : <a class="el" href="gbcpu_8c.html#aa77868c0968b0682e630cf5490efd426">gbcpu.c</a>
@@ -1634,6 +1666,10 @@ $(document).ready(function(){initNavTree('globals_v.html',''); initResizable(); 
 </li>
 <li>vSET_7_L()
 : <a class="el" href="gbcpu_8c.html#aa12408cebc1be6f20103501baba7db46">gbcpu.c</a>
+</li>
+<li>vSetFrameBuffer()
+: <a class="el" href="gbppu_8h.html#addcbf77f2958ad2001d541a8e4a8f504">gbppu.h</a>
+, <a class="el" href="gbppu_8c.html#addcbf77f2958ad2001d541a8e4a8f504">gbppu.c</a>
 </li>
 <li>vSLA_A()
 : <a class="el" href="gbcpu_8c.html#af178813de3f0a27df152c8a0ce0850e7">gbcpu.c</a>

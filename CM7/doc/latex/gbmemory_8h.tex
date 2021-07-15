@@ -8,16 +8,141 @@ struct \mbox{\hyperlink{structregisters}{registers}}
 \item 
 struct \mbox{\hyperlink{structmemory}{memory}}
 \end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_adc4559afdb0535cfebadef1c707a2f91}{MODE\+\_\+0}}~0
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_adaf03329d7f4a4ac6ac043bf481db786}{MODE\+\_\+1}}~1
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_aced5757ab7a0d940fced00f3dd123fa3}{MODE\+\_\+2}}~2
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_aeb99b4257cb3cd9fb539529a1bd2d9ca}{MODE\+\_\+3}}~3
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a13dbe8647a9f0158d70903b8b375ad95}{CARTROM\+\_\+\+BANK0}}~0x0000
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_afc27b3eff83e39d7736da11c840da6d2}{CARTROM\+\_\+\+BANKX}}~0x4000
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_aeadafef31db261c22b19a64f82608fdb}{VRAM\+\_\+\+BASE}}~0x8000
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_ab0fb50f39caa884288296b2ac876bca2}{CARTRAM\+\_\+\+BASE}}~0x\+A000
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a069511c8e5eef8b61b41fd83e4e95061}{GBRAM\+\_\+\+BANK0}}~0x\+C000
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a058ce42af143610889cc142423bb501c}{ECHORAM\+\_\+\+BASE}}~0x\+E000
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a6a61e5f32ccd9a99b21a9fafba587c68}{OAM\+\_\+\+BASE}}~0x\+FE00
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a4df7bd8fe3b8e6035298ad9a9d621782}{IO\+\_\+\+BASE}}~0x\+FF00
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_ae2c24a590c0fcda66991bba90d830f65}{JOY\+\_\+\+ADDR}}~0x\+FF00
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_aa34c60657c402e0362576655b386155a}{SB\+\_\+\+ADDR}}~0x\+FF01
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_aa2ec352bdfb8da2754eb678ce8fbaab7}{STC\+\_\+\+ADDR}}~0x\+FF02
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_aace4d95609242861de6a9033ae77fbac}{DIV\+\_\+\+ADDR}}~0x\+FF04
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_ab43db300c6183765a7d98b70bc9f0805}{TIMA\+\_\+\+ADDR}}~0x\+FF05
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a512af7455d7690b6634cf9c0638cad3e}{TMA\+\_\+\+ADDR}}~0x\+FF06
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_ab007709180d33abbf0a87c10234078bf}{TAC\+\_\+\+ADDR}}~0x\+FF07
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a6fff79cae01dac3ece1c0af73a5a2ee5}{NR10\+\_\+\+ADDR}}~0x\+FF10
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_ae32a051fd5006ff8111c2637d6040027}{NR11\+\_\+\+ADDR}}~0x\+FF11
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_af9dfe908eae115c341799856ded00e65}{NR12\+\_\+\+ADDR}}~0x\+FF12
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_adf5f6d4325415cc18af3113d6c46a823}{NR13\+\_\+\+ADDR}}~0x\+FF13
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a43232a41c2861466db069c5545312d37}{NR14\+\_\+\+ADDR}}~0x\+FF14
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_af6c35e47a16eb5d0ef4ffa27db224e1c}{NR21\+\_\+\+ADDR}}~0x\+FF16
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a23fe7d5a7a7e03e104e57062ccd94589}{NR22\+\_\+\+ADDR}}~0x\+FF17
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a4b148cfe35444b1fc9c48129ccbd8f84}{NR23\+\_\+\+ADDR}}~0x\+FF18
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_ad3cd47625e40c95ab992d191e25355af}{NR24\+\_\+\+ADDR}}~0x\+FF19
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a847dab9c9a86dbeb6b5775b908fe4b51}{NR30\+\_\+\+ADDR}}~0x\+FF1A
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a3cab441e71ef568c9ace253e02f994e9}{NR31\+\_\+\+ADDR}}~0x\+FF1B
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_ae778f198fd2487b540f5c21927a7158a}{NR32\+\_\+\+ADDR}}~0x\+FF1C
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a6f8418a8e1a776cf24197e7d74c88643}{NR33\+\_\+\+ADDR}}~0x\+FF1D
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_afd879fd36d9747dfe27190defc369b9d}{NR34\+\_\+\+ADDR}}~0x\+FF1E
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a707cb33871f719a0cc6915e8e90aaa1a}{NR41\+\_\+\+ADDR}}~0x\+FF20
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_aecfcb5a83223e182aeb5de25e87eb379}{NR42\+\_\+\+ADDR}}~0x\+FF21
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_aac4f2540c66013241f8bdcef97a71db3}{NR43\+\_\+\+ADDR}}~0x\+FF22
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a80ac5960bfe9c54ba50e09d0c52ff637}{NR44\+\_\+\+ADDR}}~0x\+FF23
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a49e23cbb77cbe1683b4cbafc83ac936c}{NR50\+\_\+\+ADDR}}~0x\+FF24
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_ad36468c4a544a2fdead642c5278fd5c6}{NR51\+\_\+\+ADDR}}~0x\+FF25
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a4c8bc2b199f9cf52e66a7f73d7eb28cc}{NR52\+\_\+\+ADDR}}~0x\+FF26
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a24948dc14cff93bf71acb4d34fcfafa5}{WPRAM\+\_\+\+BASE}}~0x\+FF30
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a18e1bab2a52b927b821c0807e888713f}{LCDC\+\_\+\+ADDR}}~0x\+FF40
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a1191e4b031adfcae8ad4db8c4d3e2e52}{STAT\+\_\+\+ADDR}}~0x\+FF41
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a60faa4a76be76f1225943d30890edb9c}{SCY\+\_\+\+ADDR}}~0x\+FF42
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_ad5f5a5652b98cac183de3f7b5c392c99}{SCX\+\_\+\+ADDR}}~0x\+FF43
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_af4ea31360c793f1b3f40ded874037888}{LY\+\_\+\+ADDR}}~0x\+FF44
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a513b24e148bace31b7175c9218024d13}{LYC\+\_\+\+ADDR}}~0x\+FF45
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a8f590e36e61b4fe4fa5276b09c73106d}{DMA\+\_\+\+ADDR}}~0x\+FF46
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_aab0434639adf9081a0cd37b8786d60d7}{BGP\+\_\+\+ADDR}}~0x\+FF47
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a99d1ac903133f9b170007895a833995f}{OBP0\+\_\+\+ADDR}}~0x\+FF48
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a2fb4d9962e733c432c8ee9310e2ac0c5}{OBP1\+\_\+\+ADDR}}~0x\+FF49
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_ac2a2304f6613719806ca9651e1678679}{WY\+\_\+\+ADDR}}~0x\+FF4A
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_af251eac46a6b665a84004bc19fac901e}{WX\+\_\+\+ADDR}}~0x\+FF4B
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_aa32f00625f3184578bdddc263908a706}{IF\+\_\+\+ADDR}}~0x\+FF0F
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a7bcb2e119b8b2efc6cdef82adc5c35cb}{IE\+\_\+\+ADDR}}~0x\+FFFF
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a9e50ff753d8028c3a8d7c10923046648}{TILE\+\_\+\+DATA\+\_\+\+UNSIGNED\+\_\+\+ADDR}}~0x8000
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a04c206cb97e025011af670d126634a54}{TILE\+\_\+\+DATA\+\_\+\+SIGNED\+\_\+\+ADDR}}~0x8800
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_a994598b0c2b8ff8fbc8508afe6aee405}{TILE\+\_\+\+MAP\+\_\+\+LOCATION\+\_\+\+LOW}}~0x9800
+\item 
+\#define \mbox{\hyperlink{gbmemory_8h_adfbbcc1f3889a48c76c28003ec967e86}{TILE\+\_\+\+MAP\+\_\+\+LOCATION\+\_\+\+HIGH}}~0x9\+C00
+\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{gbmemory_8h_a781a62ea8b011b95fb4f0866a52a39ae}{v\+GBMemory\+Load}} (const void $\ast$data, uint32\+\_\+t size)
-\item 
+\begin{DoxyCompactList}\small\item\em Loads data of amount bytes into Memory maps from mem.\+ram\mbox{[}0\mbox{]} to mem.\+ram\mbox{[}bytes -\/ 1\mbox{]}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8h_a13d1367ada996283c71324bcfe8c1e3e}{v\+GBMemory\+Write}} (uint16\+\_\+t address, uint8\+\_\+t data)
+\item 
+void \mbox{\hyperlink{gbmemory_8h_a1fa255c05819bee1cef2a587841ba9f0}{v\+GBMemory\+Write\+Short}} (uint16\+\_\+t address, uint16\+\_\+t data)
 \item 
 uint8\+\_\+t \mbox{\hyperlink{gbmemory_8h_a683a109d784f5984037d1484e7d3cc33}{uc\+GBMemory\+Read}} (uint16\+\_\+t address)
 \item 
 uint16\+\_\+t \mbox{\hyperlink{gbmemory_8h_ab2a72e369d5605ff01fdae3218ebd550}{us\+GBMemory\+Read\+Short}} (uint16\+\_\+t address)
+\item 
+void \mbox{\hyperlink{gbmemory_8h_ab7132a74c7fb5b524a8c1ed437a4f598}{v\+GBMemory\+Inc\+Timers}} (uint8\+\_\+t duration)
 \item 
 void \mbox{\hyperlink{gbmemory_8h_a88bea6ceedc1e06c9c25290a1e477d0b}{v\+GBMemory\+Set\+Bit}} (uint16\+\_\+t address, uint8\+\_\+t bit)
 \item 
@@ -26,7 +151,366 @@ void \mbox{\hyperlink{gbmemory_8h_ae323c2e5d359578d03e43281ff20d9ed}{v\+GBMemory
 void \mbox{\hyperlink{gbmemory_8h_a285b9be84f8c4b08b2a307aab5b90c5a}{v\+GBMemory\+Print}} ()
 \item 
 void \mbox{\hyperlink{gbmemory_8h_aa60061694f25f3c06249a4174c561b3a}{v\+GBMemory\+Set\+OP}} (uint8\+\_\+t op)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Set the current opcode for Debug Printing to LCD screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbmemory_8h_af37d720a8bbc5463b44ff37d0d5ff76d}{v\+GBMemory\+Init}} ()
+\begin{DoxyCompactList}\small\item\em Initialize certain Gameboy registers with their correct information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gbmemory_8h_aab0434639adf9081a0cd37b8786d60d7}\label{gbmemory_8h_aab0434639adf9081a0cd37b8786d60d7}} 
+\index{gbmemory.h@{gbmemory.h}!BGP\_ADDR@{BGP\_ADDR}}
+\index{BGP\_ADDR@{BGP\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{BGP\_ADDR}{BGP\_ADDR}}
+{\footnotesize\ttfamily \#define BGP\+\_\+\+ADDR~0x\+FF47}
+
+\mbox{\Hypertarget{gbmemory_8h_ab0fb50f39caa884288296b2ac876bca2}\label{gbmemory_8h_ab0fb50f39caa884288296b2ac876bca2}} 
+\index{gbmemory.h@{gbmemory.h}!CARTRAM\_BASE@{CARTRAM\_BASE}}
+\index{CARTRAM\_BASE@{CARTRAM\_BASE}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{CARTRAM\_BASE}{CARTRAM\_BASE}}
+{\footnotesize\ttfamily \#define CARTRAM\+\_\+\+BASE~0x\+A000}
+
+\mbox{\Hypertarget{gbmemory_8h_a13dbe8647a9f0158d70903b8b375ad95}\label{gbmemory_8h_a13dbe8647a9f0158d70903b8b375ad95}} 
+\index{gbmemory.h@{gbmemory.h}!CARTROM\_BANK0@{CARTROM\_BANK0}}
+\index{CARTROM\_BANK0@{CARTROM\_BANK0}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{CARTROM\_BANK0}{CARTROM\_BANK0}}
+{\footnotesize\ttfamily \#define CARTROM\+\_\+\+BANK0~0x0000}
+
+\mbox{\Hypertarget{gbmemory_8h_afc27b3eff83e39d7736da11c840da6d2}\label{gbmemory_8h_afc27b3eff83e39d7736da11c840da6d2}} 
+\index{gbmemory.h@{gbmemory.h}!CARTROM\_BANKX@{CARTROM\_BANKX}}
+\index{CARTROM\_BANKX@{CARTROM\_BANKX}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{CARTROM\_BANKX}{CARTROM\_BANKX}}
+{\footnotesize\ttfamily \#define CARTROM\+\_\+\+BANKX~0x4000}
+
+\mbox{\Hypertarget{gbmemory_8h_aace4d95609242861de6a9033ae77fbac}\label{gbmemory_8h_aace4d95609242861de6a9033ae77fbac}} 
+\index{gbmemory.h@{gbmemory.h}!DIV\_ADDR@{DIV\_ADDR}}
+\index{DIV\_ADDR@{DIV\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{DIV\_ADDR}{DIV\_ADDR}}
+{\footnotesize\ttfamily \#define DIV\+\_\+\+ADDR~0x\+FF04}
+
+\mbox{\Hypertarget{gbmemory_8h_a8f590e36e61b4fe4fa5276b09c73106d}\label{gbmemory_8h_a8f590e36e61b4fe4fa5276b09c73106d}} 
+\index{gbmemory.h@{gbmemory.h}!DMA\_ADDR@{DMA\_ADDR}}
+\index{DMA\_ADDR@{DMA\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{DMA\_ADDR}{DMA\_ADDR}}
+{\footnotesize\ttfamily \#define DMA\+\_\+\+ADDR~0x\+FF46}
+
+\mbox{\Hypertarget{gbmemory_8h_a058ce42af143610889cc142423bb501c}\label{gbmemory_8h_a058ce42af143610889cc142423bb501c}} 
+\index{gbmemory.h@{gbmemory.h}!ECHORAM\_BASE@{ECHORAM\_BASE}}
+\index{ECHORAM\_BASE@{ECHORAM\_BASE}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{ECHORAM\_BASE}{ECHORAM\_BASE}}
+{\footnotesize\ttfamily \#define ECHORAM\+\_\+\+BASE~0x\+E000}
+
+\mbox{\Hypertarget{gbmemory_8h_a069511c8e5eef8b61b41fd83e4e95061}\label{gbmemory_8h_a069511c8e5eef8b61b41fd83e4e95061}} 
+\index{gbmemory.h@{gbmemory.h}!GBRAM\_BANK0@{GBRAM\_BANK0}}
+\index{GBRAM\_BANK0@{GBRAM\_BANK0}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{GBRAM\_BANK0}{GBRAM\_BANK0}}
+{\footnotesize\ttfamily \#define GBRAM\+\_\+\+BANK0~0x\+C000}
+
+\mbox{\Hypertarget{gbmemory_8h_a7bcb2e119b8b2efc6cdef82adc5c35cb}\label{gbmemory_8h_a7bcb2e119b8b2efc6cdef82adc5c35cb}} 
+\index{gbmemory.h@{gbmemory.h}!IE\_ADDR@{IE\_ADDR}}
+\index{IE\_ADDR@{IE\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{IE\_ADDR}{IE\_ADDR}}
+{\footnotesize\ttfamily \#define IE\+\_\+\+ADDR~0x\+FFFF}
+
+\mbox{\Hypertarget{gbmemory_8h_aa32f00625f3184578bdddc263908a706}\label{gbmemory_8h_aa32f00625f3184578bdddc263908a706}} 
+\index{gbmemory.h@{gbmemory.h}!IF\_ADDR@{IF\_ADDR}}
+\index{IF\_ADDR@{IF\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{IF\_ADDR}{IF\_ADDR}}
+{\footnotesize\ttfamily \#define IF\+\_\+\+ADDR~0x\+FF0F}
+
+\mbox{\Hypertarget{gbmemory_8h_a4df7bd8fe3b8e6035298ad9a9d621782}\label{gbmemory_8h_a4df7bd8fe3b8e6035298ad9a9d621782}} 
+\index{gbmemory.h@{gbmemory.h}!IO\_BASE@{IO\_BASE}}
+\index{IO\_BASE@{IO\_BASE}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{IO\_BASE}{IO\_BASE}}
+{\footnotesize\ttfamily \#define IO\+\_\+\+BASE~0x\+FF00}
+
+\mbox{\Hypertarget{gbmemory_8h_ae2c24a590c0fcda66991bba90d830f65}\label{gbmemory_8h_ae2c24a590c0fcda66991bba90d830f65}} 
+\index{gbmemory.h@{gbmemory.h}!JOY\_ADDR@{JOY\_ADDR}}
+\index{JOY\_ADDR@{JOY\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{JOY\_ADDR}{JOY\_ADDR}}
+{\footnotesize\ttfamily \#define JOY\+\_\+\+ADDR~0x\+FF00}
+
+\mbox{\Hypertarget{gbmemory_8h_a18e1bab2a52b927b821c0807e888713f}\label{gbmemory_8h_a18e1bab2a52b927b821c0807e888713f}} 
+\index{gbmemory.h@{gbmemory.h}!LCDC\_ADDR@{LCDC\_ADDR}}
+\index{LCDC\_ADDR@{LCDC\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{LCDC\_ADDR}{LCDC\_ADDR}}
+{\footnotesize\ttfamily \#define LCDC\+\_\+\+ADDR~0x\+FF40}
+
+\mbox{\Hypertarget{gbmemory_8h_af4ea31360c793f1b3f40ded874037888}\label{gbmemory_8h_af4ea31360c793f1b3f40ded874037888}} 
+\index{gbmemory.h@{gbmemory.h}!LY\_ADDR@{LY\_ADDR}}
+\index{LY\_ADDR@{LY\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{LY\_ADDR}{LY\_ADDR}}
+{\footnotesize\ttfamily \#define LY\+\_\+\+ADDR~0x\+FF44}
+
+\mbox{\Hypertarget{gbmemory_8h_a513b24e148bace31b7175c9218024d13}\label{gbmemory_8h_a513b24e148bace31b7175c9218024d13}} 
+\index{gbmemory.h@{gbmemory.h}!LYC\_ADDR@{LYC\_ADDR}}
+\index{LYC\_ADDR@{LYC\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{LYC\_ADDR}{LYC\_ADDR}}
+{\footnotesize\ttfamily \#define LYC\+\_\+\+ADDR~0x\+FF45}
+
+\mbox{\Hypertarget{gbmemory_8h_adc4559afdb0535cfebadef1c707a2f91}\label{gbmemory_8h_adc4559afdb0535cfebadef1c707a2f91}} 
+\index{gbmemory.h@{gbmemory.h}!MODE\_0@{MODE\_0}}
+\index{MODE\_0@{MODE\_0}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{MODE\_0}{MODE\_0}}
+{\footnotesize\ttfamily \#define MODE\+\_\+0~0}
+
+\mbox{\Hypertarget{gbmemory_8h_adaf03329d7f4a4ac6ac043bf481db786}\label{gbmemory_8h_adaf03329d7f4a4ac6ac043bf481db786}} 
+\index{gbmemory.h@{gbmemory.h}!MODE\_1@{MODE\_1}}
+\index{MODE\_1@{MODE\_1}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{MODE\_1}{MODE\_1}}
+{\footnotesize\ttfamily \#define MODE\+\_\+1~1}
+
+\mbox{\Hypertarget{gbmemory_8h_aced5757ab7a0d940fced00f3dd123fa3}\label{gbmemory_8h_aced5757ab7a0d940fced00f3dd123fa3}} 
+\index{gbmemory.h@{gbmemory.h}!MODE\_2@{MODE\_2}}
+\index{MODE\_2@{MODE\_2}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{MODE\_2}{MODE\_2}}
+{\footnotesize\ttfamily \#define MODE\+\_\+2~2}
+
+\mbox{\Hypertarget{gbmemory_8h_aeb99b4257cb3cd9fb539529a1bd2d9ca}\label{gbmemory_8h_aeb99b4257cb3cd9fb539529a1bd2d9ca}} 
+\index{gbmemory.h@{gbmemory.h}!MODE\_3@{MODE\_3}}
+\index{MODE\_3@{MODE\_3}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{MODE\_3}{MODE\_3}}
+{\footnotesize\ttfamily \#define MODE\+\_\+3~3}
+
+\mbox{\Hypertarget{gbmemory_8h_a6fff79cae01dac3ece1c0af73a5a2ee5}\label{gbmemory_8h_a6fff79cae01dac3ece1c0af73a5a2ee5}} 
+\index{gbmemory.h@{gbmemory.h}!NR10\_ADDR@{NR10\_ADDR}}
+\index{NR10\_ADDR@{NR10\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR10\_ADDR}{NR10\_ADDR}}
+{\footnotesize\ttfamily \#define NR10\+\_\+\+ADDR~0x\+FF10}
+
+\mbox{\Hypertarget{gbmemory_8h_ae32a051fd5006ff8111c2637d6040027}\label{gbmemory_8h_ae32a051fd5006ff8111c2637d6040027}} 
+\index{gbmemory.h@{gbmemory.h}!NR11\_ADDR@{NR11\_ADDR}}
+\index{NR11\_ADDR@{NR11\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR11\_ADDR}{NR11\_ADDR}}
+{\footnotesize\ttfamily \#define NR11\+\_\+\+ADDR~0x\+FF11}
+
+\mbox{\Hypertarget{gbmemory_8h_af9dfe908eae115c341799856ded00e65}\label{gbmemory_8h_af9dfe908eae115c341799856ded00e65}} 
+\index{gbmemory.h@{gbmemory.h}!NR12\_ADDR@{NR12\_ADDR}}
+\index{NR12\_ADDR@{NR12\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR12\_ADDR}{NR12\_ADDR}}
+{\footnotesize\ttfamily \#define NR12\+\_\+\+ADDR~0x\+FF12}
+
+\mbox{\Hypertarget{gbmemory_8h_adf5f6d4325415cc18af3113d6c46a823}\label{gbmemory_8h_adf5f6d4325415cc18af3113d6c46a823}} 
+\index{gbmemory.h@{gbmemory.h}!NR13\_ADDR@{NR13\_ADDR}}
+\index{NR13\_ADDR@{NR13\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR13\_ADDR}{NR13\_ADDR}}
+{\footnotesize\ttfamily \#define NR13\+\_\+\+ADDR~0x\+FF13}
+
+\mbox{\Hypertarget{gbmemory_8h_a43232a41c2861466db069c5545312d37}\label{gbmemory_8h_a43232a41c2861466db069c5545312d37}} 
+\index{gbmemory.h@{gbmemory.h}!NR14\_ADDR@{NR14\_ADDR}}
+\index{NR14\_ADDR@{NR14\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR14\_ADDR}{NR14\_ADDR}}
+{\footnotesize\ttfamily \#define NR14\+\_\+\+ADDR~0x\+FF14}
+
+\mbox{\Hypertarget{gbmemory_8h_af6c35e47a16eb5d0ef4ffa27db224e1c}\label{gbmemory_8h_af6c35e47a16eb5d0ef4ffa27db224e1c}} 
+\index{gbmemory.h@{gbmemory.h}!NR21\_ADDR@{NR21\_ADDR}}
+\index{NR21\_ADDR@{NR21\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR21\_ADDR}{NR21\_ADDR}}
+{\footnotesize\ttfamily \#define NR21\+\_\+\+ADDR~0x\+FF16}
+
+\mbox{\Hypertarget{gbmemory_8h_a23fe7d5a7a7e03e104e57062ccd94589}\label{gbmemory_8h_a23fe7d5a7a7e03e104e57062ccd94589}} 
+\index{gbmemory.h@{gbmemory.h}!NR22\_ADDR@{NR22\_ADDR}}
+\index{NR22\_ADDR@{NR22\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR22\_ADDR}{NR22\_ADDR}}
+{\footnotesize\ttfamily \#define NR22\+\_\+\+ADDR~0x\+FF17}
+
+\mbox{\Hypertarget{gbmemory_8h_a4b148cfe35444b1fc9c48129ccbd8f84}\label{gbmemory_8h_a4b148cfe35444b1fc9c48129ccbd8f84}} 
+\index{gbmemory.h@{gbmemory.h}!NR23\_ADDR@{NR23\_ADDR}}
+\index{NR23\_ADDR@{NR23\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR23\_ADDR}{NR23\_ADDR}}
+{\footnotesize\ttfamily \#define NR23\+\_\+\+ADDR~0x\+FF18}
+
+\mbox{\Hypertarget{gbmemory_8h_ad3cd47625e40c95ab992d191e25355af}\label{gbmemory_8h_ad3cd47625e40c95ab992d191e25355af}} 
+\index{gbmemory.h@{gbmemory.h}!NR24\_ADDR@{NR24\_ADDR}}
+\index{NR24\_ADDR@{NR24\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR24\_ADDR}{NR24\_ADDR}}
+{\footnotesize\ttfamily \#define NR24\+\_\+\+ADDR~0x\+FF19}
+
+\mbox{\Hypertarget{gbmemory_8h_a847dab9c9a86dbeb6b5775b908fe4b51}\label{gbmemory_8h_a847dab9c9a86dbeb6b5775b908fe4b51}} 
+\index{gbmemory.h@{gbmemory.h}!NR30\_ADDR@{NR30\_ADDR}}
+\index{NR30\_ADDR@{NR30\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR30\_ADDR}{NR30\_ADDR}}
+{\footnotesize\ttfamily \#define NR30\+\_\+\+ADDR~0x\+FF1A}
+
+\mbox{\Hypertarget{gbmemory_8h_a3cab441e71ef568c9ace253e02f994e9}\label{gbmemory_8h_a3cab441e71ef568c9ace253e02f994e9}} 
+\index{gbmemory.h@{gbmemory.h}!NR31\_ADDR@{NR31\_ADDR}}
+\index{NR31\_ADDR@{NR31\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR31\_ADDR}{NR31\_ADDR}}
+{\footnotesize\ttfamily \#define NR31\+\_\+\+ADDR~0x\+FF1B}
+
+\mbox{\Hypertarget{gbmemory_8h_ae778f198fd2487b540f5c21927a7158a}\label{gbmemory_8h_ae778f198fd2487b540f5c21927a7158a}} 
+\index{gbmemory.h@{gbmemory.h}!NR32\_ADDR@{NR32\_ADDR}}
+\index{NR32\_ADDR@{NR32\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR32\_ADDR}{NR32\_ADDR}}
+{\footnotesize\ttfamily \#define NR32\+\_\+\+ADDR~0x\+FF1C}
+
+\mbox{\Hypertarget{gbmemory_8h_a6f8418a8e1a776cf24197e7d74c88643}\label{gbmemory_8h_a6f8418a8e1a776cf24197e7d74c88643}} 
+\index{gbmemory.h@{gbmemory.h}!NR33\_ADDR@{NR33\_ADDR}}
+\index{NR33\_ADDR@{NR33\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR33\_ADDR}{NR33\_ADDR}}
+{\footnotesize\ttfamily \#define NR33\+\_\+\+ADDR~0x\+FF1D}
+
+\mbox{\Hypertarget{gbmemory_8h_afd879fd36d9747dfe27190defc369b9d}\label{gbmemory_8h_afd879fd36d9747dfe27190defc369b9d}} 
+\index{gbmemory.h@{gbmemory.h}!NR34\_ADDR@{NR34\_ADDR}}
+\index{NR34\_ADDR@{NR34\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR34\_ADDR}{NR34\_ADDR}}
+{\footnotesize\ttfamily \#define NR34\+\_\+\+ADDR~0x\+FF1E}
+
+\mbox{\Hypertarget{gbmemory_8h_a707cb33871f719a0cc6915e8e90aaa1a}\label{gbmemory_8h_a707cb33871f719a0cc6915e8e90aaa1a}} 
+\index{gbmemory.h@{gbmemory.h}!NR41\_ADDR@{NR41\_ADDR}}
+\index{NR41\_ADDR@{NR41\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR41\_ADDR}{NR41\_ADDR}}
+{\footnotesize\ttfamily \#define NR41\+\_\+\+ADDR~0x\+FF20}
+
+\mbox{\Hypertarget{gbmemory_8h_aecfcb5a83223e182aeb5de25e87eb379}\label{gbmemory_8h_aecfcb5a83223e182aeb5de25e87eb379}} 
+\index{gbmemory.h@{gbmemory.h}!NR42\_ADDR@{NR42\_ADDR}}
+\index{NR42\_ADDR@{NR42\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR42\_ADDR}{NR42\_ADDR}}
+{\footnotesize\ttfamily \#define NR42\+\_\+\+ADDR~0x\+FF21}
+
+\mbox{\Hypertarget{gbmemory_8h_aac4f2540c66013241f8bdcef97a71db3}\label{gbmemory_8h_aac4f2540c66013241f8bdcef97a71db3}} 
+\index{gbmemory.h@{gbmemory.h}!NR43\_ADDR@{NR43\_ADDR}}
+\index{NR43\_ADDR@{NR43\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR43\_ADDR}{NR43\_ADDR}}
+{\footnotesize\ttfamily \#define NR43\+\_\+\+ADDR~0x\+FF22}
+
+\mbox{\Hypertarget{gbmemory_8h_a80ac5960bfe9c54ba50e09d0c52ff637}\label{gbmemory_8h_a80ac5960bfe9c54ba50e09d0c52ff637}} 
+\index{gbmemory.h@{gbmemory.h}!NR44\_ADDR@{NR44\_ADDR}}
+\index{NR44\_ADDR@{NR44\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR44\_ADDR}{NR44\_ADDR}}
+{\footnotesize\ttfamily \#define NR44\+\_\+\+ADDR~0x\+FF23}
+
+\mbox{\Hypertarget{gbmemory_8h_a49e23cbb77cbe1683b4cbafc83ac936c}\label{gbmemory_8h_a49e23cbb77cbe1683b4cbafc83ac936c}} 
+\index{gbmemory.h@{gbmemory.h}!NR50\_ADDR@{NR50\_ADDR}}
+\index{NR50\_ADDR@{NR50\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR50\_ADDR}{NR50\_ADDR}}
+{\footnotesize\ttfamily \#define NR50\+\_\+\+ADDR~0x\+FF24}
+
+\mbox{\Hypertarget{gbmemory_8h_ad36468c4a544a2fdead642c5278fd5c6}\label{gbmemory_8h_ad36468c4a544a2fdead642c5278fd5c6}} 
+\index{gbmemory.h@{gbmemory.h}!NR51\_ADDR@{NR51\_ADDR}}
+\index{NR51\_ADDR@{NR51\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR51\_ADDR}{NR51\_ADDR}}
+{\footnotesize\ttfamily \#define NR51\+\_\+\+ADDR~0x\+FF25}
+
+\mbox{\Hypertarget{gbmemory_8h_a4c8bc2b199f9cf52e66a7f73d7eb28cc}\label{gbmemory_8h_a4c8bc2b199f9cf52e66a7f73d7eb28cc}} 
+\index{gbmemory.h@{gbmemory.h}!NR52\_ADDR@{NR52\_ADDR}}
+\index{NR52\_ADDR@{NR52\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{NR52\_ADDR}{NR52\_ADDR}}
+{\footnotesize\ttfamily \#define NR52\+\_\+\+ADDR~0x\+FF26}
+
+\mbox{\Hypertarget{gbmemory_8h_a6a61e5f32ccd9a99b21a9fafba587c68}\label{gbmemory_8h_a6a61e5f32ccd9a99b21a9fafba587c68}} 
+\index{gbmemory.h@{gbmemory.h}!OAM\_BASE@{OAM\_BASE}}
+\index{OAM\_BASE@{OAM\_BASE}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{OAM\_BASE}{OAM\_BASE}}
+{\footnotesize\ttfamily \#define OAM\+\_\+\+BASE~0x\+FE00}
+
+\mbox{\Hypertarget{gbmemory_8h_a99d1ac903133f9b170007895a833995f}\label{gbmemory_8h_a99d1ac903133f9b170007895a833995f}} 
+\index{gbmemory.h@{gbmemory.h}!OBP0\_ADDR@{OBP0\_ADDR}}
+\index{OBP0\_ADDR@{OBP0\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{OBP0\_ADDR}{OBP0\_ADDR}}
+{\footnotesize\ttfamily \#define OBP0\+\_\+\+ADDR~0x\+FF48}
+
+\mbox{\Hypertarget{gbmemory_8h_a2fb4d9962e733c432c8ee9310e2ac0c5}\label{gbmemory_8h_a2fb4d9962e733c432c8ee9310e2ac0c5}} 
+\index{gbmemory.h@{gbmemory.h}!OBP1\_ADDR@{OBP1\_ADDR}}
+\index{OBP1\_ADDR@{OBP1\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{OBP1\_ADDR}{OBP1\_ADDR}}
+{\footnotesize\ttfamily \#define OBP1\+\_\+\+ADDR~0x\+FF49}
+
+\mbox{\Hypertarget{gbmemory_8h_aa34c60657c402e0362576655b386155a}\label{gbmemory_8h_aa34c60657c402e0362576655b386155a}} 
+\index{gbmemory.h@{gbmemory.h}!SB\_ADDR@{SB\_ADDR}}
+\index{SB\_ADDR@{SB\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{SB\_ADDR}{SB\_ADDR}}
+{\footnotesize\ttfamily \#define SB\+\_\+\+ADDR~0x\+FF01}
+
+\mbox{\Hypertarget{gbmemory_8h_ad5f5a5652b98cac183de3f7b5c392c99}\label{gbmemory_8h_ad5f5a5652b98cac183de3f7b5c392c99}} 
+\index{gbmemory.h@{gbmemory.h}!SCX\_ADDR@{SCX\_ADDR}}
+\index{SCX\_ADDR@{SCX\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{SCX\_ADDR}{SCX\_ADDR}}
+{\footnotesize\ttfamily \#define SCX\+\_\+\+ADDR~0x\+FF43}
+
+\mbox{\Hypertarget{gbmemory_8h_a60faa4a76be76f1225943d30890edb9c}\label{gbmemory_8h_a60faa4a76be76f1225943d30890edb9c}} 
+\index{gbmemory.h@{gbmemory.h}!SCY\_ADDR@{SCY\_ADDR}}
+\index{SCY\_ADDR@{SCY\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{SCY\_ADDR}{SCY\_ADDR}}
+{\footnotesize\ttfamily \#define SCY\+\_\+\+ADDR~0x\+FF42}
+
+\mbox{\Hypertarget{gbmemory_8h_a1191e4b031adfcae8ad4db8c4d3e2e52}\label{gbmemory_8h_a1191e4b031adfcae8ad4db8c4d3e2e52}} 
+\index{gbmemory.h@{gbmemory.h}!STAT\_ADDR@{STAT\_ADDR}}
+\index{STAT\_ADDR@{STAT\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{STAT\_ADDR}{STAT\_ADDR}}
+{\footnotesize\ttfamily \#define STAT\+\_\+\+ADDR~0x\+FF41}
+
+\mbox{\Hypertarget{gbmemory_8h_aa2ec352bdfb8da2754eb678ce8fbaab7}\label{gbmemory_8h_aa2ec352bdfb8da2754eb678ce8fbaab7}} 
+\index{gbmemory.h@{gbmemory.h}!STC\_ADDR@{STC\_ADDR}}
+\index{STC\_ADDR@{STC\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{STC\_ADDR}{STC\_ADDR}}
+{\footnotesize\ttfamily \#define STC\+\_\+\+ADDR~0x\+FF02}
+
+\mbox{\Hypertarget{gbmemory_8h_ab007709180d33abbf0a87c10234078bf}\label{gbmemory_8h_ab007709180d33abbf0a87c10234078bf}} 
+\index{gbmemory.h@{gbmemory.h}!TAC\_ADDR@{TAC\_ADDR}}
+\index{TAC\_ADDR@{TAC\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{TAC\_ADDR}{TAC\_ADDR}}
+{\footnotesize\ttfamily \#define TAC\+\_\+\+ADDR~0x\+FF07}
+
+\mbox{\Hypertarget{gbmemory_8h_a04c206cb97e025011af670d126634a54}\label{gbmemory_8h_a04c206cb97e025011af670d126634a54}} 
+\index{gbmemory.h@{gbmemory.h}!TILE\_DATA\_SIGNED\_ADDR@{TILE\_DATA\_SIGNED\_ADDR}}
+\index{TILE\_DATA\_SIGNED\_ADDR@{TILE\_DATA\_SIGNED\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{TILE\_DATA\_SIGNED\_ADDR}{TILE\_DATA\_SIGNED\_ADDR}}
+{\footnotesize\ttfamily \#define TILE\+\_\+\+DATA\+\_\+\+SIGNED\+\_\+\+ADDR~0x8800}
+
+\mbox{\Hypertarget{gbmemory_8h_a9e50ff753d8028c3a8d7c10923046648}\label{gbmemory_8h_a9e50ff753d8028c3a8d7c10923046648}} 
+\index{gbmemory.h@{gbmemory.h}!TILE\_DATA\_UNSIGNED\_ADDR@{TILE\_DATA\_UNSIGNED\_ADDR}}
+\index{TILE\_DATA\_UNSIGNED\_ADDR@{TILE\_DATA\_UNSIGNED\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{TILE\_DATA\_UNSIGNED\_ADDR}{TILE\_DATA\_UNSIGNED\_ADDR}}
+{\footnotesize\ttfamily \#define TILE\+\_\+\+DATA\+\_\+\+UNSIGNED\+\_\+\+ADDR~0x8000}
+
+\mbox{\Hypertarget{gbmemory_8h_adfbbcc1f3889a48c76c28003ec967e86}\label{gbmemory_8h_adfbbcc1f3889a48c76c28003ec967e86}} 
+\index{gbmemory.h@{gbmemory.h}!TILE\_MAP\_LOCATION\_HIGH@{TILE\_MAP\_LOCATION\_HIGH}}
+\index{TILE\_MAP\_LOCATION\_HIGH@{TILE\_MAP\_LOCATION\_HIGH}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{TILE\_MAP\_LOCATION\_HIGH}{TILE\_MAP\_LOCATION\_HIGH}}
+{\footnotesize\ttfamily \#define TILE\+\_\+\+MAP\+\_\+\+LOCATION\+\_\+\+HIGH~0x9\+C00}
+
+\mbox{\Hypertarget{gbmemory_8h_a994598b0c2b8ff8fbc8508afe6aee405}\label{gbmemory_8h_a994598b0c2b8ff8fbc8508afe6aee405}} 
+\index{gbmemory.h@{gbmemory.h}!TILE\_MAP\_LOCATION\_LOW@{TILE\_MAP\_LOCATION\_LOW}}
+\index{TILE\_MAP\_LOCATION\_LOW@{TILE\_MAP\_LOCATION\_LOW}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{TILE\_MAP\_LOCATION\_LOW}{TILE\_MAP\_LOCATION\_LOW}}
+{\footnotesize\ttfamily \#define TILE\+\_\+\+MAP\+\_\+\+LOCATION\+\_\+\+LOW~0x9800}
+
+\mbox{\Hypertarget{gbmemory_8h_ab43db300c6183765a7d98b70bc9f0805}\label{gbmemory_8h_ab43db300c6183765a7d98b70bc9f0805}} 
+\index{gbmemory.h@{gbmemory.h}!TIMA\_ADDR@{TIMA\_ADDR}}
+\index{TIMA\_ADDR@{TIMA\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{TIMA\_ADDR}{TIMA\_ADDR}}
+{\footnotesize\ttfamily \#define TIMA\+\_\+\+ADDR~0x\+FF05}
+
+\mbox{\Hypertarget{gbmemory_8h_a512af7455d7690b6634cf9c0638cad3e}\label{gbmemory_8h_a512af7455d7690b6634cf9c0638cad3e}} 
+\index{gbmemory.h@{gbmemory.h}!TMA\_ADDR@{TMA\_ADDR}}
+\index{TMA\_ADDR@{TMA\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{TMA\_ADDR}{TMA\_ADDR}}
+{\footnotesize\ttfamily \#define TMA\+\_\+\+ADDR~0x\+FF06}
+
+\mbox{\Hypertarget{gbmemory_8h_aeadafef31db261c22b19a64f82608fdb}\label{gbmemory_8h_aeadafef31db261c22b19a64f82608fdb}} 
+\index{gbmemory.h@{gbmemory.h}!VRAM\_BASE@{VRAM\_BASE}}
+\index{VRAM\_BASE@{VRAM\_BASE}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{VRAM\_BASE}{VRAM\_BASE}}
+{\footnotesize\ttfamily \#define VRAM\+\_\+\+BASE~0x8000}
+
+\mbox{\Hypertarget{gbmemory_8h_a24948dc14cff93bf71acb4d34fcfafa5}\label{gbmemory_8h_a24948dc14cff93bf71acb4d34fcfafa5}} 
+\index{gbmemory.h@{gbmemory.h}!WPRAM\_BASE@{WPRAM\_BASE}}
+\index{WPRAM\_BASE@{WPRAM\_BASE}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{WPRAM\_BASE}{WPRAM\_BASE}}
+{\footnotesize\ttfamily \#define WPRAM\+\_\+\+BASE~0x\+FF30}
+
+\mbox{\Hypertarget{gbmemory_8h_af251eac46a6b665a84004bc19fac901e}\label{gbmemory_8h_af251eac46a6b665a84004bc19fac901e}} 
+\index{gbmemory.h@{gbmemory.h}!WX\_ADDR@{WX\_ADDR}}
+\index{WX\_ADDR@{WX\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{WX\_ADDR}{WX\_ADDR}}
+{\footnotesize\ttfamily \#define WX\+\_\+\+ADDR~0x\+FF4B}
+
+\mbox{\Hypertarget{gbmemory_8h_ac2a2304f6613719806ca9651e1678679}\label{gbmemory_8h_ac2a2304f6613719806ca9651e1678679}} 
+\index{gbmemory.h@{gbmemory.h}!WY\_ADDR@{WY\_ADDR}}
+\index{WY\_ADDR@{WY\_ADDR}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{WY\_ADDR}{WY\_ADDR}}
+{\footnotesize\ttfamily \#define WY\+\_\+\+ADDR~0x\+FF4A}
+
 
 
 \doxysubsection{Function Documentation}
@@ -36,18 +520,67 @@ void \mbox{\hyperlink{gbmemory_8h_aa60061694f25f3c06249a4174c561b3a}{v\+GBMemory
 \doxysubsubsection{\texorpdfstring{ucGBMemoryRead()}{ucGBMemoryRead()}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+GBMemory\+Read (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})}
 
+
+\begin{DoxyParams}{Parameters}
+{\em address} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8h_ab2a72e369d5605ff01fdae3218ebd550}\label{gbmemory_8h_ab2a72e369d5605ff01fdae3218ebd550}} 
 \index{gbmemory.h@{gbmemory.h}!usGBMemoryReadShort@{usGBMemoryReadShort}}
 \index{usGBMemoryReadShort@{usGBMemoryReadShort}!gbmemory.h@{gbmemory.h}}
 \doxysubsubsection{\texorpdfstring{usGBMemoryReadShort()}{usGBMemoryReadShort()}}
 {\footnotesize\ttfamily uint16\+\_\+t us\+GBMemory\+Read\+Short (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})}
 
+
+\begin{DoxyParams}{Parameters}
+{\em address} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbmemory_8h_ab7132a74c7fb5b524a8c1ed437a4f598}\label{gbmemory_8h_ab7132a74c7fb5b524a8c1ed437a4f598}} 
+\index{gbmemory.h@{gbmemory.h}!vGBMemoryIncTimers@{vGBMemoryIncTimers}}
+\index{vGBMemoryIncTimers@{vGBMemoryIncTimers}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{vGBMemoryIncTimers()}{vGBMemoryIncTimers()}}
+{\footnotesize\ttfamily void v\+GBMemory\+Inc\+Timers (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{duration }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gbmemory_8h_af37d720a8bbc5463b44ff37d0d5ff76d}\label{gbmemory_8h_af37d720a8bbc5463b44ff37d0d5ff76d}} 
+\index{gbmemory.h@{gbmemory.h}!vGBMemoryInit@{vGBMemoryInit}}
+\index{vGBMemoryInit@{vGBMemoryInit}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{vGBMemoryInit()}{vGBMemoryInit()}}
+{\footnotesize\ttfamily void v\+GBMemory\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize certain Gameboy registers with their correct information. 
+
+At start up the Joypad Register should read 0x\+CF to denote that no Joypad buttons are being pressed. The IF register should read 0x\+E1 to set the appropriate flags. \begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8h_a781a62ea8b011b95fb4f0866a52a39ae}\label{gbmemory_8h_a781a62ea8b011b95fb4f0866a52a39ae}} 
 \index{gbmemory.h@{gbmemory.h}!vGBMemoryLoad@{vGBMemoryLoad}}
 \index{vGBMemoryLoad@{vGBMemoryLoad}!gbmemory.h@{gbmemory.h}}
 \doxysubsubsection{\texorpdfstring{vGBMemoryLoad()}{vGBMemoryLoad()}}
-{\footnotesize\ttfamily void v\+GBMemory\+Load (\begin{DoxyParamCaption}\item[{const void $\ast$}]{data,  }\item[{uint32\+\_\+t}]{size }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void v\+GBMemory\+Load (\begin{DoxyParamCaption}\item[{const void $\ast$}]{data,  }\item[{uint32\+\_\+t}]{bytes }\end{DoxyParamCaption})}
 
+
+
+Loads data of amount bytes into Memory maps from mem.\+ram\mbox{[}0\mbox{]} to mem.\+ram\mbox{[}bytes -\/ 1\mbox{]}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & data to be loaded into memory map. \\
+\hline
+{\em size} & amount of bytes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8h_a285b9be84f8c4b08b2a307aab5b90c5a}\label{gbmemory_8h_a285b9be84f8c4b08b2a307aab5b90c5a}} 
 \index{gbmemory.h@{gbmemory.h}!vGBMemoryPrint@{vGBMemoryPrint}}
 \index{vGBMemoryPrint@{vGBMemoryPrint}!gbmemory.h@{gbmemory.h}}
@@ -60,21 +593,60 @@ void \mbox{\hyperlink{gbmemory_8h_aa60061694f25f3c06249a4174c561b3a}{v\+GBMemory
 \doxysubsubsection{\texorpdfstring{vGBMemoryResetBit()}{vGBMemoryResetBit()}}
 {\footnotesize\ttfamily void v\+GBMemory\+Reset\+Bit (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
 
+
+\begin{DoxyParams}{Parameters}
+{\em address} & \\
+\hline
+{\em bit} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{gbmemory_8h_a88bea6ceedc1e06c9c25290a1e477d0b}\label{gbmemory_8h_a88bea6ceedc1e06c9c25290a1e477d0b}} 
 \index{gbmemory.h@{gbmemory.h}!vGBMemorySetBit@{vGBMemorySetBit}}
 \index{vGBMemorySetBit@{vGBMemorySetBit}!gbmemory.h@{gbmemory.h}}
 \doxysubsubsection{\texorpdfstring{vGBMemorySetBit()}{vGBMemorySetBit()}}
 {\footnotesize\ttfamily void v\+GBMemory\+Set\+Bit (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
 
+
+\begin{DoxyParams}{Parameters}
+{\em address} & \\
+\hline
+{\em bit} & \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{gbmemory_8h_aa60061694f25f3c06249a4174c561b3a}\label{gbmemory_8h_aa60061694f25f3c06249a4174c561b3a}} 
 \index{gbmemory.h@{gbmemory.h}!vGBMemorySetOP@{vGBMemorySetOP}}
 \index{vGBMemorySetOP@{vGBMemorySetOP}!gbmemory.h@{gbmemory.h}}
 \doxysubsubsection{\texorpdfstring{vGBMemorySetOP()}{vGBMemorySetOP()}}
 {\footnotesize\ttfamily void v\+GBMemory\+Set\+OP (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{op }\end{DoxyParamCaption})}
 
+
+
+Set the current opcode for Debug Printing to LCD screen. 
+
+See \mbox{\hyperlink{gbmemory_8c_a285b9be84f8c4b08b2a307aab5b90c5a}{v\+GBMemory\+Print()}}; 
+\begin{DoxyParams}{Parameters}
+{\em op} & current opcode. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8h_a13d1367ada996283c71324bcfe8c1e3e}\label{gbmemory_8h_a13d1367ada996283c71324bcfe8c1e3e}} 
 \index{gbmemory.h@{gbmemory.h}!vGBMemoryWrite@{vGBMemoryWrite}}
 \index{vGBMemoryWrite@{vGBMemoryWrite}!gbmemory.h@{gbmemory.h}}
 \doxysubsubsection{\texorpdfstring{vGBMemoryWrite()}{vGBMemoryWrite()}}
 {\footnotesize\ttfamily void v\+GBMemory\+Write (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & \\
+\hline
+{\em data} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{gbmemory_8h_a1fa255c05819bee1cef2a587841ba9f0}\label{gbmemory_8h_a1fa255c05819bee1cef2a587841ba9f0}} 
+\index{gbmemory.h@{gbmemory.h}!vGBMemoryWriteShort@{vGBMemoryWriteShort}}
+\index{vGBMemoryWriteShort@{vGBMemoryWriteShort}!gbmemory.h@{gbmemory.h}}
+\doxysubsubsection{\texorpdfstring{vGBMemoryWriteShort()}{vGBMemoryWriteShort()}}
+{\footnotesize\ttfamily void v\+GBMemory\+Write\+Short (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{data }\end{DoxyParamCaption})}
 

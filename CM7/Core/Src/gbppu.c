@@ -2,6 +2,9 @@
   ******************************************************************************
   * @file           : gbppu.c
   * @brief          : Gameboy PPU Functionality
+ *			          This file emulates all functionality of the Gameboy Pixel/Picture Processing Unit (PPU).
+  * 				  This includes drawing the Background, Window, and Object Layers to a frame buffer to be
+  * 				  displayed 60 times a second.
   * @author         : Rami
   * @date           : Jun 11, 2021
   *
@@ -17,59 +20,48 @@
 #include "string.h"
 #include "stm32h7_display.h"
 
-// colors
-#define BACKGROUND 0
-#define WINDOW     1
-#define SPRITE     2
+// Frame buffer start address
+#define SRAM1 0x30000000UL
 
-#define DARKEST_GREEN  0XFF0F380FUL
-#define DARK_GREEN     0XFF306230UL
-#define LIGHT_GREEN    0XFF8BAC0FUL
-#define LIGHTEST_GREEN 0XFF9BBC0FUL
+// PPU Registers
+uint8_t ucLY = 0;
+uint8_t  ucMode;
 
-#define SRAM1		   0x30000000UL
+// State Ticks
+uint32_t ultStatesTotal;
 
-// Flags
-uint16_t BackWinTileDataAddr;
-uint16_t BackTileDisplayAddr;
-uint8_t Mode;
+// Palettes
+uint8_t ucBGPColorToPalette[4];
+uint8_t ucOBP0ColorToPalette[4];
+uint8_t ucOBP1ColorToPalette[4];
 
-uint32_t tStatesTotal;
-
-uint8_t ly = 0;
-uint8_t BGPColorToPalette[4];
-uint8_t OBP0ColorToPalette[4];
-uint8_t OBP1ColorToPalette[4];
-
-
-// use this to access d2_sram
-
+// Frame Buffer variables
 uint8_t *gb_frame = (uint8_t*)SRAM1;
-//uint8_t gb_frame[144*160];
-
 uint8_t ucBGWINline[160];
-uint8_t scaleAmount = 3;
-uint32_t curLine;
-uint32_t lineadd;
-/*Function Prototypes*/
+uint8_t ulScaleAmount = 2;
+uint32_t ulCurLine;
+uint32_t ulLineAdd;
 
-void vCheckBGP();
-void vCheckOBP0();
-void vCheckOBP1();
+/*Function Prototypes*/
+void prvCheckBGP();
+void prvCheckOBP0();
+void prvCheckOBP1();
 void LYC_check(uint8_t ly);
 void setMode(uint8_t mode);
 void vGBPPUDrawLine(uint8_t ly, uint8_t SCX, uint8_t SCY);
 uint16_t usGetBackWinTileDataSel();
 uint16_t usGetBackTileDisplaySel();
 uint16_t usGetWinTileDisplaySel();
+
 /**
  * @brief Zeros All Memory in the Frame Buffer
  * @return Nothing
  */
 void vSetFrameBuffer(){
-	memset(gb_frame, 0, 160 * 144 * 4 * scaleAmount);
+	memset(gb_frame, 0, 160 * 144 * 4 * ulScaleAmount);
 }
-//38912
+
+
 /**
   * @brief Steps the PPU by tStates
   * @details This function steps the PPU by the tStates variable if the screen enable (7th) bit of LCDC Register is high,
@@ -81,74 +73,76 @@ void vSetFrameBuffer(){
   * @attention The placement of the functions vCheckBackWinTileDataSel() and vCheckBackTileDisplaySel() are just educated guesses at
   * the current moment, more research into when and how often these Registers are updated must be conducted.
   */
-void gbPPUStep(){
-	static int n = 0;
-	if(ucGBMemoryRead(LCDC_ADDR) & 0x80){															// check MSB of LCDC for screen en
-		tStatesTotal += ucGetTstate();
+void vGBPPUStep(){
+    static int n = 0;
 
-		if (tStatesTotal > 456){												// end of hblank or vblank
-			ly++;
-			LYC_check(ly);
-			if(ly > 153){												// end of vblank
+    if(ucGBMemoryRead(LCDC_ADDR) & 0x80){															// check MSB of LCDC for screen en
+    	ultStatesTotal += ucGetTstate();
+
+        if(ultStatesTotal > 456){												// end of hblank or vblank
+        	ucLY++;
+			LYC_check(ucLY);
+			if(ucLY > 153){												// end of vblank
 				if(n % 1 == 0){
-					displayFrameBuffer(gb_frame, scaleAmount);
+					displayFrameBuffer(gb_frame, ulScaleAmount);
 				}
 				n++;
 				setMode(MODE_2);
-				ly = 0;
+				ucLY = 0;
 
 				if(checkbit(ucGBMemoryRead(STAT_ADDR), 5))
 					vGBMemorySetBit(IF_ADDR, 1);
 			}
 
-			vGBMemoryWrite(LY_ADDR, ly);								// update LY register
-			tStatesTotal -= 456;
+			vGBMemoryWrite(LY_ADDR, ucLY);								// update LY register
+			ultStatesTotal -= 456;
 		}
 
-		if (ly > 143){													// vblank
-			if(Mode != MODE_1){
+		if (ucLY > 143){													// vblank
+			if(ucMode != MODE_1){
 				setMode(MODE_1);
 				if(checkbit(ucGBMemoryRead(STAT_ADDR), 4))
 					vGBMemorySetBit(IF_ADDR, 1);
-				if(ly == 0x90){
+				if(ucLY == 0x90){
 					vGBMemorySetBit(IF_ADDR, 0);
 				}
 			}
 		}else{
-			if (tStatesTotal <= 80 && Mode != MODE_2)											// oam
+			if (ultStatesTotal <= 80 && ucMode != MODE_2)											// oam
 				setMode(MODE_2);
-			else if(tStatesTotal > 80 && tStatesTotal <= 252 && Mode != MODE_3){										// vram
+			else if(ultStatesTotal > 80 && ultStatesTotal <= 252 && ucMode != MODE_3){										// vram
 
 				if (n % 1 == 0){
-					vGBPPUDrawLine(ly, ucGBMemoryRead(SCX_ADDR), ucGBMemoryRead(SCY_ADDR));
+					vGBPPUDrawLine(ucLY, ucGBMemoryRead(SCX_ADDR), ucGBMemoryRead(SCY_ADDR));
 				}
 
 				setMode(MODE_3);
-			}else if(tStatesTotal > 252 && tStatesTotal <= 456 && Mode != MODE_0){										// hblank
+			}else if(ultStatesTotal > 252 && ultStatesTotal <= 456 && ucMode != MODE_0){										// hblank
 				setMode(MODE_0);
 				if(checkbit(ucGBMemoryRead(STAT_ADDR), 3))
 					vGBMemorySetBit(IF_ADDR, 1);
 			}
 		}
 	}else{
-		ly = 0;
-		vGBMemoryWrite(LY_ADDR, ly);
+		ucLY = 0;
+		vGBMemoryWrite(LY_ADDR, ucLY);
 	}
 }
 
 /**
- * @brief Background color to palette translation
- * @details Matches a color to its appropriate palette based on value of the Background Palette Register
+ * @brief Background and window color to palette conversion
+ * @details Updates a color to its appropriate palette based on value of the Background Palette Register. each number assigned corresponds
+ * to a color refereced in STM32's L8 color mode.
  * @return Nothing
  */
-void vCheckBGP(){
+void prvCheckBGP(){
 	uint8_t BGP = ucGBMemoryRead(BGP_ADDR);
 	for(int i = 0; i < 4; i++){
 		switch ((BGP >> (i*2)) & 0x03) {
-			case 0: BGPColorToPalette[i] = 1;  break;
-			case 1: BGPColorToPalette[i] = 2;  break;
-			case 2: BGPColorToPalette[i] = 3;  break;
-			case 3: BGPColorToPalette[i] = 4;  break;
+			case 0: ucBGPColorToPalette[i] = 1;  break;
+			case 1: ucBGPColorToPalette[i] = 2;  break;
+			case 2: ucBGPColorToPalette[i] = 3;  break;
+			case 3: ucBGPColorToPalette[i] = 4;  break;
 			default:                           break;
 		}
 
@@ -156,28 +150,40 @@ void vCheckBGP(){
 
 }
 
-void vCheckOBP0(){
+/**
+ * @brief OBP0 register color to palette conversion
+ * @details Updates a color to its appropriate palette based on value of the OBP0 Register. each number assigned corresponds
+ * to a color refereced in STM32's L8 color mode.
+ * @return Nothing
+ */
+void prvCheckOBP0(){
 	uint8_t BGP = ucGBMemoryRead(OBP0_ADDR);
 	for(int i = 0; i < 4; i++){
 		switch ((BGP >> (i*2)) & 0x03) {
-			case 0: OBP0ColorToPalette[i] = 1;    break;
-			case 1: OBP0ColorToPalette[i] = 2;    break;
-			case 2: OBP0ColorToPalette[i] = 3;    break;
-			case 3: OBP0ColorToPalette[i] = 4;    break;
+			case 0: ucOBP0ColorToPalette[i] = 1;    break;
+			case 1: ucOBP0ColorToPalette[i] = 2;    break;
+			case 2: ucOBP0ColorToPalette[i] = 3;    break;
+			case 3: ucOBP0ColorToPalette[i] = 4;    break;
 			default:                              break;
 		}
 
 	}
 }
 
-void vCheckOBP1(){
+/**
+ * @brief OBP1 register color to palette conversion
+ * @details Updates a color to its appropriate palette based on value of the OBP1 Register. each number assigned corresponds
+ * to a color refereced in STM32's L8 color mode.
+ * @return Nothing
+ */
+void prvCheckOBP1(){
 	uint8_t BGP = ucGBMemoryRead(OBP1_ADDR);
 	for(int i = 0; i < 4; i++){
 		switch ((BGP >> (i*2)) & 0x03) {
-			case 0: OBP1ColorToPalette[i] = 1;  break;
-			case 1: OBP1ColorToPalette[i] = 2;  break;
-			case 2: OBP1ColorToPalette[i] = 3;  break;
-			case 3: OBP1ColorToPalette[i] = 4;  break;
+			case 0: ucOBP1ColorToPalette[i] = 1;  break;
+			case 1: ucOBP1ColorToPalette[i] = 2;  break;
+			case 2: ucOBP1ColorToPalette[i] = 3;  break;
+			case 3: ucOBP1ColorToPalette[i] = 4;  break;
 			default:                            break;
 		}
 
@@ -252,7 +258,7 @@ void LYC_check(uint8_t ly){
  * @return Nothing
  */
 void setMode(uint8_t mode){
-	Mode = mode;
+	ucMode = mode;
 	switch (mode) {
 		case MODE_0: vGBMemoryResetBit(STAT_ADDR, 1); vGBMemoryResetBit(STAT_ADDR, 0); break;		// 00
 		case MODE_1: vGBMemoryResetBit(STAT_ADDR, 1);   vGBMemorySetBit(STAT_ADDR, 0); break;		// 01
@@ -263,10 +269,10 @@ void setMode(uint8_t mode){
 }
 
 void updateBufferObj(uint8_t data, int pixelPos){
-	pixelPos *= scaleAmount;
-	for (int yStretch = 1; yStretch <= scaleAmount; yStretch++){
-		for(int xStretch = 0; xStretch < scaleAmount; xStretch++){
-			gb_frame[pixelPos + xStretch + (curLine) + (lineadd * yStretch)] = data;
+	pixelPos *= ulScaleAmount;
+	for (int yStretch = 1; yStretch <= ulScaleAmount; yStretch++){
+		for(int xStretch = 0; xStretch < ulScaleAmount; xStretch++){
+			gb_frame[pixelPos + xStretch + (ulCurLine) + (ulLineAdd * yStretch)] = data;
 		}
 	}
 }
@@ -284,10 +290,10 @@ void vGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY, uint16_t Til
 		uint8_t pixelData = 0;
 
 		switch (((tile_data << pixl_offset) & 0x8080)) {
-			case 0x0000: pixelData = BGPColorToPalette[0]; ucBGWINline[j] = 0; break;
-			case 0x0080: pixelData = BGPColorToPalette[1]; ucBGWINline[j] = 1; break;
-			case 0x8000: pixelData = BGPColorToPalette[2]; ucBGWINline[j] = 2; break;
-			case 0x8080: pixelData = BGPColorToPalette[3]; ucBGWINline[j] = 3; break;
+			case 0x0000: pixelData = ucBGPColorToPalette[0]; ucBGWINline[j] = 0; break;
+			case 0x0080: pixelData = ucBGPColorToPalette[1]; ucBGWINline[j] = 1; break;
+			case 0x8000: pixelData = ucBGPColorToPalette[2]; ucBGWINline[j] = 2; break;
+			case 0x8080: pixelData = ucBGPColorToPalette[3]; ucBGWINline[j] = 3; break;
 		}
 		updateBufferObj(pixelData, j);
 
@@ -307,6 +313,14 @@ void vGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY, uint16_t Til
 	}
 }
 
+/**
+ *
+ * @param ly lY Register Value
+ * @param WX Window X position
+ * @param WY Window Y position
+ * @param TileDataAddr Start Address of location in VRAM of Window Tiles
+ * @param DisplayAddr  Start Address holding the offset in VRAM for each Tile displayed on Screen
+ */
 void vGBPPUDrawLineWindow(uint8_t ly, uint8_t WX, uint8_t WY, uint16_t TileDataAddr, uint16_t DisplayAddr){
 	if(WY > ly || WY > 143 || WX > 166)
 		return;
@@ -321,10 +335,10 @@ void vGBPPUDrawLineWindow(uint8_t ly, uint8_t WX, uint8_t WY, uint16_t TileDataA
 		uint8_t pixelData = 0;
 
 		switch (((tile_data << pixl_offset) & 0x8080)) {
-			case 0x0000: pixelData = BGPColorToPalette[0]; ucBGWINline[j] = 0; break;
-			case 0x0080: pixelData = BGPColorToPalette[1]; ucBGWINline[j] = 1; break;
-			case 0x8000: pixelData = BGPColorToPalette[2]; ucBGWINline[j] = 2; break;
-			case 0x8080: pixelData = BGPColorToPalette[3]; ucBGWINline[j] = 3; break;
+			case 0x0000: pixelData = ucBGPColorToPalette[0]; ucBGWINline[j] = 0; break;
+			case 0x0080: pixelData = ucBGPColorToPalette[1]; ucBGWINline[j] = 1; break;
+			case 0x8000: pixelData = ucBGPColorToPalette[2]; ucBGWINline[j] = 2; break;
+			case 0x8080: pixelData = ucBGPColorToPalette[3]; ucBGWINline[j] = 3; break;
 		}
 		updateBufferObj(pixelData, j);
 			pixl_offset++;
@@ -339,10 +353,16 @@ void vGBPPUDrawLineWindow(uint8_t ly, uint8_t WX, uint8_t WY, uint16_t TileDataA
 		}
 }
 
+/**
+ * @brief  Update frame buffer with object information
+ * @details populates the frame buffer with object sprites on line ly
+ * @param ly lY Register Value
+ * @returns Nothing
+ */
 void vGBPPUDrawLineObjects(uint8_t ly){
 	for(int obj = 0; obj < 40; obj++){
-		int16_t yCoordinate = ucGBMemoryRead(OAM_BASE + (obj*4)) - 16;
-		int16_t xCoordinate = ucGBMemoryRead(OAM_BASE + (obj*4) + 1) - 8;
+		int16_t yCoordinate = ucGBMemoryRead(OAM_BASE + (obj*4)) - 16;						// must be signed for logic to work
+		int16_t xCoordinate = ucGBMemoryRead(OAM_BASE + (obj*4) + 1) - 8;					// "" "" "" same here
 		uint8_t dataTile    = ucGBMemoryRead(OAM_BASE + (obj*4) + 2);
 		uint8_t objPrio     = checkbit(ucGBMemoryRead(OAM_BASE + (obj*4) + 3), 7);
 		uint8_t objYFlip    = checkbit(ucGBMemoryRead(OAM_BASE + (obj*4) + 3), 6);
@@ -356,7 +376,7 @@ void vGBPPUDrawLineObjects(uint8_t ly){
 
 			uint8_t lineOffset = objYFlip ? ((objHeight - 1) - (ly - yCoordinate)) * 2 : (ly - yCoordinate) * 2;
 			uint16_t tile_data = usGBMemoryReadShort(TILE_DATA_UNSIGNED_ADDR + (dataTile * 0x10) + lineOffset);
-			uint8_t *palette = (objPalette) ? &OBP1ColorToPalette[0] : &OBP0ColorToPalette[0];
+			uint8_t *palette = (objPalette) ? &ucOBP1ColorToPalette[0] : &ucOBP0ColorToPalette[0];
 
 			for(int pixelNum = 0; pixelNum < 8; pixelNum++){
 
@@ -372,7 +392,7 @@ void vGBPPUDrawLineObjects(uint8_t ly){
 
 				if(pixelData != 0 && xCoordinate + pixelNum >= 0 && (xCoordinate + pixelNum) < 160){
 					if((objPrio) && ucBGWINline[xCoordinate + pixelNum]){
-
+						// do nothing this circumstance
 					}else{
 						updateBufferObj(pixelData, xCoordinate + pixelNum);
 					}
@@ -386,29 +406,33 @@ void vGBPPUDrawLineObjects(uint8_t ly){
 /**
  * @brief Update data in the frame buffer for 1 line of the Gameboy
  * @details populates the frame buffer with data related to a line ly
- * @param ly lY Register Data
- * @param SCX Scroll X Register
- * @param SCY Scroll Y Register
+ * @param ly lY Register Value
+ * @param SCX Scroll X Register Value
+ * @param SCY Scroll Y Register Value
  * @returns Nothing
  */
 void vGBPPUDrawLine(uint8_t ly, uint8_t SCX, uint8_t SCY){
+
 	// update Palettes
-	vCheckBGP();
-	vCheckOBP0();
-	vCheckOBP1();
+	prvCheckBGP();
+	prvCheckOBP0();
+	prvCheckOBP1();
+
 	uint16_t TileDataAddr = usGetBackWinTileDataSel();
-	curLine = ly * scaleAmount * scaleAmount * 160;
-	lineadd = scaleAmount * 160;
+	ulCurLine = ly * ulScaleAmount * ulScaleAmount * 160;
+	ulLineAdd = ulScaleAmount * 160;
 
 	if(ucGBMemoryRead(LCDC_ADDR) & 0x01){
 		vGBPPUDrawLineBackground(ly, SCX, SCY, TileDataAddr, usGetBackTileDisplaySel());
 		if(ucGBMemoryRead(LCDC_ADDR) & 0x20)
 			vGBPPUDrawLineWindow(ly, ucGBMemoryRead(WX_ADDR), ucGBMemoryRead(WY_ADDR), TileDataAddr, usGetWinTileDisplaySel());
 	}else{
+
 		for(int j = 0; j < 160; j++){
 			updateBufferObj(1, j);
 		}
 	}
+
 	if(ucGBMemoryRead(LCDC_ADDR) & 0x02)
 		vGBPPUDrawLineObjects(ly);
 

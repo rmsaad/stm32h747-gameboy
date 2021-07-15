@@ -100,84 +100,64 @@ $(document).ready(function(){initNavTree('gbppu_8c.html',''); initResizable(); }
 <div class="title">gbppu.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="gbcpu_8h_source.html">gbcpu.h</a>&quot;</code><br />
+
+<p>: Gameboy PPU Functionality This file emulates all functionality of the Gameboy Pixel/Picture Processing Unit (PPU).  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gbfunctions_8h_source.html">gbfunctions.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="gbcpu_8h_source.html">gbcpu.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="gbmemory_8h_source.html">gbmemory.h</a>&quot;</code><br />
 <code>#include &quot;string.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="stm32h7__display_8h_source.html">stm32h7_display.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:adc4559afdb0535cfebadef1c707a2f91"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#adc4559afdb0535cfebadef1c707a2f91">MODE_0</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:adc4559afdb0535cfebadef1c707a2f91"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adaf03329d7f4a4ac6ac043bf481db786"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#adaf03329d7f4a4ac6ac043bf481db786">MODE_1</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:adaf03329d7f4a4ac6ac043bf481db786"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aced5757ab7a0d940fced00f3dd123fa3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#aced5757ab7a0d940fced00f3dd123fa3">MODE_2</a>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:aced5757ab7a0d940fced00f3dd123fa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb99b4257cb3cd9fb539529a1bd2d9ca"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#aeb99b4257cb3cd9fb539529a1bd2d9ca">MODE_3</a>&#160;&#160;&#160;3</td></tr>
-<tr class="separator:aeb99b4257cb3cd9fb539529a1bd2d9ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a850b2f07a67b73890889e63fb8a49fda"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a850b2f07a67b73890889e63fb8a49fda">BACKGROUND</a>&#160;&#160;&#160;0</td></tr>
-<tr class="separator:a850b2f07a67b73890889e63fb8a49fda"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a58dde5b4c75245b4660a165318cac36b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a58dde5b4c75245b4660a165318cac36b">WINDOW</a>&#160;&#160;&#160;1</td></tr>
-<tr class="separator:a58dde5b4c75245b4660a165318cac36b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0ee9b6704f1841b6c367aa080abf0a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#af0ee9b6704f1841b6c367aa080abf0a5">SPRITE</a>&#160;&#160;&#160;2</td></tr>
-<tr class="separator:af0ee9b6704f1841b6c367aa080abf0a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a18e1bab2a52b927b821c0807e888713f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a18e1bab2a52b927b821c0807e888713f">LCDC_ADDR</a>&#160;&#160;&#160;0xFF40</td></tr>
-<tr class="separator:a18e1bab2a52b927b821c0807e888713f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1191e4b031adfcae8ad4db8c4d3e2e52"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a1191e4b031adfcae8ad4db8c4d3e2e52">STAT_ADDR</a>&#160;&#160;&#160;0xFF41</td></tr>
-<tr class="separator:a1191e4b031adfcae8ad4db8c4d3e2e52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60faa4a76be76f1225943d30890edb9c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a60faa4a76be76f1225943d30890edb9c">SCY_ADDR</a>&#160;&#160;&#160;0xFF42</td></tr>
-<tr class="separator:a60faa4a76be76f1225943d30890edb9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad5f5a5652b98cac183de3f7b5c392c99"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ad5f5a5652b98cac183de3f7b5c392c99">SCX_ADDR</a>&#160;&#160;&#160;0xFF43</td></tr>
-<tr class="separator:ad5f5a5652b98cac183de3f7b5c392c99"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af4ea31360c793f1b3f40ded874037888"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#af4ea31360c793f1b3f40ded874037888">LY_ADDR</a>&#160;&#160;&#160;0xFF44</td></tr>
-<tr class="separator:af4ea31360c793f1b3f40ded874037888"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a513b24e148bace31b7175c9218024d13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a513b24e148bace31b7175c9218024d13">LYC_ADDR</a>&#160;&#160;&#160;0xFF45</td></tr>
-<tr class="separator:a513b24e148bace31b7175c9218024d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aab0434639adf9081a0cd37b8786d60d7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#aab0434639adf9081a0cd37b8786d60d7">BGP_ADDR</a>&#160;&#160;&#160;0xFF47</td></tr>
-<tr class="separator:aab0434639adf9081a0cd37b8786d60d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9e50ff753d8028c3a8d7c10923046648"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a9e50ff753d8028c3a8d7c10923046648">TILE_DATA_UNSIGNED_ADDR</a>&#160;&#160;&#160;0x8000</td></tr>
-<tr class="separator:a9e50ff753d8028c3a8d7c10923046648"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04c206cb97e025011af670d126634a54"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a04c206cb97e025011af670d126634a54">TILE_DATA_SIGNED_ADDR</a>&#160;&#160;&#160;0x8800</td></tr>
-<tr class="separator:a04c206cb97e025011af670d126634a54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a994598b0c2b8ff8fbc8508afe6aee405"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a994598b0c2b8ff8fbc8508afe6aee405">TILE_MAP_LOCATION_LOW</a>&#160;&#160;&#160;0x9800</td></tr>
-<tr class="separator:a994598b0c2b8ff8fbc8508afe6aee405"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:adfbbcc1f3889a48c76c28003ec967e86"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#adfbbcc1f3889a48c76c28003ec967e86">TILE_MAP_LOCATION_HIGH</a>&#160;&#160;&#160;0x9C00</td></tr>
-<tr class="separator:adfbbcc1f3889a48c76c28003ec967e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a23ba77349efe58f6892458fde23203ae"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a23ba77349efe58f6892458fde23203ae">DARKEST_GREEN</a>&#160;&#160;&#160;0XFF0F380FUL</td></tr>
-<tr class="separator:a23ba77349efe58f6892458fde23203ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ebb0bf1d379e615bda6e25cccf0f08f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a2ebb0bf1d379e615bda6e25cccf0f08f">DARK_GREEN</a>&#160;&#160;&#160;0XFF306230UL</td></tr>
-<tr class="separator:a2ebb0bf1d379e615bda6e25cccf0f08f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a7142ee95ebc63218ed3aac2ae06b13"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a5a7142ee95ebc63218ed3aac2ae06b13">LIGHT_GREEN</a>&#160;&#160;&#160;0XFF8BAC0FUL</td></tr>
-<tr class="separator:a5a7142ee95ebc63218ed3aac2ae06b13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa7340b5ab80d1a8df9c9d53948fcbd76"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#aa7340b5ab80d1a8df9c9d53948fcbd76">LIGHTEST_GREEN</a>&#160;&#160;&#160;0XFF9BBC0FUL</td></tr>
-<tr class="separator:aa7340b5ab80d1a8df9c9d53948fcbd76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6a7f90395054dfa1a2f6521213aad848"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a6a7f90395054dfa1a2f6521213aad848">SRAM1</a>&#160;&#160;&#160;0xD1000000UL</td></tr>
+<tr class="memitem:a6a7f90395054dfa1a2f6521213aad848"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a6a7f90395054dfa1a2f6521213aad848">SRAM1</a>&#160;&#160;&#160;0x30000000UL</td></tr>
 <tr class="separator:a6a7f90395054dfa1a2f6521213aad848"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a9c60bc3bb6cc79d1ad3ce2b6fe18acec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a9c60bc3bb6cc79d1ad3ce2b6fe18acec">vCheckBGP</a> ()</td></tr>
+<tr class="memdesc:a9c60bc3bb6cc79d1ad3ce2b6fe18acec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Background color to palette translation.  <a href="gbppu_8c.html#a9c60bc3bb6cc79d1ad3ce2b6fe18acec">More...</a><br /></td></tr>
 <tr class="separator:a9c60bc3bb6cc79d1ad3ce2b6fe18acec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2ef681b987822cb47e37790e56d3436"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#aa2ef681b987822cb47e37790e56d3436">vCheckOBP0</a> ()</td></tr>
+<tr class="separator:aa2ef681b987822cb47e37790e56d3436"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67d230bfe40052898d5e9b15bb8ec606"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a67d230bfe40052898d5e9b15bb8ec606">vCheckOBP1</a> ()</td></tr>
+<tr class="separator:a67d230bfe40052898d5e9b15bb8ec606"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cf485e9accf6249e0bb79f663990fbe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a4cf485e9accf6249e0bb79f663990fbe">LYC_check</a> (uint8_t <a class="el" href="gbppu_8c.html#ab60dac6a688a304987c96312a05243ae">ly</a>)</td></tr>
+<tr class="memdesc:a4cf485e9accf6249e0bb79f663990fbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares LY Register to LYC.  <a href="gbppu_8c.html#a4cf485e9accf6249e0bb79f663990fbe">More...</a><br /></td></tr>
 <tr class="separator:a4cf485e9accf6249e0bb79f663990fbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d0653e9369208f1125d417a3ae32283"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a5d0653e9369208f1125d417a3ae32283">setMode</a> (uint8_t mode)</td></tr>
+<tr class="memdesc:a5d0653e9369208f1125d417a3ae32283"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the mode of the STAT Register.  <a href="gbppu_8c.html#a5d0653e9369208f1125d417a3ae32283">More...</a><br /></td></tr>
 <tr class="separator:a5d0653e9369208f1125d417a3ae32283"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3bfbc6d97a530116deeb24b5791611c4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a3bfbc6d97a530116deeb24b5791611c4">draw_line</a> (uint8_t <a class="el" href="gbppu_8c.html#ab60dac6a688a304987c96312a05243ae">ly</a>, uint8_t SCX, uint8_t SCY)</td></tr>
-<tr class="separator:a3bfbc6d97a530116deeb24b5791611c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5221e9b7393492793b0fdabd162c5c3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a5221e9b7393492793b0fdabd162c5c3d">vCheckBackWinTileDataSel</a> ()</td></tr>
-<tr class="memdesc:a5221e9b7393492793b0fdabd162c5c3d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><em>Read LCDC Register to find appropriate Background &amp; Tile Data Address</em>  <a href="gbppu_8c.html#a5221e9b7393492793b0fdabd162c5c3d">More...</a><br /></td></tr>
-<tr class="separator:a5221e9b7393492793b0fdabd162c5c3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62431ac813ce57bb411b5c0b59877ac1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a62431ac813ce57bb411b5c0b59877ac1">vCheckBackTileDisplaySel</a> ()</td></tr>
-<tr class="memdesc:a62431ac813ce57bb411b5c0b59877ac1"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function Reads from the LCDC Register and depending on the value of the 3rd bit, it will change the Background Tile Display Address to 0X9C00 if it is high and 0x9800 if it low.  <a href="gbppu_8c.html#a62431ac813ce57bb411b5c0b59877ac1">More...</a><br /></td></tr>
-<tr class="separator:a62431ac813ce57bb411b5c0b59877ac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0d5f1084420a859dba5e9d70af910f15"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a0d5f1084420a859dba5e9d70af910f15">vGBPPUDrawLine</a> (uint8_t <a class="el" href="gbppu_8c.html#ab60dac6a688a304987c96312a05243ae">ly</a>, uint8_t SCX, uint8_t SCY)</td></tr>
+<tr class="memdesc:a0d5f1084420a859dba5e9d70af910f15"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update data in the frame buffer for 1 line of the Gameboy.  <a href="gbppu_8c.html#a0d5f1084420a859dba5e9d70af910f15">More...</a><br /></td></tr>
+<tr class="separator:a0d5f1084420a859dba5e9d70af910f15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a40a7d6452050dcd5d7fe36b84b92e3bb"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a40a7d6452050dcd5d7fe36b84b92e3bb">usGetBackWinTileDataSel</a> ()</td></tr>
+<tr class="memdesc:a40a7d6452050dcd5d7fe36b84b92e3bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read LCDC Register to find appropriate Background &amp; Tile Data Address.  <a href="gbppu_8c.html#a40a7d6452050dcd5d7fe36b84b92e3bb">More...</a><br /></td></tr>
+<tr class="separator:a40a7d6452050dcd5d7fe36b84b92e3bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c815a1df8877be26b349d585b4d12ab"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a3c815a1df8877be26b349d585b4d12ab">usGetBackTileDisplaySel</a> ()</td></tr>
+<tr class="memdesc:a3c815a1df8877be26b349d585b4d12ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read LCDC Register to find appropriate Background Tile Display Select Address.  <a href="gbppu_8c.html#a3c815a1df8877be26b349d585b4d12ab">More...</a><br /></td></tr>
+<tr class="separator:a3c815a1df8877be26b349d585b4d12ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78e32c2958d696c2e8cc97f502789c76"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a78e32c2958d696c2e8cc97f502789c76">usGetWinTileDisplaySel</a> ()</td></tr>
+<tr class="separator:a78e32c2958d696c2e8cc97f502789c76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:addcbf77f2958ad2001d541a8e4a8f504"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#addcbf77f2958ad2001d541a8e4a8f504">vSetFrameBuffer</a> ()</td></tr>
+<tr class="memdesc:addcbf77f2958ad2001d541a8e4a8f504"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zeros All Memory in the Frame Buffer.  <a href="gbppu_8c.html#addcbf77f2958ad2001d541a8e4a8f504">More...</a><br /></td></tr>
+<tr class="separator:addcbf77f2958ad2001d541a8e4a8f504"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a112e995f6616336eac038c853aa5ac35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a112e995f6616336eac038c853aa5ac35">gbPPUStep</a> ()</td></tr>
-<tr class="memdesc:a112e995f6616336eac038c853aa5ac35"><td class="mdescLeft">&#160;</td><td class="mdescRight">The application entry point.  <a href="gbppu_8c.html#a112e995f6616336eac038c853aa5ac35">More...</a><br /></td></tr>
+<tr class="memdesc:a112e995f6616336eac038c853aa5ac35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steps the PPU by tStates.  <a href="gbppu_8c.html#a112e995f6616336eac038c853aa5ac35">More...</a><br /></td></tr>
 <tr class="separator:a112e995f6616336eac038c853aa5ac35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2ecc49c3dacecef5170f4dc2e93e1e1d"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a2ecc49c3dacecef5170f4dc2e93e1e1d">getTileLineData</a> (uint16_t tile_offset, uint8_t line_offset)</td></tr>
-<tr class="memdesc:a2ecc49c3dacecef5170f4dc2e93e1e1d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds Specific line of a tile using the tile_offset and line_offset.  <a href="gbppu_8c.html#a2ecc49c3dacecef5170f4dc2e93e1e1d">More...</a><br /></td></tr>
-<tr class="separator:a2ecc49c3dacecef5170f4dc2e93e1e1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5731999f5c834ee91b2b0f5cc075a8dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a5731999f5c834ee91b2b0f5cc075a8dc">update_buffer</a> (uint16_t res, int j, uint16_t amt)</td></tr>
-<tr class="separator:a5731999f5c834ee91b2b0f5cc075a8dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b29df5e22493dc42927f15a2858730b"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a9b29df5e22493dc42927f15a2858730b">getTileLineData</a> (uint16_t tile_offset, uint8_t line_offset, uint16_t TileDataAddr, uint16_t DisplayAddr)</td></tr>
+<tr class="memdesc:a9b29df5e22493dc42927f15a2858730b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds Specific line data of a tile using the tile_offset and line_offset.  <a href="gbppu_8c.html#a9b29df5e22493dc42927f15a2858730b">More...</a><br /></td></tr>
+<tr class="separator:a9b29df5e22493dc42927f15a2858730b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0c83a1224502876bd066041b238f9aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#af0c83a1224502876bd066041b238f9aa">updateBufferObj</a> (uint8_t data, int pixelPos)</td></tr>
+<tr class="separator:af0c83a1224502876bd066041b238f9aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af309ec32c8042fe2f724137a40442c65"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#af309ec32c8042fe2f724137a40442c65">vGBPPUDrawLineBackground</a> (uint8_t <a class="el" href="gbppu_8c.html#ab60dac6a688a304987c96312a05243ae">ly</a>, uint8_t SCX, uint8_t SCY, uint16_t TileDataAddr, uint16_t DisplayAddr)</td></tr>
+<tr class="separator:af309ec32c8042fe2f724137a40442c65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a402e8e47c7ff5f18c2ac42940b2abcb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a402e8e47c7ff5f18c2ac42940b2abcb7">vGBPPUDrawLineWindow</a> (uint8_t <a class="el" href="gbppu_8c.html#ab60dac6a688a304987c96312a05243ae">ly</a>, uint8_t WX, uint8_t WY, uint16_t TileDataAddr, uint16_t DisplayAddr)</td></tr>
+<tr class="separator:a402e8e47c7ff5f18c2ac42940b2abcb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a36a4a08cc1aebd45b5e8288eb3a60b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a4a36a4a08cc1aebd45b5e8288eb3a60b">vGBPPUDrawLineObjects</a> (uint8_t <a class="el" href="gbppu_8c.html#ab60dac6a688a304987c96312a05243ae">ly</a>)</td></tr>
+<tr class="separator:a4a36a4a08cc1aebd45b5e8288eb3a60b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -187,244 +167,32 @@ Variables</h2></td></tr>
 <tr class="separator:a81d3c3d311f9043a2fcc537ed2966d32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad11c3137711cc547aa65686fa2c98fc9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ad11c3137711cc547aa65686fa2c98fc9">Mode</a></td></tr>
 <tr class="separator:ad11c3137711cc547aa65686fa2c98fc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad94990c5a69db5f8469559e1ef342346"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ad94990c5a69db5f8469559e1ef342346">ucSCY</a></td></tr>
-<tr class="separator:ad94990c5a69db5f8469559e1ef342346"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae5e216d8560de7f552ff38054454d770"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ae5e216d8560de7f552ff38054454d770">ucSCX</a></td></tr>
-<tr class="separator:ae5e216d8560de7f552ff38054454d770"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a342494b907e8a7bafe144bd4f3d9afbb"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a342494b907e8a7bafe144bd4f3d9afbb">tStates</a></td></tr>
-<tr class="separator:a342494b907e8a7bafe144bd4f3d9afbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae5204dc1d80b90ced93dfa0ffc9ed575"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ae5204dc1d80b90ced93dfa0ffc9ed575">tStatesTotal</a></td></tr>
+<tr class="separator:ae5204dc1d80b90ced93dfa0ffc9ed575"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab60dac6a688a304987c96312a05243ae"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ab60dac6a688a304987c96312a05243ae">ly</a> = 0</td></tr>
 <tr class="separator:ab60dac6a688a304987c96312a05243ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38b9ca59b88390e1753b4aaf186fd505"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a38b9ca59b88390e1753b4aaf186fd505">color_to_pallette</a> [4]</td></tr>
-<tr class="separator:a38b9ca59b88390e1753b4aaf186fd505"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae12b5e9abdfc0b2a9146a58445760a1b"><td class="memItemLeft" align="right" valign="top">uint32_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ae12b5e9abdfc0b2a9146a58445760a1b">gb_frame</a> = (uint32_t*)<a class="el" href="gbppu_8c.html#a6a7f90395054dfa1a2f6521213aad848">SRAM1</a></td></tr>
-<tr class="separator:ae12b5e9abdfc0b2a9146a58445760a1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d900d05be075fa49f3c533e8afcc181"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a3d900d05be075fa49f3c533e8afcc181">BGPColorToPalette</a> [4]</td></tr>
+<tr class="separator:a3d900d05be075fa49f3c533e8afcc181"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae747435af34a76d58909ddb6427c8342"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ae747435af34a76d58909ddb6427c8342">OBP0ColorToPalette</a> [4]</td></tr>
+<tr class="separator:ae747435af34a76d58909ddb6427c8342"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af2b84cbf3e4635ad2846dbc1f487e7e6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#af2b84cbf3e4635ad2846dbc1f487e7e6">OBP1ColorToPalette</a> [4]</td></tr>
+<tr class="separator:af2b84cbf3e4635ad2846dbc1f487e7e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab799d7f1fc8dba9a1b2ae4a3b2e85f3f"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ab799d7f1fc8dba9a1b2ae4a3b2e85f3f">gb_frame</a> = (uint8_t*)<a class="el" href="gbppu_8c.html#a6a7f90395054dfa1a2f6521213aad848">SRAM1</a></td></tr>
+<tr class="separator:ab799d7f1fc8dba9a1b2ae4a3b2e85f3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9de52373fb1ba5b7529ba0d15ebc8b8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ac9de52373fb1ba5b7529ba0d15ebc8b8">ucBGWINline</a> [160]</td></tr>
+<tr class="separator:ac9de52373fb1ba5b7529ba0d15ebc8b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5404f7eab814b57dc7c25d7f469f2114"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a5404f7eab814b57dc7c25d7f469f2114">scaleAmount</a> = 2</td></tr>
+<tr class="separator:a5404f7eab814b57dc7c25d7f469f2114"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51a1568ab8f25d4e69e883ce34de4752"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a51a1568ab8f25d4e69e883ce34de4752">curLine</a></td></tr>
+<tr class="separator:a51a1568ab8f25d4e69e883ce34de4752"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad0cd50ba7d062da5404a0a3b88fd4367"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ad0cd50ba7d062da5404a0a3b88fd4367">lineadd</a></td></tr>
+<tr class="separator:ad0cd50ba7d062da5404a0a3b88fd4367"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a850b2f07a67b73890889e63fb8a49fda"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a850b2f07a67b73890889e63fb8a49fda">&#9670;&nbsp;</a></span>BACKGROUND</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define BACKGROUND&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aab0434639adf9081a0cd37b8786d60d7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aab0434639adf9081a0cd37b8786d60d7">&#9670;&nbsp;</a></span>BGP_ADDR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define BGP_ADDR&#160;&#160;&#160;0xFF47</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a2ebb0bf1d379e615bda6e25cccf0f08f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ebb0bf1d379e615bda6e25cccf0f08f">&#9670;&nbsp;</a></span>DARK_GREEN</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DARK_GREEN&#160;&#160;&#160;0XFF306230UL</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a23ba77349efe58f6892458fde23203ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a23ba77349efe58f6892458fde23203ae">&#9670;&nbsp;</a></span>DARKEST_GREEN</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define DARKEST_GREEN&#160;&#160;&#160;0XFF0F380FUL</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a18e1bab2a52b927b821c0807e888713f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a18e1bab2a52b927b821c0807e888713f">&#9670;&nbsp;</a></span>LCDC_ADDR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LCDC_ADDR&#160;&#160;&#160;0xFF40</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5a7142ee95ebc63218ed3aac2ae06b13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a7142ee95ebc63218ed3aac2ae06b13">&#9670;&nbsp;</a></span>LIGHT_GREEN</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LIGHT_GREEN&#160;&#160;&#160;0XFF8BAC0FUL</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aa7340b5ab80d1a8df9c9d53948fcbd76"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa7340b5ab80d1a8df9c9d53948fcbd76">&#9670;&nbsp;</a></span>LIGHTEST_GREEN</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LIGHTEST_GREEN&#160;&#160;&#160;0XFF9BBC0FUL</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af4ea31360c793f1b3f40ded874037888"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af4ea31360c793f1b3f40ded874037888">&#9670;&nbsp;</a></span>LY_ADDR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LY_ADDR&#160;&#160;&#160;0xFF44</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a513b24e148bace31b7175c9218024d13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a513b24e148bace31b7175c9218024d13">&#9670;&nbsp;</a></span>LYC_ADDR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LYC_ADDR&#160;&#160;&#160;0xFF45</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="adc4559afdb0535cfebadef1c707a2f91"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adc4559afdb0535cfebadef1c707a2f91">&#9670;&nbsp;</a></span>MODE_0</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MODE_0&#160;&#160;&#160;0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="adaf03329d7f4a4ac6ac043bf481db786"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adaf03329d7f4a4ac6ac043bf481db786">&#9670;&nbsp;</a></span>MODE_1</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MODE_1&#160;&#160;&#160;1</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aced5757ab7a0d940fced00f3dd123fa3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aced5757ab7a0d940fced00f3dd123fa3">&#9670;&nbsp;</a></span>MODE_2</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MODE_2&#160;&#160;&#160;2</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="aeb99b4257cb3cd9fb539529a1bd2d9ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb99b4257cb3cd9fb539529a1bd2d9ca">&#9670;&nbsp;</a></span>MODE_3</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define MODE_3&#160;&#160;&#160;3</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad5f5a5652b98cac183de3f7b5c392c99"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5f5a5652b98cac183de3f7b5c392c99">&#9670;&nbsp;</a></span>SCX_ADDR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SCX_ADDR&#160;&#160;&#160;0xFF43</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a60faa4a76be76f1225943d30890edb9c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60faa4a76be76f1225943d30890edb9c">&#9670;&nbsp;</a></span>SCY_ADDR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SCY_ADDR&#160;&#160;&#160;0xFF42</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af0ee9b6704f1841b6c367aa080abf0a5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af0ee9b6704f1841b6c367aa080abf0a5">&#9670;&nbsp;</a></span>SPRITE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define SPRITE&#160;&#160;&#160;2</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>: Gameboy PPU Functionality This file emulates all functionality of the Gameboy Pixel/Picture Processing Unit (PPU). </p>
+<p>This includes drawing the Background, Window, and Object Layers to a frame buffer to be displayed 60 times a second. </p><dl class="section author"><dt>Author</dt><dd>: Rami </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>: Jun 11, 2021 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a6a7f90395054dfa1a2f6521213aad848"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6a7f90395054dfa1a2f6521213aad848">&#9670;&nbsp;</a></span>SRAM1</h2>
 
@@ -432,91 +200,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define SRAM1&#160;&#160;&#160;0xD1000000UL</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1191e4b031adfcae8ad4db8c4d3e2e52"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1191e4b031adfcae8ad4db8c4d3e2e52">&#9670;&nbsp;</a></span>STAT_ADDR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define STAT_ADDR&#160;&#160;&#160;0xFF41</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a04c206cb97e025011af670d126634a54"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04c206cb97e025011af670d126634a54">&#9670;&nbsp;</a></span>TILE_DATA_SIGNED_ADDR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TILE_DATA_SIGNED_ADDR&#160;&#160;&#160;0x8800</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a9e50ff753d8028c3a8d7c10923046648"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9e50ff753d8028c3a8d7c10923046648">&#9670;&nbsp;</a></span>TILE_DATA_UNSIGNED_ADDR</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TILE_DATA_UNSIGNED_ADDR&#160;&#160;&#160;0x8000</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="adfbbcc1f3889a48c76c28003ec967e86"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adfbbcc1f3889a48c76c28003ec967e86">&#9670;&nbsp;</a></span>TILE_MAP_LOCATION_HIGH</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TILE_MAP_LOCATION_HIGH&#160;&#160;&#160;0x9C00</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a994598b0c2b8ff8fbc8508afe6aee405"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a994598b0c2b8ff8fbc8508afe6aee405">&#9670;&nbsp;</a></span>TILE_MAP_LOCATION_LOW</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TILE_MAP_LOCATION_LOW&#160;&#160;&#160;0x9800</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a58dde5b4c75245b4660a165318cac36b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a58dde5b4c75245b4660a165318cac36b">&#9670;&nbsp;</a></span>WINDOW</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define WINDOW&#160;&#160;&#160;1</td>
+          <td class="memname">#define SRAM1&#160;&#160;&#160;0x30000000UL</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -524,14 +208,280 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a3bfbc6d97a530116deeb24b5791611c4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3bfbc6d97a530116deeb24b5791611c4">&#9670;&nbsp;</a></span>draw_line()</h2>
+<a id="a112e995f6616336eac038c853aa5ac35"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a112e995f6616336eac038c853aa5ac35">&#9670;&nbsp;</a></span>gbPPUStep()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void draw_line </td>
+          <td class="memname">void gbPPUStep </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Steps the PPU by tStates. </p>
+<p>This function steps the PPU by the tStates variable if the screen enable (7th) bit of LCDC Register is high, the function sets the mode in the STAT Register using the <a class="el" href="gbppu_8c.html#a5d0653e9369208f1125d417a3ae32283" title="Sets the mode of the STAT Register.">setMode()</a> function depending on how many tStates have elapsed. after a full line is has passed the LY register is updated <a class="el" href="gbppu_8c.html#a0d5f1084420a859dba5e9d70af910f15" title="Update data in the frame buffer for 1 line of the Gameboy.">vGBPPUDrawLine()</a> is called to place data in the frame buffer. </p><dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The function and the Gameboy both mimic CRT Displays in that their are both a horizontal H-Blank after a Line is "drawn" and there is a vertical V-Blank after a full frame is drawn </dd></dl>
+<dl class="section attention"><dt>Attention</dt><dd>The placement of the functions vCheckBackWinTileDataSel() and vCheckBackTileDisplaySel() are just educated guesses at the current moment, more research into when and how often these Registers are updated must be conducted. </dd></dl>
+
+</div>
+</div>
+<a id="a9b29df5e22493dc42927f15a2858730b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9b29df5e22493dc42927f15a2858730b">&#9670;&nbsp;</a></span>getTileLineData()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t getTileLineData </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>tile_offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>line_offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>TileDataAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>DisplayAddr</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Finds Specific line data of a tile using the tile_offset and line_offset. </p>
+<p>Called by <a class="el" href="gbppu_8c.html#a0d5f1084420a859dba5e9d70af910f15" title="Update data in the frame buffer for 1 line of the Gameboy.">vGBPPUDrawLine()</a> and returns color information of a specific tile in the Gameboy's VRAM located by using the tile_offset and line_offset parameters. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tile_offset</td><td>gives the address offset in the tile map in Gameboy's VRAM </td></tr>
+    <tr><td class="paramname">line_offset</td><td>gives the line offset in the tile </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>uint16_t data containing the color information of each pixel of a particular line belonging to a tile in the Gameboy's VRAM </dd></dl>
+
+</div>
+</div>
+<a id="a4cf485e9accf6249e0bb79f663990fbe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4cf485e9accf6249e0bb79f663990fbe">&#9670;&nbsp;</a></span>LYC_check()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void LYC_check </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ly</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Compares LY Register to LYC. </p>
+<p>LYC Register compares itself to LY Register and Sets the appropriate flag (2nd bit) in the STAT Register if they hold the same value </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ly</td><td>value of the LY Register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
+</div>
+</div>
+<a id="a5d0653e9369208f1125d417a3ae32283"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d0653e9369208f1125d417a3ae32283">&#9670;&nbsp;</a></span>setMode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void setMode </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>mode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets the mode of the STAT Register. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mode</td><td>current status of the LCD controller </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
+</div>
+</div>
+<a id="af0c83a1224502876bd066041b238f9aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0c83a1224502876bd066041b238f9aa">&#9670;&nbsp;</a></span>updateBufferObj()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void updateBufferObj </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pixelPos</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3c815a1df8877be26b349d585b4d12ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3c815a1df8877be26b349d585b4d12ab">&#9670;&nbsp;</a></span>usGetBackTileDisplaySel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t usGetBackTileDisplaySel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read LCDC Register to find appropriate Background Tile Display Select Address. </p>
+<p>This function Reads from the LCDC Register and depending on the value of the 3rd bit, it will change the Background Tile Display Address to 0X9C00 on high or to 0x9800 on low. </p><dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
+</div>
+</div>
+<a id="a40a7d6452050dcd5d7fe36b84b92e3bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a40a7d6452050dcd5d7fe36b84b92e3bb">&#9670;&nbsp;</a></span>usGetBackWinTileDataSel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t usGetBackWinTileDataSel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Read LCDC Register to find appropriate Background &amp; Tile Data Address. </p>
+<p>This function Reads from the LCDC Register and depending on the value of the 4th bit, it will change the Background &amp; Window Tile Data Select Address to 0x8000 on high or to 0x8800 on low. </p><dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Background &amp; Window Tile Data Select should be 0x9000 on a low 4th bit in a real Gameboy, but it is much simpler to implement this way with emulation, the 0x400 offset is accounted for in <a class="el" href="gbppu_8c.html#a9b29df5e22493dc42927f15a2858730b" title="Finds Specific line data of a tile using the tile_offset and line_offset.">getTileLineData()</a> </dd></dl>
+
+</div>
+</div>
+<a id="a78e32c2958d696c2e8cc97f502789c76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a78e32c2958d696c2e8cc97f502789c76">&#9670;&nbsp;</a></span>usGetWinTileDisplaySel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t usGetWinTileDisplaySel </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a9c60bc3bb6cc79d1ad3ce2b6fe18acec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c60bc3bb6cc79d1ad3ce2b6fe18acec">&#9670;&nbsp;</a></span>vCheckBGP()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vCheckBGP </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Background color to palette translation. </p>
+<p>Matches a color to its appropriate palette based on value of the Background Palette Register </p><dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
+</div>
+</div>
+<a id="aa2ef681b987822cb47e37790e56d3436"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2ef681b987822cb47e37790e56d3436">&#9670;&nbsp;</a></span>vCheckOBP0()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vCheckOBP0 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a67d230bfe40052898d5e9b15bb8ec606"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a67d230bfe40052898d5e9b15bb8ec606">&#9670;&nbsp;</a></span>vCheckOBP1()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vCheckOBP1 </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a0d5f1084420a859dba5e9d70af910f15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d5f1084420a859dba5e9d70af910f15">&#9670;&nbsp;</a></span>vGBPPUDrawLine()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vGBPPUDrawLine </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>ly</em>, </td>
@@ -555,54 +505,55 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
+
+<p>Update data in the frame buffer for 1 line of the Gameboy. </p>
+<p>populates the frame buffer with data related to a line ly </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">ly</td><td></td></tr>
-    <tr><td class="paramname">SCX</td><td></td></tr>
-    <tr><td class="paramname">SCY</td><td></td></tr>
+    <tr><td class="paramname">ly</td><td>lY Register Data </td></tr>
+    <tr><td class="paramname">SCX</td><td>Scroll X Register </td></tr>
+    <tr><td class="paramname">SCY</td><td>Scroll Y Register </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
-<a id="a112e995f6616336eac038c853aa5ac35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a112e995f6616336eac038c853aa5ac35">&#9670;&nbsp;</a></span>gbPPUStep()</h2>
+<a id="af309ec32c8042fe2f724137a40442c65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af309ec32c8042fe2f724137a40442c65">&#9670;&nbsp;</a></span>vGBPPUDrawLineBackground()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void gbPPUStep </td>
+          <td class="memname">void vGBPPUDrawLineBackground </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The application entry point. </p>
-<p>this function steps the gpu by some cycles </p>
-
-</div>
-</div>
-<a id="a2ecc49c3dacecef5170f4dc2e93e1e1d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2ecc49c3dacecef5170f4dc2e93e1e1d">&#9670;&nbsp;</a></span>getTileLineData()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t getTileLineData </td>
-          <td>(</td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>tile_offset</em>, </td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ly</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>line_offset</em>&#160;</td>
+          <td class="paramname"><em>SCX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>SCY</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>TileDataAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>DisplayAddr</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -612,26 +563,16 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Finds Specific line of a tile using the tile_offset and line_offset. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">tile_offset</td><td></td></tr>
-    <tr><td class="paramname">line_offset</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>uint16_t data containing the color information of each pixel of a particular line belonging to a tile in the Gameboy's VRAM </dd></dl>
-
 </div>
 </div>
-<a id="a4cf485e9accf6249e0bb79f663990fbe"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4cf485e9accf6249e0bb79f663990fbe">&#9670;&nbsp;</a></span>LYC_check()</h2>
+<a id="a4a36a4a08cc1aebd45b5e8288eb3a60b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4a36a4a08cc1aebd45b5e8288eb3a60b">&#9670;&nbsp;</a></span>vGBPPUDrawLineObjects()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void LYC_check </td>
+          <td class="memname">void vGBPPUDrawLineObjects </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>ly</em></td><td>)</td>
@@ -639,62 +580,44 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">ly</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
-<a id="a5d0653e9369208f1125d417a3ae32283"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d0653e9369208f1125d417a3ae32283">&#9670;&nbsp;</a></span>setMode()</h2>
+<a id="a402e8e47c7ff5f18c2ac42940b2abcb7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a402e8e47c7ff5f18c2ac42940b2abcb7">&#9670;&nbsp;</a></span>vGBPPUDrawLineWindow()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void setMode </td>
+          <td class="memname">void vGBPPUDrawLineWindow </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>mode</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">mode</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a5731999f5c834ee91b2b0f5cc075a8dc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5731999f5c834ee91b2b0f5cc075a8dc">&#9670;&nbsp;</a></span>update_buffer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void update_buffer </td>
-          <td>(</td>
-          <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>res</em>, </td>
+          <td class="paramname"><em>ly</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>j</em>, </td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>WX</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>WY</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint16_t&#160;</td>
-          <td class="paramname"><em>amt</em>&#160;</td>
+          <td class="paramname"><em>TileDataAddr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint16_t&#160;</td>
+          <td class="paramname"><em>DisplayAddr</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -703,25 +626,17 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">res</td><td></td></tr>
-    <tr><td class="paramname">j</td><td></td></tr>
-    <tr><td class="paramname">amt</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
 
 </div>
 </div>
-<a id="a62431ac813ce57bb411b5c0b59877ac1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62431ac813ce57bb411b5c0b59877ac1">&#9670;&nbsp;</a></span>vCheckBackTileDisplaySel()</h2>
+<a id="addcbf77f2958ad2001d541a8e4a8f504"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#addcbf77f2958ad2001d541a8e4a8f504">&#9670;&nbsp;</a></span>vSetFrameBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vCheckBackTileDisplaySel </td>
+          <td class="memname">void vSetFrameBuffer </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -729,45 +644,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>This function Reads from the LCDC Register and depending on the value of the 3rd bit, it will change the Background Tile Display Address to 0X9C00 if it is high and 0x9800 if it low. </p>
-
-</div>
-</div>
-<a id="a5221e9b7393492793b0fdabd162c5c3d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5221e9b7393492793b0fdabd162c5c3d">&#9670;&nbsp;</a></span>vCheckBackWinTileDataSel()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vCheckBackWinTileDataSel </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p><em>Read LCDC Register to find appropriate Background &amp; Tile Data Address</em> </p>
-<p>This function Reads from the LCDC Register and depending on the value of the 4th bit, it will change the Background &amp; Window Tile Data Select Address to 0x8000 if it is high and 0x8800 if it is low </p><dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
-<dl class="section note"><dt>Note</dt><dd>Background &amp; Window Tile Data Select should be 0x9000 on a low 4th bit in a real Gameboy, but it is much simpler to implement this way with emulation, the 0x400 offset is accounted for in <a class="el" href="gbppu_8c.html#a2ecc49c3dacecef5170f4dc2e93e1e1d" title="Finds Specific line of a tile using the tile_offset and line_offset.">getTileLineData()</a> </dd></dl>
-
-</div>
-</div>
-<a id="a9c60bc3bb6cc79d1ad3ce2b6fe18acec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9c60bc3bb6cc79d1ad3ce2b6fe18acec">&#9670;&nbsp;</a></span>vCheckBGP()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vCheckBGP </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Zeros All Memory in the Frame Buffer. </p>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
@@ -800,28 +678,56 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a38b9ca59b88390e1753b4aaf186fd505"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38b9ca59b88390e1753b4aaf186fd505">&#9670;&nbsp;</a></span>color_to_pallette</h2>
+<a id="a3d900d05be075fa49f3c533e8afcc181"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d900d05be075fa49f3c533e8afcc181">&#9670;&nbsp;</a></span>BGPColorToPalette</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t color_to_pallette[4]</td>
+          <td class="memname">uint8_t BGPColorToPalette[4]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="ae12b5e9abdfc0b2a9146a58445760a1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae12b5e9abdfc0b2a9146a58445760a1b">&#9670;&nbsp;</a></span>gb_frame</h2>
+<a id="a51a1568ab8f25d4e69e883ce34de4752"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51a1568ab8f25d4e69e883ce34de4752">&#9670;&nbsp;</a></span>curLine</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t* gb_frame = (uint32_t*)<a class="el" href="gbppu_8c.html#a6a7f90395054dfa1a2f6521213aad848">SRAM1</a></td>
+          <td class="memname">uint32_t curLine</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ab799d7f1fc8dba9a1b2ae4a3b2e85f3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab799d7f1fc8dba9a1b2ae4a3b2e85f3f">&#9670;&nbsp;</a></span>gb_frame</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t* gb_frame = (uint8_t*)<a class="el" href="gbppu_8c.html#a6a7f90395054dfa1a2f6521213aad848">SRAM1</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ad0cd50ba7d062da5404a0a3b88fd4367"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad0cd50ba7d062da5404a0a3b88fd4367">&#9670;&nbsp;</a></span>lineadd</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t lineadd</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -856,50 +762,70 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a342494b907e8a7bafe144bd4f3d9afbb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a342494b907e8a7bafe144bd4f3d9afbb">&#9670;&nbsp;</a></span>tStates</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t tStates</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ae5e216d8560de7f552ff38054454d770"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae5e216d8560de7f552ff38054454d770">&#9670;&nbsp;</a></span>ucSCX</h2>
+<a id="ae747435af34a76d58909ddb6427c8342"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae747435af34a76d58909ddb6427c8342">&#9670;&nbsp;</a></span>OBP0ColorToPalette</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t ucSCX</td>
+          <td class="memname">uint8_t OBP0ColorToPalette[4]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="ad94990c5a69db5f8469559e1ef342346"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad94990c5a69db5f8469559e1ef342346">&#9670;&nbsp;</a></span>ucSCY</h2>
+<a id="af2b84cbf3e4635ad2846dbc1f487e7e6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af2b84cbf3e4635ad2846dbc1f487e7e6">&#9670;&nbsp;</a></span>OBP1ColorToPalette</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t ucSCY</td>
+          <td class="memname">uint8_t OBP1ColorToPalette[4]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a5404f7eab814b57dc7c25d7f469f2114"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5404f7eab814b57dc7c25d7f469f2114">&#9670;&nbsp;</a></span>scaleAmount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t scaleAmount = 2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae5204dc1d80b90ced93dfa0ffc9ed575"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5204dc1d80b90ced93dfa0ffc9ed575">&#9670;&nbsp;</a></span>tStatesTotal</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t tStatesTotal</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ac9de52373fb1ba5b7529ba0d15ebc8b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9de52373fb1ba5b7529ba0d15ebc8b8">&#9670;&nbsp;</a></span>ucBGWINline</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ucBGWINline[160]</td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -3,9 +3,11 @@
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{stm32h7__display_8h_af7d9cd0d0328f090f7c0b22c83a73811}{dummy2\+\_\+code}} ()
+void \mbox{\hyperlink{stm32h7__display_8h_a50f5849579459ad0a6c1245e7e307224}{stm32h7\+\_\+display\+Set\+Palette}} ()
 \item 
-void \mbox{\hyperlink{stm32h7__display_8h_a883ff1af2f895e5f25927f58d05147ec}{dummy\+\_\+code}} ()
+void \mbox{\hyperlink{stm32h7__display_8h_a81e2c373d1e591d4bcda7aed5893ce1a}{display\+Frame\+Buffer}} (uint8\+\_\+t $\ast$\mbox{\hyperlink{gbppu_8c_ab799d7f1fc8dba9a1b2ae4a3b2e85f3f}{gb\+\_\+frame}}, uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_a5404f7eab814b57dc7c25d7f469f2114}{scale\+Amount}})
+\item 
+void \mbox{\hyperlink{stm32h7__display_8h_a9d6d0e93865a7306ac61431a669e51af}{display\+Double\+Buffer}} ()
 \item 
 void \mbox{\hyperlink{stm32h7__display_8h_a24336fe16fa0d0ee8c7087342fd1be47}{Copy\+Buffer}} (uint32\+\_\+t $\ast$p\+Src, uint32\+\_\+t $\ast$p\+Dst, uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t xsize, uint16\+\_\+t ysize)
 \end{DoxyCompactItemize}
@@ -18,15 +20,21 @@ void \mbox{\hyperlink{stm32h7__display_8h_a24336fe16fa0d0ee8c7087342fd1be47}{Cop
 \doxysubsubsection{\texorpdfstring{CopyBuffer()}{CopyBuffer()}}
 {\footnotesize\ttfamily void Copy\+Buffer (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{p\+Src,  }\item[{uint32\+\_\+t $\ast$}]{p\+Dst,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{xsize,  }\item[{uint16\+\_\+t}]{ysize }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{stm32h7__display_8h_af7d9cd0d0328f090f7c0b22c83a73811}\label{stm32h7__display_8h_af7d9cd0d0328f090f7c0b22c83a73811}} 
-\index{stm32h7\_display.h@{stm32h7\_display.h}!dummy2\_code@{dummy2\_code}}
-\index{dummy2\_code@{dummy2\_code}!stm32h7\_display.h@{stm32h7\_display.h}}
-\doxysubsubsection{\texorpdfstring{dummy2\_code()}{dummy2\_code()}}
-{\footnotesize\ttfamily void dummy2\+\_\+code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{stm32h7__display_8h_a9d6d0e93865a7306ac61431a669e51af}\label{stm32h7__display_8h_a9d6d0e93865a7306ac61431a669e51af}} 
+\index{stm32h7\_display.h@{stm32h7\_display.h}!displayDoubleBuffer@{displayDoubleBuffer}}
+\index{displayDoubleBuffer@{displayDoubleBuffer}!stm32h7\_display.h@{stm32h7\_display.h}}
+\doxysubsubsection{\texorpdfstring{displayDoubleBuffer()}{displayDoubleBuffer()}}
+{\footnotesize\ttfamily void display\+Double\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{stm32h7__display_8h_a883ff1af2f895e5f25927f58d05147ec}\label{stm32h7__display_8h_a883ff1af2f895e5f25927f58d05147ec}} 
-\index{stm32h7\_display.h@{stm32h7\_display.h}!dummy\_code@{dummy\_code}}
-\index{dummy\_code@{dummy\_code}!stm32h7\_display.h@{stm32h7\_display.h}}
-\doxysubsubsection{\texorpdfstring{dummy\_code()}{dummy\_code()}}
-{\footnotesize\ttfamily void dummy\+\_\+code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{stm32h7__display_8h_a81e2c373d1e591d4bcda7aed5893ce1a}\label{stm32h7__display_8h_a81e2c373d1e591d4bcda7aed5893ce1a}} 
+\index{stm32h7\_display.h@{stm32h7\_display.h}!displayFrameBuffer@{displayFrameBuffer}}
+\index{displayFrameBuffer@{displayFrameBuffer}!stm32h7\_display.h@{stm32h7\_display.h}}
+\doxysubsubsection{\texorpdfstring{displayFrameBuffer()}{displayFrameBuffer()}}
+{\footnotesize\ttfamily void display\+Frame\+Buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{gb\+\_\+frame,  }\item[{uint8\+\_\+t}]{scale\+Amount }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{stm32h7__display_8h_a50f5849579459ad0a6c1245e7e307224}\label{stm32h7__display_8h_a50f5849579459ad0a6c1245e7e307224}} 
+\index{stm32h7\_display.h@{stm32h7\_display.h}!stm32h7\_displaySetPalette@{stm32h7\_displaySetPalette}}
+\index{stm32h7\_displaySetPalette@{stm32h7\_displaySetPalette}!stm32h7\_display.h@{stm32h7\_display.h}}
+\doxysubsubsection{\texorpdfstring{stm32h7\_displaySetPalette()}{stm32h7\_displaySetPalette()}}
+{\footnotesize\ttfamily void stm32h7\+\_\+display\+Set\+Palette (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 

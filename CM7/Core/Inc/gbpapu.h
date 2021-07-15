@@ -8,6 +8,7 @@
 #ifndef INC_GBPAPU_H_
 #define INC_GBPAPU_H_
 
-
+void gbPAPUStep();
+void gbPAPUstartAudio();
 
 #endif /* INC_GBPAPU_H_ */

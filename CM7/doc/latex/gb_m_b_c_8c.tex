@@ -1,0 +1,118 @@
+\hypertarget{gb_m_b_c_8c}{}\doxysection{Core/\+Src/gb\+MBC.c File Reference}
+\label{gb_m_b_c_8c}\index{Core/Src/gbMBC.c@{Core/Src/gbMBC.c}}
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}gbmemory.\+h\char`\"{}}\newline
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{gb_m_b_c_8c_a13dbe8647a9f0158d70903b8b375ad95}{CARTROM\+\_\+\+BANK0}}~0x0000
+\item 
+\#define \mbox{\hyperlink{gb_m_b_c_8c_afc27b3eff83e39d7736da11c840da6d2}{CARTROM\+\_\+\+BANKX}}~0x4000
+\item 
+\#define \mbox{\hyperlink{gb_m_b_c_8c_aeadafef31db261c22b19a64f82608fdb}{VRAM\+\_\+\+BASE}}~0x8000
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{gb_m_b_c_8c_ac39507f64b0172202f846cea0a347fae}{gb\+MBCset\+Controller\+Type}} (uint8\+\_\+t code)
+\item 
+uint8\+\_\+t \mbox{\hyperlink{gb_m_b_c_8c_a14d38cde8e089d9239af453c710263d4}{gb\+MBCread\+BankX}} (uint16\+\_\+t address)
+\item 
+void \mbox{\hyperlink{gb_m_b_c_8c_a3a7853c30ed12cb66891cab54f7b165a}{gb\+MBCwrite}} (uint16\+\_\+t address, uint8\+\_\+t data)
+\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{gb_m_b_c_8c_a2d30477fe6f8988bb8620674213dc7f7}{ucgb\+MBCcontroller\+Code}} = 0
+\item 
+uint8\+\_\+t \mbox{\hyperlink{gb_m_b_c_8c_a7c6f559af3a75ed23d4250564ea86931}{ucgb\+MBCram\+EN}} = 0
+\item 
+uint8\+\_\+t \mbox{\hyperlink{gb_m_b_c_8c_a30aa330e1378c55c1285c78de7bb31b1}{ucgb\+MBCoffset\+Low}} = 0x01
+\item 
+uint8\+\_\+t \mbox{\hyperlink{gb_m_b_c_8c_a66d04d4affcf5c2067c893d647189eff}{ucgb\+MBCoffset\+High}} = 0x0
+\item 
+uint8\+\_\+t \mbox{\hyperlink{gb_m_b_c_8c_ac372e65bba3763e3d95fa5eb335d1d00}{ucgb\+MBCbank\+Mode}} = 0x0
+\item 
+const unsigned char $\ast$ \mbox{\hyperlink{gb_m_b_c_8c_af1a74952e70d4f6f1290efd9ca571e20}{rom}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{gb_m_b_c_8c_a13dbe8647a9f0158d70903b8b375ad95}\label{gb_m_b_c_8c_a13dbe8647a9f0158d70903b8b375ad95}} 
+\index{gbMBC.c@{gbMBC.c}!CARTROM\_BANK0@{CARTROM\_BANK0}}
+\index{CARTROM\_BANK0@{CARTROM\_BANK0}!gbMBC.c@{gbMBC.c}}
+\doxysubsubsection{\texorpdfstring{CARTROM\_BANK0}{CARTROM\_BANK0}}
+{\footnotesize\ttfamily \#define CARTROM\+\_\+\+BANK0~0x0000}
+
+\mbox{\Hypertarget{gb_m_b_c_8c_afc27b3eff83e39d7736da11c840da6d2}\label{gb_m_b_c_8c_afc27b3eff83e39d7736da11c840da6d2}} 
+\index{gbMBC.c@{gbMBC.c}!CARTROM\_BANKX@{CARTROM\_BANKX}}
+\index{CARTROM\_BANKX@{CARTROM\_BANKX}!gbMBC.c@{gbMBC.c}}
+\doxysubsubsection{\texorpdfstring{CARTROM\_BANKX}{CARTROM\_BANKX}}
+{\footnotesize\ttfamily \#define CARTROM\+\_\+\+BANKX~0x4000}
+
+\mbox{\Hypertarget{gb_m_b_c_8c_aeadafef31db261c22b19a64f82608fdb}\label{gb_m_b_c_8c_aeadafef31db261c22b19a64f82608fdb}} 
+\index{gbMBC.c@{gbMBC.c}!VRAM\_BASE@{VRAM\_BASE}}
+\index{VRAM\_BASE@{VRAM\_BASE}!gbMBC.c@{gbMBC.c}}
+\doxysubsubsection{\texorpdfstring{VRAM\_BASE}{VRAM\_BASE}}
+{\footnotesize\ttfamily \#define VRAM\+\_\+\+BASE~0x8000}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{gb_m_b_c_8c_a14d38cde8e089d9239af453c710263d4}\label{gb_m_b_c_8c_a14d38cde8e089d9239af453c710263d4}} 
+\index{gbMBC.c@{gbMBC.c}!gbMBCreadBankX@{gbMBCreadBankX}}
+\index{gbMBCreadBankX@{gbMBCreadBankX}!gbMBC.c@{gbMBC.c}}
+\doxysubsubsection{\texorpdfstring{gbMBCreadBankX()}{gbMBCreadBankX()}}
+{\footnotesize\ttfamily uint8\+\_\+t gb\+MBCread\+BankX (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gb_m_b_c_8c_ac39507f64b0172202f846cea0a347fae}\label{gb_m_b_c_8c_ac39507f64b0172202f846cea0a347fae}} 
+\index{gbMBC.c@{gbMBC.c}!gbMBCsetControllerType@{gbMBCsetControllerType}}
+\index{gbMBCsetControllerType@{gbMBCsetControllerType}!gbMBC.c@{gbMBC.c}}
+\doxysubsubsection{\texorpdfstring{gbMBCsetControllerType()}{gbMBCsetControllerType()}}
+{\footnotesize\ttfamily void gb\+MBCset\+Controller\+Type (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{code }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{gb_m_b_c_8c_a3a7853c30ed12cb66891cab54f7b165a}\label{gb_m_b_c_8c_a3a7853c30ed12cb66891cab54f7b165a}} 
+\index{gbMBC.c@{gbMBC.c}!gbMBCwrite@{gbMBCwrite}}
+\index{gbMBCwrite@{gbMBCwrite}!gbMBC.c@{gbMBC.c}}
+\doxysubsubsection{\texorpdfstring{gbMBCwrite()}{gbMBCwrite()}}
+{\footnotesize\ttfamily void gb\+MBCwrite (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{gb_m_b_c_8c_af1a74952e70d4f6f1290efd9ca571e20}\label{gb_m_b_c_8c_af1a74952e70d4f6f1290efd9ca571e20}} 
+\index{gbMBC.c@{gbMBC.c}!rom@{rom}}
+\index{rom@{rom}!gbMBC.c@{gbMBC.c}}
+\doxysubsubsection{\texorpdfstring{rom}{rom}}
+{\footnotesize\ttfamily const unsigned char$\ast$ rom\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{gb_m_b_c_8c_ac372e65bba3763e3d95fa5eb335d1d00}\label{gb_m_b_c_8c_ac372e65bba3763e3d95fa5eb335d1d00}} 
+\index{gbMBC.c@{gbMBC.c}!ucgbMBCbankMode@{ucgbMBCbankMode}}
+\index{ucgbMBCbankMode@{ucgbMBCbankMode}!gbMBC.c@{gbMBC.c}}
+\doxysubsubsection{\texorpdfstring{ucgbMBCbankMode}{ucgbMBCbankMode}}
+{\footnotesize\ttfamily uint8\+\_\+t ucgb\+MBCbank\+Mode = 0x0}
+
+\mbox{\Hypertarget{gb_m_b_c_8c_a2d30477fe6f8988bb8620674213dc7f7}\label{gb_m_b_c_8c_a2d30477fe6f8988bb8620674213dc7f7}} 
+\index{gbMBC.c@{gbMBC.c}!ucgbMBCcontrollerCode@{ucgbMBCcontrollerCode}}
+\index{ucgbMBCcontrollerCode@{ucgbMBCcontrollerCode}!gbMBC.c@{gbMBC.c}}
+\doxysubsubsection{\texorpdfstring{ucgbMBCcontrollerCode}{ucgbMBCcontrollerCode}}
+{\footnotesize\ttfamily uint8\+\_\+t ucgb\+MBCcontroller\+Code = 0}
+
+\mbox{\Hypertarget{gb_m_b_c_8c_a66d04d4affcf5c2067c893d647189eff}\label{gb_m_b_c_8c_a66d04d4affcf5c2067c893d647189eff}} 
+\index{gbMBC.c@{gbMBC.c}!ucgbMBCoffsetHigh@{ucgbMBCoffsetHigh}}
+\index{ucgbMBCoffsetHigh@{ucgbMBCoffsetHigh}!gbMBC.c@{gbMBC.c}}
+\doxysubsubsection{\texorpdfstring{ucgbMBCoffsetHigh}{ucgbMBCoffsetHigh}}
+{\footnotesize\ttfamily uint8\+\_\+t ucgb\+MBCoffset\+High = 0x0}
+
+\mbox{\Hypertarget{gb_m_b_c_8c_a30aa330e1378c55c1285c78de7bb31b1}\label{gb_m_b_c_8c_a30aa330e1378c55c1285c78de7bb31b1}} 
+\index{gbMBC.c@{gbMBC.c}!ucgbMBCoffsetLow@{ucgbMBCoffsetLow}}
+\index{ucgbMBCoffsetLow@{ucgbMBCoffsetLow}!gbMBC.c@{gbMBC.c}}
+\doxysubsubsection{\texorpdfstring{ucgbMBCoffsetLow}{ucgbMBCoffsetLow}}
+{\footnotesize\ttfamily uint8\+\_\+t ucgb\+MBCoffset\+Low = 0x01}
+
+\mbox{\Hypertarget{gb_m_b_c_8c_a7c6f559af3a75ed23d4250564ea86931}\label{gb_m_b_c_8c_a7c6f559af3a75ed23d4250564ea86931}} 
+\index{gbMBC.c@{gbMBC.c}!ucgbMBCramEN@{ucgbMBCramEN}}
+\index{ucgbMBCramEN@{ucgbMBCramEN}!gbMBC.c@{gbMBC.c}}
+\doxysubsubsection{\texorpdfstring{ucgbMBCramEN}{ucgbMBCramEN}}
+{\footnotesize\ttfamily uint8\+\_\+t ucgb\+MBCram\+EN = 0}
+

@@ -1,5 +1,11 @@
 \hypertarget{gbcpu_8c}{}\doxysection{Core/\+Src/gbcpu.c File Reference}
 \label{gbcpu_8c}\index{Core/Src/gbcpu.c@{Core/Src/gbcpu.c}}
+
+
+\+: Gameboy CPU Functionality  
+
+
+{\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}gbcpu.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}gbmemory.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}gbfunctions.\+h\char`\"{}}\newline
@@ -19,10 +25,6 @@
 \#define \mbox{\hyperlink{gbcpu_8c_ac506814924ad9abdf70620c22f1998db}{SERIAL\+\_\+\+INTERRUPT}}~(1 $<$$<$ 3)
 \item 
 \#define \mbox{\hyperlink{gbcpu_8c_a2cc59f28009bc35f6ffe0f8516b51640}{JOYPAD\+\_\+\+INTERRUPT}}~(1 $<$$<$ 4)
-\item 
-\#define \mbox{\hyperlink{gbcpu_8c_a7bcb2e119b8b2efc6cdef82adc5c35cb}{IE\+\_\+\+ADDR}}~0x\+FF0F
-\item 
-\#define \mbox{\hyperlink{gbcpu_8c_aa32f00625f3184578bdddc263908a706}{IF\+\_\+\+ADDR}}~0x\+FFFF
 \item 
 \#define \mbox{\hyperlink{gbcpu_8c_a22e0c225999abc1df7dba73f2e888cf4}{VBLANK\+\_\+\+VECTOR}}~0x0040
 \item 
@@ -1039,11 +1041,11 @@ void \mbox{\hyperlink{gbcpu_8c_a3f4da9b4da4289e5d2c1fa4a312927d1}{v\+SET\+\_\+7\
 \item 
 void \mbox{\hyperlink{gbcpu_8c_aca01ad7eb52e28fde8510fda5ed96436}{v\+SET\+\_\+7\+\_\+A}} ()
 \item 
-void \mbox{\hyperlink{gbcpu_8c_a960a91350e7e155d24794c6e62fd139a}{v\+GBCPUreset}} ()
-\item 
-void \mbox{\hyperlink{gbcpu_8c_afdff24ca2343b342a41a4aa48286839c}{v\+GBCPUTest\+Instr}} (uint8\+\_\+t opcode)
+uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_a949dd2aaef61ee9dc6b76eea7fc37a8d}{uc\+Get\+Tstate}} ()
 \item 
 void \mbox{\hyperlink{gbcpu_8c_a5a2a7acf3888505856cdea35b8cea29e}{v\+GBCPUboot}} ()
+\item 
+void \mbox{\hyperlink{gbcpu_8c_ad75cc9a2be9b4cbe1f40bb6533269cc7}{v\+GBCPUHalted\+Handler}} ()
 \item 
 void \mbox{\hyperlink{gbcpu_8c_a538b6f34008329f2099be9e1145b355d}{v\+GBCPUInterrupt\+Handler}} ()
 \item 
@@ -1062,11 +1064,19 @@ uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_a512aecfd902ad0c01faa6010ad2dbd86}{uc\+On
 \item 
 uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_a64bcc4ed5b8582b1666991d8e2878b24}{custom\+Duration}} = 0
 \item 
-uint32\+\_\+t \mbox{\hyperlink{gbcpu_8c_a342494b907e8a7bafe144bd4f3d9afbb}{t\+States}} = 0
+uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_a5dcc0710798e3bb9caf430a094a4519c}{t\+States}} = 0
 \item 
 uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_a1566603abc21b7ca56597dfd176fa1ab}{print}} = 0
 \item 
+uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_abea371f9030e15a5d2a4c181576833d8}{num}} = 0
+\item 
+uint64\+\_\+t \mbox{\hyperlink{gbcpu_8c_a43fd973d34ec63261ede63664440123f}{numcount}}
+\item 
+uint16\+\_\+t \mbox{\hyperlink{gbcpu_8c_af21633fb74a6aa87c93baf3caaa58864}{pc}} = 0x3\+F9
+\item 
 \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{gbcpu_8c_a2e53d7c3ec0bfaf12e47894c24a904da}{reg}}
+\item 
+const unsigned char \mbox{\hyperlink{gbcpu_8c_a2924be90c16cc87d35ff9f5e0e2f9e3a}{Alleyway\+\_\+gb}} \mbox{[}$\,$\mbox{]}
 \item 
 unsigned char \mbox{\hyperlink{gbcpu_8c_afe3ea09366bfb79efb01c0760cbd448e}{Tetris\+\_\+gb}} \mbox{[}$\,$\mbox{]}
 \item 
@@ -1078,19 +1088,18 @@ unsigned char \mbox{\hyperlink{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+\+: Gameboy CPU Functionality 
+
+\begin{DoxyAuthor}{Author}
+\+: Rami 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+\+: Mar 28, 2021 
+\end{DoxyDate}
+
+
 \doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{gbcpu_8c_a7bcb2e119b8b2efc6cdef82adc5c35cb}\label{gbcpu_8c_a7bcb2e119b8b2efc6cdef82adc5c35cb}} 
-\index{gbcpu.c@{gbcpu.c}!IE\_ADDR@{IE\_ADDR}}
-\index{IE\_ADDR@{IE\_ADDR}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{IE\_ADDR}{IE\_ADDR}}
-{\footnotesize\ttfamily \#define IE\+\_\+\+ADDR~0x\+FF0F}
-
-\mbox{\Hypertarget{gbcpu_8c_aa32f00625f3184578bdddc263908a706}\label{gbcpu_8c_aa32f00625f3184578bdddc263908a706}} 
-\index{gbcpu.c@{gbcpu.c}!IF\_ADDR@{IF\_ADDR}}
-\index{IF\_ADDR@{IF\_ADDR}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{IF\_ADDR}{IF\_ADDR}}
-{\footnotesize\ttfamily \#define IF\+\_\+\+ADDR~0x\+FFFF}
-
 \mbox{\Hypertarget{gbcpu_8c_a2cc59f28009bc35f6ffe0f8516b51640}\label{gbcpu_8c_a2cc59f28009bc35f6ffe0f8516b51640}} 
 \index{gbcpu.c@{gbcpu.c}!JOYPAD\_INTERRUPT@{JOYPAD\_INTERRUPT}}
 \index{JOYPAD\_INTERRUPT@{JOYPAD\_INTERRUPT}!gbcpu.c@{gbcpu.c}}
@@ -1166,6 +1175,12 @@ unsigned char \mbox{\hyperlink{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{gbcpu_8c_a949dd2aaef61ee9dc6b76eea7fc37a8d}\label{gbcpu_8c_a949dd2aaef61ee9dc6b76eea7fc37a8d}} 
+\index{gbcpu.c@{gbcpu.c}!ucGetTstate@{ucGetTstate}}
+\index{ucGetTstate@{ucGetTstate}!gbcpu.c@{gbcpu.c}}
+\doxysubsubsection{\texorpdfstring{ucGetTstate()}{ucGetTstate()}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+Get\+Tstate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{gbcpu_8c_a4e12efe64e9e2fe9611e8575c607335f}\label{gbcpu_8c_a4e12efe64e9e2fe9611e8575c607335f}} 
 \index{gbcpu.c@{gbcpu.c}!vADC\_A\_A@{vADC\_A\_A}}
 \index{vADC\_A\_A@{vADC\_A\_A}!gbcpu.c@{gbcpu.c}}
@@ -1934,6 +1949,12 @@ unsigned char \mbox{\hyperlink{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+
 \doxysubsubsection{\texorpdfstring{vGBCPUboot()}{vGBCPUboot()}}
 {\footnotesize\ttfamily void v\+GBCPUboot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{gbcpu_8c_ad75cc9a2be9b4cbe1f40bb6533269cc7}\label{gbcpu_8c_ad75cc9a2be9b4cbe1f40bb6533269cc7}} 
+\index{gbcpu.c@{gbcpu.c}!vGBCPUHaltedHandler@{vGBCPUHaltedHandler}}
+\index{vGBCPUHaltedHandler@{vGBCPUHaltedHandler}!gbcpu.c@{gbcpu.c}}
+\doxysubsubsection{\texorpdfstring{vGBCPUHaltedHandler()}{vGBCPUHaltedHandler()}}
+{\footnotesize\ttfamily void v\+GBCPUHalted\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{gbcpu_8c_a1287756051fb8c1e853804ee9088dd0d}\label{gbcpu_8c_a1287756051fb8c1e853804ee9088dd0d}} 
 \index{gbcpu.c@{gbcpu.c}!vGBCPUinstr@{vGBCPUinstr}}
 \index{vGBCPUinstr@{vGBCPUinstr}!gbcpu.c@{gbcpu.c}}
@@ -1945,18 +1966,6 @@ unsigned char \mbox{\hyperlink{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+
 \index{vGBCPUInterruptHandler@{vGBCPUInterruptHandler}!gbcpu.c@{gbcpu.c}}
 \doxysubsubsection{\texorpdfstring{vGBCPUInterruptHandler()}{vGBCPUInterruptHandler()}}
 {\footnotesize\ttfamily void v\+GBCPUInterrupt\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{gbcpu_8c_a960a91350e7e155d24794c6e62fd139a}\label{gbcpu_8c_a960a91350e7e155d24794c6e62fd139a}} 
-\index{gbcpu.c@{gbcpu.c}!vGBCPUreset@{vGBCPUreset}}
-\index{vGBCPUreset@{vGBCPUreset}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{vGBCPUreset()}{vGBCPUreset()}}
-{\footnotesize\ttfamily void v\+GBCPUreset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{gbcpu_8c_afdff24ca2343b342a41a4aa48286839c}\label{gbcpu_8c_afdff24ca2343b342a41a4aa48286839c}} 
-\index{gbcpu.c@{gbcpu.c}!vGBCPUTestInstr@{vGBCPUTestInstr}}
-\index{vGBCPUTestInstr@{vGBCPUTestInstr}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{vGBCPUTestInstr()}{vGBCPUTestInstr()}}
-{\footnotesize\ttfamily void v\+GBCPUTest\+Instr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{opcode }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{gbcpu_8c_ac727d5bb0c4938c3779d1ecc3d807905}\label{gbcpu_8c_ac727d5bb0c4938c3779d1ecc3d807905}} 
 \index{gbcpu.c@{gbcpu.c}!vHALT@{vHALT}}
@@ -4205,6 +4214,12 @@ unsigned char \mbox{\hyperlink{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+
 
 
 \doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{gbcpu_8c_a2924be90c16cc87d35ff9f5e0e2f9e3a}\label{gbcpu_8c_a2924be90c16cc87d35ff9f5e0e2f9e3a}} 
+\index{gbcpu.c@{gbcpu.c}!Alleyway\_gb@{Alleyway\_gb}}
+\index{Alleyway\_gb@{Alleyway\_gb}!gbcpu.c@{gbcpu.c}}
+\doxysubsubsection{\texorpdfstring{Alleyway\_gb}{Alleyway\_gb}}
+{\footnotesize\ttfamily const unsigned char Alleyway\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
 \mbox{\Hypertarget{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}\label{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}} 
 \index{gbcpu.c@{gbcpu.c}!cpu\_instrs\_gb@{cpu\_instrs\_gb}}
 \index{cpu\_instrs\_gb@{cpu\_instrs\_gb}!gbcpu.c@{gbcpu.c}}
@@ -4222,6 +4237,24 @@ unsigned char \mbox{\hyperlink{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+
 \index{instructions@{instructions}!gbcpu.c@{gbcpu.c}}
 \doxysubsubsection{\texorpdfstring{instructions}{instructions}}
 {\footnotesize\ttfamily \mbox{\hyperlink{struct_assembly___instr}{Assembly\+\_\+\+Instr}} instructions\mbox{[}256\mbox{]}}
+
+\mbox{\Hypertarget{gbcpu_8c_abea371f9030e15a5d2a4c181576833d8}\label{gbcpu_8c_abea371f9030e15a5d2a4c181576833d8}} 
+\index{gbcpu.c@{gbcpu.c}!num@{num}}
+\index{num@{num}!gbcpu.c@{gbcpu.c}}
+\doxysubsubsection{\texorpdfstring{num}{num}}
+{\footnotesize\ttfamily uint8\+\_\+t num = 0}
+
+\mbox{\Hypertarget{gbcpu_8c_a43fd973d34ec63261ede63664440123f}\label{gbcpu_8c_a43fd973d34ec63261ede63664440123f}} 
+\index{gbcpu.c@{gbcpu.c}!numcount@{numcount}}
+\index{numcount@{numcount}!gbcpu.c@{gbcpu.c}}
+\doxysubsubsection{\texorpdfstring{numcount}{numcount}}
+{\footnotesize\ttfamily uint64\+\_\+t numcount}
+
+\mbox{\Hypertarget{gbcpu_8c_af21633fb74a6aa87c93baf3caaa58864}\label{gbcpu_8c_af21633fb74a6aa87c93baf3caaa58864}} 
+\index{gbcpu.c@{gbcpu.c}!pc@{pc}}
+\index{pc@{pc}!gbcpu.c@{gbcpu.c}}
+\doxysubsubsection{\texorpdfstring{pc}{pc}}
+{\footnotesize\ttfamily uint16\+\_\+t pc = 0x3\+F9}
 
 \mbox{\Hypertarget{gbcpu_8c_a5e025ff8cefad04d46522eea26732a04}\label{gbcpu_8c_a5e025ff8cefad04d46522eea26732a04}} 
 \index{gbcpu.c@{gbcpu.c}!prefix\_instructions@{prefix\_instructions}}
@@ -4247,11 +4280,11 @@ unsigned char \mbox{\hyperlink{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+
 \doxysubsubsection{\texorpdfstring{Tetris\_gb}{Tetris\_gb}}
 {\footnotesize\ttfamily unsigned char Tetris\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
 
-\mbox{\Hypertarget{gbcpu_8c_a342494b907e8a7bafe144bd4f3d9afbb}\label{gbcpu_8c_a342494b907e8a7bafe144bd4f3d9afbb}} 
+\mbox{\Hypertarget{gbcpu_8c_a5dcc0710798e3bb9caf430a094a4519c}\label{gbcpu_8c_a5dcc0710798e3bb9caf430a094a4519c}} 
 \index{gbcpu.c@{gbcpu.c}!tStates@{tStates}}
 \index{tStates@{tStates}!gbcpu.c@{gbcpu.c}}
 \doxysubsubsection{\texorpdfstring{tStates}{tStates}}
-{\footnotesize\ttfamily uint32\+\_\+t t\+States = 0}
+{\footnotesize\ttfamily uint8\+\_\+t t\+States = 0}
 
 \mbox{\Hypertarget{gbcpu_8c_a1454b651edb9341cc0188aaf23a14c5a}\label{gbcpu_8c_a1454b651edb9341cc0188aaf23a14c5a}} 
 \index{gbcpu.c@{gbcpu.c}!ucHALTED@{ucHALTED}}

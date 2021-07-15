@@ -104,21 +104,44 @@ $(document).ready(function(){initNavTree('main_8h_source.html',''); initResizabl
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/* Includes ------------------------------------------------------------------*/</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;stm32h7xx_hal.h&quot;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;stm32h747i_discovery.h&quot;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;stm32h747i_discovery_lcd.h&quot;</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;stm32h747i_discovery_sdram.h&quot;</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;stm32h747i_discovery_bus.h&quot;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;stm32_lcd.h&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">/* Exported types ------------------------------------------------------------*/</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/* Exported constants --------------------------------------------------------*/</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="main_8h.html#ae8edfa39002e08ee1d8221c81cebf925">   35</a></span>&#160;<span class="preprocessor">#define LCD_FRAME_BUFFER        0xD0000000</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">/* Exported macro ------------------------------------------------------------*/</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/* Exported functions ------------------------------------------------------- */</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __MAIN_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &quot;stm32h747i_discovery_audio.h&quot;</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#include &quot;stm32h747i_discovery.h&quot;</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &quot;stm32h747i_discovery_lcd.h&quot;</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;stm32h747i_discovery_sdram.h&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;stm32h747i_discovery_bus.h&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;stm32_lcd.h&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">/* Exported types ------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">/* Exported constants --------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="main_8h.html#ae8edfa39002e08ee1d8221c81cebf925">   36</a></span>&#160;<span class="preprocessor">#define LCD_FRAME_BUFFER        0xD0000000</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">/* Exported macro ------------------------------------------------------------*/</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/* Exported functions ------------------------------------------------------- */</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>* <a class="code" href="main_8h.html#ac0e5fc84d3f0cbaee9ea71d6fbe0c31c">getRomPointer</a>();</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="main_8h.html#a18c6adbfa5ba251e0035de1ab8759767">   41</a></span>&#160;<span class="preprocessor">#define OSC32_OUT_Pin GPIO_PIN_15</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="main_8h.html#aa6d4a7b9fbeffdfc292fda3a6ce6dcad">   42</a></span>&#160;<span class="preprocessor">#define OSC32_OUT_GPIO_Port GPIOC</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="main_8h.html#aaf68748564227540c27167c46b3f6e26">   43</a></span>&#160;<span class="preprocessor">#define OSC32_IN_Pin GPIO_PIN_14</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="main_8h.html#ac07e935018ad2c6921b2d4efee07de5b">   44</a></span>&#160;<span class="preprocessor">#define OSC32_IN_GPIO_Port GPIOC</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="main_8h.html#a15c3bdcd3639f929e204742c5faaadc5">   45</a></span>&#160;<span class="preprocessor">#define CEC_CK_MCO1_Pin GPIO_PIN_8</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="main_8h.html#a594b70795ef73faaee8a60a24f00c3fe">   46</a></span>&#160;<span class="preprocessor">#define CEC_CK_MCO1_GPIO_Port GPIOA</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="main_8h.html#ad33432b95a8442eacddef186ba7f11fe">   47</a></span>&#160;<span class="preprocessor">#define OSC_OUT_Pin GPIO_PIN_1</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="main_8h.html#a4ab4af1723cbb18e17bb3d18daa90bfc">   48</a></span>&#160;<span class="preprocessor">#define OSC_OUT_GPIO_Port GPIOH</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="main_8h.html#a363ad7fb205680f1af009a3091dc3f7a">   49</a></span>&#160;<span class="preprocessor">#define OSC_IN_Pin GPIO_PIN_0</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="main_8h.html#af3f08c0d640164c48175314bba5da48a">   50</a></span>&#160;<span class="preprocessor">#define OSC_IN_GPIO_Port GPIOH</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="main_8h.html#a6018b6e7f6fbfa8a5b07b37eb467e47b">   51</a></span>&#160;<span class="preprocessor">#define ARD_A1_Pin GPIO_PIN_10</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="main_8h.html#a69eb4fed506ab9c6ba38e8ac501e7b40">   52</a></span>&#160;<span class="preprocessor">#define ARD_A1_GPIO_Port GPIOF</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="main_8h.html#a86a4509651cdc45e4a408f7af6cace31">   53</a></span>&#160;<span class="preprocessor">#define ARD_A4_Pin GPIO_PIN_2</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="main_8h.html#a91e1dc2f8ca907eb9359d1783aba7caf">   54</a></span>&#160;<span class="preprocessor">#define ARD_A4_GPIO_Port GPIOC</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="main_8h.html#a657397b456604c233681deaf1c410cdb">   55</a></span>&#160;<span class="preprocessor">#define ARD_A5_Pin GPIO_PIN_3</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="main_8h.html#a199ecde668a7dc139d5f26b65a6711b4">   56</a></span>&#160;<span class="preprocessor">#define ARD_A5_GPIO_Port GPIOC</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="main_8h.html#a5bd7a256d124e0f069502af5e518c7c0">   57</a></span>&#160;<span class="preprocessor">#define ARD_A2_Pin GPIO_PIN_0</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="main_8h.html#a58813358e80d09b98ba819daabef50f0">   58</a></span>&#160;<span class="preprocessor">#define ARD_A2_GPIO_Port GPIOA</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="main_8h.html#a984177df76eadc0ffd718beddac634cb">   59</a></span>&#160;<span class="preprocessor">#define ARD_A3_Pin GPIO_PIN_1</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="main_8h.html#a8f94c9d0d47847ba562028026ed8dbc7">   60</a></span>&#160;<span class="preprocessor">#define ARD_A3_GPIO_Port GPIOA</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __MAIN_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/</span></div>
+<div class="ttc" id="amain_8h_html_ac0e5fc84d3f0cbaee9ea71d6fbe0c31c"><div class="ttname"><a href="main_8h.html#ac0e5fc84d3f0cbaee9ea71d6fbe0c31c">getRomPointer</a></div><div class="ttdeci">const unsigned char * getRomPointer()</div><div class="ttdef"><b>Definition:</b> main.c:104</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

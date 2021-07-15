@@ -106,20 +106,24 @@ $(document).ready(function(){initNavTree('stm32h7__display_8h_source.html',''); 
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef INC_STM32H7_DISPLAY_H_</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define INC_STM32H7_DISPLAY_H_</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="stm32h7__display_8h.html#af7d9cd0d0328f090f7c0b22c83a73811">   11</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="stm32h7__display_8h.html#af7d9cd0d0328f090f7c0b22c83a73811">dummy2_code</a>();</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> <a class="code" href="stm32h7__display_8h.html#a883ff1af2f895e5f25927f58d05147ec">dummy_code</a>();</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="stm32h7__display_8h.html#a24336fe16fa0d0ee8c7087342fd1be47">CopyBuffer</a>(uint32_t *pSrc,</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;                           uint32_t *pDst,</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                           uint16_t x,</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                           uint16_t y,</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                           uint16_t xsize,</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                           uint16_t ysize);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keywordtype">void</span> <a class="code" href="stm32h7__display_8h.html#a50f5849579459ad0a6c1245e7e307224">stm32h7_displaySetPalette</a>();</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keywordtype">void</span> <a class="code" href="stm32h7__display_8h.html#a81e2c373d1e591d4bcda7aed5893ce1a">displayFrameBuffer</a>(uint8_t* <a class="code" href="gbppu_8c.html#ab799d7f1fc8dba9a1b2ae4a3b2e85f3f">gb_frame</a>, uint8_t <a class="code" href="gbppu_8c.html#a5404f7eab814b57dc7c25d7f469f2114">scaleAmount</a>);</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keywordtype">void</span> <a class="code" href="stm32h7__display_8h.html#a9d6d0e93865a7306ac61431a669e51af">displayDoubleBuffer</a>();</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keywordtype">void</span> <a class="code" href="stm32h7__display_8h.html#a24336fe16fa0d0ee8c7087342fd1be47">CopyBuffer</a>(uint32_t *pSrc,</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;                           uint32_t *pDst,</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;                           uint16_t x,</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;                           uint16_t y,</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;                           uint16_t xsize,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;                           uint16_t ysize);</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* INC_STM32H7_DISPLAY_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="astm32h7__display_8h_html_a24336fe16fa0d0ee8c7087342fd1be47"><div class="ttname"><a href="stm32h7__display_8h.html#a24336fe16fa0d0ee8c7087342fd1be47">CopyBuffer</a></div><div class="ttdeci">void CopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t xsize, uint16_t ysize)</div><div class="ttdef"><b>Definition:</b> stm32h7_display.c:57</div></div>
-<div class="ttc" id="astm32h7__display_8h_html_a883ff1af2f895e5f25927f58d05147ec"><div class="ttname"><a href="stm32h7__display_8h.html#a883ff1af2f895e5f25927f58d05147ec">dummy_code</a></div><div class="ttdeci">void dummy_code()</div><div class="ttdef"><b>Definition:</b> stm32h7_display.c:103</div></div>
-<div class="ttc" id="astm32h7__display_8h_html_af7d9cd0d0328f090f7c0b22c83a73811"><div class="ttname"><a href="stm32h7__display_8h.html#af7d9cd0d0328f090f7c0b22c83a73811">dummy2_code</a></div><div class="ttdeci">void dummy2_code()</div></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* INC_STM32H7_DISPLAY_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="agbppu_8c_html_a5404f7eab814b57dc7c25d7f469f2114"><div class="ttname"><a href="gbppu_8c.html#a5404f7eab814b57dc7c25d7f469f2114">scaleAmount</a></div><div class="ttdeci">uint8_t scaleAmount</div><div class="ttdef"><b>Definition:</b> gbppu.c:45</div></div>
+<div class="ttc" id="agbppu_8c_html_ab799d7f1fc8dba9a1b2ae4a3b2e85f3f"><div class="ttname"><a href="gbppu_8c.html#ab799d7f1fc8dba9a1b2ae4a3b2e85f3f">gb_frame</a></div><div class="ttdeci">uint8_t * gb_frame</div><div class="ttdef"><b>Definition:</b> gbppu.c:41</div></div>
+<div class="ttc" id="astm32h7__display_8h_html_a24336fe16fa0d0ee8c7087342fd1be47"><div class="ttname"><a href="stm32h7__display_8h.html#a24336fe16fa0d0ee8c7087342fd1be47">CopyBuffer</a></div><div class="ttdeci">void CopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t xsize, uint16_t ysize)</div><div class="ttdef"><b>Definition:</b> stm32h7_display.c:77</div></div>
+<div class="ttc" id="astm32h7__display_8h_html_a50f5849579459ad0a6c1245e7e307224"><div class="ttname"><a href="stm32h7__display_8h.html#a50f5849579459ad0a6c1245e7e307224">stm32h7_displaySetPalette</a></div><div class="ttdeci">void stm32h7_displaySetPalette()</div><div class="ttdef"><b>Definition:</b> stm32h7_display.c:45</div></div>
+<div class="ttc" id="astm32h7__display_8h_html_a81e2c373d1e591d4bcda7aed5893ce1a"><div class="ttname"><a href="stm32h7__display_8h.html#a81e2c373d1e591d4bcda7aed5893ce1a">displayFrameBuffer</a></div><div class="ttdeci">void displayFrameBuffer(uint8_t *gb_frame, uint8_t scaleAmount)</div><div class="ttdef"><b>Definition:</b> stm32h7_display.c:122</div></div>
+<div class="ttc" id="astm32h7__display_8h_html_a9d6d0e93865a7306ac61431a669e51af"><div class="ttname"><a href="stm32h7__display_8h.html#a9d6d0e93865a7306ac61431a669e51af">displayDoubleBuffer</a></div><div class="ttdeci">void displayDoubleBuffer()</div><div class="ttdef"><b>Definition:</b> stm32h7_display.c:128</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

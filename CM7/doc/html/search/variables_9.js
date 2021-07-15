@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['l_1297',['L',['../structregisters.html#a10f900599cec5b7a56ac4db267c669de',1,'registers']]],
-  ['ly_1298',['ly',['../gbppu_8c.html#ab60dac6a688a304987c96312a05243ae',1,'gbppu.c']]]
+  ['joypadselbut_1477',['joypadSELbut',['../gbmemory_8c.html#ae8485843021908f44426e095bbbdf942',1,'gbmemory.c']]],
+  ['joypadseldir_1478',['joypadSELdir',['../gbmemory_8c.html#acd3fa3efff4d8c67b73513d2b05cc08f',1,'gbmemory.c']]]
 ];

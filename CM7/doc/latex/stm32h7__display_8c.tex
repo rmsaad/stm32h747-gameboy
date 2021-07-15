@@ -7,32 +7,68 @@
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
+\#define \mbox{\hyperlink{stm32h7__display_8c_a23ba77349efe58f6892458fde23203ae}{DARKEST\+\_\+\+GREEN}}~0\+XFF0\+F380\+FUL
+\item 
+\#define \mbox{\hyperlink{stm32h7__display_8c_a2ebb0bf1d379e615bda6e25cccf0f08f}{DARK\+\_\+\+GREEN}}~0\+XFF306230\+UL
+\item 
+\#define \mbox{\hyperlink{stm32h7__display_8c_a5a7142ee95ebc63218ed3aac2ae06b13}{LIGHT\+\_\+\+GREEN}}~0\+XFF8\+BAC0\+FUL
+\item 
+\#define \mbox{\hyperlink{stm32h7__display_8c_aa7340b5ab80d1a8df9c9d53948fcbd76}{LIGHTEST\+\_\+\+GREEN}}~0\+XFF9\+BBC0\+FUL
+\item 
 \#define \mbox{\hyperlink{stm32h7__display_8c_a2b587ddcaa2a17c8edb5f894115ed29c}{LAYER0\+\_\+\+ADDRESS}}~0x\+D0000000
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{stm32h7__display_8c_a50f5849579459ad0a6c1245e7e307224}{stm32h7\+\_\+display\+Set\+Palette}} ()
+\item 
 void \mbox{\hyperlink{stm32h7__display_8c_aabb47a221bb9e4224e494952b4c10f59}{HAL\+\_\+\+LTDC\+\_\+\+Line\+Event\+Callback}} (LTDC\+\_\+\+Handle\+Type\+Def $\ast$\mbox{\hyperlink{main_8c_a9ede3a77755ec81a9be03423cb915b05}{hltdc}})
 \begin{DoxyCompactList}\small\item\em Line Event callback. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{stm32h7__display_8c_a24336fe16fa0d0ee8c7087342fd1be47}{Copy\+Buffer}} (uint32\+\_\+t $\ast$p\+Src, uint32\+\_\+t $\ast$p\+Dst, uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t xsize, uint16\+\_\+t ysize)
 \item 
-void \mbox{\hyperlink{stm32h7__display_8c_ab27b517b8617b87754e614b8f27483e1}{dummy2\+\_\+code}} (uint32\+\_\+t $\ast$\mbox{\hyperlink{gbppu_8c_ae12b5e9abdfc0b2a9146a58445760a1b}{gb\+\_\+frame}})
+void \mbox{\hyperlink{stm32h7__display_8c_a81e2c373d1e591d4bcda7aed5893ce1a}{display\+Frame\+Buffer}} (uint8\+\_\+t $\ast$\mbox{\hyperlink{gbppu_8c_ab799d7f1fc8dba9a1b2ae4a3b2e85f3f}{gb\+\_\+frame}}, uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_a5404f7eab814b57dc7c25d7f469f2114}{scale\+Amount}})
 \item 
-void \mbox{\hyperlink{stm32h7__display_8c_a883ff1af2f895e5f25927f58d05147ec}{dummy\+\_\+code}} ()
+void \mbox{\hyperlink{stm32h7__display_8c_a9d6d0e93865a7306ac61431a669e51af}{display\+Double\+Buffer}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 LTDC\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{stm32h7__display_8c_ae839e40b2440160883f7e7dedec05a80}{hlcd\+\_\+ltdc}}
+\item 
+DMA2\+D\+\_\+\+CLUTCfg\+Type\+Def \mbox{\hyperlink{stm32h7__display_8c_a7828dbdc9d6c795c8c7335b00ef1afbb}{clut\+\_\+cfg}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{stm32h7__display_8c_a2ebb0bf1d379e615bda6e25cccf0f08f}\label{stm32h7__display_8c_a2ebb0bf1d379e615bda6e25cccf0f08f}} 
+\index{stm32h7\_display.c@{stm32h7\_display.c}!DARK\_GREEN@{DARK\_GREEN}}
+\index{DARK\_GREEN@{DARK\_GREEN}!stm32h7\_display.c@{stm32h7\_display.c}}
+\doxysubsubsection{\texorpdfstring{DARK\_GREEN}{DARK\_GREEN}}
+{\footnotesize\ttfamily \#define DARK\+\_\+\+GREEN~0\+XFF306230\+UL}
+
+\mbox{\Hypertarget{stm32h7__display_8c_a23ba77349efe58f6892458fde23203ae}\label{stm32h7__display_8c_a23ba77349efe58f6892458fde23203ae}} 
+\index{stm32h7\_display.c@{stm32h7\_display.c}!DARKEST\_GREEN@{DARKEST\_GREEN}}
+\index{DARKEST\_GREEN@{DARKEST\_GREEN}!stm32h7\_display.c@{stm32h7\_display.c}}
+\doxysubsubsection{\texorpdfstring{DARKEST\_GREEN}{DARKEST\_GREEN}}
+{\footnotesize\ttfamily \#define DARKEST\+\_\+\+GREEN~0\+XFF0\+F380\+FUL}
+
 \mbox{\Hypertarget{stm32h7__display_8c_a2b587ddcaa2a17c8edb5f894115ed29c}\label{stm32h7__display_8c_a2b587ddcaa2a17c8edb5f894115ed29c}} 
 \index{stm32h7\_display.c@{stm32h7\_display.c}!LAYER0\_ADDRESS@{LAYER0\_ADDRESS}}
 \index{LAYER0\_ADDRESS@{LAYER0\_ADDRESS}!stm32h7\_display.c@{stm32h7\_display.c}}
 \doxysubsubsection{\texorpdfstring{LAYER0\_ADDRESS}{LAYER0\_ADDRESS}}
 {\footnotesize\ttfamily \#define LAYER0\+\_\+\+ADDRESS~0x\+D0000000}
+
+\mbox{\Hypertarget{stm32h7__display_8c_a5a7142ee95ebc63218ed3aac2ae06b13}\label{stm32h7__display_8c_a5a7142ee95ebc63218ed3aac2ae06b13}} 
+\index{stm32h7\_display.c@{stm32h7\_display.c}!LIGHT\_GREEN@{LIGHT\_GREEN}}
+\index{LIGHT\_GREEN@{LIGHT\_GREEN}!stm32h7\_display.c@{stm32h7\_display.c}}
+\doxysubsubsection{\texorpdfstring{LIGHT\_GREEN}{LIGHT\_GREEN}}
+{\footnotesize\ttfamily \#define LIGHT\+\_\+\+GREEN~0\+XFF8\+BAC0\+FUL}
+
+\mbox{\Hypertarget{stm32h7__display_8c_aa7340b5ab80d1a8df9c9d53948fcbd76}\label{stm32h7__display_8c_aa7340b5ab80d1a8df9c9d53948fcbd76}} 
+\index{stm32h7\_display.c@{stm32h7\_display.c}!LIGHTEST\_GREEN@{LIGHTEST\_GREEN}}
+\index{LIGHTEST\_GREEN@{LIGHTEST\_GREEN}!stm32h7\_display.c@{stm32h7\_display.c}}
+\doxysubsubsection{\texorpdfstring{LIGHTEST\_GREEN}{LIGHTEST\_GREEN}}
+{\footnotesize\ttfamily \#define LIGHTEST\+\_\+\+GREEN~0\+XFF9\+BBC0\+FUL}
 
 
 
@@ -43,17 +79,17 @@ LTDC\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{stm32h7__display_8c_ae839e40b2440
 \doxysubsubsection{\texorpdfstring{CopyBuffer()}{CopyBuffer()}}
 {\footnotesize\ttfamily void Copy\+Buffer (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{p\+Src,  }\item[{uint32\+\_\+t $\ast$}]{p\+Dst,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{xsize,  }\item[{uint16\+\_\+t}]{ysize }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{stm32h7__display_8c_ab27b517b8617b87754e614b8f27483e1}\label{stm32h7__display_8c_ab27b517b8617b87754e614b8f27483e1}} 
-\index{stm32h7\_display.c@{stm32h7\_display.c}!dummy2\_code@{dummy2\_code}}
-\index{dummy2\_code@{dummy2\_code}!stm32h7\_display.c@{stm32h7\_display.c}}
-\doxysubsubsection{\texorpdfstring{dummy2\_code()}{dummy2\_code()}}
-{\footnotesize\ttfamily void dummy2\+\_\+code (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{gb\+\_\+frame }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{stm32h7__display_8c_a9d6d0e93865a7306ac61431a669e51af}\label{stm32h7__display_8c_a9d6d0e93865a7306ac61431a669e51af}} 
+\index{stm32h7\_display.c@{stm32h7\_display.c}!displayDoubleBuffer@{displayDoubleBuffer}}
+\index{displayDoubleBuffer@{displayDoubleBuffer}!stm32h7\_display.c@{stm32h7\_display.c}}
+\doxysubsubsection{\texorpdfstring{displayDoubleBuffer()}{displayDoubleBuffer()}}
+{\footnotesize\ttfamily void display\+Double\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{stm32h7__display_8c_a883ff1af2f895e5f25927f58d05147ec}\label{stm32h7__display_8c_a883ff1af2f895e5f25927f58d05147ec}} 
-\index{stm32h7\_display.c@{stm32h7\_display.c}!dummy\_code@{dummy\_code}}
-\index{dummy\_code@{dummy\_code}!stm32h7\_display.c@{stm32h7\_display.c}}
-\doxysubsubsection{\texorpdfstring{dummy\_code()}{dummy\_code()}}
-{\footnotesize\ttfamily void dummy\+\_\+code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{stm32h7__display_8c_a81e2c373d1e591d4bcda7aed5893ce1a}\label{stm32h7__display_8c_a81e2c373d1e591d4bcda7aed5893ce1a}} 
+\index{stm32h7\_display.c@{stm32h7\_display.c}!displayFrameBuffer@{displayFrameBuffer}}
+\index{displayFrameBuffer@{displayFrameBuffer}!stm32h7\_display.c@{stm32h7\_display.c}}
+\doxysubsubsection{\texorpdfstring{displayFrameBuffer()}{displayFrameBuffer()}}
+{\footnotesize\ttfamily void display\+Frame\+Buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{gb\+\_\+frame,  }\item[{uint8\+\_\+t}]{scale\+Amount }\end{DoxyParamCaption})}
 
 \mbox{\Hypertarget{stm32h7__display_8c_aabb47a221bb9e4224e494952b4c10f59}\label{stm32h7__display_8c_aabb47a221bb9e4224e494952b4c10f59}} 
 \index{stm32h7\_display.c@{stm32h7\_display.c}!HAL\_LTDC\_LineEventCallback@{HAL\_LTDC\_LineEventCallback}}
@@ -75,9 +111,21 @@ Line Event callback.
 {\em None} & \\
 \hline
 \end{DoxyRetVals}
+\mbox{\Hypertarget{stm32h7__display_8c_a50f5849579459ad0a6c1245e7e307224}\label{stm32h7__display_8c_a50f5849579459ad0a6c1245e7e307224}} 
+\index{stm32h7\_display.c@{stm32h7\_display.c}!stm32h7\_displaySetPalette@{stm32h7\_displaySetPalette}}
+\index{stm32h7\_displaySetPalette@{stm32h7\_displaySetPalette}!stm32h7\_display.c@{stm32h7\_display.c}}
+\doxysubsubsection{\texorpdfstring{stm32h7\_displaySetPalette()}{stm32h7\_displaySetPalette()}}
+{\footnotesize\ttfamily void stm32h7\+\_\+display\+Set\+Palette (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 
 
 \doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{stm32h7__display_8c_a7828dbdc9d6c795c8c7335b00ef1afbb}\label{stm32h7__display_8c_a7828dbdc9d6c795c8c7335b00ef1afbb}} 
+\index{stm32h7\_display.c@{stm32h7\_display.c}!clut\_cfg@{clut\_cfg}}
+\index{clut\_cfg@{clut\_cfg}!stm32h7\_display.c@{stm32h7\_display.c}}
+\doxysubsubsection{\texorpdfstring{clut\_cfg}{clut\_cfg}}
+{\footnotesize\ttfamily DMA2\+D\+\_\+\+CLUTCfg\+Type\+Def clut\+\_\+cfg}
+
 \mbox{\Hypertarget{stm32h7__display_8c_ae839e40b2440160883f7e7dedec05a80}\label{stm32h7__display_8c_ae839e40b2440160883f7e7dedec05a80}} 
 \index{stm32h7\_display.c@{stm32h7\_display.c}!hlcd\_ltdc@{hlcd\_ltdc}}
 \index{hlcd\_ltdc@{hlcd\_ltdc}!stm32h7\_display.c@{stm32h7\_display.c}}

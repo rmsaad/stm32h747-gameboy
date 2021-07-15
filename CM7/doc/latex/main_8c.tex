@@ -6,15 +6,22 @@
 
 
 {\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}gbmemory.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}gbcpu.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}gbppu.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}Tetris.\+gb.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}dmg\+\_\+boot.\+bin.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gbpapu.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}stm32h7\+\_\+display.\+h\char`\"{}}\newline
-{\ttfamily \#include $<$string.\+h$>$}\newline
-{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include \char`\"{}dmg\+\_\+boot.\+bin.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}bgbtest.\+gb.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Tetris.\+gb.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}cpu\+\_\+instrs.\+gb.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}Alleyway.\+gb.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}SML.\+gb.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}KDL.\+gb.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}instr\+\_\+timing.\+gb.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}audio\+\_\+sample.\+bin.\+h\char`\"{}}\newline
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -33,32 +40,50 @@
 \item 
 void \mbox{\hyperlink{main_8c_a70af21c671abfcc773614a9a4f63d920}{System\+Clock\+\_\+\+Config}} (void)
 \begin{DoxyCompactList}\small\item\em System Clock Configuration The system Clock is configured as follow \+: System Clock source = PLL (HSE) SYSCLK(\+Hz) = 400000000 (CM7 CPU Clock) HCLK(\+Hz) = 200000000 (CM4 CPU, AXI and AHBs Clock) AHB Prescaler = 2 D1 APB3 Prescaler = 2 (APB3 Clock 100MHz) D2 APB1 Prescaler = 2 (APB1 Clock 100MHz) D2 APB2 Prescaler = 2 (APB2 Clock 100MHz) D3 APB4 Prescaler = 2 (APB4 Clock 100MHz) HSE Frequency(\+Hz) = 25000000 PLL\+\_\+M = 5 PLL\+\_\+N = 160 PLL\+\_\+P = 2 PLL\+\_\+Q = 4 PLL\+\_\+R = 2 VDD(\+V) = 3.\+3 Flash Latency(\+WS) = 4. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a336c5acb34a801b2984e602b97ed7b73}{Periph\+Common\+Clock\+\_\+\+Config}} (void)
+\begin{DoxyCompactList}\small\item\em Peripherals Common Clock Configuration. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{main_8c_a1730ffe1e560465665eb47d9264826f9}{Error\+\_\+\+Handler}} (void)
 \begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\item 
+const unsigned char $\ast$ \mbox{\hyperlink{main_8c_ac0e5fc84d3f0cbaee9ea71d6fbe0c31c}{get\+Rom\+Pointer}} ()
+\item 
+void \mbox{\hyperlink{main_8c_a57146e7cfc937af38efb8fd46a581af2}{test\+Controller}} ()
+\item 
 int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
 \begin{DoxyCompactList}\small\item\em The application entry point. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
+ADC\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{main_8c_a22b804736f5648d52f639b2647d4ed13}{hadc1}}
+\item 
+ADC\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{main_8c_a984624bcf28d1b2fb7e4e18349f65d5c}{hadc3}}
+\item 
 DSI\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{main_8c_a9f89250426445e449addaba744aa17d0}{hdsi}}
+\item 
+I2\+S\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{main_8c_a42cb7a8588778f08bf78b1cb4757169c}{hi2s3}}
 \item 
 LTDC\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{main_8c_a9ede3a77755ec81a9be03423cb915b05}{hltdc}}
 \item 
-unsigned char \mbox{\hyperlink{main_8c_afe3ea09366bfb79efb01c0760cbd448e}{Tetris\+\_\+gb}} \mbox{[}$\,$\mbox{]}
+const unsigned char \mbox{\hyperlink{main_8c_afcdad1e952b60967216915d584af9f06}{Tetris\+\_\+gb}} \mbox{[}$\,$\mbox{]}
 \item 
-unsigned char \mbox{\hyperlink{main_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+\_\+instrs\+\_\+gb}} \mbox{[}$\,$\mbox{]}
+const unsigned char \mbox{\hyperlink{main_8c_aa0dd2ea85ccd05ea5b1935047d39eeaf}{cpu\+\_\+instrs\+\_\+gb}} \mbox{[}$\,$\mbox{]}
+\item 
+const unsigned char \mbox{\hyperlink{main_8c_a2924be90c16cc87d35ff9f5e0e2f9e3a}{Alleyway\+\_\+gb}} \mbox{[}$\,$\mbox{]}
+\item 
+const unsigned char \mbox{\hyperlink{main_8c_a3a9699a39b5c6b9086d748c3f3bb13b9}{bgbtest\+\_\+gb}} \mbox{[}$\,$\mbox{]}
+\item 
+const unsigned char \mbox{\hyperlink{main_8c_aa6e9cc110a6e53c9566ca512d808f57c}{instr\+\_\+timing\+\_\+gb}} \mbox{[}$\,$\mbox{]}
+\item 
+const unsigned char \mbox{\hyperlink{main_8c_a34aa64f9b9f3578a5a0e944203f6ab5a}{SML\+\_\+gb}} \mbox{[}$\,$\mbox{]}
+\item 
+const unsigned char \mbox{\hyperlink{main_8c_a1015b909e9c48e86fff962e55a1ce096}{KDL\+\_\+gb}} \mbox{[}$\,$\mbox{]}
+\item 
+const unsigned char $\ast$ \mbox{\hyperlink{main_8c_af1a74952e70d4f6f1290efd9ca571e20}{rom}} = \&\mbox{\hyperlink{main_8c_a1015b909e9c48e86fff962e55a1ce096}{KDL\+\_\+gb}}\mbox{[}0\mbox{]}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 \+: Main program body 
 
-\begin{DoxyAuthor}{Author}
-Rami 
-\end{DoxyAuthor}
-\begin{DoxyDate}{Date}
-Jun 11, 2021
-\end{DoxyDate}
 \begin{DoxyAttention}{Attention}
 
 \end{DoxyAttention}
@@ -115,6 +140,12 @@ This function is executed in case of error occurrence.
 {\em None} & \\
 \hline
 \end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_ac0e5fc84d3f0cbaee9ea71d6fbe0c31c}\label{main_8c_ac0e5fc84d3f0cbaee9ea71d6fbe0c31c}} 
+\index{main.c@{main.c}!getRomPointer@{getRomPointer}}
+\index{getRomPointer@{getRomPointer}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{getRomPointer()}{getRomPointer()}}
+{\footnotesize\ttfamily const unsigned char$\ast$ get\+Rom\+Pointer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
 \mbox{\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
 \index{main.c@{main.c}!main@{main}}
 \index{main@{main}!main.c@{main.c}}
@@ -130,7 +161,22 @@ The application entry point.
 {\em int} & \\
 \hline
 \end{DoxyRetVals}
-\mbox{\Hypertarget{main_8c_a70af21c671abfcc773614a9a4f63d920}\label{main_8c_a70af21c671abfcc773614a9a4f63d920}} 
+\mbox{\Hypertarget{main_8c_a336c5acb34a801b2984e602b97ed7b73}\label{main_8c_a336c5acb34a801b2984e602b97ed7b73}} 
+\index{main.c@{main.c}!PeriphCommonClock\_Config@{PeriphCommonClock\_Config}}
+\index{PeriphCommonClock\_Config@{PeriphCommonClock\_Config}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{PeriphCommonClock\_Config()}{PeriphCommonClock\_Config()}}
+{\footnotesize\ttfamily void Periph\+Common\+Clock\+\_\+\+Config (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Peripherals Common Clock Configuration. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+Initializes the peripherals clock\mbox{\Hypertarget{main_8c_a70af21c671abfcc773614a9a4f63d920}\label{main_8c_a70af21c671abfcc773614a9a4f63d920}} 
 \index{main.c@{main.c}!SystemClock\_Config@{SystemClock\_Config}}
 \index{SystemClock\_Config@{SystemClock\_Config}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{SystemClock\_Config()}{SystemClock\_Config()}}
@@ -150,14 +196,44 @@ System Clock Configuration The system Clock is configured as follow \+: System C
 {\em None} & \\
 \hline
 \end{DoxyRetVals}
-$<$ Supply configuration update enable
+$<$ Supply configuration update enable\mbox{\Hypertarget{main_8c_a57146e7cfc937af38efb8fd46a581af2}\label{main_8c_a57146e7cfc937af38efb8fd46a581af2}} 
+\index{main.c@{main.c}!testController@{testController}}
+\index{testController@{testController}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{testController()}{testController()}}
+{\footnotesize\ttfamily void test\+Controller (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
 
 \doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{main_8c_af89e88e043f6fd16b85f1bfe1f24c11f}\label{main_8c_af89e88e043f6fd16b85f1bfe1f24c11f}} 
+\mbox{\Hypertarget{main_8c_a2924be90c16cc87d35ff9f5e0e2f9e3a}\label{main_8c_a2924be90c16cc87d35ff9f5e0e2f9e3a}} 
+\index{main.c@{main.c}!Alleyway\_gb@{Alleyway\_gb}}
+\index{Alleyway\_gb@{Alleyway\_gb}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{Alleyway\_gb}{Alleyway\_gb}}
+{\footnotesize\ttfamily const unsigned char Alleyway\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{main_8c_a3a9699a39b5c6b9086d748c3f3bb13b9}\label{main_8c_a3a9699a39b5c6b9086d748c3f3bb13b9}} 
+\index{main.c@{main.c}!bgbtest\_gb@{bgbtest\_gb}}
+\index{bgbtest\_gb@{bgbtest\_gb}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{bgbtest\_gb}{bgbtest\_gb}}
+{\footnotesize\ttfamily const unsigned char bgbtest\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{main_8c_aa0dd2ea85ccd05ea5b1935047d39eeaf}\label{main_8c_aa0dd2ea85ccd05ea5b1935047d39eeaf}} 
 \index{main.c@{main.c}!cpu\_instrs\_gb@{cpu\_instrs\_gb}}
 \index{cpu\_instrs\_gb@{cpu\_instrs\_gb}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{cpu\_instrs\_gb}{cpu\_instrs\_gb}}
-{\footnotesize\ttfamily unsigned char cpu\+\_\+instrs\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+{\footnotesize\ttfamily const unsigned char cpu\+\_\+instrs\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{main_8c_a22b804736f5648d52f639b2647d4ed13}\label{main_8c_a22b804736f5648d52f639b2647d4ed13}} 
+\index{main.c@{main.c}!hadc1@{hadc1}}
+\index{hadc1@{hadc1}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{hadc1}{hadc1}}
+{\footnotesize\ttfamily ADC\+\_\+\+Handle\+Type\+Def hadc1}
+
+\mbox{\Hypertarget{main_8c_a984624bcf28d1b2fb7e4e18349f65d5c}\label{main_8c_a984624bcf28d1b2fb7e4e18349f65d5c}} 
+\index{main.c@{main.c}!hadc3@{hadc3}}
+\index{hadc3@{hadc3}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{hadc3}{hadc3}}
+{\footnotesize\ttfamily ADC\+\_\+\+Handle\+Type\+Def hadc3}
 
 \mbox{\Hypertarget{main_8c_a9f89250426445e449addaba744aa17d0}\label{main_8c_a9f89250426445e449addaba744aa17d0}} 
 \index{main.c@{main.c}!hdsi@{hdsi}}
@@ -165,15 +241,45 @@ $<$ Supply configuration update enable
 \doxysubsubsection{\texorpdfstring{hdsi}{hdsi}}
 {\footnotesize\ttfamily DSI\+\_\+\+Handle\+Type\+Def hdsi}
 
+\mbox{\Hypertarget{main_8c_a42cb7a8588778f08bf78b1cb4757169c}\label{main_8c_a42cb7a8588778f08bf78b1cb4757169c}} 
+\index{main.c@{main.c}!hi2s3@{hi2s3}}
+\index{hi2s3@{hi2s3}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{hi2s3}{hi2s3}}
+{\footnotesize\ttfamily I2\+S\+\_\+\+Handle\+Type\+Def hi2s3}
+
 \mbox{\Hypertarget{main_8c_a9ede3a77755ec81a9be03423cb915b05}\label{main_8c_a9ede3a77755ec81a9be03423cb915b05}} 
 \index{main.c@{main.c}!hltdc@{hltdc}}
 \index{hltdc@{hltdc}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{hltdc}{hltdc}}
 {\footnotesize\ttfamily LTDC\+\_\+\+Handle\+Type\+Def hltdc}
 
-\mbox{\Hypertarget{main_8c_afe3ea09366bfb79efb01c0760cbd448e}\label{main_8c_afe3ea09366bfb79efb01c0760cbd448e}} 
+\mbox{\Hypertarget{main_8c_aa6e9cc110a6e53c9566ca512d808f57c}\label{main_8c_aa6e9cc110a6e53c9566ca512d808f57c}} 
+\index{main.c@{main.c}!instr\_timing\_gb@{instr\_timing\_gb}}
+\index{instr\_timing\_gb@{instr\_timing\_gb}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{instr\_timing\_gb}{instr\_timing\_gb}}
+{\footnotesize\ttfamily const unsigned char instr\+\_\+timing\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{main_8c_a1015b909e9c48e86fff962e55a1ce096}\label{main_8c_a1015b909e9c48e86fff962e55a1ce096}} 
+\index{main.c@{main.c}!KDL\_gb@{KDL\_gb}}
+\index{KDL\_gb@{KDL\_gb}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{KDL\_gb}{KDL\_gb}}
+{\footnotesize\ttfamily const unsigned char KDL\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{main_8c_af1a74952e70d4f6f1290efd9ca571e20}\label{main_8c_af1a74952e70d4f6f1290efd9ca571e20}} 
+\index{main.c@{main.c}!rom@{rom}}
+\index{rom@{rom}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{rom}{rom}}
+{\footnotesize\ttfamily const unsigned char$\ast$ rom = \&\mbox{\hyperlink{main_8c_a1015b909e9c48e86fff962e55a1ce096}{KDL\+\_\+gb}}\mbox{[}0\mbox{]}}
+
+\mbox{\Hypertarget{main_8c_a34aa64f9b9f3578a5a0e944203f6ab5a}\label{main_8c_a34aa64f9b9f3578a5a0e944203f6ab5a}} 
+\index{main.c@{main.c}!SML\_gb@{SML\_gb}}
+\index{SML\_gb@{SML\_gb}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{SML\_gb}{SML\_gb}}
+{\footnotesize\ttfamily const unsigned char SML\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{main_8c_afcdad1e952b60967216915d584af9f06}\label{main_8c_afcdad1e952b60967216915d584af9f06}} 
 \index{main.c@{main.c}!Tetris\_gb@{Tetris\_gb}}
 \index{Tetris\_gb@{Tetris\_gb}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{Tetris\_gb}{Tetris\_gb}}
-{\footnotesize\ttfamily unsigned char Tetris\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+{\footnotesize\ttfamily const unsigned char Tetris\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
 

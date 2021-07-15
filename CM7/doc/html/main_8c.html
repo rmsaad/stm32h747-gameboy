@@ -104,15 +104,22 @@ $(document).ready(function(){initNavTree('main_8c.html',''); initResizable(); })
 <p>: Main program body  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="gbmemory_8h_source.html">gbmemory.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="gbcpu_8h_source.html">gbcpu.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="gbppu_8h_source.html">gbppu.h</a>&quot;</code><br />
-<code>#include &quot;Tetris.gb.h&quot;</code><br />
-<code>#include &quot;dmg_boot.bin.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="gbpapu_8h_source.html">gbpapu.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="stm32h7__display_8h_source.html">stm32h7_display.h</a>&quot;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
-<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;dmg_boot.bin.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="bgbtest_8gb_8h_source.html">bgbtest.gb.h</a>&quot;</code><br />
+<code>#include &quot;Tetris.gb.h&quot;</code><br />
 <code>#include &quot;cpu_instrs.gb.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="_alleyway_8gb_8h_source.html">Alleyway.gb.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_s_m_l_8gb_8h_source.html">SML.gb.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="_k_d_l_8gb_8h_source.html">KDL.gb.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="instr__timing_8gb_8h_source.html">instr_timing.gb.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="audio__sample_8bin_8h_source.html">audio_sample.bin.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
@@ -132,28 +139,51 @@ Functions</h2></td></tr>
 <tr class="memitem:a70af21c671abfcc773614a9a4f63d920"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a70af21c671abfcc773614a9a4f63d920">SystemClock_Config</a> (void)</td></tr>
 <tr class="memdesc:a70af21c671abfcc773614a9a4f63d920"><td class="mdescLeft">&#160;</td><td class="mdescRight">System Clock Configuration The system Clock is configured as follow : System Clock source = PLL (HSE) SYSCLK(Hz) = 400000000 (CM7 CPU Clock) HCLK(Hz) = 200000000 (CM4 CPU, AXI and AHBs Clock) AHB Prescaler = 2 D1 APB3 Prescaler = 2 (APB3 Clock 100MHz) D2 APB1 Prescaler = 2 (APB1 Clock 100MHz) D2 APB2 Prescaler = 2 (APB2 Clock 100MHz) D3 APB4 Prescaler = 2 (APB4 Clock 100MHz) HSE Frequency(Hz) = 25000000 PLL_M = 5 PLL_N = 160 PLL_P = 2 PLL_Q = 4 PLL_R = 2 VDD(V) = 3.3 Flash Latency(WS) = 4.  <a href="main_8c.html#a70af21c671abfcc773614a9a4f63d920">More...</a><br /></td></tr>
 <tr class="separator:a70af21c671abfcc773614a9a4f63d920"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a336c5acb34a801b2984e602b97ed7b73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a336c5acb34a801b2984e602b97ed7b73">PeriphCommonClock_Config</a> (void)</td></tr>
+<tr class="memdesc:a336c5acb34a801b2984e602b97ed7b73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Peripherals Common Clock Configuration.  <a href="main_8c.html#a336c5acb34a801b2984e602b97ed7b73">More...</a><br /></td></tr>
+<tr class="separator:a336c5acb34a801b2984e602b97ed7b73"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1730ffe1e560465665eb47d9264826f9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a1730ffe1e560465665eb47d9264826f9">Error_Handler</a> (void)</td></tr>
 <tr class="memdesc:a1730ffe1e560465665eb47d9264826f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function is executed in case of error occurrence.  <a href="main_8c.html#a1730ffe1e560465665eb47d9264826f9">More...</a><br /></td></tr>
 <tr class="separator:a1730ffe1e560465665eb47d9264826f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0e5fc84d3f0cbaee9ea71d6fbe0c31c"><td class="memItemLeft" align="right" valign="top">const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#ac0e5fc84d3f0cbaee9ea71d6fbe0c31c">getRomPointer</a> ()</td></tr>
+<tr class="separator:ac0e5fc84d3f0cbaee9ea71d6fbe0c31c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57146e7cfc937af38efb8fd46a581af2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a57146e7cfc937af38efb8fd46a581af2">testController</a> ()</td></tr>
+<tr class="separator:a57146e7cfc937af38efb8fd46a581af2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a840291bc02cba5474a4cb46a9b9566fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main</a> (void)</td></tr>
 <tr class="memdesc:a840291bc02cba5474a4cb46a9b9566fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">The application entry point.  <a href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">More...</a><br /></td></tr>
 <tr class="separator:a840291bc02cba5474a4cb46a9b9566fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:a22b804736f5648d52f639b2647d4ed13"><td class="memItemLeft" align="right" valign="top">ADC_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a22b804736f5648d52f639b2647d4ed13">hadc1</a></td></tr>
+<tr class="separator:a22b804736f5648d52f639b2647d4ed13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a984624bcf28d1b2fb7e4e18349f65d5c"><td class="memItemLeft" align="right" valign="top">ADC_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a984624bcf28d1b2fb7e4e18349f65d5c">hadc3</a></td></tr>
+<tr class="separator:a984624bcf28d1b2fb7e4e18349f65d5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f89250426445e449addaba744aa17d0"><td class="memItemLeft" align="right" valign="top">DSI_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a9f89250426445e449addaba744aa17d0">hdsi</a></td></tr>
 <tr class="separator:a9f89250426445e449addaba744aa17d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a42cb7a8588778f08bf78b1cb4757169c"><td class="memItemLeft" align="right" valign="top">I2S_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a42cb7a8588778f08bf78b1cb4757169c">hi2s3</a></td></tr>
+<tr class="separator:a42cb7a8588778f08bf78b1cb4757169c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ede3a77755ec81a9be03423cb915b05"><td class="memItemLeft" align="right" valign="top">LTDC_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a9ede3a77755ec81a9be03423cb915b05">hltdc</a></td></tr>
 <tr class="separator:a9ede3a77755ec81a9be03423cb915b05"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe3ea09366bfb79efb01c0760cbd448e"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#afe3ea09366bfb79efb01c0760cbd448e">Tetris_gb</a> []</td></tr>
-<tr class="separator:afe3ea09366bfb79efb01c0760cbd448e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af89e88e043f6fd16b85f1bfe1f24c11f"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#af89e88e043f6fd16b85f1bfe1f24c11f">cpu_instrs_gb</a> []</td></tr>
-<tr class="separator:af89e88e043f6fd16b85f1bfe1f24c11f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcdad1e952b60967216915d584af9f06"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#afcdad1e952b60967216915d584af9f06">Tetris_gb</a> []</td></tr>
+<tr class="separator:afcdad1e952b60967216915d584af9f06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0dd2ea85ccd05ea5b1935047d39eeaf"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#aa0dd2ea85ccd05ea5b1935047d39eeaf">cpu_instrs_gb</a> []</td></tr>
+<tr class="separator:aa0dd2ea85ccd05ea5b1935047d39eeaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2924be90c16cc87d35ff9f5e0e2f9e3a"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a2924be90c16cc87d35ff9f5e0e2f9e3a">Alleyway_gb</a> []</td></tr>
+<tr class="separator:a2924be90c16cc87d35ff9f5e0e2f9e3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a9699a39b5c6b9086d748c3f3bb13b9"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a3a9699a39b5c6b9086d748c3f3bb13b9">bgbtest_gb</a> []</td></tr>
+<tr class="separator:a3a9699a39b5c6b9086d748c3f3bb13b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6e9cc110a6e53c9566ca512d808f57c"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#aa6e9cc110a6e53c9566ca512d808f57c">instr_timing_gb</a> []</td></tr>
+<tr class="separator:aa6e9cc110a6e53c9566ca512d808f57c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34aa64f9b9f3578a5a0e944203f6ab5a"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a34aa64f9b9f3578a5a0e944203f6ab5a">SML_gb</a> []</td></tr>
+<tr class="separator:a34aa64f9b9f3578a5a0e944203f6ab5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1015b909e9c48e86fff962e55a1ce096"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#a1015b909e9c48e86fff962e55a1ce096">KDL_gb</a> []</td></tr>
+<tr class="separator:a1015b909e9c48e86fff962e55a1ce096"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af1a74952e70d4f6f1290efd9ca571e20"><td class="memItemLeft" align="right" valign="top">const unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8c.html#af1a74952e70d4f6f1290efd9ca571e20">rom</a> = &amp;<a class="el" href="main_8c.html#a1015b909e9c48e86fff962e55a1ce096">KDL_gb</a>[0]</td></tr>
+<tr class="separator:af1a74952e70d4f6f1290efd9ca571e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>: Main program body </p>
-<dl class="section author"><dt>Author</dt><dd>Rami </dd></dl>
-<dl class="section date"><dt>Date</dt><dd>Jun 11, 2021</dd></dl>
 <dl class="section attention"><dt>Attention</dt><dd></dd></dl>
 <h2><center>&copy; Copyright (c) 2021 STMicroelectronics. All rights reserved.</center></h2>
 <p>This software component is licensed by ST under BSD 3-Clause license, the "License"; You may not use this file except in compliance with the License. You may obtain a copy of the License at: opensource.org/licenses/BSD-3-Clause </p>
@@ -255,6 +285,23 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="ac0e5fc84d3f0cbaee9ea71d6fbe0c31c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac0e5fc84d3f0cbaee9ea71d6fbe0c31c">&#9670;&nbsp;</a></span>getRomPointer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned char* getRomPointer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a840291bc02cba5474a4cb46a9b9566fe"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a840291bc02cba5474a4cb46a9b9566fe">&#9670;&nbsp;</a></span>main()</h2>
 
@@ -278,6 +325,33 @@ Variables</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a336c5acb34a801b2984e602b97ed7b73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a336c5acb34a801b2984e602b97ed7b73">&#9670;&nbsp;</a></span>PeriphCommonClock_Config()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PeriphCommonClock_Config </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Peripherals Common Clock Configuration. </p>
+<dl class="retval"><dt>Return values</dt><dd>
+  <table class="retval">
+    <tr><td class="paramname">None</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<p>Initializes the peripherals clock</p>
 
 </div>
 </div>
@@ -314,9 +388,26 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a57146e7cfc937af38efb8fd46a581af2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57146e7cfc937af38efb8fd46a581af2">&#9670;&nbsp;</a></span>testController()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void testController </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="af89e88e043f6fd16b85f1bfe1f24c11f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af89e88e043f6fd16b85f1bfe1f24c11f">&#9670;&nbsp;</a></span>cpu_instrs_gb</h2>
+<a id="a2924be90c16cc87d35ff9f5e0e2f9e3a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2924be90c16cc87d35ff9f5e0e2f9e3a">&#9670;&nbsp;</a></span>Alleyway_gb</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -325,7 +416,7 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned char cpu_instrs_gb[]</td>
+          <td class="memname">const unsigned char Alleyway_gb[]</td>
         </tr>
       </table>
   </td>
@@ -333,6 +424,78 @@ Variables</h2></td></tr>
 <span class="mlabels"><span class="mlabel">extern</span></span>  </td>
   </tr>
 </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3a9699a39b5c6b9086d748c3f3bb13b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3a9699a39b5c6b9086d748c3f3bb13b9">&#9670;&nbsp;</a></span>bgbtest_gb</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned char bgbtest_gb[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="aa0dd2ea85ccd05ea5b1935047d39eeaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa0dd2ea85ccd05ea5b1935047d39eeaf">&#9670;&nbsp;</a></span>cpu_instrs_gb</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned char cpu_instrs_gb[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a22b804736f5648d52f639b2647d4ed13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22b804736f5648d52f639b2647d4ed13">&#9670;&nbsp;</a></span>hadc1</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ADC_HandleTypeDef hadc1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a984624bcf28d1b2fb7e4e18349f65d5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a984624bcf28d1b2fb7e4e18349f65d5c">&#9670;&nbsp;</a></span>hadc3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">ADC_HandleTypeDef hadc3</td>
+        </tr>
+      </table>
 </div><div class="memdoc">
 
 </div>
@@ -345,6 +508,20 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">DSI_HandleTypeDef hdsi</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a42cb7a8588778f08bf78b1cb4757169c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a42cb7a8588778f08bf78b1cb4757169c">&#9670;&nbsp;</a></span>hi2s3</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">I2S_HandleTypeDef hi2s3</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -365,8 +542,8 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="afe3ea09366bfb79efb01c0760cbd448e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe3ea09366bfb79efb01c0760cbd448e">&#9670;&nbsp;</a></span>Tetris_gb</h2>
+<a id="aa6e9cc110a6e53c9566ca512d808f57c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6e9cc110a6e53c9566ca512d808f57c">&#9670;&nbsp;</a></span>instr_timing_gb</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -375,7 +552,87 @@ Variables</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">unsigned char Tetris_gb[]</td>
+          <td class="memname">const unsigned char instr_timing_gb[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a1015b909e9c48e86fff962e55a1ce096"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1015b909e9c48e86fff962e55a1ce096">&#9670;&nbsp;</a></span>KDL_gb</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned char KDL_gb[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="af1a74952e70d4f6f1290efd9ca571e20"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af1a74952e70d4f6f1290efd9ca571e20">&#9670;&nbsp;</a></span>rom</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned char* rom = &amp;<a class="el" href="main_8c.html#a1015b909e9c48e86fff962e55a1ce096">KDL_gb</a>[0]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a34aa64f9b9f3578a5a0e944203f6ab5a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34aa64f9b9f3578a5a0e944203f6ab5a">&#9670;&nbsp;</a></span>SML_gb</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned char SML_gb[]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="afcdad1e952b60967216915d584af9f06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcdad1e952b60967216915d584af9f06">&#9670;&nbsp;</a></span>Tetris_gb</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const unsigned char Tetris_gb[]</td>
         </tr>
       </table>
   </td>

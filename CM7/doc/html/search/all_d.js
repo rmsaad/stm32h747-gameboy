@@ -1,6 +1,27 @@
 var searchData=
 [
-  ['pc_77',['PC',['../structregisters.html#a169382b91bbba121f0cb39fd388a269b',1,'registers']]],
-  ['prefix_5finstructions_78',['prefix_instructions',['../gbcpu_8c.html#a5e025ff8cefad04d46522eea26732a04',1,'gbcpu.c']]],
-  ['print_79',['print',['../gbcpu_8c.html#a1566603abc21b7ca56597dfd176fa1ab',1,'gbcpu.c']]]
+  ['n_5fflag_136',['N_FLAG',['../gbcpu_8h.html#a6de466ba75c7d109f8efb7598c10047f',1,'N_FLAG():&#160;gbcpu.h'],['../gbfunctions_8h.html#a6de466ba75c7d109f8efb7598c10047f',1,'N_FLAG():&#160;gbfunctions.h']]],
+  ['nr10_5faddr_137',['NR10_ADDR',['../gbmemory_8h.html#a6fff79cae01dac3ece1c0af73a5a2ee5',1,'gbmemory.h']]],
+  ['nr11_5faddr_138',['NR11_ADDR',['../gbmemory_8h.html#ae32a051fd5006ff8111c2637d6040027',1,'gbmemory.h']]],
+  ['nr12_5faddr_139',['NR12_ADDR',['../gbmemory_8h.html#af9dfe908eae115c341799856ded00e65',1,'gbmemory.h']]],
+  ['nr13_5faddr_140',['NR13_ADDR',['../gbmemory_8h.html#adf5f6d4325415cc18af3113d6c46a823',1,'gbmemory.h']]],
+  ['nr14_5faddr_141',['NR14_ADDR',['../gbmemory_8h.html#a43232a41c2861466db069c5545312d37',1,'gbmemory.h']]],
+  ['nr21_5faddr_142',['NR21_ADDR',['../gbmemory_8h.html#af6c35e47a16eb5d0ef4ffa27db224e1c',1,'gbmemory.h']]],
+  ['nr22_5faddr_143',['NR22_ADDR',['../gbmemory_8h.html#a23fe7d5a7a7e03e104e57062ccd94589',1,'gbmemory.h']]],
+  ['nr23_5faddr_144',['NR23_ADDR',['../gbmemory_8h.html#a4b148cfe35444b1fc9c48129ccbd8f84',1,'gbmemory.h']]],
+  ['nr24_5faddr_145',['NR24_ADDR',['../gbmemory_8h.html#ad3cd47625e40c95ab992d191e25355af',1,'gbmemory.h']]],
+  ['nr30_5faddr_146',['NR30_ADDR',['../gbmemory_8h.html#a847dab9c9a86dbeb6b5775b908fe4b51',1,'gbmemory.h']]],
+  ['nr31_5faddr_147',['NR31_ADDR',['../gbmemory_8h.html#a3cab441e71ef568c9ace253e02f994e9',1,'gbmemory.h']]],
+  ['nr32_5faddr_148',['NR32_ADDR',['../gbmemory_8h.html#ae778f198fd2487b540f5c21927a7158a',1,'gbmemory.h']]],
+  ['nr33_5faddr_149',['NR33_ADDR',['../gbmemory_8h.html#a6f8418a8e1a776cf24197e7d74c88643',1,'gbmemory.h']]],
+  ['nr34_5faddr_150',['NR34_ADDR',['../gbmemory_8h.html#afd879fd36d9747dfe27190defc369b9d',1,'gbmemory.h']]],
+  ['nr41_5faddr_151',['NR41_ADDR',['../gbmemory_8h.html#a707cb33871f719a0cc6915e8e90aaa1a',1,'gbmemory.h']]],
+  ['nr42_5faddr_152',['NR42_ADDR',['../gbmemory_8h.html#aecfcb5a83223e182aeb5de25e87eb379',1,'gbmemory.h']]],
+  ['nr43_5faddr_153',['NR43_ADDR',['../gbmemory_8h.html#aac4f2540c66013241f8bdcef97a71db3',1,'gbmemory.h']]],
+  ['nr44_5faddr_154',['NR44_ADDR',['../gbmemory_8h.html#a80ac5960bfe9c54ba50e09d0c52ff637',1,'gbmemory.h']]],
+  ['nr50_5faddr_155',['NR50_ADDR',['../gbmemory_8h.html#a49e23cbb77cbe1683b4cbafc83ac936c',1,'gbmemory.h']]],
+  ['nr51_5faddr_156',['NR51_ADDR',['../gbmemory_8h.html#ad36468c4a544a2fdead642c5278fd5c6',1,'gbmemory.h']]],
+  ['nr52_5faddr_157',['NR52_ADDR',['../gbmemory_8h.html#a4c8bc2b199f9cf52e66a7f73d7eb28cc',1,'gbmemory.h']]],
+  ['num_158',['num',['../gbcpu_8c.html#abea371f9030e15a5d2a4c181576833d8',1,'gbcpu.c']]],
+  ['numcount_159',['numcount',['../gbcpu_8c.html#a43fd973d34ec63261ede63664440123f',1,'gbcpu.c']]]
 ];

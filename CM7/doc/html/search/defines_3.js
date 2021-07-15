@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['h_5fflag_1321',['H_FLAG',['../gbcpu_8h.html#abb182b0bdbed48570d905d7f5ee90849',1,'H_FLAG():&#160;gbcpu.h'],['../gbfunctions_8h.html#abb182b0bdbed48570d905d7f5ee90849',1,'H_FLAG():&#160;gbfunctions.h']]],
-  ['hsem_5fid_5f0_1322',['HSEM_ID_0',['../main_8c.html#a66761607ebca2d7b18eb6adfbd0891a7',1,'main.c']]]
+  ['dark_5fgreen_1536',['DARK_GREEN',['../main_8c.html#a2ebb0bf1d379e615bda6e25cccf0f08f',1,'DARK_GREEN():&#160;main.c'],['../stm32h7__display_8c.html#a2ebb0bf1d379e615bda6e25cccf0f08f',1,'DARK_GREEN():&#160;stm32h7_display.c']]],
+  ['darkest_5fgreen_1537',['DARKEST_GREEN',['../main_8c.html#a23ba77349efe58f6892458fde23203ae',1,'DARKEST_GREEN():&#160;main.c'],['../stm32h7__display_8c.html#a23ba77349efe58f6892458fde23203ae',1,'DARKEST_GREEN():&#160;stm32h7_display.c']]],
+  ['div_5faddr_1538',['DIV_ADDR',['../gbmemory_8h.html#aace4d95609242861de6a9033ae77fbac',1,'gbmemory.h']]],
+  ['dma_5faddr_1539',['DMA_ADDR',['../gbmemory_8h.html#a8f590e36e61b4fe4fa5276b09c73106d',1,'gbmemory.h']]]
 ];

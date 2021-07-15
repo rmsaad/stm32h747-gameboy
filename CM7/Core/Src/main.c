@@ -27,6 +27,7 @@
 #include "gbmemory.h"
 #include "gbcpu.h"
 #include "gbppu.h"
+#include "gbpapu.h"
 #include "stm32h7_display.h"
 #include "dmg_boot.bin.h"
 #include "bgbtest.gb.h"
@@ -36,7 +37,7 @@
 #include "SML.gb.h"
 #include "KDL.gb.h"
 #include "instr_timing.gb.h"
-//#include "audio_sample.bin.h"
+#include "audio_sample.bin.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -203,16 +204,8 @@ Error_Handler();
   UTIL_LCD_SetBackColor(UTIL_LCD_COLOR_WHITE);
   UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_BLUE);
   UTIL_LCD_SetFont(&Font24);
+  //gbPAPUstartAudio();
 
-//  BSP_AUDIO_Init_t AudioInit;
-//  AudioInit.BitsPerSample = 16;
-//  AudioInit.ChannelsNbr = 2;
-//  AudioInit.SampleRate = AUDIO_FREQUENCY_8K;
-//  AudioInit.Volume = 70;
-//  AudioInit.Device = AUDIO_OUT_DEVICE_HEADPHONE;
-//  BSP_AUDIO_OUT_Init(0, &AudioInit);
-//  size_t n = sizeof(audio_sample_bin)/sizeof(audio_sample_bin[0]);
-//  uint64_t data = BSP_AUDIO_OUT_Play(0, &audio_sample_bin[0], 130000);
 
   vGBMemoryLoad(rom, 32768);														// load rom into memory
   vGBMemoryLoad(dmg_boot_bin, 256);													// load boot rom into appropriate place in memory map
@@ -222,7 +215,8 @@ Error_Handler();
   while (1)
   {
 	  vGBCPUboot();
-	  gbPPUStep();
+	  vGBPPUStep();
+	  //gbPAPUStep();
   }
 
 }
@@ -278,7 +272,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLFRACN = 0;
   RCC_OscInitStruct.PLL.PLLP = 2;
   RCC_OscInitStruct.PLL.PLLR = 2;
-  RCC_OscInitStruct.PLL.PLLQ = 16;						// changed from 4 to 16 to make i2s work
+  RCC_OscInitStruct.PLL.PLLQ = 4;						// changed from 4 to 16 to make i2s work
 
   RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
   RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_2;
@@ -564,7 +558,6 @@ void Error_Handler(void)
   }
   /* USER CODE END Error_Handler_Debug */
 }
-
 
 #ifdef  USE_FULL_ASSERT
 /**

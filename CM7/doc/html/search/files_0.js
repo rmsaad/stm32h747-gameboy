@@ -1,11 +1,5 @@
 var searchData=
 [
-  ['gbcpu_2ec_683',['gbcpu.c',['../gbcpu_8c.html',1,'']]],
-  ['gbcpu_2eh_684',['gbcpu.h',['../gbcpu_8h.html',1,'']]],
-  ['gbfunctions_2ec_685',['gbfunctions.c',['../gbfunctions_8c.html',1,'']]],
-  ['gbfunctions_2eh_686',['gbfunctions.h',['../gbfunctions_8h.html',1,'']]],
-  ['gbmemory_2ec_687',['gbmemory.c',['../gbmemory_8c.html',1,'']]],
-  ['gbmemory_2eh_688',['gbmemory.h',['../gbmemory_8h.html',1,'']]],
-  ['gbppu_2ec_689',['gbppu.c',['../gbppu_8c.html',1,'']]],
-  ['gbppu_2eh_690',['gbppu.h',['../gbppu_8h.html',1,'']]]
+  ['alleyway_2egb_2eh_814',['Alleyway.gb.h',['../_alleyway_8gb_8h.html',1,'']]],
+  ['audio_5fsample_2ebin_2eh_815',['audio_sample.bin.h',['../audio__sample_8bin_8h.html',1,'']]]
 ];

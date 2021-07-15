@@ -1,4 +1,25 @@
 var main_8h =
 [
-    [ "LCD_FRAME_BUFFER", "main_8h.html#ae8edfa39002e08ee1d8221c81cebf925", null ]
+    [ "ARD_A1_GPIO_Port", "main_8h.html#a69eb4fed506ab9c6ba38e8ac501e7b40", null ],
+    [ "ARD_A1_Pin", "main_8h.html#a6018b6e7f6fbfa8a5b07b37eb467e47b", null ],
+    [ "ARD_A2_GPIO_Port", "main_8h.html#a58813358e80d09b98ba819daabef50f0", null ],
+    [ "ARD_A2_Pin", "main_8h.html#a5bd7a256d124e0f069502af5e518c7c0", null ],
+    [ "ARD_A3_GPIO_Port", "main_8h.html#a8f94c9d0d47847ba562028026ed8dbc7", null ],
+    [ "ARD_A3_Pin", "main_8h.html#a984177df76eadc0ffd718beddac634cb", null ],
+    [ "ARD_A4_GPIO_Port", "main_8h.html#a91e1dc2f8ca907eb9359d1783aba7caf", null ],
+    [ "ARD_A4_Pin", "main_8h.html#a86a4509651cdc45e4a408f7af6cace31", null ],
+    [ "ARD_A5_GPIO_Port", "main_8h.html#a199ecde668a7dc139d5f26b65a6711b4", null ],
+    [ "ARD_A5_Pin", "main_8h.html#a657397b456604c233681deaf1c410cdb", null ],
+    [ "CEC_CK_MCO1_GPIO_Port", "main_8h.html#a594b70795ef73faaee8a60a24f00c3fe", null ],
+    [ "CEC_CK_MCO1_Pin", "main_8h.html#a15c3bdcd3639f929e204742c5faaadc5", null ],
+    [ "LCD_FRAME_BUFFER", "main_8h.html#ae8edfa39002e08ee1d8221c81cebf925", null ],
+    [ "OSC32_IN_GPIO_Port", "main_8h.html#ac07e935018ad2c6921b2d4efee07de5b", null ],
+    [ "OSC32_IN_Pin", "main_8h.html#aaf68748564227540c27167c46b3f6e26", null ],
+    [ "OSC32_OUT_GPIO_Port", "main_8h.html#aa6d4a7b9fbeffdfc292fda3a6ce6dcad", null ],
+    [ "OSC32_OUT_Pin", "main_8h.html#a18c6adbfa5ba251e0035de1ab8759767", null ],
+    [ "OSC_IN_GPIO_Port", "main_8h.html#af3f08c0d640164c48175314bba5da48a", null ],
+    [ "OSC_IN_Pin", "main_8h.html#a363ad7fb205680f1af009a3091dc3f7a", null ],
+    [ "OSC_OUT_GPIO_Port", "main_8h.html#a4ab4af1723cbb18e17bb3d18daa90bfc", null ],
+    [ "OSC_OUT_Pin", "main_8h.html#ad33432b95a8442eacddef186ba7f11fe", null ],
+    [ "getRomPointer", "main_8h.html#ac0e5fc84d3f0cbaee9ea71d6fbe0c31c", null ]
 ];

@@ -1,13 +1,16 @@
 var searchData=
 [
-  ['main_66',['main',['../main_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main.c']]],
-  ['main_2ec_67',['main.c',['../main_8c.html',1,'']]],
-  ['main_2eh_68',['main.h',['../main_8h.html',1,'']]],
-  ['mem_69',['mem',['../gbmemory_8c.html#a6135654033ccfa705ae4c5fde74eda02',1,'gbmemory.c']]],
-  ['memory_70',['memory',['../structmemory.html',1,'']]],
-  ['mode_71',['Mode',['../gbppu_8c.html#ad11c3137711cc547aa65686fa2c98fc9',1,'gbppu.c']]],
-  ['mode_5f0_72',['MODE_0',['../gbppu_8c.html#adc4559afdb0535cfebadef1c707a2f91',1,'gbppu.c']]],
-  ['mode_5f1_73',['MODE_1',['../gbppu_8c.html#adaf03329d7f4a4ac6ac043bf481db786',1,'gbppu.c']]],
-  ['mode_5f2_74',['MODE_2',['../gbppu_8c.html#aced5757ab7a0d940fced00f3dd123fa3',1,'gbppu.c']]],
-  ['mode_5f3_75',['MODE_3',['../gbppu_8c.html#aeb99b4257cb3cd9fb539529a1bd2d9ca',1,'gbppu.c']]]
+  ['l_113',['L',['../structregisters.html#a10f900599cec5b7a56ac4db267c669de',1,'registers']]],
+  ['layer0_5faddress_114',['LAYER0_ADDRESS',['../stm32h7__display_8c.html#a2b587ddcaa2a17c8edb5f894115ed29c',1,'stm32h7_display.c']]],
+  ['lcd_5fframe_5fbuffer_115',['LCD_FRAME_BUFFER',['../main_8h.html#ae8edfa39002e08ee1d8221c81cebf925',1,'main.h']]],
+  ['lcdc_5faddr_116',['LCDC_ADDR',['../gbmemory_8h.html#a18e1bab2a52b927b821c0807e888713f',1,'gbmemory.h']]],
+  ['lcdstat_5finterrupt_117',['LCDSTAT_INTERRUPT',['../gbcpu_8c.html#a967ec90e88a4633c17f23352650c9d8f',1,'gbcpu.c']]],
+  ['lcdstat_5fvector_118',['LCDSTAT_VECTOR',['../gbcpu_8c.html#aa15379130bc5ef5b59d932e8e333a5da',1,'gbcpu.c']]],
+  ['light_5fgreen_119',['LIGHT_GREEN',['../main_8c.html#a5a7142ee95ebc63218ed3aac2ae06b13',1,'LIGHT_GREEN():&#160;main.c'],['../stm32h7__display_8c.html#a5a7142ee95ebc63218ed3aac2ae06b13',1,'LIGHT_GREEN():&#160;stm32h7_display.c']]],
+  ['lightest_5fgreen_120',['LIGHTEST_GREEN',['../main_8c.html#aa7340b5ab80d1a8df9c9d53948fcbd76',1,'LIGHTEST_GREEN():&#160;main.c'],['../stm32h7__display_8c.html#aa7340b5ab80d1a8df9c9d53948fcbd76',1,'LIGHTEST_GREEN():&#160;stm32h7_display.c']]],
+  ['lineadd_121',['lineadd',['../gbppu_8c.html#ad0cd50ba7d062da5404a0a3b88fd4367',1,'gbppu.c']]],
+  ['ly_122',['ly',['../gbppu_8c.html#ab60dac6a688a304987c96312a05243ae',1,'gbppu.c']]],
+  ['ly_5faddr_123',['LY_ADDR',['../gbmemory_8h.html#af4ea31360c793f1b3f40ded874037888',1,'gbmemory.h']]],
+  ['lyc_5faddr_124',['LYC_ADDR',['../gbmemory_8h.html#a513b24e148bace31b7175c9218024d13',1,'gbmemory.h']]],
+  ['lyc_5fcheck_125',['LYC_check',['../gbppu_8c.html#a4cf485e9accf6249e0bb79f663990fbe',1,'gbppu.c']]]
 ];

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ram_1304',['ram',['../structmemory.html#ad7300040acc8d5561384e1508ad040fc',1,'memory']]],
-  ['reg_1305',['reg',['../gbcpu_8c.html#a2e53d7c3ec0bfaf12e47894c24a904da',1,'reg():&#160;gbmemory.c'],['../gbmemory_8c.html#a2e53d7c3ec0bfaf12e47894c24a904da',1,'reg():&#160;gbmemory.c']]]
+  ['mem_1483',['mem',['../gbmemory_8c.html#a6135654033ccfa705ae4c5fde74eda02',1,'gbmemory.c']]],
+  ['mode_1484',['Mode',['../gbppu_8c.html#ad11c3137711cc547aa65686fa2c98fc9',1,'gbppu.c']]]
 ];

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['mem_1299',['mem',['../gbmemory_8c.html#a6135654033ccfa705ae4c5fde74eda02',1,'gbmemory.c']]],
-  ['mode_1300',['Mode',['../gbppu_8c.html#ad11c3137711cc547aa65686fa2c98fc9',1,'gbppu.c']]]
+  ['kdl_5fgb_1479',['KDL_gb',['../main_8c.html#a1015b909e9c48e86fff962e55a1ce096',1,'main.c']]]
 ];

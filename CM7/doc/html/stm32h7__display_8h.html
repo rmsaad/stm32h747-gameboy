@@ -103,10 +103,12 @@ $(document).ready(function(){initNavTree('stm32h7__display_8h.html',''); initRes
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af7d9cd0d0328f090f7c0b22c83a73811"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8h.html#af7d9cd0d0328f090f7c0b22c83a73811">dummy2_code</a> ()</td></tr>
-<tr class="separator:af7d9cd0d0328f090f7c0b22c83a73811"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a883ff1af2f895e5f25927f58d05147ec"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8h.html#a883ff1af2f895e5f25927f58d05147ec">dummy_code</a> ()</td></tr>
-<tr class="separator:a883ff1af2f895e5f25927f58d05147ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50f5849579459ad0a6c1245e7e307224"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8h.html#a50f5849579459ad0a6c1245e7e307224">stm32h7_displaySetPalette</a> ()</td></tr>
+<tr class="separator:a50f5849579459ad0a6c1245e7e307224"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81e2c373d1e591d4bcda7aed5893ce1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8h.html#a81e2c373d1e591d4bcda7aed5893ce1a">displayFrameBuffer</a> (uint8_t *<a class="el" href="gbppu_8c.html#ab799d7f1fc8dba9a1b2ae4a3b2e85f3f">gb_frame</a>, uint8_t <a class="el" href="gbppu_8c.html#a5404f7eab814b57dc7c25d7f469f2114">scaleAmount</a>)</td></tr>
+<tr class="separator:a81e2c373d1e591d4bcda7aed5893ce1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d6d0e93865a7306ac61431a669e51af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8h.html#a9d6d0e93865a7306ac61431a669e51af">displayDoubleBuffer</a> ()</td></tr>
+<tr class="separator:a9d6d0e93865a7306ac61431a669e51af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24336fe16fa0d0ee8c7087342fd1be47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8h.html#a24336fe16fa0d0ee8c7087342fd1be47">CopyBuffer</a> (uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t xsize, uint16_t ysize)</td></tr>
 <tr class="separator:a24336fe16fa0d0ee8c7087342fd1be47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -163,14 +165,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="af7d9cd0d0328f090f7c0b22c83a73811"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af7d9cd0d0328f090f7c0b22c83a73811">&#9670;&nbsp;</a></span>dummy2_code()</h2>
+<a id="a9d6d0e93865a7306ac61431a669e51af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d6d0e93865a7306ac61431a669e51af">&#9670;&nbsp;</a></span>displayDoubleBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void dummy2_code </td>
+          <td class="memname">void displayDoubleBuffer </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -180,14 +182,42 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a883ff1af2f895e5f25927f58d05147ec"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a883ff1af2f895e5f25927f58d05147ec">&#9670;&nbsp;</a></span>dummy_code()</h2>
+<a id="a81e2c373d1e591d4bcda7aed5893ce1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81e2c373d1e591d4bcda7aed5893ce1a">&#9670;&nbsp;</a></span>displayFrameBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void dummy_code </td>
+          <td class="memname">void displayFrameBuffer </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>gb_frame</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>scaleAmount</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a50f5849579459ad0a6c1245e7e307224"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50f5849579459ad0a6c1245e7e307224">&#9670;&nbsp;</a></span>stm32h7_displaySetPalette()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void stm32h7_displaySetPalette </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>

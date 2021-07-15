@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['tetris_5fgb_99',['Tetris_gb',['../gbcpu_8c.html#afe3ea09366bfb79efb01c0760cbd448e',1,'Tetris_gb():&#160;gbcpu.c'],['../main_8c.html#afe3ea09366bfb79efb01c0760cbd448e',1,'Tetris_gb():&#160;main.c']]],
-  ['tile_5fdata_5fsigned_5faddr_100',['TILE_DATA_SIGNED_ADDR',['../gbppu_8c.html#a04c206cb97e025011af670d126634a54',1,'gbppu.c']]],
-  ['tile_5fdata_5funsigned_5faddr_101',['TILE_DATA_UNSIGNED_ADDR',['../gbppu_8c.html#a9e50ff753d8028c3a8d7c10923046648',1,'gbppu.c']]],
-  ['tile_5fmap_5flocation_5fhigh_102',['TILE_MAP_LOCATION_HIGH',['../gbppu_8c.html#adfbbcc1f3889a48c76c28003ec967e86',1,'gbppu.c']]],
-  ['tile_5fmap_5flocation_5flow_103',['TILE_MAP_LOCATION_LOW',['../gbppu_8c.html#a994598b0c2b8ff8fbc8508afe6aee405',1,'gbppu.c']]],
-  ['timer_5finterrupt_104',['TIMER_INTERRUPT',['../gbcpu_8c.html#ac99371649d16094a987ed95b0aba9f42',1,'gbcpu.c']]],
-  ['timer_5fvector_105',['TIMER_VECTOR',['../gbcpu_8c.html#a664839648fa40e020db83c21689e0af9',1,'gbcpu.c']]],
-  ['tstate_106',['Tstate',['../struct_assembly___instr.html#a5fb2026bcf6571f577936d743090c72a',1,'Assembly_Instr']]],
-  ['tstates_107',['tStates',['../gbcpu_8c.html#a342494b907e8a7bafe144bd4f3d9afbb',1,'tStates():&#160;gbcpu.c'],['../gbppu_8c.html#a342494b907e8a7bafe144bd4f3d9afbb',1,'tStates():&#160;gbcpu.c']]]
+  ['ram_178',['ram',['../structmemory.html#ad7300040acc8d5561384e1508ad040fc',1,'memory']]],
+  ['reg_179',['reg',['../gbcpu_8c.html#a2e53d7c3ec0bfaf12e47894c24a904da',1,'reg():&#160;gbmemory.c'],['../gbmemory_8c.html#a2e53d7c3ec0bfaf12e47894c24a904da',1,'reg():&#160;gbmemory.c']]],
+  ['registers_180',['registers',['../structregisters.html',1,'']]],
+  ['reset_181',['RESET',['../gbcpu_8c.html#ab702106cf3b3e96750b6845ded4e0299',1,'gbcpu.c']]],
+  ['resetbit_182',['resetbit',['../gbfunctions_8h.html#a0a165012e5cc78ec782633b997200003',1,'resetbit(uint8_t *n, uint8_t bit):&#160;gbfunctions.c'],['../gbfunctions_8c.html#a0a165012e5cc78ec782633b997200003',1,'resetbit(uint8_t *n, uint8_t bit):&#160;gbfunctions.c']]],
+  ['rom_183',['rom',['../gb_m_b_c_8c.html#af1a74952e70d4f6f1290efd9ca571e20',1,'rom():&#160;main.c'],['../main_8c.html#af1a74952e70d4f6f1290efd9ca571e20',1,'rom():&#160;main.c']]]
 ];

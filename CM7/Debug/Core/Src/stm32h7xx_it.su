@@ -10,3 +10,4 @@ stm32h7xx_it.c:140:6:SysTick_Handler	0	static
 stm32h7xx_it.c:151:6:LTDC_IRQHandler	0	static
 stm32h7xx_it.c:156:6:LTDC_ER_IRQHandler	0	static
 stm32h7xx_it.c:167:6:DSI_IRQHandler	0	static
+stm32h7xx_it.c:177:6:DMA2_Stream1_IRQHandler	0	static

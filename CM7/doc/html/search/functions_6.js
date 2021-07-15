@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_706',['main',['../main_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main.c']]]
+  ['lyc_5fcheck_853',['LYC_check',['../gbppu_8c.html#a4cf485e9accf6249e0bb79f663990fbe',1,'gbppu.c']]]
 ];
