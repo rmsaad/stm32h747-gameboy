@@ -116,99 +116,146 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ad9c1e5968f514b0a4e0f0d35da5a0eac"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#ad9c1e5968f514b0a4e0f0d35da5a0eac">concat_16bit_bigEndian</a> (uint8_t x, uint8_t y)</td></tr>
-<tr class="separator:ad9c1e5968f514b0a4e0f0d35da5a0eac"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af11c6615ded1810b7eea1bc69c21eb33"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#af11c6615ded1810b7eea1bc69c21eb33">setbit</a> (uint8_t *n, uint8_t bit)</td></tr>
-<tr class="separator:af11c6615ded1810b7eea1bc69c21eb33"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a165012e5cc78ec782633b997200003"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a0a165012e5cc78ec782633b997200003">resetbit</a> (uint8_t *n, uint8_t bit)</td></tr>
-<tr class="separator:a0a165012e5cc78ec782633b997200003"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60d89faa1ac032f2e5f0aeb7714ece55"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a60d89faa1ac032f2e5f0aeb7714ece55">checkbit</a> (uint8_t n, uint8_t bit)</td></tr>
-<tr class="separator:a60d89faa1ac032f2e5f0aeb7714ece55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a111c2edf243acf0cd533360096f88e51"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a111c2edf243acf0cd533360096f88e51">usConcat16BitBigEndian</a> (uint8_t x, uint8_t y)</td></tr>
+<tr class="memdesc:a111c2edf243acf0cd533360096f88e51"><td class="mdescLeft">&#160;</td><td class="mdescRight">Concatenates two bytes of data in Big Endian format.  <a href="gbfunctions_8h.html#a111c2edf243acf0cd533360096f88e51">More...</a><br /></td></tr>
+<tr class="separator:a111c2edf243acf0cd533360096f88e51"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a302bb6703664648619ebce9fd3d193f7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a302bb6703664648619ebce9fd3d193f7">vSetBit</a> (uint8_t *n, uint8_t bit)</td></tr>
+<tr class="memdesc:a302bb6703664648619ebce9fd3d193f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a bit in a register/memory location.  <a href="gbfunctions_8h.html#a302bb6703664648619ebce9fd3d193f7">More...</a><br /></td></tr>
+<tr class="separator:a302bb6703664648619ebce9fd3d193f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17360a303ef8d946cb40a923502aef53"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a17360a303ef8d946cb40a923502aef53">vResetBit</a> (uint8_t *n, uint8_t bit)</td></tr>
+<tr class="memdesc:a17360a303ef8d946cb40a923502aef53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets a bit in a register/memory location.  <a href="gbfunctions_8h.html#a17360a303ef8d946cb40a923502aef53">More...</a><br /></td></tr>
+<tr class="separator:a17360a303ef8d946cb40a923502aef53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1719fc566db5b8c0c75dbef3bf232268"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a1719fc566db5b8c0c75dbef3bf232268">ucCheckBit</a> (uint8_t n, uint8_t bit)</td></tr>
+<tr class="memdesc:a1719fc566db5b8c0c75dbef3bf232268"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks a bit of a register/memory location.  <a href="gbfunctions_8h.html#a1719fc566db5b8c0c75dbef3bf232268">More...</a><br /></td></tr>
+<tr class="separator:a1719fc566db5b8c0c75dbef3bf232268"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af2c4683984f24ed2aa5909bac6fb941b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#af2c4683984f24ed2aa5909bac6fb941b">v8bitRegisterINC</a> (uint8_t *<a class="el" href="gbmemory_8c.html#a2e53d7c3ec0bfaf12e47894c24a904da">reg</a>, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:af2c4683984f24ed2aa5909bac6fb941b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increment register/ memory location.  <a href="gbfunctions_8h.html#af2c4683984f24ed2aa5909bac6fb941b">More...</a><br /></td></tr>
 <tr class="separator:af2c4683984f24ed2aa5909bac6fb941b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3f0d7481c1158d9eb3c693ff238f3913"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a3f0d7481c1158d9eb3c693ff238f3913">v8bitRegisterDEC</a> (uint8_t *<a class="el" href="gbmemory_8c.html#a2e53d7c3ec0bfaf12e47894c24a904da">reg</a>, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:a3f0d7481c1158d9eb3c693ff238f3913"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrement register/ memory location.  <a href="gbfunctions_8h.html#a3f0d7481c1158d9eb3c693ff238f3913">More...</a><br /></td></tr>
 <tr class="separator:a3f0d7481c1158d9eb3c693ff238f3913"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abee8c6f743492a6a58e6074993e7c6cd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#abee8c6f743492a6a58e6074993e7c6cd">vGBFunctionRLCA</a> (uint8_t *<a class="el" href="gbmemory_8c.html#a2e53d7c3ec0bfaf12e47894c24a904da">reg</a>, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:abee8c6f743492a6a58e6074993e7c6cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate register A left, bit 7 becomes carry.  <a href="gbfunctions_8h.html#abee8c6f743492a6a58e6074993e7c6cd">More...</a><br /></td></tr>
 <tr class="separator:abee8c6f743492a6a58e6074993e7c6cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a590f83b8b08f1886e494e7b6ede93e70"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a590f83b8b08f1886e494e7b6ede93e70">vGBFunctionRRCA</a> (uint8_t *<a class="el" href="gbmemory_8c.html#a2e53d7c3ec0bfaf12e47894c24a904da">reg</a>, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:a590f83b8b08f1886e494e7b6ede93e70"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate register A right, bit 0 becomes carry.  <a href="gbfunctions_8h.html#a590f83b8b08f1886e494e7b6ede93e70">More...</a><br /></td></tr>
 <tr class="separator:a590f83b8b08f1886e494e7b6ede93e70"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aecc878909ab184501b236520dfd09bdd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#aecc878909ab184501b236520dfd09bdd">vGBFunction16bitADD</a> (uint16_t *regHL, uint16_t reg16, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:aecc878909ab184501b236520dfd09bdd"><td class="mdescLeft">&#160;</td><td class="mdescRight">16 bit addition to the HL register  <a href="gbfunctions_8h.html#aecc878909ab184501b236520dfd09bdd">More...</a><br /></td></tr>
 <tr class="separator:aecc878909ab184501b236520dfd09bdd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8add9d856afee37c66da7f2099416e3a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a8add9d856afee37c66da7f2099416e3a">vGBFunctionRLA</a> (uint8_t *regA, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:a8add9d856afee37c66da7f2099416e3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate register A left through carry.  <a href="gbfunctions_8h.html#a8add9d856afee37c66da7f2099416e3a">More...</a><br /></td></tr>
 <tr class="separator:a8add9d856afee37c66da7f2099416e3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a587dfa23361a5d32b4b2e075efee7407"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a587dfa23361a5d32b4b2e075efee7407">vGBFunctionRRA</a> (uint8_t *regA, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:a587dfa23361a5d32b4b2e075efee7407"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate register A right through carry.  <a href="gbfunctions_8h.html#a587dfa23361a5d32b4b2e075efee7407">More...</a><br /></td></tr>
 <tr class="separator:a587dfa23361a5d32b4b2e075efee7407"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d255ca74224d4ea6a5429c30c685cda"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a4d255ca74224d4ea6a5429c30c685cda">vGBFunctionJR_NZ</a> (uint16_t *regPC, uint8_t *flagReg, uint8_t r8value)</td></tr>
+<tr class="memdesc:a4d255ca74224d4ea6a5429c30c685cda"><td class="mdescLeft">&#160;</td><td class="mdescRight">Jump to Program Counter address plus immediate signed byte value if Z flag is reset.  <a href="gbfunctions_8h.html#a4d255ca74224d4ea6a5429c30c685cda">More...</a><br /></td></tr>
 <tr class="separator:a4d255ca74224d4ea6a5429c30c685cda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeca929beaffa69b852a32c6bdee13c0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#aeca929beaffa69b852a32c6bdee13c0d">vGBFunctionDAA</a> (uint8_t *regA, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:aeca929beaffa69b852a32c6bdee13c0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adjusts register A such that the correct representation of Binary Coded Decimal is obtained.  <a href="gbfunctions_8h.html#aeca929beaffa69b852a32c6bdee13c0d">More...</a><br /></td></tr>
 <tr class="separator:aeca929beaffa69b852a32c6bdee13c0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9f59a1f64b4d3d78ee06c0b0ffca9e20"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a9f59a1f64b4d3d78ee06c0b0ffca9e20">vGBFunctionJR_Z</a> (uint16_t *regPC, uint8_t *flagReg, uint8_t r8value)</td></tr>
+<tr class="memdesc:a9f59a1f64b4d3d78ee06c0b0ffca9e20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Jump to Program Counter address plus immediate signed byte value if Z flag is set.  <a href="gbfunctions_8h.html#a9f59a1f64b4d3d78ee06c0b0ffca9e20">More...</a><br /></td></tr>
 <tr class="separator:a9f59a1f64b4d3d78ee06c0b0ffca9e20"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a539b81e390017ea3fe2d0dd1b74ec102"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a539b81e390017ea3fe2d0dd1b74ec102">vGBFunctionJR_NC</a> (uint16_t *regPC, uint8_t *flagReg, uint8_t r8value)</td></tr>
+<tr class="memdesc:a539b81e390017ea3fe2d0dd1b74ec102"><td class="mdescLeft">&#160;</td><td class="mdescRight">Jump to Program Counter address plus immediate signed byte value if C flag is reset.  <a href="gbfunctions_8h.html#a539b81e390017ea3fe2d0dd1b74ec102">More...</a><br /></td></tr>
 <tr class="separator:a539b81e390017ea3fe2d0dd1b74ec102"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d31f46628215c7a65041774e17b92f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a6d31f46628215c7a65041774e17b92f5">vMemoryLocationINC</a> (uint16_t loc, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:a6d31f46628215c7a65041774e17b92f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Increment memory location.  <a href="gbfunctions_8h.html#a6d31f46628215c7a65041774e17b92f5">More...</a><br /></td></tr>
 <tr class="separator:a6d31f46628215c7a65041774e17b92f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a99413e16dc2b7cfc5028794c4af09348"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a99413e16dc2b7cfc5028794c4af09348">vMemoryLocationDEC</a> (uint16_t loc, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:a99413e16dc2b7cfc5028794c4af09348"><td class="mdescLeft">&#160;</td><td class="mdescRight">Decrement memory location.  <a href="gbfunctions_8h.html#a99413e16dc2b7cfc5028794c4af09348">More...</a><br /></td></tr>
 <tr class="separator:a99413e16dc2b7cfc5028794c4af09348"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a11d4f2c9bfb9ab5397fcbe84e9639292"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a11d4f2c9bfb9ab5397fcbe84e9639292">vGBFunctionJR_C</a> (uint16_t *regPC, uint8_t *flagReg, uint8_t r8value)</td></tr>
+<tr class="memdesc:a11d4f2c9bfb9ab5397fcbe84e9639292"><td class="mdescLeft">&#160;</td><td class="mdescRight">Jump to Program Counter address plus immediate signed byte value if C flag is set.  <a href="gbfunctions_8h.html#a11d4f2c9bfb9ab5397fcbe84e9639292">More...</a><br /></td></tr>
 <tr class="separator:a11d4f2c9bfb9ab5397fcbe84e9639292"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f26f36441f6e6741a61dff6fe71338f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a0f26f36441f6e6741a61dff6fe71338f">vGBFunctionADD</a> (uint8_t *regA, uint8_t *flagReg, uint8_t regValue)</td></tr>
+<tr class="memdesc:a0f26f36441f6e6741a61dff6fe71338f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the value of a register/ memory location to the A register.  <a href="gbfunctions_8h.html#a0f26f36441f6e6741a61dff6fe71338f">More...</a><br /></td></tr>
 <tr class="separator:a0f26f36441f6e6741a61dff6fe71338f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30b453e106901fabe24ce8cb1202fbf2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a30b453e106901fabe24ce8cb1202fbf2">vGBFunctionADC</a> (uint8_t *regA, uint8_t *flagReg, uint8_t regValue)</td></tr>
+<tr class="memdesc:a30b453e106901fabe24ce8cb1202fbf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds the value of a register/ memory location + carry to the A register.  <a href="gbfunctions_8h.html#a30b453e106901fabe24ce8cb1202fbf2">More...</a><br /></td></tr>
 <tr class="separator:a30b453e106901fabe24ce8cb1202fbf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa22a9ca998563f11d1c87bc45b06d06d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#aa22a9ca998563f11d1c87bc45b06d06d">vGBFunctionSUB</a> (uint8_t *regA, uint8_t *flagReg, uint8_t regValue)</td></tr>
+<tr class="memdesc:aa22a9ca998563f11d1c87bc45b06d06d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtracts the value of a register/ memory location from the A register.  <a href="gbfunctions_8h.html#aa22a9ca998563f11d1c87bc45b06d06d">More...</a><br /></td></tr>
 <tr class="separator:aa22a9ca998563f11d1c87bc45b06d06d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4eed68c3300602ec2b7bc079f4dc93e1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a4eed68c3300602ec2b7bc079f4dc93e1">vGBFunctionSBC</a> (uint8_t *regA, uint8_t *flagReg, uint8_t regValue)</td></tr>
+<tr class="memdesc:a4eed68c3300602ec2b7bc079f4dc93e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Subtracts the value of a register/ memory location + carry from the A register.  <a href="gbfunctions_8h.html#a4eed68c3300602ec2b7bc079f4dc93e1">More...</a><br /></td></tr>
 <tr class="separator:a4eed68c3300602ec2b7bc079f4dc93e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7dd90eb3c79b615540d6a62c087801cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a7dd90eb3c79b615540d6a62c087801cb">vGBFunctionCP</a> (uint8_t regA, uint8_t *flagReg, uint8_t regValue)</td></tr>
+<tr class="memdesc:a7dd90eb3c79b615540d6a62c087801cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare register a with another register/memory location.  <a href="gbfunctions_8h.html#a7dd90eb3c79b615540d6a62c087801cb">More...</a><br /></td></tr>
 <tr class="separator:a7dd90eb3c79b615540d6a62c087801cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae282b64d88018aad322076154c1f6af5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#ae282b64d88018aad322076154c1f6af5">vGBFunctionRET</a> (uint16_t *regSP, uint16_t *regPC)</td></tr>
+<tr class="memdesc:ae282b64d88018aad322076154c1f6af5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pop two bytes from the stack and jump to that address.  <a href="gbfunctions_8h.html#ae282b64d88018aad322076154c1f6af5">More...</a><br /></td></tr>
 <tr class="separator:ae282b64d88018aad322076154c1f6af5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67acd0a0c98029aea28f03622ba29703"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a67acd0a0c98029aea28f03622ba29703">vGBFunctionPOP</a> (uint16_t *regSP, uint16_t *reg16)</td></tr>
+<tr class="memdesc:a67acd0a0c98029aea28f03622ba29703"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pop two bytes off of the stack and into 16 bit register, increments the stack pointer by 2.  <a href="gbfunctions_8h.html#a67acd0a0c98029aea28f03622ba29703">More...</a><br /></td></tr>
 <tr class="separator:a67acd0a0c98029aea28f03622ba29703"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a249cc5a6768d85a0376e8d01f4015d74"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a249cc5a6768d85a0376e8d01f4015d74">vGBFunctionJP_NZ_a16</a> (uint16_t *regPC, uint8_t *flagReg, uint16_t addr)</td></tr>
+<tr class="memdesc:a249cc5a6768d85a0376e8d01f4015d74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Jump to Immediate unsigned short address if Z flag is reset.  <a href="gbfunctions_8h.html#a249cc5a6768d85a0376e8d01f4015d74">More...</a><br /></td></tr>
 <tr class="separator:a249cc5a6768d85a0376e8d01f4015d74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4ec8c03c6c63705f684ba27854f9c0a"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#af4ec8c03c6c63705f684ba27854f9c0a">vGBFunctionCALL_NZ_a16</a> (uint16_t *regPC, uint8_t *flagReg, uint16_t *regSP)</td></tr>
+<tr class="memdesc:af4ec8c03c6c63705f684ba27854f9c0a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if Z flag is reset.  <a href="gbfunctions_8h.html#af4ec8c03c6c63705f684ba27854f9c0a">More...</a><br /></td></tr>
 <tr class="separator:af4ec8c03c6c63705f684ba27854f9c0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af0cdf7d14647820f303488a8ef8d4965"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#af0cdf7d14647820f303488a8ef8d4965">vGBFunctionPUSH</a> (uint16_t *regSP, uint16_t *reg16)</td></tr>
+<tr class="memdesc:af0cdf7d14647820f303488a8ef8d4965"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes 16 bit register onto stack.  <a href="gbfunctions_8h.html#af0cdf7d14647820f303488a8ef8d4965">More...</a><br /></td></tr>
 <tr class="separator:af0cdf7d14647820f303488a8ef8d4965"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4a73e812970dcc5a3bc5d665888e630"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#ac4a73e812970dcc5a3bc5d665888e630">vGBFunctionJP_Z_a16</a> (uint16_t *regPC, uint8_t *flagReg, uint16_t addr)</td></tr>
+<tr class="memdesc:ac4a73e812970dcc5a3bc5d665888e630"><td class="mdescLeft">&#160;</td><td class="mdescRight">Jump to Immediate unsigned short address if Z flag is set.  <a href="gbfunctions_8h.html#ac4a73e812970dcc5a3bc5d665888e630">More...</a><br /></td></tr>
 <tr class="separator:ac4a73e812970dcc5a3bc5d665888e630"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a72be8c61eb5ef01df3d390681f6ffaf8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a72be8c61eb5ef01df3d390681f6ffaf8">vGBFunctionCALL_Z_a16</a> (uint16_t *regPC, uint8_t *flagReg, uint16_t *regSP)</td></tr>
+<tr class="memdesc:a72be8c61eb5ef01df3d390681f6ffaf8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if Z flag is set.  <a href="gbfunctions_8h.html#a72be8c61eb5ef01df3d390681f6ffaf8">More...</a><br /></td></tr>
 <tr class="separator:a72be8c61eb5ef01df3d390681f6ffaf8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa30ab6647d87cc34f840088938410e2f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#aa30ab6647d87cc34f840088938410e2f">vGBFunctionJP_NC_a16</a> (uint16_t *regPC, uint8_t *flagReg, uint16_t addr)</td></tr>
+<tr class="memdesc:aa30ab6647d87cc34f840088938410e2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Jump to Immediate unsigned short address if C flag is reset.  <a href="gbfunctions_8h.html#aa30ab6647d87cc34f840088938410e2f">More...</a><br /></td></tr>
 <tr class="separator:aa30ab6647d87cc34f840088938410e2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a31811c0db994e6be8be786990b8a0c4f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a31811c0db994e6be8be786990b8a0c4f">vGBFunctionCALL_NC_a16</a> (uint16_t *regPC, uint8_t *flagReg, uint16_t *regSP)</td></tr>
+<tr class="memdesc:a31811c0db994e6be8be786990b8a0c4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if C flag is reset.  <a href="gbfunctions_8h.html#a31811c0db994e6be8be786990b8a0c4f">More...</a><br /></td></tr>
 <tr class="separator:a31811c0db994e6be8be786990b8a0c4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bb07e6a064c2cda0ff46d9b40e86757"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a8bb07e6a064c2cda0ff46d9b40e86757">vGBFunctionJP_C_a16</a> (uint16_t *regPC, uint8_t *flagReg, uint16_t addr)</td></tr>
+<tr class="memdesc:a8bb07e6a064c2cda0ff46d9b40e86757"><td class="mdescLeft">&#160;</td><td class="mdescRight">Jump to Immediate unsigned short address if C flag is set.  <a href="gbfunctions_8h.html#a8bb07e6a064c2cda0ff46d9b40e86757">More...</a><br /></td></tr>
 <tr class="separator:a8bb07e6a064c2cda0ff46d9b40e86757"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace505b71f2ee9de8b891162b42a197c9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#ace505b71f2ee9de8b891162b42a197c9">vGBFunctionCALL_C_a16</a> (uint16_t *regPC, uint8_t *flagReg, uint16_t *regSP)</td></tr>
+<tr class="memdesc:ace505b71f2ee9de8b891162b42a197c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if C flag is set.  <a href="gbfunctions_8h.html#ace505b71f2ee9de8b891162b42a197c9">More...</a><br /></td></tr>
 <tr class="separator:ace505b71f2ee9de8b891162b42a197c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2ade791123ba0d26b718064edbc3288e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a2ade791123ba0d26b718064edbc3288e">vGBFunctionADD_SP_r8</a> (uint16_t *regSP, uint8_t *flagReg, uint8_t r8value)</td></tr>
+<tr class="memdesc:a2ade791123ba0d26b718064edbc3288e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add immediate signed byte value to the stack pointer.  <a href="gbfunctions_8h.html#a2ade791123ba0d26b718064edbc3288e">More...</a><br /></td></tr>
 <tr class="separator:a2ade791123ba0d26b718064edbc3288e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa54efe75b407f0c94d105ad286829330"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#aa54efe75b407f0c94d105ad286829330">vGBFunctionLD_HL_SP_r8</a> (uint16_t *regHL, uint16_t *regSP, uint8_t *flagReg, uint8_t r8value)</td></tr>
+<tr class="memdesc:aa54efe75b407f0c94d105ad286829330"><td class="mdescLeft">&#160;</td><td class="mdescRight">Load the Stack Pointer + immediate signed byte value into register HL.  <a href="gbfunctions_8h.html#aa54efe75b407f0c94d105ad286829330">More...</a><br /></td></tr>
 <tr class="separator:aa54efe75b407f0c94d105ad286829330"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1da098d4b25fcdf39d85cc13a0f9d01c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a1da098d4b25fcdf39d85cc13a0f9d01c">ucGBFunctionRLC</a> (uint8_t regValue, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:a1da098d4b25fcdf39d85cc13a0f9d01c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate register/memory left, bit 7 becomes carry flag.  <a href="gbfunctions_8h.html#a1da098d4b25fcdf39d85cc13a0f9d01c">More...</a><br /></td></tr>
 <tr class="separator:a1da098d4b25fcdf39d85cc13a0f9d01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b58cb2fea56fde673dbd4184b6c5a88"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a7b58cb2fea56fde673dbd4184b6c5a88">ucGBFunctionRRC</a> (uint8_t regValue, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:a7b58cb2fea56fde673dbd4184b6c5a88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate register/memory right, bit 0 becomes carry flag.  <a href="gbfunctions_8h.html#a7b58cb2fea56fde673dbd4184b6c5a88">More...</a><br /></td></tr>
 <tr class="separator:a7b58cb2fea56fde673dbd4184b6c5a88"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad62cde0852d4b8c6613fcd313d886d07"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#ad62cde0852d4b8c6613fcd313d886d07">ucGBFunctionRL</a> (uint8_t regValue, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:ad62cde0852d4b8c6613fcd313d886d07"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate register/memory left through carry.  <a href="gbfunctions_8h.html#ad62cde0852d4b8c6613fcd313d886d07">More...</a><br /></td></tr>
 <tr class="separator:ad62cde0852d4b8c6613fcd313d886d07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ff282f802f795c2aa446c8291588229"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a1ff282f802f795c2aa446c8291588229">ucGBFunctionRR</a> (uint8_t regValue, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:a1ff282f802f795c2aa446c8291588229"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate register/memory right through carry.  <a href="gbfunctions_8h.html#a1ff282f802f795c2aa446c8291588229">More...</a><br /></td></tr>
 <tr class="separator:a1ff282f802f795c2aa446c8291588229"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aefeb346bb9e064ad3510fb792023ab30"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#aefeb346bb9e064ad3510fb792023ab30">ucGBFunctionSLA</a> (uint8_t regValue, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:aefeb346bb9e064ad3510fb792023ab30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shift register/memory left into the carry, The least significant bit is set to zero.  <a href="gbfunctions_8h.html#aefeb346bb9e064ad3510fb792023ab30">More...</a><br /></td></tr>
 <tr class="separator:aefeb346bb9e064ad3510fb792023ab30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaee6bebb882310ea433b1d9b7835889e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#aaee6bebb882310ea433b1d9b7835889e">ucGBFunctionSRA</a> (uint8_t regValue, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:aaee6bebb882310ea433b1d9b7835889e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shift register/memory right into the carry.  <a href="gbfunctions_8h.html#aaee6bebb882310ea433b1d9b7835889e">More...</a><br /></td></tr>
 <tr class="separator:aaee6bebb882310ea433b1d9b7835889e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56db189977b0d60a73e2648015377bc2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a56db189977b0d60a73e2648015377bc2">ucGBFunctionSWAP</a> (uint8_t regValue, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:a56db189977b0d60a73e2648015377bc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Swap upper and lower nibbles of a register or memory location.  <a href="gbfunctions_8h.html#a56db189977b0d60a73e2648015377bc2">More...</a><br /></td></tr>
 <tr class="separator:a56db189977b0d60a73e2648015377bc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3a337ebf04c67d7f432079a621759512"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#a3a337ebf04c67d7f432079a621759512">ucGBFunctionSRL</a> (uint8_t regValue, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:a3a337ebf04c67d7f432079a621759512"><td class="mdescLeft">&#160;</td><td class="mdescRight">Shift register/memory right into the carry, The most significant bit is set to zero.  <a href="gbfunctions_8h.html#a3a337ebf04c67d7f432079a621759512">More...</a><br /></td></tr>
 <tr class="separator:a3a337ebf04c67d7f432079a621759512"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4e2853aad0123dae75612e377124425"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#ad4e2853aad0123dae75612e377124425">vGBFunctionBIT</a> (uint8_t regValue, uint8_t bit, uint8_t *flagReg)</td></tr>
+<tr class="memdesc:ad4e2853aad0123dae75612e377124425"><td class="mdescLeft">&#160;</td><td class="mdescRight">Test the value of a bit in a register/memory and sets the appropriate flags in the flag register.  <a href="gbfunctions_8h.html#ad4e2853aad0123dae75612e377124425">More...</a><br /></td></tr>
 <tr class="separator:ad4e2853aad0123dae75612e377124425"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9ef39642fcac89eb9630e052916a0b8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#af9ef39642fcac89eb9630e052916a0b8">ucGBFunctionRESHL</a> (uint16_t regHLaddr, uint8_t bit)</td></tr>
+<tr class="memdesc:af9ef39642fcac89eb9630e052916a0b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets a bit in the memory address that is held in the HL register.  <a href="gbfunctions_8h.html#af9ef39642fcac89eb9630e052916a0b8">More...</a><br /></td></tr>
 <tr class="separator:af9ef39642fcac89eb9630e052916a0b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae3ede3f0dacb7bf8535f9a8a1600cbc2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbfunctions_8h.html#ae3ede3f0dacb7bf8535f9a8a1600cbc2">ucGBFunctionSETHL</a> (uint16_t regHLaddr, uint8_t bit)</td></tr>
+<tr class="memdesc:ae3ede3f0dacb7bf8535f9a8a1600cbc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets a bit in the memory address that is held in the HL register.  <a href="gbfunctions_8h.html#ae3ede3f0dacb7bf8535f9a8a1600cbc2">More...</a><br /></td></tr>
 <tr class="separator:ae3ede3f0dacb7bf8535f9a8a1600cbc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
@@ -269,14 +316,14 @@ Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a60d89faa1ac032f2e5f0aeb7714ece55"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a60d89faa1ac032f2e5f0aeb7714ece55">&#9670;&nbsp;</a></span>checkbit()</h2>
+<a id="a1719fc566db5b8c0c75dbef3bf232268"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1719fc566db5b8c0c75dbef3bf232268">&#9670;&nbsp;</a></span>ucCheckBit()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t checkbit </td>
+          <td class="memname">uint8_t ucCheckBit </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>n</em>, </td>
@@ -295,89 +342,15 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="ad9c1e5968f514b0a4e0f0d35da5a0eac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad9c1e5968f514b0a4e0f0d35da5a0eac">&#9670;&nbsp;</a></span>concat_16bit_bigEndian()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t concat_16bit_bigEndian </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>y</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a0a165012e5cc78ec782633b997200003"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a165012e5cc78ec782633b997200003">&#9670;&nbsp;</a></span>resetbit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void resetbit </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>n</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af11c6615ded1810b7eea1bc69c21eb33"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af11c6615ded1810b7eea1bc69c21eb33">&#9670;&nbsp;</a></span>setbit()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void setbit </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>n</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>bit</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Checks a bit of a register/memory location. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Value of register/memory location </td></tr>
+    <tr><td class="paramname">bit</td><td>The bit to be checked (0 - 7) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Value of checked bit </dd></dl>
 
 </div>
 </div>
@@ -407,6 +380,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Resets a bit in the memory address that is held in the HL register. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regHLaddr</td><td>Memory address held inside HL register </td></tr>
+    <tr><td class="paramname">bit</td><td>The bit to be reset (0 - 7) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New value held at memory address denoted by HL </dd></dl>
+
 </div>
 </div>
 <a id="ad62cde0852d4b8c6613fcd313d886d07"></a>
@@ -434,6 +417,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Rotate register/memory left through carry. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regValue</td><td>Register/memory value to be rotated </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New value of the register/memory </dd></dl>
 
 </div>
 </div>
@@ -463,6 +456,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Rotate register/memory left, bit 7 becomes carry flag. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regValue</td><td>Register/memory value to be rotated </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New value of the register/memory </dd></dl>
+
 </div>
 </div>
 <a id="a1ff282f802f795c2aa446c8291588229"></a>
@@ -490,6 +493,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Rotate register/memory right through carry. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regValue</td><td>Register/memory value to be rotated </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New value of the register/memory </dd></dl>
 
 </div>
 </div>
@@ -519,6 +532,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Rotate register/memory right, bit 0 becomes carry flag. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regValue</td><td>Register/memory value to be rotated </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New value of the register/memory </dd></dl>
+
 </div>
 </div>
 <a id="ae3ede3f0dacb7bf8535f9a8a1600cbc2"></a>
@@ -546,6 +569,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sets a bit in the memory address that is held in the HL register. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regHLaddr</td><td>Memory address held inside HL register </td></tr>
+    <tr><td class="paramname">bit</td><td>The bit to be set (0 - 7) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New value held at memory address denoted by HL </dd></dl>
 
 </div>
 </div>
@@ -575,6 +608,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Shift register/memory left into the carry, The least significant bit is set to zero. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regValue</td><td>Register/memory value to be shifted </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New value of the register/memory </dd></dl>
+
 </div>
 </div>
 <a id="aaee6bebb882310ea433b1d9b7835889e"></a>
@@ -602,6 +645,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Shift register/memory right into the carry. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regValue</td><td>Register/memory value to be shifted </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New value of the register/memory </dd></dl>
 
 </div>
 </div>
@@ -631,6 +684,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Shift register/memory right into the carry, The most significant bit is set to zero. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regValue</td><td>Register/memory value to be shifted </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New value of the register/memory </dd></dl>
+
 </div>
 </div>
 <a id="a56db189977b0d60a73e2648015377bc2"></a>
@@ -658,6 +721,54 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Swap upper and lower nibbles of a register or memory location. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regValue</td><td>value of the register or memory location </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>New value of the register or memory </dd></dl>
+
+</div>
+</div>
+<a id="a111c2edf243acf0cd533360096f88e51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a111c2edf243acf0cd533360096f88e51">&#9670;&nbsp;</a></span>usConcat16BitBigEndian()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t usConcat16BitBigEndian </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Concatenates two bytes of data in Big Endian format. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>Lower address </td></tr>
+    <tr><td class="paramname">y</td><td>Higher address </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Newly concatenated short value </dd></dl>
 
 </div>
 </div>
@@ -687,6 +798,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Decrement register/ memory location. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Pointer to register/memory location </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
 </div>
 </div>
 <a id="af2c4683984f24ed2aa5909bac6fb941b"></a>
@@ -714,6 +835,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Increment register/ memory location. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Pointer to register/memory location </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
@@ -749,6 +880,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>16 bit addition to the HL register </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regHL</td><td>Pointer to the HL register </td></tr>
+    <tr><td class="paramname">reg16</td><td>value of a 16 bit register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
 </div>
 </div>
 <a id="a30b453e106901fabe24ce8cb1202fbf2"></a>
@@ -782,6 +924,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Adds the value of a register/ memory location + carry to the A register. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regA</td><td>Pointer to the A register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">regValue</td><td>Register/memory location data to be added to A register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
@@ -817,6 +970,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Adds the value of a register/ memory location to the A register. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regA</td><td>Pointer to the A register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">regValue</td><td>Register/memory location data to be added to A register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
 </div>
 </div>
 <a id="a2ade791123ba0d26b718064edbc3288e"></a>
@@ -850,6 +1014,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Add immediate signed byte value to the stack pointer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regSP</td><td>Pointer to the Stack Pointer register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">r8value</td><td>Immediate signed byte value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
@@ -885,6 +1060,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Test the value of a bit in a register/memory and sets the appropriate flags in the flag register. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regValue</td><td>Register/memory value to be tested </td></tr>
+    <tr><td class="paramname">bit</td><td>The bit to be tested </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
 </div>
 </div>
 <a id="ace505b71f2ee9de8b891162b42a197c9"></a>
@@ -918,6 +1104,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if C flag is set. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regPC</td><td>Pointer to Program Counter register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">regSP</td><td>Pointer to Stack Pointer register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Duration in T-states for the current instruction </dd></dl>
 
 </div>
 </div>
@@ -953,6 +1150,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if C flag is reset. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regPC</td><td>Pointer to Program Counter register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">regSP</td><td>Pointer to Stack Pointer register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Duration in T-states for the current instruction </dd></dl>
+
 </div>
 </div>
 <a id="af4ec8c03c6c63705f684ba27854f9c0a"></a>
@@ -986,6 +1194,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if Z flag is reset. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regPC</td><td>Pointer to Program Counter register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">regSP</td><td>Pointer to Stack Pointer register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Duration in T-states for the current instruction </dd></dl>
 
 </div>
 </div>
@@ -1021,6 +1240,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if Z flag is set. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regPC</td><td>Pointer to Program Counter register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">regSP</td><td>Pointer to Stack Pointer register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Duration in T-states for the current instruction </dd></dl>
+
 </div>
 </div>
 <a id="a7dd90eb3c79b615540d6a62c087801cb"></a>
@@ -1055,6 +1285,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Compare register a with another register/memory location. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regA</td><td>Value of register A </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">regValue</td><td>Value of a register/memory location </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
 </div>
 </div>
 <a id="aeca929beaffa69b852a32c6bdee13c0d"></a>
@@ -1082,6 +1323,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Adjusts register A such that the correct representation of Binary Coded Decimal is obtained. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regA</td><td>Pointer to register A </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
@@ -1117,6 +1368,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Jump to Immediate unsigned short address if C flag is set. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regPC</td><td>Pointer to Program Counter register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">addr</td><td>Immediate unsigned short address </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Duration in T-states for the current instruction </dd></dl>
+
 </div>
 </div>
 <a id="aa30ab6647d87cc34f840088938410e2f"></a>
@@ -1150,6 +1412,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Jump to Immediate unsigned short address if C flag is reset. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regPC</td><td>Pointer to Program Counter register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">addr</td><td>Immediate unsigned short address </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Duration in T-states for the current instruction </dd></dl>
 
 </div>
 </div>
@@ -1185,6 +1458,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Jump to Immediate unsigned short address if Z flag is reset. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regPC</td><td>Pointer to Program Counter register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">addr</td><td>Immediate unsigned short address </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Duration in T-states for the current instruction </dd></dl>
+
 </div>
 </div>
 <a id="ac4a73e812970dcc5a3bc5d665888e630"></a>
@@ -1218,6 +1502,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Jump to Immediate unsigned short address if Z flag is set. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regPC</td><td>Pointer to Program Counter register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">addr</td><td>Immediate unsigned short address </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Duration in T-states for the current instruction </dd></dl>
 
 </div>
 </div>
@@ -1253,6 +1548,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Jump to Program Counter address plus immediate signed byte value if C flag is set. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regPC</td><td>Pointer to Program Counter register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">r8value</td><td>Immediate signed byte value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Duration in T-states for the current instruction </dd></dl>
+
 </div>
 </div>
 <a id="a539b81e390017ea3fe2d0dd1b74ec102"></a>
@@ -1286,6 +1592,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Jump to Program Counter address plus immediate signed byte value if C flag is reset. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regPC</td><td>Pointer to Program Counter register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">r8value</td><td>Immediate signed byte value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Duration in T-states for the current instruction </dd></dl>
 
 </div>
 </div>
@@ -1321,6 +1638,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Jump to Program Counter address plus immediate signed byte value if Z flag is reset. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regPC</td><td>Pointer to Program Counter register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">r8value</td><td>Immediate signed byte value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Duration in T-states for the current instruction </dd></dl>
+
 </div>
 </div>
 <a id="a9f59a1f64b4d3d78ee06c0b0ffca9e20"></a>
@@ -1354,6 +1682,17 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Jump to Program Counter address plus immediate signed byte value if Z flag is set. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regPC</td><td>Pointer to Program Counter register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">r8value</td><td>Immediate signed byte value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Duration in T-states for the current instruction </dd></dl>
 
 </div>
 </div>
@@ -1395,6 +1734,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Load the Stack Pointer + immediate signed byte value into register HL. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regHL</td><td>Pointer to the HL register </td></tr>
+    <tr><td class="paramname">regSP</td><td>Pointer to the SP register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">r8value</td><td>Immediate signed byte value </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
 </div>
 </div>
 <a id="a67acd0a0c98029aea28f03622ba29703"></a>
@@ -1422,6 +1773,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pop two bytes off of the stack and into 16 bit register, increments the stack pointer by 2. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regSP</td><td>Pointer to the Stack Pointer register </td></tr>
+    <tr><td class="paramname">reg16</td><td>Pointer to 16 bit register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
@@ -1451,6 +1812,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Pushes 16 bit register onto stack. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regSP</td><td>Pointer to Stack Pointer register </td></tr>
+    <tr><td class="paramname">reg16</td><td>Pointer to 16 bit register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
 </div>
 </div>
 <a id="ae282b64d88018aad322076154c1f6af5"></a>
@@ -1478,6 +1849,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pop two bytes from the stack and jump to that address. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regSP</td><td>Pointer to the Stack Pointer register </td></tr>
+    <tr><td class="paramname">regPC</td><td>Pointer to the Program Counter register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
@@ -1507,6 +1888,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Rotate register A left through carry. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regA</td><td>Pointer to Register A to be rotated </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
 </div>
 </div>
 <a id="abee8c6f743492a6a58e6074993e7c6cd"></a>
@@ -1534,6 +1925,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Rotate register A left, bit 7 becomes carry. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Pointer to Register A to be rotated </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
@@ -1563,6 +1964,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Rotate register A right through carry. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regA</td><td>Pointer to Register A to be rotated </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
 </div>
 </div>
 <a id="a590f83b8b08f1886e494e7b6ede93e70"></a>
@@ -1590,6 +2001,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Rotate register A right, bit 0 becomes carry. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">reg</td><td>Pointer to Register A to be rotated </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
@@ -1625,6 +2046,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Subtracts the value of a register/ memory location + carry from the A register. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regA</td><td>Pointer to the A register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">regValue</td><td>Register/memory location data to be subtracted to A register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
 </div>
 </div>
 <a id="aa22a9ca998563f11d1c87bc45b06d06d"></a>
@@ -1659,6 +2091,17 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Subtracts the value of a register/ memory location from the A register. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">regA</td><td>Pointer to the A register </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+    <tr><td class="paramname">regValue</td><td>Register/memory location data to be subtracted to A register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
 </div>
 </div>
 <a id="a99413e16dc2b7cfc5028794c4af09348"></a>
@@ -1687,6 +2130,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Decrement memory location. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">loc</td><td>memory address </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
 </div>
 </div>
 <a id="a6d31f46628215c7a65041774e17b92f5"></a>
@@ -1714,6 +2167,92 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Increment memory location. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">loc</td><td>memory address </td></tr>
+    <tr><td class="paramname">flagReg</td><td>Pointer to the flag register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
+</div>
+</div>
+<a id="a17360a303ef8d946cb40a923502aef53"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a17360a303ef8d946cb40a923502aef53">&#9670;&nbsp;</a></span>vResetBit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vResetBit </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>bit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Resets a bit in a register/memory location. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Register/memory location </td></tr>
+    <tr><td class="paramname">bit</td><td>The bit to be reset (0 - 7) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
+</div>
+</div>
+<a id="a302bb6703664648619ebce9fd3d193f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a302bb6703664648619ebce9fd3d193f7">&#9670;&nbsp;</a></span>vSetBit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void vSetBit </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t *&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>bit</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Sets a bit in a register/memory location. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>Register/memory location </td></tr>
+    <tr><td class="paramname">bit</td><td>The bit to be set (0 - 7) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>

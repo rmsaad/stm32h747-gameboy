@@ -214,7 +214,7 @@ Error_Handler();
   vSetFrameBuffer();
   while (1)
   {
-	  vGBCPUboot();
+      vGBCPUStep();
 	  vGBPPUStep();
 	  //gbPAPUStep();
   }

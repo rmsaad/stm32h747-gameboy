@@ -103,22 +103,25 @@ $(document).ready(function(){initNavTree('gb_m_b_c_8h.html',''); initResizable()
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ac39507f64b0172202f846cea0a347fae"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gb_m_b_c_8h.html#ac39507f64b0172202f846cea0a347fae">gbMBCsetControllerType</a> (uint8_t code)</td></tr>
-<tr class="separator:ac39507f64b0172202f846cea0a347fae"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a14d38cde8e089d9239af453c710263d4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gb_m_b_c_8h.html#a14d38cde8e089d9239af453c710263d4">gbMBCreadBankX</a> (uint16_t address)</td></tr>
-<tr class="separator:a14d38cde8e089d9239af453c710263d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3a7853c30ed12cb66891cab54f7b165a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gb_m_b_c_8h.html#a3a7853c30ed12cb66891cab54f7b165a">gbMBCwrite</a> (uint16_t address, uint8_t data)</td></tr>
-<tr class="separator:a3a7853c30ed12cb66891cab54f7b165a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27afee853f0b4a522be68b48b81fbf5f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gb_m_b_c_8h.html#a27afee853f0b4a522be68b48b81fbf5f">vGBMBCsetControllerType</a> (uint8_t code)</td></tr>
+<tr class="memdesc:a27afee853f0b4a522be68b48b81fbf5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">sets the cartridge type for use in this file corresponding to data stored at the memory location 0x147  <a href="gb_m_b_c_8h.html#a27afee853f0b4a522be68b48b81fbf5f">More...</a><br /></td></tr>
+<tr class="separator:a27afee853f0b4a522be68b48b81fbf5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad49b9a9255e105b0fc77087a1e21dd25"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gb_m_b_c_8h.html#ad49b9a9255e105b0fc77087a1e21dd25">ucGBMBCreadBankX</a> (uint16_t address)</td></tr>
+<tr class="memdesc:ad49b9a9255e105b0fc77087a1e21dd25"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function will return data from a ROM location in the memory map depending on the MBC type.  <a href="gb_m_b_c_8h.html#ad49b9a9255e105b0fc77087a1e21dd25">More...</a><br /></td></tr>
+<tr class="separator:ad49b9a9255e105b0fc77087a1e21dd25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5c356822fc92d633ba8f9df5c3990a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gb_m_b_c_8h.html#ab5c356822fc92d633ba8f9df5c3990a1">vGBMBCwrite</a> (uint16_t address, uint8_t data)</td></tr>
+<tr class="memdesc:ab5c356822fc92d633ba8f9df5c3990a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Data is written to MBC register when the address falls in range 0x0000 to 0x7FFF.  <a href="gb_m_b_c_8h.html#ab5c356822fc92d633ba8f9df5c3990a1">More...</a><br /></td></tr>
+<tr class="separator:ab5c356822fc92d633ba8f9df5c3990a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a14d38cde8e089d9239af453c710263d4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a14d38cde8e089d9239af453c710263d4">&#9670;&nbsp;</a></span>gbMBCreadBankX()</h2>
+<a id="ad49b9a9255e105b0fc77087a1e21dd25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad49b9a9255e105b0fc77087a1e21dd25">&#9670;&nbsp;</a></span>ucGBMBCreadBankX()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t gbMBCreadBankX </td>
+          <td class="memname">uint8_t ucGBMBCreadBankX </td>
           <td>(</td>
           <td class="paramtype">uint16_t&#160;</td>
           <td class="paramname"><em>address</em></td><td>)</td>
@@ -127,16 +130,25 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>This function will return data from a ROM location in the memory map depending on the MBC type. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>memory map address </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>data stored at specified ROM address </dd></dl>
+
 </div>
 </div>
-<a id="ac39507f64b0172202f846cea0a347fae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac39507f64b0172202f846cea0a347fae">&#9670;&nbsp;</a></span>gbMBCsetControllerType()</h2>
+<a id="a27afee853f0b4a522be68b48b81fbf5f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27afee853f0b4a522be68b48b81fbf5f">&#9670;&nbsp;</a></span>vGBMBCsetControllerType()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void gbMBCsetControllerType </td>
+          <td class="memname">void vGBMBCsetControllerType </td>
           <td>(</td>
           <td class="paramtype">uint8_t&#160;</td>
           <td class="paramname"><em>code</em></td><td>)</td>
@@ -145,16 +157,25 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>sets the cartridge type for use in this file corresponding to data stored at the memory location 0x147 </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">code</td><td>data stored at memory location 0x147 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
 </div>
 </div>
-<a id="a3a7853c30ed12cb66891cab54f7b165a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3a7853c30ed12cb66891cab54f7b165a">&#9670;&nbsp;</a></span>gbMBCwrite()</h2>
+<a id="ab5c356822fc92d633ba8f9df5c3990a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab5c356822fc92d633ba8f9df5c3990a1">&#9670;&nbsp;</a></span>vGBMBCwrite()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void gbMBCwrite </td>
+          <td class="memname">void vGBMBCwrite </td>
           <td>(</td>
           <td class="paramtype">uint16_t&#160;</td>
           <td class="paramname"><em>address</em>, </td>
@@ -172,6 +193,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Data is written to MBC register when the address falls in range 0x0000 to 0x7FFF. </p>
+<p>When the range 0x0000 - 0x1FFF is written to with value 0x0A, the Gameboy external RAM is enabled. Any other value written to this range will result in the external RAM being disabled. When the range 0x2000 - 0x3FFF is written to, the lower 5 bits correspond to the switch-able ROM bank that read operation are to be read from. When the range 0x4000 - 0x5FFF is written to, depending on the mode it will either specify the top 2 bits of the ROM bank to be read from or it specify the current RAM bank. When the range falls between 0x6000 - 0x7FFF if the value 0 is written then ROM mode is selected and if the value 1 is written then RAM mode is selected. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">address</td><td>memory map address </td></tr>
+    <tr><td class="paramname">data</td><td>byte to be written to MBC register </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>

@@ -1,5 +1,10 @@
 \hypertarget{gbmemory_8c}{}\doxysection{Core/\+Src/gbmemory.c File Reference}
 \label{gbmemory_8c}\index{Core/Src/gbmemory.c@{Core/Src/gbmemory.c}}
+
+
+\+: Gameboy Memory Functionality This file Handles all reads and Writes to Locations in memory map.  
+
+
 {\ttfamily \#include $<$string.\+h$>$}\newline
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}gbfunctions.\+h\char`\"{}}\newline
@@ -9,30 +14,30 @@
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+uint8\+\_\+t \mbox{\hyperlink{gbmemory_8c_a20fa95ae35619a6f09211eb11b400909}{prv\+GBMemory\+Joypad}} ()
+\begin{DoxyCompactList}\small\item\em Handles any writes to the Joypad Register 0x\+FF00. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8c_aa60061694f25f3c06249a4174c561b3a}{v\+GBMemory\+Set\+OP}} (uint8\+\_\+t op)
 \begin{DoxyCompactList}\small\item\em Set the current opcode for Debug Printing to LCD screen. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8c_af37d720a8bbc5463b44ff37d0d5ff76d}{v\+GBMemory\+Init}} ()
 \begin{DoxyCompactList}\small\item\em Initialize certain Gameboy registers with their correct information. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8c_a36e47a1e1bab8cb1cbe6050bdcc8b114}{v\+GBMemory\+Load}} (const void $\ast$data, uint32\+\_\+t bytes)
 \begin{DoxyCompactList}\small\item\em Loads data of amount bytes into Memory maps from mem.\+ram\mbox{[}0\mbox{]} to mem.\+ram\mbox{[}bytes -\/ 1\mbox{]}. \end{DoxyCompactList}\item 
-uint8\+\_\+t \mbox{\hyperlink{gbmemory_8c_a2be37591fc93329042b7abe9310e841e}{v\+GBMemory\+Joypad}} ()
-\begin{DoxyCompactList}\small\item\em Handles any writes to the Joypad Register 0x\+FF00. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8c_a13d1367ada996283c71324bcfe8c1e3e}{v\+GBMemory\+Write}} (uint16\+\_\+t address, uint8\+\_\+t data)
-\item 
+\begin{DoxyCompactList}\small\item\em Write data to location in memory map specified by address variable. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8c_a1fa255c05819bee1cef2a587841ba9f0}{v\+GBMemory\+Write\+Short}} (uint16\+\_\+t address, uint16\+\_\+t data)
-\item 
+\begin{DoxyCompactList}\small\item\em Write a short value to location in the memory map. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8c_a88bea6ceedc1e06c9c25290a1e477d0b}{v\+GBMemory\+Set\+Bit}} (uint16\+\_\+t address, uint8\+\_\+t bit)
-\item 
+\begin{DoxyCompactList}\small\item\em Set a bit in location specified by memory map address. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8c_ae323c2e5d359578d03e43281ff20d9ed}{v\+GBMemory\+Reset\+Bit}} (uint16\+\_\+t address, uint8\+\_\+t bit)
-\item 
+\begin{DoxyCompactList}\small\item\em Reset a bit in location specified by memory map address. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbmemory_8c_a683a109d784f5984037d1484e7d3cc33}{uc\+GBMemory\+Read}} (uint16\+\_\+t address)
-\item 
+\begin{DoxyCompactList}\small\item\em Read from location in memory map. \end{DoxyCompactList}\item 
 uint16\+\_\+t \mbox{\hyperlink{gbmemory_8c_ab2a72e369d5605ff01fdae3218ebd550}{us\+GBMemory\+Read\+Short}} (uint16\+\_\+t address)
-\item 
+\begin{DoxyCompactList}\small\item\em Read from 2 sequential locations in memory map. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8c_a5c4058a1ce58dac324455bcece180ef2}{v\+GBMemory\+Inc\+Timers}} (uint8\+\_\+t duration\+Mcycle)
-\item 
+\begin{DoxyCompactList}\small\item\em Ticks all timers currently in use. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8c_a285b9be84f8c4b08b2a307aab5b90c5a}{v\+GBMemory\+Print}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Print out all the Register value information to the Screen for debugging purposes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -40,17 +45,17 @@ void \mbox{\hyperlink{gbmemory_8c_a285b9be84f8c4b08b2a307aab5b90c5a}{v\+GBMemory
 \item 
 \mbox{\hyperlink{structmemory}{memory}} \mbox{\hyperlink{gbmemory_8c_a6135654033ccfa705ae4c5fde74eda02}{mem}}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbmemory_8c_a21010386b1a8ee68b7c4db86723d8e40}{current\+\_\+op}}
+uint8\+\_\+t \mbox{\hyperlink{gbmemory_8c_ae9d8d95f91f42a98d93ac34191e76165}{uc\+Current\+OP}}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbmemory_8c_acd3fa3efff4d8c67b73513d2b05cc08f}{joypad\+SELdir}}
+uint8\+\_\+t \mbox{\hyperlink{gbmemory_8c_a56696d8a6aafd57adf58d44aba3419c6}{uc\+Joypad\+SELdir}}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbmemory_8c_ae8485843021908f44426e095bbbdf942}{joypad\+SELbut}}
+uint8\+\_\+t \mbox{\hyperlink{gbmemory_8c_a75029e65bb6e8e79250afa5c110613a9}{uc\+Joypad\+SELbut}}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbmemory_8c_a880544c7d3d22894f31088cb36ab2a46}{timer\+Stop\+Start}}
+uint8\+\_\+t \mbox{\hyperlink{gbmemory_8c_a20ec0ef0da3287bc9b59c8e7a6e9c50e}{uc\+Timer\+Stop\+Start}}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbmemory_8c_a802aee4514070d1540ac9c9854b0a43b}{clock\+Mode}}
+uint8\+\_\+t \mbox{\hyperlink{gbmemory_8c_ad4adaf5e7ed4b00d4a2e320a7b9ec1d7}{uc\+Clock\+Mode}}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbmemory_8c_a0bfe7898f6fbed4f677b2c9a89f433aa}{data\+Trans\+Flag}} = 0
+uint8\+\_\+t \mbox{\hyperlink{gbmemory_8c_a61a0842e4ccb632739f8909d693e69aa}{uc\+Data\+Trans\+Flag}} = 0
 \item 
 ADC\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{gbmemory_8c_a22b804736f5648d52f639b2647d4ed13}{hadc1}}
 \item 
@@ -58,59 +63,23 @@ ADC\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{gbmemory_8c_a984624bcf28d1b2fb7e4e
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+\+: Gameboy Memory Functionality This file Handles all reads and Writes to Locations in memory map. 
+
+\begin{DoxyAuthor}{Author}
+\+: Rami 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+\+: Mar 28, 2021 
+\end{DoxyDate}
+
+
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{gbmemory_8c_a683a109d784f5984037d1484e7d3cc33}\label{gbmemory_8c_a683a109d784f5984037d1484e7d3cc33}} 
-\index{gbmemory.c@{gbmemory.c}!ucGBMemoryRead@{ucGBMemoryRead}}
-\index{ucGBMemoryRead@{ucGBMemoryRead}!gbmemory.c@{gbmemory.c}}
-\doxysubsubsection{\texorpdfstring{ucGBMemoryRead()}{ucGBMemoryRead()}}
-{\footnotesize\ttfamily uint8\+\_\+t uc\+GBMemory\+Read (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})}
-
-
-\begin{DoxyParams}{Parameters}
-{\em address} & \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-
-\end{DoxyReturn}
-\mbox{\Hypertarget{gbmemory_8c_ab2a72e369d5605ff01fdae3218ebd550}\label{gbmemory_8c_ab2a72e369d5605ff01fdae3218ebd550}} 
-\index{gbmemory.c@{gbmemory.c}!usGBMemoryReadShort@{usGBMemoryReadShort}}
-\index{usGBMemoryReadShort@{usGBMemoryReadShort}!gbmemory.c@{gbmemory.c}}
-\doxysubsubsection{\texorpdfstring{usGBMemoryReadShort()}{usGBMemoryReadShort()}}
-{\footnotesize\ttfamily uint16\+\_\+t us\+GBMemory\+Read\+Short (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})}
-
-
-\begin{DoxyParams}{Parameters}
-{\em address} & \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-
-\end{DoxyReturn}
-\mbox{\Hypertarget{gbmemory_8c_a5c4058a1ce58dac324455bcece180ef2}\label{gbmemory_8c_a5c4058a1ce58dac324455bcece180ef2}} 
-\index{gbmemory.c@{gbmemory.c}!vGBMemoryIncTimers@{vGBMemoryIncTimers}}
-\index{vGBMemoryIncTimers@{vGBMemoryIncTimers}!gbmemory.c@{gbmemory.c}}
-\doxysubsubsection{\texorpdfstring{vGBMemoryIncTimers()}{vGBMemoryIncTimers()}}
-{\footnotesize\ttfamily void v\+GBMemory\+Inc\+Timers (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{duration\+Mcycle }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{gbmemory_8c_af37d720a8bbc5463b44ff37d0d5ff76d}\label{gbmemory_8c_af37d720a8bbc5463b44ff37d0d5ff76d}} 
-\index{gbmemory.c@{gbmemory.c}!vGBMemoryInit@{vGBMemoryInit}}
-\index{vGBMemoryInit@{vGBMemoryInit}!gbmemory.c@{gbmemory.c}}
-\doxysubsubsection{\texorpdfstring{vGBMemoryInit()}{vGBMemoryInit()}}
-{\footnotesize\ttfamily void v\+GBMemory\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Initialize certain Gameboy registers with their correct information. 
-
-At start up the Joypad Register should read 0x\+CF to denote that no Joypad buttons are being pressed. The IF register should read 0x\+E1 to set the appropriate flags. \begin{DoxyReturn}{Returns}
-Nothing 
-\end{DoxyReturn}
-\mbox{\Hypertarget{gbmemory_8c_a2be37591fc93329042b7abe9310e841e}\label{gbmemory_8c_a2be37591fc93329042b7abe9310e841e}} 
-\index{gbmemory.c@{gbmemory.c}!vGBMemoryJoypad@{vGBMemoryJoypad}}
-\index{vGBMemoryJoypad@{vGBMemoryJoypad}!gbmemory.c@{gbmemory.c}}
-\doxysubsubsection{\texorpdfstring{vGBMemoryJoypad()}{vGBMemoryJoypad()}}
-{\footnotesize\ttfamily uint8\+\_\+t v\+GBMemory\+Joypad (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{gbmemory_8c_a20fa95ae35619a6f09211eb11b400909}\label{gbmemory_8c_a20fa95ae35619a6f09211eb11b400909}} 
+\index{gbmemory.c@{gbmemory.c}!prvGBMemoryJoypad@{prvGBMemoryJoypad}}
+\index{prvGBMemoryJoypad@{prvGBMemoryJoypad}!gbmemory.c@{gbmemory.c}}
+\doxysubsubsection{\texorpdfstring{prvGBMemoryJoypad()}{prvGBMemoryJoypad()}}
+{\footnotesize\ttfamily uint8\+\_\+t prv\+GBMemory\+Joypad (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
@@ -122,6 +91,73 @@ Handles any writes to the Joypad Register 0x\+FF00.
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
+Joypad Keys pressed 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbmemory_8c_a683a109d784f5984037d1484e7d3cc33}\label{gbmemory_8c_a683a109d784f5984037d1484e7d3cc33}} 
+\index{gbmemory.c@{gbmemory.c}!ucGBMemoryRead@{ucGBMemoryRead}}
+\index{ucGBMemoryRead@{ucGBMemoryRead}!gbmemory.c@{gbmemory.c}}
+\doxysubsubsection{\texorpdfstring{ucGBMemoryRead()}{ucGBMemoryRead()}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+GBMemory\+Read (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+
+
+Read from location in memory map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & memory map address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+data byte of data located in memory map 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbmemory_8c_ab2a72e369d5605ff01fdae3218ebd550}\label{gbmemory_8c_ab2a72e369d5605ff01fdae3218ebd550}} 
+\index{gbmemory.c@{gbmemory.c}!usGBMemoryReadShort@{usGBMemoryReadShort}}
+\index{usGBMemoryReadShort@{usGBMemoryReadShort}!gbmemory.c@{gbmemory.c}}
+\doxysubsubsection{\texorpdfstring{usGBMemoryReadShort()}{usGBMemoryReadShort()}}
+{\footnotesize\ttfamily uint16\+\_\+t us\+GBMemory\+Read\+Short (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})}
+
+
+
+Read from 2 sequential locations in memory map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & memory map address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Short information of data in memory map 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbmemory_8c_a5c4058a1ce58dac324455bcece180ef2}\label{gbmemory_8c_a5c4058a1ce58dac324455bcece180ef2}} 
+\index{gbmemory.c@{gbmemory.c}!vGBMemoryIncTimers@{vGBMemoryIncTimers}}
+\index{vGBMemoryIncTimers@{vGBMemoryIncTimers}!gbmemory.c@{gbmemory.c}}
+\doxysubsubsection{\texorpdfstring{vGBMemoryIncTimers()}{vGBMemoryIncTimers()}}
+{\footnotesize\ttfamily void v\+GBMemory\+Inc\+Timers (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{duration\+Mcycle }\end{DoxyParamCaption})}
+
+
+
+Ticks all timers currently in use. 
+
+Ticks the DIV and possibly the TIMA timers at their correct Hertz 
+\begin{DoxyParams}{Parameters}
+{\em duration\+Mcycle} & Amount of T states that have passed executing the current instruction. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbmemory_8c_af37d720a8bbc5463b44ff37d0d5ff76d}\label{gbmemory_8c_af37d720a8bbc5463b44ff37d0d5ff76d}} 
+\index{gbmemory.c@{gbmemory.c}!vGBMemoryInit@{vGBMemoryInit}}
+\index{vGBMemoryInit@{vGBMemoryInit}!gbmemory.c@{gbmemory.c}}
+\doxysubsubsection{\texorpdfstring{vGBMemoryInit()}{vGBMemoryInit()}}
+{\footnotesize\ttfamily void v\+GBMemory\+Init (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initialize certain Gameboy registers with their correct information. 
+
+At start up the Joypad Register should read 0x\+CF to denote that no Joypad buttons are being pressed. The IF register should read 0x\+E1 to set the appropriate flags. \begin{DoxyReturn}{Returns}
 Nothing 
 \end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8c_a36e47a1e1bab8cb1cbe6050bdcc8b114}\label{gbmemory_8c_a36e47a1e1bab8cb1cbe6050bdcc8b114}} 
@@ -150,6 +186,13 @@ Nothing
 \doxysubsubsection{\texorpdfstring{vGBMemoryPrint()}{vGBMemoryPrint()}}
 {\footnotesize\ttfamily void v\+GBMemory\+Print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Print out all the Register value information to the Screen for debugging purposes. 
+
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8c_ae323c2e5d359578d03e43281ff20d9ed}\label{gbmemory_8c_ae323c2e5d359578d03e43281ff20d9ed}} 
 \index{gbmemory.c@{gbmemory.c}!vGBMemoryResetBit@{vGBMemoryResetBit}}
 \index{vGBMemoryResetBit@{vGBMemoryResetBit}!gbmemory.c@{gbmemory.c}}
@@ -157,12 +200,19 @@ Nothing
 {\footnotesize\ttfamily void v\+GBMemory\+Reset\+Bit (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
 
 
+
+Reset a bit in location specified by memory map address. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em address} & \\
+{\em address} & memory map address \\
 \hline
-{\em bit} & \\
+{\em bit} & which bit to reset (0 -\/ 7) \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8c_a88bea6ceedc1e06c9c25290a1e477d0b}\label{gbmemory_8c_a88bea6ceedc1e06c9c25290a1e477d0b}} 
 \index{gbmemory.c@{gbmemory.c}!vGBMemorySetBit@{vGBMemorySetBit}}
 \index{vGBMemorySetBit@{vGBMemorySetBit}!gbmemory.c@{gbmemory.c}}
@@ -170,12 +220,19 @@ Nothing
 {\footnotesize\ttfamily void v\+GBMemory\+Set\+Bit (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
 
 
+
+Set a bit in location specified by memory map address. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em address} & \\
+{\em address} & memory map address \\
 \hline
-{\em bit} & \\
+{\em bit} & which bit to set (0 -\/ 7) \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8c_aa60061694f25f3c06249a4174c561b3a}\label{gbmemory_8c_aa60061694f25f3c06249a4174c561b3a}} 
 \index{gbmemory.c@{gbmemory.c}!vGBMemorySetOP@{vGBMemorySetOP}}
 \index{vGBMemorySetOP@{vGBMemorySetOP}!gbmemory.c@{gbmemory.c}}
@@ -201,12 +258,19 @@ Nothing
 {\footnotesize\ttfamily void v\+GBMemory\+Write (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
 
 
+
+Write data to location in memory map specified by address variable. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em address} & \\
+{\em address} & memory map address \\
 \hline
-{\em data} & \\
+{\em data} & byte of data \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8c_a1fa255c05819bee1cef2a587841ba9f0}\label{gbmemory_8c_a1fa255c05819bee1cef2a587841ba9f0}} 
 \index{gbmemory.c@{gbmemory.c}!vGBMemoryWriteShort@{vGBMemoryWriteShort}}
 \index{vGBMemoryWriteShort@{vGBMemoryWriteShort}!gbmemory.c@{gbmemory.c}}
@@ -215,25 +279,21 @@ Nothing
 
 
 
+Write a short value to location in the memory map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & memory map address \\
+\hline
+{\em data} & 2 bytes of data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+
+
 \doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{gbmemory_8c_a802aee4514070d1540ac9c9854b0a43b}\label{gbmemory_8c_a802aee4514070d1540ac9c9854b0a43b}} 
-\index{gbmemory.c@{gbmemory.c}!clockMode@{clockMode}}
-\index{clockMode@{clockMode}!gbmemory.c@{gbmemory.c}}
-\doxysubsubsection{\texorpdfstring{clockMode}{clockMode}}
-{\footnotesize\ttfamily uint8\+\_\+t clock\+Mode}
-
-\mbox{\Hypertarget{gbmemory_8c_a21010386b1a8ee68b7c4db86723d8e40}\label{gbmemory_8c_a21010386b1a8ee68b7c4db86723d8e40}} 
-\index{gbmemory.c@{gbmemory.c}!current\_op@{current\_op}}
-\index{current\_op@{current\_op}!gbmemory.c@{gbmemory.c}}
-\doxysubsubsection{\texorpdfstring{current\_op}{current\_op}}
-{\footnotesize\ttfamily uint8\+\_\+t current\+\_\+op}
-
-\mbox{\Hypertarget{gbmemory_8c_a0bfe7898f6fbed4f677b2c9a89f433aa}\label{gbmemory_8c_a0bfe7898f6fbed4f677b2c9a89f433aa}} 
-\index{gbmemory.c@{gbmemory.c}!dataTransFlag@{dataTransFlag}}
-\index{dataTransFlag@{dataTransFlag}!gbmemory.c@{gbmemory.c}}
-\doxysubsubsection{\texorpdfstring{dataTransFlag}{dataTransFlag}}
-{\footnotesize\ttfamily uint8\+\_\+t data\+Trans\+Flag = 0}
-
 \mbox{\Hypertarget{gbmemory_8c_a22b804736f5648d52f639b2647d4ed13}\label{gbmemory_8c_a22b804736f5648d52f639b2647d4ed13}} 
 \index{gbmemory.c@{gbmemory.c}!hadc1@{hadc1}}
 \index{hadc1@{hadc1}!gbmemory.c@{gbmemory.c}}
@@ -245,18 +305,6 @@ Nothing
 \index{hadc3@{hadc3}!gbmemory.c@{gbmemory.c}}
 \doxysubsubsection{\texorpdfstring{hadc3}{hadc3}}
 {\footnotesize\ttfamily ADC\+\_\+\+Handle\+Type\+Def hadc3\hspace{0.3cm}{\ttfamily [extern]}}
-
-\mbox{\Hypertarget{gbmemory_8c_ae8485843021908f44426e095bbbdf942}\label{gbmemory_8c_ae8485843021908f44426e095bbbdf942}} 
-\index{gbmemory.c@{gbmemory.c}!joypadSELbut@{joypadSELbut}}
-\index{joypadSELbut@{joypadSELbut}!gbmemory.c@{gbmemory.c}}
-\doxysubsubsection{\texorpdfstring{joypadSELbut}{joypadSELbut}}
-{\footnotesize\ttfamily uint8\+\_\+t joypad\+SELbut}
-
-\mbox{\Hypertarget{gbmemory_8c_acd3fa3efff4d8c67b73513d2b05cc08f}\label{gbmemory_8c_acd3fa3efff4d8c67b73513d2b05cc08f}} 
-\index{gbmemory.c@{gbmemory.c}!joypadSELdir@{joypadSELdir}}
-\index{joypadSELdir@{joypadSELdir}!gbmemory.c@{gbmemory.c}}
-\doxysubsubsection{\texorpdfstring{joypadSELdir}{joypadSELdir}}
-{\footnotesize\ttfamily uint8\+\_\+t joypad\+SELdir}
 
 \mbox{\Hypertarget{gbmemory_8c_a6135654033ccfa705ae4c5fde74eda02}\label{gbmemory_8c_a6135654033ccfa705ae4c5fde74eda02}} 
 \index{gbmemory.c@{gbmemory.c}!mem@{mem}}
@@ -270,9 +318,39 @@ Nothing
 \doxysubsubsection{\texorpdfstring{reg}{reg}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structregisters}{registers}} reg}
 
-\mbox{\Hypertarget{gbmemory_8c_a880544c7d3d22894f31088cb36ab2a46}\label{gbmemory_8c_a880544c7d3d22894f31088cb36ab2a46}} 
-\index{gbmemory.c@{gbmemory.c}!timerStopStart@{timerStopStart}}
-\index{timerStopStart@{timerStopStart}!gbmemory.c@{gbmemory.c}}
-\doxysubsubsection{\texorpdfstring{timerStopStart}{timerStopStart}}
-{\footnotesize\ttfamily uint8\+\_\+t timer\+Stop\+Start}
+\mbox{\Hypertarget{gbmemory_8c_ad4adaf5e7ed4b00d4a2e320a7b9ec1d7}\label{gbmemory_8c_ad4adaf5e7ed4b00d4a2e320a7b9ec1d7}} 
+\index{gbmemory.c@{gbmemory.c}!ucClockMode@{ucClockMode}}
+\index{ucClockMode@{ucClockMode}!gbmemory.c@{gbmemory.c}}
+\doxysubsubsection{\texorpdfstring{ucClockMode}{ucClockMode}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+Clock\+Mode}
+
+\mbox{\Hypertarget{gbmemory_8c_ae9d8d95f91f42a98d93ac34191e76165}\label{gbmemory_8c_ae9d8d95f91f42a98d93ac34191e76165}} 
+\index{gbmemory.c@{gbmemory.c}!ucCurrentOP@{ucCurrentOP}}
+\index{ucCurrentOP@{ucCurrentOP}!gbmemory.c@{gbmemory.c}}
+\doxysubsubsection{\texorpdfstring{ucCurrentOP}{ucCurrentOP}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+Current\+OP}
+
+\mbox{\Hypertarget{gbmemory_8c_a61a0842e4ccb632739f8909d693e69aa}\label{gbmemory_8c_a61a0842e4ccb632739f8909d693e69aa}} 
+\index{gbmemory.c@{gbmemory.c}!ucDataTransFlag@{ucDataTransFlag}}
+\index{ucDataTransFlag@{ucDataTransFlag}!gbmemory.c@{gbmemory.c}}
+\doxysubsubsection{\texorpdfstring{ucDataTransFlag}{ucDataTransFlag}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+Data\+Trans\+Flag = 0}
+
+\mbox{\Hypertarget{gbmemory_8c_a75029e65bb6e8e79250afa5c110613a9}\label{gbmemory_8c_a75029e65bb6e8e79250afa5c110613a9}} 
+\index{gbmemory.c@{gbmemory.c}!ucJoypadSELbut@{ucJoypadSELbut}}
+\index{ucJoypadSELbut@{ucJoypadSELbut}!gbmemory.c@{gbmemory.c}}
+\doxysubsubsection{\texorpdfstring{ucJoypadSELbut}{ucJoypadSELbut}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+Joypad\+SELbut}
+
+\mbox{\Hypertarget{gbmemory_8c_a56696d8a6aafd57adf58d44aba3419c6}\label{gbmemory_8c_a56696d8a6aafd57adf58d44aba3419c6}} 
+\index{gbmemory.c@{gbmemory.c}!ucJoypadSELdir@{ucJoypadSELdir}}
+\index{ucJoypadSELdir@{ucJoypadSELdir}!gbmemory.c@{gbmemory.c}}
+\doxysubsubsection{\texorpdfstring{ucJoypadSELdir}{ucJoypadSELdir}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+Joypad\+SELdir}
+
+\mbox{\Hypertarget{gbmemory_8c_a20ec0ef0da3287bc9b59c8e7a6e9c50e}\label{gbmemory_8c_a20ec0ef0da3287bc9b59c8e7a6e9c50e}} 
+\index{gbmemory.c@{gbmemory.c}!ucTimerStopStart@{ucTimerStopStart}}
+\index{ucTimerStopStart@{ucTimerStopStart}!gbmemory.c@{gbmemory.c}}
+\doxysubsubsection{\texorpdfstring{ucTimerStopStart}{ucTimerStopStart}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+Timer\+Stop\+Start}
 

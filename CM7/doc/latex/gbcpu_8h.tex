@@ -20,16 +20,8 @@ struct \mbox{\hyperlink{struct_assembly___instr}{Assembly\+\_\+\+Instr}}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{gbcpu_8h_a960a91350e7e155d24794c6e62fd139a}{v\+GBCPUreset}} ()
-\item 
-void \mbox{\hyperlink{gbcpu_8h_a5a2a7acf3888505856cdea35b8cea29e}{v\+GBCPUboot}} ()
-\item 
-void \mbox{\hyperlink{gbcpu_8h_afdff24ca2343b342a41a4aa48286839c}{v\+GBCPUTest\+Instr}} (uint8\+\_\+t opcode)
-\item 
-void \mbox{\hyperlink{gbcpu_8h_a1287756051fb8c1e853804ee9088dd0d}{v\+GBCPUinstr}} (uint8\+\_\+t opcode)
-\item 
-void \mbox{\hyperlink{gbcpu_8h_ad7321a705dfcb15e2f273551dc839594}{v\+Stopped\+Flag}} (uint8\+\_\+t condition)
-\item 
+void \mbox{\hyperlink{gbcpu_8h_a520296d9ceac5906d056ea0b5646d40c}{v\+GBCPUStep}} ()
+\begin{DoxyCompactList}\small\item\em executes 1 CPU instruction \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbcpu_8h_a949dd2aaef61ee9dc6b76eea7fc37a8d}{uc\+Get\+Tstate}} ()
 \end{DoxyCompactItemize}
 
@@ -68,33 +60,19 @@ uint8\+\_\+t \mbox{\hyperlink{gbcpu_8h_a949dd2aaef61ee9dc6b76eea7fc37a8d}{uc\+Ge
 \doxysubsubsection{\texorpdfstring{ucGetTstate()}{ucGetTstate()}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+Get\+Tstate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gbcpu_8h_a5a2a7acf3888505856cdea35b8cea29e}\label{gbcpu_8h_a5a2a7acf3888505856cdea35b8cea29e}} 
-\index{gbcpu.h@{gbcpu.h}!vGBCPUboot@{vGBCPUboot}}
-\index{vGBCPUboot@{vGBCPUboot}!gbcpu.h@{gbcpu.h}}
-\doxysubsubsection{\texorpdfstring{vGBCPUboot()}{vGBCPUboot()}}
-{\footnotesize\ttfamily void v\+GBCPUboot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\begin{DoxyReturn}{Returns}
+amount of T-\/states that the current instruction takes to execute 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbcpu_8h_a520296d9ceac5906d056ea0b5646d40c}\label{gbcpu_8h_a520296d9ceac5906d056ea0b5646d40c}} 
+\index{gbcpu.h@{gbcpu.h}!vGBCPUStep@{vGBCPUStep}}
+\index{vGBCPUStep@{vGBCPUStep}!gbcpu.h@{gbcpu.h}}
+\doxysubsubsection{\texorpdfstring{vGBCPUStep()}{vGBCPUStep()}}
+{\footnotesize\ttfamily void v\+GBCPUStep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gbcpu_8h_a1287756051fb8c1e853804ee9088dd0d}\label{gbcpu_8h_a1287756051fb8c1e853804ee9088dd0d}} 
-\index{gbcpu.h@{gbcpu.h}!vGBCPUinstr@{vGBCPUinstr}}
-\index{vGBCPUinstr@{vGBCPUinstr}!gbcpu.h@{gbcpu.h}}
-\doxysubsubsection{\texorpdfstring{vGBCPUinstr()}{vGBCPUinstr()}}
-{\footnotesize\ttfamily void v\+GBCPUinstr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{opcode }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gbcpu_8h_a960a91350e7e155d24794c6e62fd139a}\label{gbcpu_8h_a960a91350e7e155d24794c6e62fd139a}} 
-\index{gbcpu.h@{gbcpu.h}!vGBCPUreset@{vGBCPUreset}}
-\index{vGBCPUreset@{vGBCPUreset}!gbcpu.h@{gbcpu.h}}
-\doxysubsubsection{\texorpdfstring{vGBCPUreset()}{vGBCPUreset()}}
-{\footnotesize\ttfamily void v\+GBCPUreset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gbcpu_8h_afdff24ca2343b342a41a4aa48286839c}\label{gbcpu_8h_afdff24ca2343b342a41a4aa48286839c}} 
-\index{gbcpu.h@{gbcpu.h}!vGBCPUTestInstr@{vGBCPUTestInstr}}
-\index{vGBCPUTestInstr@{vGBCPUTestInstr}!gbcpu.h@{gbcpu.h}}
-\doxysubsubsection{\texorpdfstring{vGBCPUTestInstr()}{vGBCPUTestInstr()}}
-{\footnotesize\ttfamily void v\+GBCPUTest\+Instr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{opcode }\end{DoxyParamCaption})}
+executes 1 CPU instruction 
 
-\mbox{\Hypertarget{gbcpu_8h_ad7321a705dfcb15e2f273551dc839594}\label{gbcpu_8h_ad7321a705dfcb15e2f273551dc839594}} 
-\index{gbcpu.h@{gbcpu.h}!vStoppedFlag@{vStoppedFlag}}
-\index{vStoppedFlag@{vStoppedFlag}!gbcpu.h@{gbcpu.h}}
-\doxysubsubsection{\texorpdfstring{vStoppedFlag()}{vStoppedFlag()}}
-{\footnotesize\ttfamily void v\+Stopped\+Flag (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{condition }\end{DoxyParamCaption})}
-
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}

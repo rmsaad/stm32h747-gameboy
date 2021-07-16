@@ -2,7 +2,7 @@
 \label{gbcpu_8c}\index{Core/Src/gbcpu.c@{Core/Src/gbcpu.c}}
 
 
-\+: Gameboy CPU Functionality  
+\+: Gameboy CPU Functionality This file emulates all functionality of the Gameboy CPU.  
 
 
 {\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
@@ -39,6 +39,8 @@
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{gbcpu_8c_a741c05dea8cf91b8a459ec1082499ce5}{prv\+GBCPUinstr}} (uint8\+\_\+t opcode)
+\begin{DoxyCompactList}\small\item\em fetch, decode and execute 1 CPU instruction, increment timers and jump to interrupt handler \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbcpu_8c_ab44b3caf80b209a4bdc0085ebd8cc441}{v\+NOP}} ()
 \item 
 void \mbox{\hyperlink{gbcpu_8c_ab2b9242a6076cbe04cb30ddc551b576f}{v\+LDs\+\_\+\+BC\+\_\+d16}} ()
@@ -1043,14 +1045,12 @@ void \mbox{\hyperlink{gbcpu_8c_aca01ad7eb52e28fde8510fda5ed96436}{v\+SET\+\_\+7\
 \item 
 uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_a949dd2aaef61ee9dc6b76eea7fc37a8d}{uc\+Get\+Tstate}} ()
 \item 
-void \mbox{\hyperlink{gbcpu_8c_a5a2a7acf3888505856cdea35b8cea29e}{v\+GBCPUboot}} ()
-\item 
-void \mbox{\hyperlink{gbcpu_8c_ad75cc9a2be9b4cbe1f40bb6533269cc7}{v\+GBCPUHalted\+Handler}} ()
-\item 
-void \mbox{\hyperlink{gbcpu_8c_a538b6f34008329f2099be9e1145b355d}{v\+GBCPUInterrupt\+Handler}} ()
-\item 
-void \mbox{\hyperlink{gbcpu_8c_a1287756051fb8c1e853804ee9088dd0d}{v\+GBCPUinstr}} (uint8\+\_\+t opcode)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{gbcpu_8c_a520296d9ceac5906d056ea0b5646d40c}{v\+GBCPUStep}} ()
+\begin{DoxyCompactList}\small\item\em executes 1 CPU instruction \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbcpu_8c_a0650327c8e20643d66dff18caf117c73}{prv\+GBCPUInterrupt\+Handler}} ()
+\begin{DoxyCompactList}\small\item\em If the corresponding IE and IF are both set then jump to the corresponding ISR. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbcpu_8c_afd4caa5ea86bb5fc4db403d13813b019}{prv\+GBCPUHalted\+Handler}} ()
+\begin{DoxyCompactList}\small\item\em If the CPU is halted and uc\+Interrupt\+Master\+Enable is not set, then this function will unhalt the CPU if both IE and IF flags are set without jumping to the ISR. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -1062,25 +1062,15 @@ uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_a3ace942a73e671a89d3aea57e40f2bc4}{uc\+In
 \item 
 uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_a512aecfd902ad0c01faa6010ad2dbd86}{uc\+One\+Cycle\+Interrupt\+Delay}} = 0
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_a64bcc4ed5b8582b1666991d8e2878b24}{custom\+Duration}} = 0
+uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_ab706b77a4702ef6cee67d5d6c4fff385}{uc\+Custom\+Duration}} = 0
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_a5dcc0710798e3bb9caf430a094a4519c}{t\+States}} = 0
+uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_a3b8f13303ac299892d726194c89e1473}{uct\+States}} = 0
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_a1566603abc21b7ca56597dfd176fa1ab}{print}} = 0
+uint16\+\_\+t \mbox{\hyperlink{gbcpu_8c_a75b45b7e6b25a50697172008205b9c23}{us\+Debug\+PC}} = 0x3\+F9
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_abea371f9030e15a5d2a4c181576833d8}{num}} = 0
-\item 
-uint64\+\_\+t \mbox{\hyperlink{gbcpu_8c_a43fd973d34ec63261ede63664440123f}{numcount}}
-\item 
-uint16\+\_\+t \mbox{\hyperlink{gbcpu_8c_af21633fb74a6aa87c93baf3caaa58864}{pc}} = 0x3\+F9
+uint8\+\_\+t \mbox{\hyperlink{gbcpu_8c_a4ab63ef82ad9df9abbd4b2aad30e0d85}{uc\+Memory\+Break\+Point\+Trigger}} = 0
 \item 
 \mbox{\hyperlink{structregisters}{registers}} \mbox{\hyperlink{gbcpu_8c_a2e53d7c3ec0bfaf12e47894c24a904da}{reg}}
-\item 
-const unsigned char \mbox{\hyperlink{gbcpu_8c_a2924be90c16cc87d35ff9f5e0e2f9e3a}{Alleyway\+\_\+gb}} \mbox{[}$\,$\mbox{]}
-\item 
-unsigned char \mbox{\hyperlink{gbcpu_8c_afe3ea09366bfb79efb01c0760cbd448e}{Tetris\+\_\+gb}} \mbox{[}$\,$\mbox{]}
-\item 
-unsigned char \mbox{\hyperlink{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+\_\+instrs\+\_\+gb}} \mbox{[}$\,$\mbox{]}
 \item 
 \mbox{\hyperlink{struct_assembly___instr}{Assembly\+\_\+\+Instr}} \mbox{\hyperlink{gbcpu_8c_a833969abf9a57333fb4ccb787818e980}{instructions}} \mbox{[}256\mbox{]}
 \item 
@@ -1089,7 +1079,7 @@ unsigned char \mbox{\hyperlink{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+
 
 
 \doxysubsection{Detailed Description}
-\+: Gameboy CPU Functionality 
+\+: Gameboy CPU Functionality This file emulates all functionality of the Gameboy CPU. 
 
 \begin{DoxyAuthor}{Author}
 \+: Rami 
@@ -1175,12 +1165,59 @@ unsigned char \mbox{\hyperlink{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+
 
 
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{gbcpu_8c_afd4caa5ea86bb5fc4db403d13813b019}\label{gbcpu_8c_afd4caa5ea86bb5fc4db403d13813b019}} 
+\index{gbcpu.c@{gbcpu.c}!prvGBCPUHaltedHandler@{prvGBCPUHaltedHandler}}
+\index{prvGBCPUHaltedHandler@{prvGBCPUHaltedHandler}!gbcpu.c@{gbcpu.c}}
+\doxysubsubsection{\texorpdfstring{prvGBCPUHaltedHandler()}{prvGBCPUHaltedHandler()}}
+{\footnotesize\ttfamily void prv\+GBCPUHalted\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+If the CPU is halted and uc\+Interrupt\+Master\+Enable is not set, then this function will unhalt the CPU if both IE and IF flags are set without jumping to the ISR. 
+
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbcpu_8c_a741c05dea8cf91b8a459ec1082499ce5}\label{gbcpu_8c_a741c05dea8cf91b8a459ec1082499ce5}} 
+\index{gbcpu.c@{gbcpu.c}!prvGBCPUinstr@{prvGBCPUinstr}}
+\index{prvGBCPUinstr@{prvGBCPUinstr}!gbcpu.c@{gbcpu.c}}
+\doxysubsubsection{\texorpdfstring{prvGBCPUinstr()}{prvGBCPUinstr()}}
+{\footnotesize\ttfamily void prv\+GBCPUinstr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{opcode }\end{DoxyParamCaption})}
+
+
+
+fetch, decode and execute 1 CPU instruction, increment timers and jump to interrupt handler 
+
+
+\begin{DoxyParams}{Parameters}
+{\em opcode} & Opcode of instruction to be executed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbcpu_8c_a0650327c8e20643d66dff18caf117c73}\label{gbcpu_8c_a0650327c8e20643d66dff18caf117c73}} 
+\index{gbcpu.c@{gbcpu.c}!prvGBCPUInterruptHandler@{prvGBCPUInterruptHandler}}
+\index{prvGBCPUInterruptHandler@{prvGBCPUInterruptHandler}!gbcpu.c@{gbcpu.c}}
+\doxysubsubsection{\texorpdfstring{prvGBCPUInterruptHandler()}{prvGBCPUInterruptHandler()}}
+{\footnotesize\ttfamily void prv\+GBCPUInterrupt\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+If the corresponding IE and IF are both set then jump to the corresponding ISR. 
+
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbcpu_8c_a949dd2aaef61ee9dc6b76eea7fc37a8d}\label{gbcpu_8c_a949dd2aaef61ee9dc6b76eea7fc37a8d}} 
 \index{gbcpu.c@{gbcpu.c}!ucGetTstate@{ucGetTstate}}
 \index{ucGetTstate@{ucGetTstate}!gbcpu.c@{gbcpu.c}}
 \doxysubsubsection{\texorpdfstring{ucGetTstate()}{ucGetTstate()}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+Get\+Tstate (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+\begin{DoxyReturn}{Returns}
+amount of T-\/states that the current instruction takes to execute 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbcpu_8c_a4e12efe64e9e2fe9611e8575c607335f}\label{gbcpu_8c_a4e12efe64e9e2fe9611e8575c607335f}} 
 \index{gbcpu.c@{gbcpu.c}!vADC\_A\_A@{vADC\_A\_A}}
 \index{vADC\_A\_A@{vADC\_A\_A}!gbcpu.c@{gbcpu.c}}
@@ -1943,30 +1980,19 @@ unsigned char \mbox{\hyperlink{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+
 \doxysubsubsection{\texorpdfstring{vEI()}{vEI()}}
 {\footnotesize\ttfamily void v\+EI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gbcpu_8c_a5a2a7acf3888505856cdea35b8cea29e}\label{gbcpu_8c_a5a2a7acf3888505856cdea35b8cea29e}} 
-\index{gbcpu.c@{gbcpu.c}!vGBCPUboot@{vGBCPUboot}}
-\index{vGBCPUboot@{vGBCPUboot}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{vGBCPUboot()}{vGBCPUboot()}}
-{\footnotesize\ttfamily void v\+GBCPUboot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{gbcpu_8c_a520296d9ceac5906d056ea0b5646d40c}\label{gbcpu_8c_a520296d9ceac5906d056ea0b5646d40c}} 
+\index{gbcpu.c@{gbcpu.c}!vGBCPUStep@{vGBCPUStep}}
+\index{vGBCPUStep@{vGBCPUStep}!gbcpu.c@{gbcpu.c}}
+\doxysubsubsection{\texorpdfstring{vGBCPUStep()}{vGBCPUStep()}}
+{\footnotesize\ttfamily void v\+GBCPUStep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gbcpu_8c_ad75cc9a2be9b4cbe1f40bb6533269cc7}\label{gbcpu_8c_ad75cc9a2be9b4cbe1f40bb6533269cc7}} 
-\index{gbcpu.c@{gbcpu.c}!vGBCPUHaltedHandler@{vGBCPUHaltedHandler}}
-\index{vGBCPUHaltedHandler@{vGBCPUHaltedHandler}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{vGBCPUHaltedHandler()}{vGBCPUHaltedHandler()}}
-{\footnotesize\ttfamily void v\+GBCPUHalted\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gbcpu_8c_a1287756051fb8c1e853804ee9088dd0d}\label{gbcpu_8c_a1287756051fb8c1e853804ee9088dd0d}} 
-\index{gbcpu.c@{gbcpu.c}!vGBCPUinstr@{vGBCPUinstr}}
-\index{vGBCPUinstr@{vGBCPUinstr}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{vGBCPUinstr()}{vGBCPUinstr()}}
-{\footnotesize\ttfamily void v\+GBCPUinstr (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{opcode }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gbcpu_8c_a538b6f34008329f2099be9e1145b355d}\label{gbcpu_8c_a538b6f34008329f2099be9e1145b355d}} 
-\index{gbcpu.c@{gbcpu.c}!vGBCPUInterruptHandler@{vGBCPUInterruptHandler}}
-\index{vGBCPUInterruptHandler@{vGBCPUInterruptHandler}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{vGBCPUInterruptHandler()}{vGBCPUInterruptHandler()}}
-{\footnotesize\ttfamily void v\+GBCPUInterrupt\+Handler (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+executes 1 CPU instruction 
 
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbcpu_8c_ac727d5bb0c4938c3779d1ecc3d807905}\label{gbcpu_8c_ac727d5bb0c4938c3779d1ecc3d807905}} 
 \index{gbcpu.c@{gbcpu.c}!vHALT@{vHALT}}
 \index{vHALT@{vHALT}!gbcpu.c@{gbcpu.c}}
@@ -4214,47 +4240,11 @@ unsigned char \mbox{\hyperlink{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+
 
 
 \doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{gbcpu_8c_a2924be90c16cc87d35ff9f5e0e2f9e3a}\label{gbcpu_8c_a2924be90c16cc87d35ff9f5e0e2f9e3a}} 
-\index{gbcpu.c@{gbcpu.c}!Alleyway\_gb@{Alleyway\_gb}}
-\index{Alleyway\_gb@{Alleyway\_gb}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{Alleyway\_gb}{Alleyway\_gb}}
-{\footnotesize\ttfamily const unsigned char Alleyway\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
-
-\mbox{\Hypertarget{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}\label{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}} 
-\index{gbcpu.c@{gbcpu.c}!cpu\_instrs\_gb@{cpu\_instrs\_gb}}
-\index{cpu\_instrs\_gb@{cpu\_instrs\_gb}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{cpu\_instrs\_gb}{cpu\_instrs\_gb}}
-{\footnotesize\ttfamily unsigned char cpu\+\_\+instrs\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
-
-\mbox{\Hypertarget{gbcpu_8c_a64bcc4ed5b8582b1666991d8e2878b24}\label{gbcpu_8c_a64bcc4ed5b8582b1666991d8e2878b24}} 
-\index{gbcpu.c@{gbcpu.c}!customDuration@{customDuration}}
-\index{customDuration@{customDuration}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{customDuration}{customDuration}}
-{\footnotesize\ttfamily uint8\+\_\+t custom\+Duration = 0}
-
 \mbox{\Hypertarget{gbcpu_8c_a833969abf9a57333fb4ccb787818e980}\label{gbcpu_8c_a833969abf9a57333fb4ccb787818e980}} 
 \index{gbcpu.c@{gbcpu.c}!instructions@{instructions}}
 \index{instructions@{instructions}!gbcpu.c@{gbcpu.c}}
 \doxysubsubsection{\texorpdfstring{instructions}{instructions}}
 {\footnotesize\ttfamily \mbox{\hyperlink{struct_assembly___instr}{Assembly\+\_\+\+Instr}} instructions\mbox{[}256\mbox{]}}
-
-\mbox{\Hypertarget{gbcpu_8c_abea371f9030e15a5d2a4c181576833d8}\label{gbcpu_8c_abea371f9030e15a5d2a4c181576833d8}} 
-\index{gbcpu.c@{gbcpu.c}!num@{num}}
-\index{num@{num}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{num}{num}}
-{\footnotesize\ttfamily uint8\+\_\+t num = 0}
-
-\mbox{\Hypertarget{gbcpu_8c_a43fd973d34ec63261ede63664440123f}\label{gbcpu_8c_a43fd973d34ec63261ede63664440123f}} 
-\index{gbcpu.c@{gbcpu.c}!numcount@{numcount}}
-\index{numcount@{numcount}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{numcount}{numcount}}
-{\footnotesize\ttfamily uint64\+\_\+t numcount}
-
-\mbox{\Hypertarget{gbcpu_8c_af21633fb74a6aa87c93baf3caaa58864}\label{gbcpu_8c_af21633fb74a6aa87c93baf3caaa58864}} 
-\index{gbcpu.c@{gbcpu.c}!pc@{pc}}
-\index{pc@{pc}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{pc}{pc}}
-{\footnotesize\ttfamily uint16\+\_\+t pc = 0x3\+F9}
 
 \mbox{\Hypertarget{gbcpu_8c_a5e025ff8cefad04d46522eea26732a04}\label{gbcpu_8c_a5e025ff8cefad04d46522eea26732a04}} 
 \index{gbcpu.c@{gbcpu.c}!prefix\_instructions@{prefix\_instructions}}
@@ -4262,29 +4252,17 @@ unsigned char \mbox{\hyperlink{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+
 \doxysubsubsection{\texorpdfstring{prefix\_instructions}{prefix\_instructions}}
 {\footnotesize\ttfamily \mbox{\hyperlink{struct_assembly___instr}{Assembly\+\_\+\+Instr}} prefix\+\_\+instructions\mbox{[}256\mbox{]}}
 
-\mbox{\Hypertarget{gbcpu_8c_a1566603abc21b7ca56597dfd176fa1ab}\label{gbcpu_8c_a1566603abc21b7ca56597dfd176fa1ab}} 
-\index{gbcpu.c@{gbcpu.c}!print@{print}}
-\index{print@{print}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{print}{print}}
-{\footnotesize\ttfamily uint8\+\_\+t print = 0}
-
 \mbox{\Hypertarget{gbcpu_8c_a2e53d7c3ec0bfaf12e47894c24a904da}\label{gbcpu_8c_a2e53d7c3ec0bfaf12e47894c24a904da}} 
 \index{gbcpu.c@{gbcpu.c}!reg@{reg}}
 \index{reg@{reg}!gbcpu.c@{gbcpu.c}}
 \doxysubsubsection{\texorpdfstring{reg}{reg}}
 {\footnotesize\ttfamily \mbox{\hyperlink{structregisters}{registers}} reg\hspace{0.3cm}{\ttfamily [extern]}}
 
-\mbox{\Hypertarget{gbcpu_8c_afe3ea09366bfb79efb01c0760cbd448e}\label{gbcpu_8c_afe3ea09366bfb79efb01c0760cbd448e}} 
-\index{gbcpu.c@{gbcpu.c}!Tetris\_gb@{Tetris\_gb}}
-\index{Tetris\_gb@{Tetris\_gb}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{Tetris\_gb}{Tetris\_gb}}
-{\footnotesize\ttfamily unsigned char Tetris\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
-
-\mbox{\Hypertarget{gbcpu_8c_a5dcc0710798e3bb9caf430a094a4519c}\label{gbcpu_8c_a5dcc0710798e3bb9caf430a094a4519c}} 
-\index{gbcpu.c@{gbcpu.c}!tStates@{tStates}}
-\index{tStates@{tStates}!gbcpu.c@{gbcpu.c}}
-\doxysubsubsection{\texorpdfstring{tStates}{tStates}}
-{\footnotesize\ttfamily uint8\+\_\+t t\+States = 0}
+\mbox{\Hypertarget{gbcpu_8c_ab706b77a4702ef6cee67d5d6c4fff385}\label{gbcpu_8c_ab706b77a4702ef6cee67d5d6c4fff385}} 
+\index{gbcpu.c@{gbcpu.c}!ucCustomDuration@{ucCustomDuration}}
+\index{ucCustomDuration@{ucCustomDuration}!gbcpu.c@{gbcpu.c}}
+\doxysubsubsection{\texorpdfstring{ucCustomDuration}{ucCustomDuration}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+Custom\+Duration = 0}
 
 \mbox{\Hypertarget{gbcpu_8c_a1454b651edb9341cc0188aaf23a14c5a}\label{gbcpu_8c_a1454b651edb9341cc0188aaf23a14c5a}} 
 \index{gbcpu.c@{gbcpu.c}!ucHALTED@{ucHALTED}}
@@ -4298,6 +4276,12 @@ unsigned char \mbox{\hyperlink{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+
 \doxysubsubsection{\texorpdfstring{ucInterruptMasterEnable}{ucInterruptMasterEnable}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+Interrupt\+Master\+Enable = 0}
 
+\mbox{\Hypertarget{gbcpu_8c_a4ab63ef82ad9df9abbd4b2aad30e0d85}\label{gbcpu_8c_a4ab63ef82ad9df9abbd4b2aad30e0d85}} 
+\index{gbcpu.c@{gbcpu.c}!ucMemoryBreakPointTrigger@{ucMemoryBreakPointTrigger}}
+\index{ucMemoryBreakPointTrigger@{ucMemoryBreakPointTrigger}!gbcpu.c@{gbcpu.c}}
+\doxysubsubsection{\texorpdfstring{ucMemoryBreakPointTrigger}{ucMemoryBreakPointTrigger}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+Memory\+Break\+Point\+Trigger = 0}
+
 \mbox{\Hypertarget{gbcpu_8c_a512aecfd902ad0c01faa6010ad2dbd86}\label{gbcpu_8c_a512aecfd902ad0c01faa6010ad2dbd86}} 
 \index{gbcpu.c@{gbcpu.c}!ucOneCycleInterruptDelay@{ucOneCycleInterruptDelay}}
 \index{ucOneCycleInterruptDelay@{ucOneCycleInterruptDelay}!gbcpu.c@{gbcpu.c}}
@@ -4309,4 +4293,16 @@ unsigned char \mbox{\hyperlink{gbcpu_8c_af89e88e043f6fd16b85f1bfe1f24c11f}{cpu\+
 \index{ucSTOPPED@{ucSTOPPED}!gbcpu.c@{gbcpu.c}}
 \doxysubsubsection{\texorpdfstring{ucSTOPPED}{ucSTOPPED}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+STOPPED = 0}
+
+\mbox{\Hypertarget{gbcpu_8c_a3b8f13303ac299892d726194c89e1473}\label{gbcpu_8c_a3b8f13303ac299892d726194c89e1473}} 
+\index{gbcpu.c@{gbcpu.c}!uctStates@{uctStates}}
+\index{uctStates@{uctStates}!gbcpu.c@{gbcpu.c}}
+\doxysubsubsection{\texorpdfstring{uctStates}{uctStates}}
+{\footnotesize\ttfamily uint8\+\_\+t uct\+States = 0}
+
+\mbox{\Hypertarget{gbcpu_8c_a75b45b7e6b25a50697172008205b9c23}\label{gbcpu_8c_a75b45b7e6b25a50697172008205b9c23}} 
+\index{gbcpu.c@{gbcpu.c}!usDebugPC@{usDebugPC}}
+\index{usDebugPC@{usDebugPC}!gbcpu.c@{gbcpu.c}}
+\doxysubsubsection{\texorpdfstring{usDebugPC}{usDebugPC}}
+{\footnotesize\ttfamily uint16\+\_\+t us\+Debug\+PC = 0x3\+F9}
 

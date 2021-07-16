@@ -101,7 +101,7 @@ $(document).ready(function(){initNavTree('gbcpu_8c.html',''); initResizable(); }
 </div><!--header-->
 <div class="contents">
 
-<p>: Gameboy CPU Functionality  
+<p>: Gameboy CPU Functionality This file emulates all functionality of the Gameboy CPU.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="gbcpu_8h_source.html">gbcpu.h</a>&quot;</code><br />
@@ -137,6 +137,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a741c05dea8cf91b8a459ec1082499ce5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a741c05dea8cf91b8a459ec1082499ce5">prvGBCPUinstr</a> (uint8_t opcode)</td></tr>
+<tr class="memdesc:a741c05dea8cf91b8a459ec1082499ce5"><td class="mdescLeft">&#160;</td><td class="mdescRight">fetch, decode and execute 1 CPU instruction, increment timers and jump to interrupt handler  <a href="gbcpu_8c.html#a741c05dea8cf91b8a459ec1082499ce5">More...</a><br /></td></tr>
+<tr class="separator:a741c05dea8cf91b8a459ec1082499ce5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab44b3caf80b209a4bdc0085ebd8cc441"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#ab44b3caf80b209a4bdc0085ebd8cc441">vNOP</a> ()</td></tr>
 <tr class="separator:ab44b3caf80b209a4bdc0085ebd8cc441"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab2b9242a6076cbe04cb30ddc551b576f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#ab2b9242a6076cbe04cb30ddc551b576f">vLDs_BC_d16</a> ()</td></tr>
@@ -1141,14 +1144,15 @@ Functions</h2></td></tr>
 <tr class="separator:aca01ad7eb52e28fde8510fda5ed96436"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a949dd2aaef61ee9dc6b76eea7fc37a8d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a949dd2aaef61ee9dc6b76eea7fc37a8d">ucGetTstate</a> ()</td></tr>
 <tr class="separator:a949dd2aaef61ee9dc6b76eea7fc37a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a2a7acf3888505856cdea35b8cea29e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a5a2a7acf3888505856cdea35b8cea29e">vGBCPUboot</a> ()</td></tr>
-<tr class="separator:a5a2a7acf3888505856cdea35b8cea29e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad75cc9a2be9b4cbe1f40bb6533269cc7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#ad75cc9a2be9b4cbe1f40bb6533269cc7">vGBCPUHaltedHandler</a> ()</td></tr>
-<tr class="separator:ad75cc9a2be9b4cbe1f40bb6533269cc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a538b6f34008329f2099be9e1145b355d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a538b6f34008329f2099be9e1145b355d">vGBCPUInterruptHandler</a> ()</td></tr>
-<tr class="separator:a538b6f34008329f2099be9e1145b355d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1287756051fb8c1e853804ee9088dd0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a1287756051fb8c1e853804ee9088dd0d">vGBCPUinstr</a> (uint8_t opcode)</td></tr>
-<tr class="separator:a1287756051fb8c1e853804ee9088dd0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a520296d9ceac5906d056ea0b5646d40c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a520296d9ceac5906d056ea0b5646d40c">vGBCPUStep</a> ()</td></tr>
+<tr class="memdesc:a520296d9ceac5906d056ea0b5646d40c"><td class="mdescLeft">&#160;</td><td class="mdescRight">executes 1 CPU instruction  <a href="gbcpu_8c.html#a520296d9ceac5906d056ea0b5646d40c">More...</a><br /></td></tr>
+<tr class="separator:a520296d9ceac5906d056ea0b5646d40c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0650327c8e20643d66dff18caf117c73"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a0650327c8e20643d66dff18caf117c73">prvGBCPUInterruptHandler</a> ()</td></tr>
+<tr class="memdesc:a0650327c8e20643d66dff18caf117c73"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the corresponding IE and IF are both set then jump to the corresponding ISR.  <a href="gbcpu_8c.html#a0650327c8e20643d66dff18caf117c73">More...</a><br /></td></tr>
+<tr class="separator:a0650327c8e20643d66dff18caf117c73"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd4caa5ea86bb5fc4db403d13813b019"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#afd4caa5ea86bb5fc4db403d13813b019">prvGBCPUHaltedHandler</a> ()</td></tr>
+<tr class="memdesc:afd4caa5ea86bb5fc4db403d13813b019"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the CPU is halted and ucInterruptMasterEnable is not set, then this function will unhalt the CPU if both IE and IF flags are set without jumping to the ISR.  <a href="gbcpu_8c.html#afd4caa5ea86bb5fc4db403d13813b019">More...</a><br /></td></tr>
+<tr class="separator:afd4caa5ea86bb5fc4db403d13813b019"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
@@ -1160,33 +1164,23 @@ Variables</h2></td></tr>
 <tr class="separator:a3ace942a73e671a89d3aea57e40f2bc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a512aecfd902ad0c01faa6010ad2dbd86"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a512aecfd902ad0c01faa6010ad2dbd86">ucOneCycleInterruptDelay</a> = 0</td></tr>
 <tr class="separator:a512aecfd902ad0c01faa6010ad2dbd86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64bcc4ed5b8582b1666991d8e2878b24"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a64bcc4ed5b8582b1666991d8e2878b24">customDuration</a> = 0</td></tr>
-<tr class="separator:a64bcc4ed5b8582b1666991d8e2878b24"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dcc0710798e3bb9caf430a094a4519c"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a5dcc0710798e3bb9caf430a094a4519c">tStates</a> = 0</td></tr>
-<tr class="separator:a5dcc0710798e3bb9caf430a094a4519c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1566603abc21b7ca56597dfd176fa1ab"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a1566603abc21b7ca56597dfd176fa1ab">print</a> = 0</td></tr>
-<tr class="separator:a1566603abc21b7ca56597dfd176fa1ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abea371f9030e15a5d2a4c181576833d8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#abea371f9030e15a5d2a4c181576833d8">num</a> = 0</td></tr>
-<tr class="separator:abea371f9030e15a5d2a4c181576833d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43fd973d34ec63261ede63664440123f"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a43fd973d34ec63261ede63664440123f">numcount</a></td></tr>
-<tr class="separator:a43fd973d34ec63261ede63664440123f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af21633fb74a6aa87c93baf3caaa58864"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#af21633fb74a6aa87c93baf3caaa58864">pc</a> = 0x3F9</td></tr>
-<tr class="separator:af21633fb74a6aa87c93baf3caaa58864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab706b77a4702ef6cee67d5d6c4fff385"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#ab706b77a4702ef6cee67d5d6c4fff385">ucCustomDuration</a> = 0</td></tr>
+<tr class="separator:ab706b77a4702ef6cee67d5d6c4fff385"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b8f13303ac299892d726194c89e1473"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a3b8f13303ac299892d726194c89e1473">uctStates</a> = 0</td></tr>
+<tr class="separator:a3b8f13303ac299892d726194c89e1473"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75b45b7e6b25a50697172008205b9c23"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a75b45b7e6b25a50697172008205b9c23">usDebugPC</a> = 0x3F9</td></tr>
+<tr class="separator:a75b45b7e6b25a50697172008205b9c23"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ab63ef82ad9df9abbd4b2aad30e0d85"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a4ab63ef82ad9df9abbd4b2aad30e0d85">ucMemoryBreakPointTrigger</a> = 0</td></tr>
+<tr class="separator:a4ab63ef82ad9df9abbd4b2aad30e0d85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2e53d7c3ec0bfaf12e47894c24a904da"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structregisters.html">registers</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a2e53d7c3ec0bfaf12e47894c24a904da">reg</a></td></tr>
 <tr class="separator:a2e53d7c3ec0bfaf12e47894c24a904da"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2924be90c16cc87d35ff9f5e0e2f9e3a"><td class="memItemLeft" align="right" valign="top">const unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a2924be90c16cc87d35ff9f5e0e2f9e3a">Alleyway_gb</a> []</td></tr>
-<tr class="separator:a2924be90c16cc87d35ff9f5e0e2f9e3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe3ea09366bfb79efb01c0760cbd448e"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#afe3ea09366bfb79efb01c0760cbd448e">Tetris_gb</a> []</td></tr>
-<tr class="separator:afe3ea09366bfb79efb01c0760cbd448e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af89e88e043f6fd16b85f1bfe1f24c11f"><td class="memItemLeft" align="right" valign="top">unsigned char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#af89e88e043f6fd16b85f1bfe1f24c11f">cpu_instrs_gb</a> []</td></tr>
-<tr class="separator:af89e88e043f6fd16b85f1bfe1f24c11f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a833969abf9a57333fb4ccb787818e980"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_assembly___instr.html">Assembly_Instr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a833969abf9a57333fb4ccb787818e980">instructions</a> [256]</td></tr>
 <tr class="separator:a833969abf9a57333fb4ccb787818e980"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e025ff8cefad04d46522eea26732a04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_assembly___instr.html">Assembly_Instr</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8c.html#a5e025ff8cefad04d46522eea26732a04">prefix_instructions</a> [256]</td></tr>
 <tr class="separator:a5e025ff8cefad04d46522eea26732a04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>: Gameboy CPU Functionality </p>
+<div class="textblock"><p>: Gameboy CPU Functionality This file emulates all functionality of the Gameboy CPU. </p>
 <dl class="section author"><dt>Author</dt><dd>: Rami </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>: Mar 28, 2021 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
@@ -1359,6 +1353,73 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="afd4caa5ea86bb5fc4db403d13813b019"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afd4caa5ea86bb5fc4db403d13813b019">&#9670;&nbsp;</a></span>prvGBCPUHaltedHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prvGBCPUHaltedHandler </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>If the CPU is halted and ucInterruptMasterEnable is not set, then this function will unhalt the CPU if both IE and IF flags are set without jumping to the ISR. </p>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
+</div>
+</div>
+<a id="a741c05dea8cf91b8a459ec1082499ce5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a741c05dea8cf91b8a459ec1082499ce5">&#9670;&nbsp;</a></span>prvGBCPUinstr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prvGBCPUinstr </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>opcode</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>fetch, decode and execute 1 CPU instruction, increment timers and jump to interrupt handler </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">opcode</td><td>Opcode of instruction to be executed </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
+</div>
+</div>
+<a id="a0650327c8e20643d66dff18caf117c73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0650327c8e20643d66dff18caf117c73">&#9670;&nbsp;</a></span>prvGBCPUInterruptHandler()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void prvGBCPUInterruptHandler </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>If the corresponding IE and IF are both set then jump to the corresponding ISR. </p>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
+</div>
+</div>
 <a id="a949dd2aaef61ee9dc6b76eea7fc37a8d"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a949dd2aaef61ee9dc6b76eea7fc37a8d">&#9670;&nbsp;</a></span>ucGetTstate()</h2>
 
@@ -1373,6 +1434,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>amount of T-states that the current instruction takes to execute </dd></dl>
 
 </div>
 </div>
@@ -3535,14 +3597,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a5a2a7acf3888505856cdea35b8cea29e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a2a7acf3888505856cdea35b8cea29e">&#9670;&nbsp;</a></span>vGBCPUboot()</h2>
+<a id="a520296d9ceac5906d056ea0b5646d40c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a520296d9ceac5906d056ea0b5646d40c">&#9670;&nbsp;</a></span>vGBCPUStep()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vGBCPUboot </td>
+          <td class="memname">void vGBCPUStep </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -3550,57 +3612,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="ad75cc9a2be9b4cbe1f40bb6533269cc7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad75cc9a2be9b4cbe1f40bb6533269cc7">&#9670;&nbsp;</a></span>vGBCPUHaltedHandler()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vGBCPUHaltedHandler </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1287756051fb8c1e853804ee9088dd0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1287756051fb8c1e853804ee9088dd0d">&#9670;&nbsp;</a></span>vGBCPUinstr()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vGBCPUinstr </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>opcode</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a538b6f34008329f2099be9e1145b355d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a538b6f34008329f2099be9e1145b355d">&#9670;&nbsp;</a></span>vGBCPUInterruptHandler()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vGBCPUInterruptHandler </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>executes 1 CPU instruction </p>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
@@ -9963,64 +9976,6 @@ Variables</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Variable Documentation</h2>
-<a id="a2924be90c16cc87d35ff9f5e0e2f9e3a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2924be90c16cc87d35ff9f5e0e2f9e3a">&#9670;&nbsp;</a></span>Alleyway_gb</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const unsigned char Alleyway_gb[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af89e88e043f6fd16b85f1bfe1f24c11f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af89e88e043f6fd16b85f1bfe1f24c11f">&#9670;&nbsp;</a></span>cpu_instrs_gb</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned char cpu_instrs_gb[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a64bcc4ed5b8582b1666991d8e2878b24"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64bcc4ed5b8582b1666991d8e2878b24">&#9670;&nbsp;</a></span>customDuration</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t customDuration = 0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a833969abf9a57333fb4ccb787818e980"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a833969abf9a57333fb4ccb787818e980">&#9670;&nbsp;</a></span>instructions</h2>
 
@@ -10035,48 +9990,6 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="abea371f9030e15a5d2a4c181576833d8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abea371f9030e15a5d2a4c181576833d8">&#9670;&nbsp;</a></span>num</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t num = 0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a43fd973d34ec63261ede63664440123f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43fd973d34ec63261ede63664440123f">&#9670;&nbsp;</a></span>numcount</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint64_t numcount</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="af21633fb74a6aa87c93baf3caaa58864"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af21633fb74a6aa87c93baf3caaa58864">&#9670;&nbsp;</a></span>pc</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t pc = 0x3F9</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <a id="a5e025ff8cefad04d46522eea26732a04"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5e025ff8cefad04d46522eea26732a04">&#9670;&nbsp;</a></span>prefix_instructions</h2>
 
@@ -10085,20 +9998,6 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="struct_assembly___instr.html">Assembly_Instr</a> prefix_instructions[256]</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a1566603abc21b7ca56597dfd176fa1ab"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1566603abc21b7ca56597dfd176fa1ab">&#9670;&nbsp;</a></span>print</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t print = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -10127,36 +10026,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="afe3ea09366bfb79efb01c0760cbd448e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe3ea09366bfb79efb01c0760cbd448e">&#9670;&nbsp;</a></span>Tetris_gb</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned char Tetris_gb[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a5dcc0710798e3bb9caf430a094a4519c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5dcc0710798e3bb9caf430a094a4519c">&#9670;&nbsp;</a></span>tStates</h2>
+<a id="ab706b77a4702ef6cee67d5d6c4fff385"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab706b77a4702ef6cee67d5d6c4fff385">&#9670;&nbsp;</a></span>ucCustomDuration</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t tStates = 0</td>
+          <td class="memname">uint8_t ucCustomDuration = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -10191,6 +10068,20 @@ Variables</h2></td></tr>
 
 </div>
 </div>
+<a id="a4ab63ef82ad9df9abbd4b2aad30e0d85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4ab63ef82ad9df9abbd4b2aad30e0d85">&#9670;&nbsp;</a></span>ucMemoryBreakPointTrigger</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ucMemoryBreakPointTrigger = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a512aecfd902ad0c01faa6010ad2dbd86"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a512aecfd902ad0c01faa6010ad2dbd86">&#9670;&nbsp;</a></span>ucOneCycleInterruptDelay</h2>
 
@@ -10213,6 +10104,34 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">uint8_t ucSTOPPED = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a3b8f13303ac299892d726194c89e1473"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b8f13303ac299892d726194c89e1473">&#9670;&nbsp;</a></span>uctStates</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t uctStates = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a75b45b7e6b25a50697172008205b9c23"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75b45b7e6b25a50697172008205b9c23">&#9670;&nbsp;</a></span>usDebugPC</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t usDebugPC = 0x3F9</td>
         </tr>
       </table>
 </div><div class="memdoc">

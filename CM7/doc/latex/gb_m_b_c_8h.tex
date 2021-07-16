@@ -3,30 +3,68 @@
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{gb_m_b_c_8h_ac39507f64b0172202f846cea0a347fae}{gb\+MBCset\+Controller\+Type}} (uint8\+\_\+t code)
-\item 
-uint8\+\_\+t \mbox{\hyperlink{gb_m_b_c_8h_a14d38cde8e089d9239af453c710263d4}{gb\+MBCread\+BankX}} (uint16\+\_\+t address)
-\item 
-void \mbox{\hyperlink{gb_m_b_c_8h_a3a7853c30ed12cb66891cab54f7b165a}{gb\+MBCwrite}} (uint16\+\_\+t address, uint8\+\_\+t data)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{gb_m_b_c_8h_a27afee853f0b4a522be68b48b81fbf5f}{v\+GBMBCset\+Controller\+Type}} (uint8\+\_\+t code)
+\begin{DoxyCompactList}\small\item\em sets the cartridge type for use in this file corresponding to data stored at the memory location 0x147 \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{gb_m_b_c_8h_ad49b9a9255e105b0fc77087a1e21dd25}{uc\+GBMBCread\+BankX}} (uint16\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em This function will return data from a ROM location in the memory map depending on the MBC type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gb_m_b_c_8h_ab5c356822fc92d633ba8f9df5c3990a1}{v\+GBMBCwrite}} (uint16\+\_\+t address, uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Data is written to MBC register when the address falls in range 0x0000 to 0x7\+FFF. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{gb_m_b_c_8h_a14d38cde8e089d9239af453c710263d4}\label{gb_m_b_c_8h_a14d38cde8e089d9239af453c710263d4}} 
-\index{gbMBC.h@{gbMBC.h}!gbMBCreadBankX@{gbMBCreadBankX}}
-\index{gbMBCreadBankX@{gbMBCreadBankX}!gbMBC.h@{gbMBC.h}}
-\doxysubsubsection{\texorpdfstring{gbMBCreadBankX()}{gbMBCreadBankX()}}
-{\footnotesize\ttfamily uint8\+\_\+t gb\+MBCread\+BankX (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{gb_m_b_c_8h_ad49b9a9255e105b0fc77087a1e21dd25}\label{gb_m_b_c_8h_ad49b9a9255e105b0fc77087a1e21dd25}} 
+\index{gbMBC.h@{gbMBC.h}!ucGBMBCreadBankX@{ucGBMBCreadBankX}}
+\index{ucGBMBCreadBankX@{ucGBMBCreadBankX}!gbMBC.h@{gbMBC.h}}
+\doxysubsubsection{\texorpdfstring{ucGBMBCreadBankX()}{ucGBMBCreadBankX()}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+GBMBCread\+BankX (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gb_m_b_c_8h_ac39507f64b0172202f846cea0a347fae}\label{gb_m_b_c_8h_ac39507f64b0172202f846cea0a347fae}} 
-\index{gbMBC.h@{gbMBC.h}!gbMBCsetControllerType@{gbMBCsetControllerType}}
-\index{gbMBCsetControllerType@{gbMBCsetControllerType}!gbMBC.h@{gbMBC.h}}
-\doxysubsubsection{\texorpdfstring{gbMBCsetControllerType()}{gbMBCsetControllerType()}}
-{\footnotesize\ttfamily void gb\+MBCset\+Controller\+Type (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{code }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gb_m_b_c_8h_a3a7853c30ed12cb66891cab54f7b165a}\label{gb_m_b_c_8h_a3a7853c30ed12cb66891cab54f7b165a}} 
-\index{gbMBC.h@{gbMBC.h}!gbMBCwrite@{gbMBCwrite}}
-\index{gbMBCwrite@{gbMBCwrite}!gbMBC.h@{gbMBC.h}}
-\doxysubsubsection{\texorpdfstring{gbMBCwrite()}{gbMBCwrite()}}
-{\footnotesize\ttfamily void gb\+MBCwrite (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
 
+This function will return data from a ROM location in the memory map depending on the MBC type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & memory map address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+data stored at specified ROM address 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gb_m_b_c_8h_a27afee853f0b4a522be68b48b81fbf5f}\label{gb_m_b_c_8h_a27afee853f0b4a522be68b48b81fbf5f}} 
+\index{gbMBC.h@{gbMBC.h}!vGBMBCsetControllerType@{vGBMBCsetControllerType}}
+\index{vGBMBCsetControllerType@{vGBMBCsetControllerType}!gbMBC.h@{gbMBC.h}}
+\doxysubsubsection{\texorpdfstring{vGBMBCsetControllerType()}{vGBMBCsetControllerType()}}
+{\footnotesize\ttfamily void v\+GBMBCset\+Controller\+Type (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{code }\end{DoxyParamCaption})}
+
+
+
+sets the cartridge type for use in this file corresponding to data stored at the memory location 0x147 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & data stored at memory location 0x147 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gb_m_b_c_8h_ab5c356822fc92d633ba8f9df5c3990a1}\label{gb_m_b_c_8h_ab5c356822fc92d633ba8f9df5c3990a1}} 
+\index{gbMBC.h@{gbMBC.h}!vGBMBCwrite@{vGBMBCwrite}}
+\index{vGBMBCwrite@{vGBMBCwrite}!gbMBC.h@{gbMBC.h}}
+\doxysubsubsection{\texorpdfstring{vGBMBCwrite()}{vGBMBCwrite()}}
+{\footnotesize\ttfamily void v\+GBMBCwrite (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+Data is written to MBC register when the address falls in range 0x0000 to 0x7\+FFF. 
+
+When the range 0x0000 -\/ 0x1\+FFF is written to with value 0x0A, the Gameboy external RAM is enabled. Any other value written to this range will result in the external RAM being disabled. When the range 0x2000 -\/ 0x3\+FFF is written to, the lower 5 bits correspond to the switch-\/able ROM bank that read operation are to be read from. When the range 0x4000 -\/ 0x5\+FFF is written to, depending on the mode it will either specify the top 2 bits of the ROM bank to be read from or it specify the current RAM bank. When the range falls between 0x6000 -\/ 0x7\+FFF if the value 0 is written then ROM mode is selected and if the value 1 is written then RAM mode is selected. 
+\begin{DoxyParams}{Parameters}
+{\em address} & memory map address \\
+\hline
+{\em data} & byte to be written to MBC register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}

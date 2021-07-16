@@ -1,6 +1,23 @@
 var searchData=
 [
-  ['scaleamount_1496',['scaleAmount',['../gbppu_8c.html#a5404f7eab814b57dc7c25d7f469f2114',1,'gbppu.c']]],
-  ['sml_5fgb_1497',['SML_gb',['../main_8c.html#a34aa64f9b9f3578a5a0e944203f6ab5a',1,'main.c']]],
-  ['sp_1498',['SP',['../structregisters.html#ae1da8e6d3b9bdd44bbe6007d97a6fe05',1,'registers']]]
+  ['ucbgpcolortopalette_1490',['ucBGPColorToPalette',['../gbppu_8c.html#a485638b8ee0120e72662b05977915ca3',1,'gbppu.c']]],
+  ['ucbgwinline_1491',['ucBGWINline',['../gbppu_8c.html#ac9de52373fb1ba5b7529ba0d15ebc8b8',1,'gbppu.c']]],
+  ['ucgbframe_1492',['ucGBFrame',['../gbppu_8c.html#a5afdae9a6f8868d40ecd9a45fa2cf7e7',1,'gbppu.c']]],
+  ['ucgbmbcbankmode_1493',['ucgbMBCbankMode',['../gb_m_b_c_8c.html#ac372e65bba3763e3d95fa5eb335d1d00',1,'gbMBC.c']]],
+  ['ucgbmbccontrollercode_1494',['ucgbMBCcontrollerCode',['../gb_m_b_c_8c.html#a2d30477fe6f8988bb8620674213dc7f7',1,'gbMBC.c']]],
+  ['ucgbmbcoffsethigh_1495',['ucgbMBCoffsetHigh',['../gb_m_b_c_8c.html#a66d04d4affcf5c2067c893d647189eff',1,'gbMBC.c']]],
+  ['ucgbmbcoffsetlow_1496',['ucgbMBCoffsetLow',['../gb_m_b_c_8c.html#a30aa330e1378c55c1285c78de7bb31b1',1,'gbMBC.c']]],
+  ['ucgbmbcramen_1497',['ucgbMBCramEN',['../gb_m_b_c_8c.html#a7c6f559af3a75ed23d4250564ea86931',1,'gbMBC.c']]],
+  ['uchalted_1498',['ucHALTED',['../gbcpu_8c.html#a1454b651edb9341cc0188aaf23a14c5a',1,'gbcpu.c']]],
+  ['ucinterruptmasterenable_1499',['ucInterruptMasterEnable',['../gbcpu_8c.html#a3ace942a73e671a89d3aea57e40f2bc4',1,'gbcpu.c']]],
+  ['ucly_1500',['ucLY',['../gbppu_8c.html#ae1deb0fdbd829f97dc542cf5cc07cf86',1,'gbppu.c']]],
+  ['ucmode_1501',['ucMode',['../gbppu_8c.html#a016ccd2d7b6615abe4967f9a27060746',1,'gbppu.c']]],
+  ['ucobp0colortopalette_1502',['ucOBP0ColorToPalette',['../gbppu_8c.html#a9be772970ed9fbe14e0218fd424b6596',1,'gbppu.c']]],
+  ['ucobp1colortopalette_1503',['ucOBP1ColorToPalette',['../gbppu_8c.html#ae10b4a8ffd018a241f9ec6ce9f1f690d',1,'gbppu.c']]],
+  ['uconecycleinterruptdelay_1504',['ucOneCycleInterruptDelay',['../gbcpu_8c.html#a512aecfd902ad0c01faa6010ad2dbd86',1,'gbcpu.c']]],
+  ['ucstopped_1505',['ucSTOPPED',['../gbcpu_8c.html#a6bba2533b946ce2b9209675e0a5d34c3',1,'gbcpu.c']]],
+  ['ulcurline_1506',['ulCurLine',['../gbppu_8c.html#ab196f3e59335a72ee34e8481033baf15',1,'gbppu.c']]],
+  ['ullineadd_1507',['ulLineAdd',['../gbppu_8c.html#af58b00da0c806a9f69bda59355d02e29',1,'gbppu.c']]],
+  ['ulscaleamount_1508',['ulScaleAmount',['../gbppu_8c.html#ab2318977e8442dfe26bc0a0b41c1f165',1,'gbppu.c']]],
+  ['ultstatestotal_1509',['ultStatesTotal',['../gbppu_8c.html#a1937f8f3d3d58a98306b4e7491aaebcc',1,'gbppu.c']]]
 ];

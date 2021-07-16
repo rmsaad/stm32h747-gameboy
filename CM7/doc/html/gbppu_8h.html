@@ -103,22 +103,22 @@ $(document).ready(function(){initNavTree('gbppu_8h.html',''); initResizable(); }
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a112e995f6616336eac038c853aa5ac35"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8h.html#a112e995f6616336eac038c853aa5ac35">gbPPUStep</a> ()</td></tr>
-<tr class="memdesc:a112e995f6616336eac038c853aa5ac35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steps the PPU by tStates.  <a href="gbppu_8h.html#a112e995f6616336eac038c853aa5ac35">More...</a><br /></td></tr>
-<tr class="separator:a112e995f6616336eac038c853aa5ac35"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af55e16b0234ec9b9a7f6703f53fa18b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8h.html#af55e16b0234ec9b9a7f6703f53fa18b7">vGBPPUStep</a> ()</td></tr>
+<tr class="memdesc:af55e16b0234ec9b9a7f6703f53fa18b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steps the PPU by tStates.  <a href="gbppu_8h.html#af55e16b0234ec9b9a7f6703f53fa18b7">More...</a><br /></td></tr>
+<tr class="separator:af55e16b0234ec9b9a7f6703f53fa18b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addcbf77f2958ad2001d541a8e4a8f504"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8h.html#addcbf77f2958ad2001d541a8e4a8f504">vSetFrameBuffer</a> ()</td></tr>
 <tr class="memdesc:addcbf77f2958ad2001d541a8e4a8f504"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zeros All Memory in the Frame Buffer.  <a href="gbppu_8h.html#addcbf77f2958ad2001d541a8e4a8f504">More...</a><br /></td></tr>
 <tr class="separator:addcbf77f2958ad2001d541a8e4a8f504"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a112e995f6616336eac038c853aa5ac35"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a112e995f6616336eac038c853aa5ac35">&#9670;&nbsp;</a></span>gbPPUStep()</h2>
+<a id="af55e16b0234ec9b9a7f6703f53fa18b7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af55e16b0234ec9b9a7f6703f53fa18b7">&#9670;&nbsp;</a></span>vGBPPUStep()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void gbPPUStep </td>
+          <td class="memname">void vGBPPUStep </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -127,7 +127,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Steps the PPU by tStates. </p>
-<p>This function steps the PPU by the tStates variable if the screen enable (7th) bit of LCDC Register is high, the function sets the mode in the STAT Register using the <a class="el" href="gbppu_8c.html#a5d0653e9369208f1125d417a3ae32283" title="Sets the mode of the STAT Register.">setMode()</a> function depending on how many tStates have elapsed. after a full line is has passed the LY register is updated <a class="el" href="gbppu_8c.html#a0d5f1084420a859dba5e9d70af910f15" title="Update data in the frame buffer for 1 line of the Gameboy.">vGBPPUDrawLine()</a> is called to place data in the frame buffer. </p><dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+<p>This function steps the PPU by the tStates variable if the screen enable (7th) bit of LCDC Register is high, the function sets the mode in the STAT Register using the <a class="el" href="gbppu_8c.html#ac2086e2d9ea420499b54833b1726a681" title="Sets the mode of the STAT Register.">prvSetMode()</a> function depending on how many tStates have elapsed. after a full line is has passed the LY register is updated <a class="el" href="gbppu_8c.html#a432ec91bc2248c882f63368d80540076" title="Update data in the frame buffer for 1 line of the Gameboy.">prvGBPPUDrawLine()</a> is called to place data in the frame buffer. </p><dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The function and the Gameboy both mimic CRT Displays in that their are both a horizontal H-Blank after a Line is "drawn" and there is a vertical V-Blank after a full frame is drawn </dd></dl>
 <dl class="section attention"><dt>Attention</dt><dd>The placement of the functions vCheckBackWinTileDataSel() and vCheckBackTileDisplaySel() are just educated guesses at the current moment, more research into when and how often these Registers are updated must be conducted. </dd></dl>
 

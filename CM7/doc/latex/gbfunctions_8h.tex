@@ -15,100 +15,100 @@
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-uint16\+\_\+t \mbox{\hyperlink{gbfunctions_8h_ad9c1e5968f514b0a4e0f0d35da5a0eac}{concat\+\_\+16bit\+\_\+big\+Endian}} (uint8\+\_\+t x, uint8\+\_\+t y)
-\item 
-void \mbox{\hyperlink{gbfunctions_8h_af11c6615ded1810b7eea1bc69c21eb33}{setbit}} (uint8\+\_\+t $\ast$n, uint8\+\_\+t bit)
-\item 
-void \mbox{\hyperlink{gbfunctions_8h_a0a165012e5cc78ec782633b997200003}{resetbit}} (uint8\+\_\+t $\ast$n, uint8\+\_\+t bit)
-\item 
-uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a60d89faa1ac032f2e5f0aeb7714ece55}{checkbit}} (uint8\+\_\+t n, uint8\+\_\+t bit)
-\item 
+uint16\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a111c2edf243acf0cd533360096f88e51}{us\+Concat16\+Bit\+Big\+Endian}} (uint8\+\_\+t x, uint8\+\_\+t y)
+\begin{DoxyCompactList}\small\item\em Concatenates two bytes of data in Big Endian format. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbfunctions_8h_a302bb6703664648619ebce9fd3d193f7}{v\+Set\+Bit}} (uint8\+\_\+t $\ast$n, uint8\+\_\+t bit)
+\begin{DoxyCompactList}\small\item\em Sets a bit in a register/memory location. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbfunctions_8h_a17360a303ef8d946cb40a923502aef53}{v\+Reset\+Bit}} (uint8\+\_\+t $\ast$n, uint8\+\_\+t bit)
+\begin{DoxyCompactList}\small\item\em Resets a bit in a register/memory location. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a1719fc566db5b8c0c75dbef3bf232268}{uc\+Check\+Bit}} (uint8\+\_\+t n, uint8\+\_\+t bit)
+\begin{DoxyCompactList}\small\item\em Checks a bit of a register/memory location. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_af2c4683984f24ed2aa5909bac6fb941b}{v8bit\+Register\+INC}} (uint8\+\_\+t $\ast$\mbox{\hyperlink{gbmemory_8c_a2e53d7c3ec0bfaf12e47894c24a904da}{reg}}, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Increment register/ memory location. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_a3f0d7481c1158d9eb3c693ff238f3913}{v8bit\+Register\+DEC}} (uint8\+\_\+t $\ast$\mbox{\hyperlink{gbmemory_8c_a2e53d7c3ec0bfaf12e47894c24a904da}{reg}}, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Decrement register/ memory location. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_abee8c6f743492a6a58e6074993e7c6cd}{v\+GBFunction\+RLCA}} (uint8\+\_\+t $\ast$\mbox{\hyperlink{gbmemory_8c_a2e53d7c3ec0bfaf12e47894c24a904da}{reg}}, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Rotate register A left, bit 7 becomes carry. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_a590f83b8b08f1886e494e7b6ede93e70}{v\+GBFunction\+RRCA}} (uint8\+\_\+t $\ast$\mbox{\hyperlink{gbmemory_8c_a2e53d7c3ec0bfaf12e47894c24a904da}{reg}}, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Rotate register A right, bit 0 becomes carry. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_aecc878909ab184501b236520dfd09bdd}{v\+GBFunction16bit\+ADD}} (uint16\+\_\+t $\ast$reg\+HL, uint16\+\_\+t reg16, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em 16 bit addition to the HL register \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_a8add9d856afee37c66da7f2099416e3a}{v\+GBFunction\+RLA}} (uint8\+\_\+t $\ast$regA, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Rotate register A left through carry. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_a587dfa23361a5d32b4b2e075efee7407}{v\+GBFunction\+RRA}} (uint8\+\_\+t $\ast$regA, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Rotate register A right through carry. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a4d255ca74224d4ea6a5429c30c685cda}{v\+GBFunction\+JR\+\_\+\+NZ}} (uint16\+\_\+t $\ast$reg\+PC, uint8\+\_\+t $\ast$flag\+Reg, uint8\+\_\+t r8value)
-\item 
+\begin{DoxyCompactList}\small\item\em Jump to Program Counter address plus immediate signed byte value if Z flag is reset. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_aeca929beaffa69b852a32c6bdee13c0d}{v\+GBFunction\+DAA}} (uint8\+\_\+t $\ast$regA, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Adjusts register A such that the correct representation of Binary Coded Decimal is obtained. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a9f59a1f64b4d3d78ee06c0b0ffca9e20}{v\+GBFunction\+JR\+\_\+Z}} (uint16\+\_\+t $\ast$reg\+PC, uint8\+\_\+t $\ast$flag\+Reg, uint8\+\_\+t r8value)
-\item 
+\begin{DoxyCompactList}\small\item\em Jump to Program Counter address plus immediate signed byte value if Z flag is set. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a539b81e390017ea3fe2d0dd1b74ec102}{v\+GBFunction\+JR\+\_\+\+NC}} (uint16\+\_\+t $\ast$reg\+PC, uint8\+\_\+t $\ast$flag\+Reg, uint8\+\_\+t r8value)
-\item 
+\begin{DoxyCompactList}\small\item\em Jump to Program Counter address plus immediate signed byte value if C flag is reset. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_a6d31f46628215c7a65041774e17b92f5}{v\+Memory\+Location\+INC}} (uint16\+\_\+t loc, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Increment memory location. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_a99413e16dc2b7cfc5028794c4af09348}{v\+Memory\+Location\+DEC}} (uint16\+\_\+t loc, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Decrement memory location. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a11d4f2c9bfb9ab5397fcbe84e9639292}{v\+GBFunction\+JR\+\_\+C}} (uint16\+\_\+t $\ast$reg\+PC, uint8\+\_\+t $\ast$flag\+Reg, uint8\+\_\+t r8value)
-\item 
+\begin{DoxyCompactList}\small\item\em Jump to Program Counter address plus immediate signed byte value if C flag is set. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_a0f26f36441f6e6741a61dff6fe71338f}{v\+GBFunction\+ADD}} (uint8\+\_\+t $\ast$regA, uint8\+\_\+t $\ast$flag\+Reg, uint8\+\_\+t reg\+Value)
-\item 
+\begin{DoxyCompactList}\small\item\em Adds the value of a register/ memory location to the A register. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_a30b453e106901fabe24ce8cb1202fbf2}{v\+GBFunction\+ADC}} (uint8\+\_\+t $\ast$regA, uint8\+\_\+t $\ast$flag\+Reg, uint8\+\_\+t reg\+Value)
-\item 
+\begin{DoxyCompactList}\small\item\em Adds the value of a register/ memory location + carry to the A register. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_aa22a9ca998563f11d1c87bc45b06d06d}{v\+GBFunction\+SUB}} (uint8\+\_\+t $\ast$regA, uint8\+\_\+t $\ast$flag\+Reg, uint8\+\_\+t reg\+Value)
-\item 
+\begin{DoxyCompactList}\small\item\em Subtracts the value of a register/ memory location from the A register. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_a4eed68c3300602ec2b7bc079f4dc93e1}{v\+GBFunction\+SBC}} (uint8\+\_\+t $\ast$regA, uint8\+\_\+t $\ast$flag\+Reg, uint8\+\_\+t reg\+Value)
-\item 
+\begin{DoxyCompactList}\small\item\em Subtracts the value of a register/ memory location + carry from the A register. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_a7dd90eb3c79b615540d6a62c087801cb}{v\+GBFunction\+CP}} (uint8\+\_\+t regA, uint8\+\_\+t $\ast$flag\+Reg, uint8\+\_\+t reg\+Value)
-\item 
+\begin{DoxyCompactList}\small\item\em Compare register a with another register/memory location. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_ae282b64d88018aad322076154c1f6af5}{v\+GBFunction\+RET}} (uint16\+\_\+t $\ast$reg\+SP, uint16\+\_\+t $\ast$reg\+PC)
-\item 
+\begin{DoxyCompactList}\small\item\em Pop two bytes from the stack and jump to that address. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_a67acd0a0c98029aea28f03622ba29703}{v\+GBFunction\+POP}} (uint16\+\_\+t $\ast$reg\+SP, uint16\+\_\+t $\ast$reg16)
-\item 
+\begin{DoxyCompactList}\small\item\em Pop two bytes off of the stack and into 16 bit register, increments the stack pointer by 2. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a249cc5a6768d85a0376e8d01f4015d74}{v\+GBFunction\+JP\+\_\+\+NZ\+\_\+a16}} (uint16\+\_\+t $\ast$reg\+PC, uint8\+\_\+t $\ast$flag\+Reg, uint16\+\_\+t addr)
-\item 
+\begin{DoxyCompactList}\small\item\em Jump to Immediate unsigned short address if Z flag is reset. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_af4ec8c03c6c63705f684ba27854f9c0a}{v\+GBFunction\+CALL\+\_\+\+NZ\+\_\+a16}} (uint16\+\_\+t $\ast$reg\+PC, uint8\+\_\+t $\ast$flag\+Reg, uint16\+\_\+t $\ast$reg\+SP)
-\item 
+\begin{DoxyCompactList}\small\item\em Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if Z flag is reset. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_af0cdf7d14647820f303488a8ef8d4965}{v\+GBFunction\+PUSH}} (uint16\+\_\+t $\ast$reg\+SP, uint16\+\_\+t $\ast$reg16)
-\item 
+\begin{DoxyCompactList}\small\item\em Pushes 16 bit register onto stack. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_ac4a73e812970dcc5a3bc5d665888e630}{v\+GBFunction\+JP\+\_\+\+Z\+\_\+a16}} (uint16\+\_\+t $\ast$reg\+PC, uint8\+\_\+t $\ast$flag\+Reg, uint16\+\_\+t addr)
-\item 
+\begin{DoxyCompactList}\small\item\em Jump to Immediate unsigned short address if Z flag is set. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a72be8c61eb5ef01df3d390681f6ffaf8}{v\+GBFunction\+CALL\+\_\+\+Z\+\_\+a16}} (uint16\+\_\+t $\ast$reg\+PC, uint8\+\_\+t $\ast$flag\+Reg, uint16\+\_\+t $\ast$reg\+SP)
-\item 
+\begin{DoxyCompactList}\small\item\em Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if Z flag is set. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_aa30ab6647d87cc34f840088938410e2f}{v\+GBFunction\+JP\+\_\+\+NC\+\_\+a16}} (uint16\+\_\+t $\ast$reg\+PC, uint8\+\_\+t $\ast$flag\+Reg, uint16\+\_\+t addr)
-\item 
+\begin{DoxyCompactList}\small\item\em Jump to Immediate unsigned short address if C flag is reset. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a31811c0db994e6be8be786990b8a0c4f}{v\+GBFunction\+CALL\+\_\+\+NC\+\_\+a16}} (uint16\+\_\+t $\ast$reg\+PC, uint8\+\_\+t $\ast$flag\+Reg, uint16\+\_\+t $\ast$reg\+SP)
-\item 
+\begin{DoxyCompactList}\small\item\em Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if C flag is reset. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a8bb07e6a064c2cda0ff46d9b40e86757}{v\+GBFunction\+JP\+\_\+\+C\+\_\+a16}} (uint16\+\_\+t $\ast$reg\+PC, uint8\+\_\+t $\ast$flag\+Reg, uint16\+\_\+t addr)
-\item 
+\begin{DoxyCompactList}\small\item\em Jump to Immediate unsigned short address if C flag is set. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_ace505b71f2ee9de8b891162b42a197c9}{v\+GBFunction\+CALL\+\_\+\+C\+\_\+a16}} (uint16\+\_\+t $\ast$reg\+PC, uint8\+\_\+t $\ast$flag\+Reg, uint16\+\_\+t $\ast$reg\+SP)
-\item 
+\begin{DoxyCompactList}\small\item\em Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if C flag is set. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_a2ade791123ba0d26b718064edbc3288e}{v\+GBFunction\+ADD\+\_\+\+SP\+\_\+r8}} (uint16\+\_\+t $\ast$reg\+SP, uint8\+\_\+t $\ast$flag\+Reg, uint8\+\_\+t r8value)
-\item 
+\begin{DoxyCompactList}\small\item\em Add immediate signed byte value to the stack pointer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_aa54efe75b407f0c94d105ad286829330}{v\+GBFunction\+LD\+\_\+\+HL\+\_\+\+SP\+\_\+r8}} (uint16\+\_\+t $\ast$reg\+HL, uint16\+\_\+t $\ast$reg\+SP, uint8\+\_\+t $\ast$flag\+Reg, uint8\+\_\+t r8value)
-\item 
+\begin{DoxyCompactList}\small\item\em Load the Stack Pointer + immediate signed byte value into register HL. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a1da098d4b25fcdf39d85cc13a0f9d01c}{uc\+GBFunction\+RLC}} (uint8\+\_\+t reg\+Value, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Rotate register/memory left, bit 7 becomes carry flag. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a7b58cb2fea56fde673dbd4184b6c5a88}{uc\+GBFunction\+RRC}} (uint8\+\_\+t reg\+Value, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Rotate register/memory right, bit 0 becomes carry flag. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_ad62cde0852d4b8c6613fcd313d886d07}{uc\+GBFunction\+RL}} (uint8\+\_\+t reg\+Value, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Rotate register/memory left through carry. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a1ff282f802f795c2aa446c8291588229}{uc\+GBFunction\+RR}} (uint8\+\_\+t reg\+Value, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Rotate register/memory right through carry. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_aefeb346bb9e064ad3510fb792023ab30}{uc\+GBFunction\+SLA}} (uint8\+\_\+t reg\+Value, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Shift register/memory left into the carry, The least significant bit is set to zero. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_aaee6bebb882310ea433b1d9b7835889e}{uc\+GBFunction\+SRA}} (uint8\+\_\+t reg\+Value, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Shift register/memory right into the carry. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a56db189977b0d60a73e2648015377bc2}{uc\+GBFunction\+SWAP}} (uint8\+\_\+t reg\+Value, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Swap upper and lower nibbles of a register or memory location. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_a3a337ebf04c67d7f432079a621759512}{uc\+GBFunction\+SRL}} (uint8\+\_\+t reg\+Value, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Shift register/memory right into the carry, The most significant bit is set to zero. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbfunctions_8h_ad4e2853aad0123dae75612e377124425}{v\+GBFunction\+BIT}} (uint8\+\_\+t reg\+Value, uint8\+\_\+t bit, uint8\+\_\+t $\ast$flag\+Reg)
-\item 
+\begin{DoxyCompactList}\small\item\em Test the value of a bit in a register/memory and sets the appropriate flags in the flag register. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_af9ef39642fcac89eb9630e052916a0b8}{uc\+GBFunction\+RESHL}} (uint16\+\_\+t reg\+HLaddr, uint8\+\_\+t bit)
-\item 
+\begin{DoxyCompactList}\small\item\em Resets a bit in the memory address that is held in the HL register. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_ae3ede3f0dacb7bf8535f9a8a1600cbc2}{uc\+GBFunction\+SETHL}} (uint16\+\_\+t reg\+HLaddr, uint8\+\_\+t bit)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Sets a bit in the memory address that is held in the HL register. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -139,285 +139,987 @@ uint8\+\_\+t \mbox{\hyperlink{gbfunctions_8h_ae3ede3f0dacb7bf8535f9a8a1600cbc2}{
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{gbfunctions_8h_a60d89faa1ac032f2e5f0aeb7714ece55}\label{gbfunctions_8h_a60d89faa1ac032f2e5f0aeb7714ece55}} 
-\index{gbfunctions.h@{gbfunctions.h}!checkbit@{checkbit}}
-\index{checkbit@{checkbit}!gbfunctions.h@{gbfunctions.h}}
-\doxysubsubsection{\texorpdfstring{checkbit()}{checkbit()}}
-{\footnotesize\ttfamily uint8\+\_\+t checkbit (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{n,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{gbfunctions_8h_a1719fc566db5b8c0c75dbef3bf232268}\label{gbfunctions_8h_a1719fc566db5b8c0c75dbef3bf232268}} 
+\index{gbfunctions.h@{gbfunctions.h}!ucCheckBit@{ucCheckBit}}
+\index{ucCheckBit@{ucCheckBit}!gbfunctions.h@{gbfunctions.h}}
+\doxysubsubsection{\texorpdfstring{ucCheckBit()}{ucCheckBit()}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+Check\+Bit (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{n,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gbfunctions_8h_ad9c1e5968f514b0a4e0f0d35da5a0eac}\label{gbfunctions_8h_ad9c1e5968f514b0a4e0f0d35da5a0eac}} 
-\index{gbfunctions.h@{gbfunctions.h}!concat\_16bit\_bigEndian@{concat\_16bit\_bigEndian}}
-\index{concat\_16bit\_bigEndian@{concat\_16bit\_bigEndian}!gbfunctions.h@{gbfunctions.h}}
-\doxysubsubsection{\texorpdfstring{concat\_16bit\_bigEndian()}{concat\_16bit\_bigEndian()}}
-{\footnotesize\ttfamily uint16\+\_\+t concat\+\_\+16bit\+\_\+big\+Endian (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x,  }\item[{uint8\+\_\+t}]{y }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gbfunctions_8h_a0a165012e5cc78ec782633b997200003}\label{gbfunctions_8h_a0a165012e5cc78ec782633b997200003}} 
-\index{gbfunctions.h@{gbfunctions.h}!resetbit@{resetbit}}
-\index{resetbit@{resetbit}!gbfunctions.h@{gbfunctions.h}}
-\doxysubsubsection{\texorpdfstring{resetbit()}{resetbit()}}
-{\footnotesize\ttfamily void resetbit (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{n,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gbfunctions_8h_af11c6615ded1810b7eea1bc69c21eb33}\label{gbfunctions_8h_af11c6615ded1810b7eea1bc69c21eb33}} 
-\index{gbfunctions.h@{gbfunctions.h}!setbit@{setbit}}
-\index{setbit@{setbit}!gbfunctions.h@{gbfunctions.h}}
-\doxysubsubsection{\texorpdfstring{setbit()}{setbit()}}
-{\footnotesize\ttfamily void setbit (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{n,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
+Checks a bit of a register/memory location. 
 
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Value of register/memory location \\
+\hline
+{\em bit} & The bit to be checked (0 -\/ 7) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value of checked bit 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_af9ef39642fcac89eb9630e052916a0b8}\label{gbfunctions_8h_af9ef39642fcac89eb9630e052916a0b8}} 
 \index{gbfunctions.h@{gbfunctions.h}!ucGBFunctionRESHL@{ucGBFunctionRESHL}}
 \index{ucGBFunctionRESHL@{ucGBFunctionRESHL}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{ucGBFunctionRESHL()}{ucGBFunctionRESHL()}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+GBFunction\+RESHL (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{reg\+HLaddr,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
 
+
+
+Resets a bit in the memory address that is held in the HL register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+HLaddr} & Memory address held inside HL register \\
+\hline
+{\em bit} & The bit to be reset (0 -\/ 7) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New value held at memory address denoted by HL 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_ad62cde0852d4b8c6613fcd313d886d07}\label{gbfunctions_8h_ad62cde0852d4b8c6613fcd313d886d07}} 
 \index{gbfunctions.h@{gbfunctions.h}!ucGBFunctionRL@{ucGBFunctionRL}}
 \index{ucGBFunctionRL@{ucGBFunctionRL}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{ucGBFunctionRL()}{ucGBFunctionRL()}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+GBFunction\+RL (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+Value,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Rotate register/memory left through carry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+Value} & Register/memory value to be rotated \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New value of the register/memory 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a1da098d4b25fcdf39d85cc13a0f9d01c}\label{gbfunctions_8h_a1da098d4b25fcdf39d85cc13a0f9d01c}} 
 \index{gbfunctions.h@{gbfunctions.h}!ucGBFunctionRLC@{ucGBFunctionRLC}}
 \index{ucGBFunctionRLC@{ucGBFunctionRLC}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{ucGBFunctionRLC()}{ucGBFunctionRLC()}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+GBFunction\+RLC (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+Value,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Rotate register/memory left, bit 7 becomes carry flag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+Value} & Register/memory value to be rotated \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New value of the register/memory 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a1ff282f802f795c2aa446c8291588229}\label{gbfunctions_8h_a1ff282f802f795c2aa446c8291588229}} 
 \index{gbfunctions.h@{gbfunctions.h}!ucGBFunctionRR@{ucGBFunctionRR}}
 \index{ucGBFunctionRR@{ucGBFunctionRR}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{ucGBFunctionRR()}{ucGBFunctionRR()}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+GBFunction\+RR (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+Value,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Rotate register/memory right through carry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+Value} & Register/memory value to be rotated \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New value of the register/memory 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a7b58cb2fea56fde673dbd4184b6c5a88}\label{gbfunctions_8h_a7b58cb2fea56fde673dbd4184b6c5a88}} 
 \index{gbfunctions.h@{gbfunctions.h}!ucGBFunctionRRC@{ucGBFunctionRRC}}
 \index{ucGBFunctionRRC@{ucGBFunctionRRC}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{ucGBFunctionRRC()}{ucGBFunctionRRC()}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+GBFunction\+RRC (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+Value,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Rotate register/memory right, bit 0 becomes carry flag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+Value} & Register/memory value to be rotated \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New value of the register/memory 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_ae3ede3f0dacb7bf8535f9a8a1600cbc2}\label{gbfunctions_8h_ae3ede3f0dacb7bf8535f9a8a1600cbc2}} 
 \index{gbfunctions.h@{gbfunctions.h}!ucGBFunctionSETHL@{ucGBFunctionSETHL}}
 \index{ucGBFunctionSETHL@{ucGBFunctionSETHL}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{ucGBFunctionSETHL()}{ucGBFunctionSETHL()}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+GBFunction\+SETHL (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{reg\+HLaddr,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
 
+
+
+Sets a bit in the memory address that is held in the HL register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+HLaddr} & Memory address held inside HL register \\
+\hline
+{\em bit} & The bit to be set (0 -\/ 7) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New value held at memory address denoted by HL 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_aefeb346bb9e064ad3510fb792023ab30}\label{gbfunctions_8h_aefeb346bb9e064ad3510fb792023ab30}} 
 \index{gbfunctions.h@{gbfunctions.h}!ucGBFunctionSLA@{ucGBFunctionSLA}}
 \index{ucGBFunctionSLA@{ucGBFunctionSLA}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{ucGBFunctionSLA()}{ucGBFunctionSLA()}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+GBFunction\+SLA (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+Value,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Shift register/memory left into the carry, The least significant bit is set to zero. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+Value} & Register/memory value to be shifted \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New value of the register/memory 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_aaee6bebb882310ea433b1d9b7835889e}\label{gbfunctions_8h_aaee6bebb882310ea433b1d9b7835889e}} 
 \index{gbfunctions.h@{gbfunctions.h}!ucGBFunctionSRA@{ucGBFunctionSRA}}
 \index{ucGBFunctionSRA@{ucGBFunctionSRA}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{ucGBFunctionSRA()}{ucGBFunctionSRA()}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+GBFunction\+SRA (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+Value,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Shift register/memory right into the carry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+Value} & Register/memory value to be shifted \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New value of the register/memory 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a3a337ebf04c67d7f432079a621759512}\label{gbfunctions_8h_a3a337ebf04c67d7f432079a621759512}} 
 \index{gbfunctions.h@{gbfunctions.h}!ucGBFunctionSRL@{ucGBFunctionSRL}}
 \index{ucGBFunctionSRL@{ucGBFunctionSRL}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{ucGBFunctionSRL()}{ucGBFunctionSRL()}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+GBFunction\+SRL (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+Value,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Shift register/memory right into the carry, The most significant bit is set to zero. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+Value} & Register/memory value to be shifted \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New value of the register/memory 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a56db189977b0d60a73e2648015377bc2}\label{gbfunctions_8h_a56db189977b0d60a73e2648015377bc2}} 
 \index{gbfunctions.h@{gbfunctions.h}!ucGBFunctionSWAP@{ucGBFunctionSWAP}}
 \index{ucGBFunctionSWAP@{ucGBFunctionSWAP}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{ucGBFunctionSWAP()}{ucGBFunctionSWAP()}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+GBFunction\+SWAP (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+Value,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Swap upper and lower nibbles of a register or memory location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+Value} & value of the register or memory location \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New value of the register or memory 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbfunctions_8h_a111c2edf243acf0cd533360096f88e51}\label{gbfunctions_8h_a111c2edf243acf0cd533360096f88e51}} 
+\index{gbfunctions.h@{gbfunctions.h}!usConcat16BitBigEndian@{usConcat16BitBigEndian}}
+\index{usConcat16BitBigEndian@{usConcat16BitBigEndian}!gbfunctions.h@{gbfunctions.h}}
+\doxysubsubsection{\texorpdfstring{usConcat16BitBigEndian()}{usConcat16BitBigEndian()}}
+{\footnotesize\ttfamily uint16\+\_\+t us\+Concat16\+Bit\+Big\+Endian (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{x,  }\item[{uint8\+\_\+t}]{y }\end{DoxyParamCaption})}
+
+
+
+Concatenates two bytes of data in Big Endian format. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Lower address \\
+\hline
+{\em y} & Higher address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Newly concatenated short value 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a3f0d7481c1158d9eb3c693ff238f3913}\label{gbfunctions_8h_a3f0d7481c1158d9eb3c693ff238f3913}} 
 \index{gbfunctions.h@{gbfunctions.h}!v8bitRegisterDEC@{v8bitRegisterDEC}}
 \index{v8bitRegisterDEC@{v8bitRegisterDEC}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{v8bitRegisterDEC()}{v8bitRegisterDEC()}}
 {\footnotesize\ttfamily void v8bit\+Register\+DEC (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{reg,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Decrement register/ memory location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & Pointer to register/memory location \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_af2c4683984f24ed2aa5909bac6fb941b}\label{gbfunctions_8h_af2c4683984f24ed2aa5909bac6fb941b}} 
 \index{gbfunctions.h@{gbfunctions.h}!v8bitRegisterINC@{v8bitRegisterINC}}
 \index{v8bitRegisterINC@{v8bitRegisterINC}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{v8bitRegisterINC()}{v8bitRegisterINC()}}
 {\footnotesize\ttfamily void v8bit\+Register\+INC (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{reg,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Increment register/ memory location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & Pointer to register/memory location \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_aecc878909ab184501b236520dfd09bdd}\label{gbfunctions_8h_aecc878909ab184501b236520dfd09bdd}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunction16bitADD@{vGBFunction16bitADD}}
 \index{vGBFunction16bitADD@{vGBFunction16bitADD}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunction16bitADD()}{vGBFunction16bitADD()}}
 {\footnotesize\ttfamily void v\+GBFunction16bit\+ADD (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+HL,  }\item[{uint16\+\_\+t}]{reg16,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+16 bit addition to the HL register 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+HL} & Pointer to the HL register \\
+\hline
+{\em reg16} & value of a 16 bit register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a30b453e106901fabe24ce8cb1202fbf2}\label{gbfunctions_8h_a30b453e106901fabe24ce8cb1202fbf2}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionADC@{vGBFunctionADC}}
 \index{vGBFunctionADC@{vGBFunctionADC}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionADC()}{vGBFunctionADC()}}
 {\footnotesize\ttfamily void v\+GBFunction\+ADC (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{regA,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint8\+\_\+t}]{reg\+Value }\end{DoxyParamCaption})}
 
+
+
+Adds the value of a register/ memory location + carry to the A register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em regA} & Pointer to the A register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em reg\+Value} & Register/memory location data to be added to A register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a0f26f36441f6e6741a61dff6fe71338f}\label{gbfunctions_8h_a0f26f36441f6e6741a61dff6fe71338f}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionADD@{vGBFunctionADD}}
 \index{vGBFunctionADD@{vGBFunctionADD}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionADD()}{vGBFunctionADD()}}
 {\footnotesize\ttfamily void v\+GBFunction\+ADD (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{regA,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint8\+\_\+t}]{reg\+Value }\end{DoxyParamCaption})}
 
+
+
+Adds the value of a register/ memory location to the A register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em regA} & Pointer to the A register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em reg\+Value} & Register/memory location data to be added to A register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a2ade791123ba0d26b718064edbc3288e}\label{gbfunctions_8h_a2ade791123ba0d26b718064edbc3288e}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionADD\_SP\_r8@{vGBFunctionADD\_SP\_r8}}
 \index{vGBFunctionADD\_SP\_r8@{vGBFunctionADD\_SP\_r8}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionADD\_SP\_r8()}{vGBFunctionADD\_SP\_r8()}}
 {\footnotesize\ttfamily void v\+GBFunction\+ADD\+\_\+\+SP\+\_\+r8 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+SP,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint8\+\_\+t}]{r8value }\end{DoxyParamCaption})}
 
+
+
+Add immediate signed byte value to the stack pointer. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+SP} & Pointer to the Stack Pointer register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em r8value} & Immediate signed byte value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_ad4e2853aad0123dae75612e377124425}\label{gbfunctions_8h_ad4e2853aad0123dae75612e377124425}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionBIT@{vGBFunctionBIT}}
 \index{vGBFunctionBIT@{vGBFunctionBIT}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionBIT()}{vGBFunctionBIT()}}
 {\footnotesize\ttfamily void v\+GBFunction\+BIT (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{reg\+Value,  }\item[{uint8\+\_\+t}]{bit,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Test the value of a bit in a register/memory and sets the appropriate flags in the flag register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+Value} & Register/memory value to be tested \\
+\hline
+{\em bit} & The bit to be tested \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_ace505b71f2ee9de8b891162b42a197c9}\label{gbfunctions_8h_ace505b71f2ee9de8b891162b42a197c9}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionCALL\_C\_a16@{vGBFunctionCALL\_C\_a16}}
 \index{vGBFunctionCALL\_C\_a16@{vGBFunctionCALL\_C\_a16}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionCALL\_C\_a16()}{vGBFunctionCALL\_C\_a16()}}
 {\footnotesize\ttfamily uint8\+\_\+t v\+GBFunction\+CALL\+\_\+\+C\+\_\+a16 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+PC,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint16\+\_\+t $\ast$}]{reg\+SP }\end{DoxyParamCaption})}
 
+
+
+Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if C flag is set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+PC} & Pointer to Program Counter register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em reg\+SP} & Pointer to Stack Pointer register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Duration in T-\/states for the current instruction 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a31811c0db994e6be8be786990b8a0c4f}\label{gbfunctions_8h_a31811c0db994e6be8be786990b8a0c4f}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionCALL\_NC\_a16@{vGBFunctionCALL\_NC\_a16}}
 \index{vGBFunctionCALL\_NC\_a16@{vGBFunctionCALL\_NC\_a16}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionCALL\_NC\_a16()}{vGBFunctionCALL\_NC\_a16()}}
 {\footnotesize\ttfamily uint8\+\_\+t v\+GBFunction\+CALL\+\_\+\+NC\+\_\+a16 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+PC,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint16\+\_\+t $\ast$}]{reg\+SP }\end{DoxyParamCaption})}
 
+
+
+Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if C flag is reset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+PC} & Pointer to Program Counter register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em reg\+SP} & Pointer to Stack Pointer register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Duration in T-\/states for the current instruction 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_af4ec8c03c6c63705f684ba27854f9c0a}\label{gbfunctions_8h_af4ec8c03c6c63705f684ba27854f9c0a}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionCALL\_NZ\_a16@{vGBFunctionCALL\_NZ\_a16}}
 \index{vGBFunctionCALL\_NZ\_a16@{vGBFunctionCALL\_NZ\_a16}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionCALL\_NZ\_a16()}{vGBFunctionCALL\_NZ\_a16()}}
 {\footnotesize\ttfamily uint8\+\_\+t v\+GBFunction\+CALL\+\_\+\+NZ\+\_\+a16 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+PC,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint16\+\_\+t $\ast$}]{reg\+SP }\end{DoxyParamCaption})}
 
+
+
+Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if Z flag is reset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+PC} & Pointer to Program Counter register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em reg\+SP} & Pointer to Stack Pointer register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Duration in T-\/states for the current instruction 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a72be8c61eb5ef01df3d390681f6ffaf8}\label{gbfunctions_8h_a72be8c61eb5ef01df3d390681f6ffaf8}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionCALL\_Z\_a16@{vGBFunctionCALL\_Z\_a16}}
 \index{vGBFunctionCALL\_Z\_a16@{vGBFunctionCALL\_Z\_a16}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionCALL\_Z\_a16()}{vGBFunctionCALL\_Z\_a16()}}
 {\footnotesize\ttfamily uint8\+\_\+t v\+GBFunction\+CALL\+\_\+\+Z\+\_\+a16 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+PC,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint16\+\_\+t $\ast$}]{reg\+SP }\end{DoxyParamCaption})}
 
+
+
+Pushes 16 bit register onto stack and then jumps to immediate unsigned short address if Z flag is set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+PC} & Pointer to Program Counter register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em reg\+SP} & Pointer to Stack Pointer register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Duration in T-\/states for the current instruction 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a7dd90eb3c79b615540d6a62c087801cb}\label{gbfunctions_8h_a7dd90eb3c79b615540d6a62c087801cb}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionCP@{vGBFunctionCP}}
 \index{vGBFunctionCP@{vGBFunctionCP}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionCP()}{vGBFunctionCP()}}
 {\footnotesize\ttfamily void v\+GBFunction\+CP (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{regA,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint8\+\_\+t}]{reg\+Value }\end{DoxyParamCaption})}
 
+
+
+Compare register a with another register/memory location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em regA} & Value of register A \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em reg\+Value} & Value of a register/memory location \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_aeca929beaffa69b852a32c6bdee13c0d}\label{gbfunctions_8h_aeca929beaffa69b852a32c6bdee13c0d}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionDAA@{vGBFunctionDAA}}
 \index{vGBFunctionDAA@{vGBFunctionDAA}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionDAA()}{vGBFunctionDAA()}}
 {\footnotesize\ttfamily void v\+GBFunction\+DAA (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{regA,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Adjusts register A such that the correct representation of Binary Coded Decimal is obtained. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em regA} & Pointer to register A \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a8bb07e6a064c2cda0ff46d9b40e86757}\label{gbfunctions_8h_a8bb07e6a064c2cda0ff46d9b40e86757}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionJP\_C\_a16@{vGBFunctionJP\_C\_a16}}
 \index{vGBFunctionJP\_C\_a16@{vGBFunctionJP\_C\_a16}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionJP\_C\_a16()}{vGBFunctionJP\_C\_a16()}}
 {\footnotesize\ttfamily uint8\+\_\+t v\+GBFunction\+JP\+\_\+\+C\+\_\+a16 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+PC,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint16\+\_\+t}]{addr }\end{DoxyParamCaption})}
 
+
+
+Jump to Immediate unsigned short address if C flag is set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+PC} & Pointer to Program Counter register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em addr} & Immediate unsigned short address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Duration in T-\/states for the current instruction 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_aa30ab6647d87cc34f840088938410e2f}\label{gbfunctions_8h_aa30ab6647d87cc34f840088938410e2f}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionJP\_NC\_a16@{vGBFunctionJP\_NC\_a16}}
 \index{vGBFunctionJP\_NC\_a16@{vGBFunctionJP\_NC\_a16}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionJP\_NC\_a16()}{vGBFunctionJP\_NC\_a16()}}
 {\footnotesize\ttfamily uint8\+\_\+t v\+GBFunction\+JP\+\_\+\+NC\+\_\+a16 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+PC,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint16\+\_\+t}]{addr }\end{DoxyParamCaption})}
 
+
+
+Jump to Immediate unsigned short address if C flag is reset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+PC} & Pointer to Program Counter register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em addr} & Immediate unsigned short address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Duration in T-\/states for the current instruction 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a249cc5a6768d85a0376e8d01f4015d74}\label{gbfunctions_8h_a249cc5a6768d85a0376e8d01f4015d74}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionJP\_NZ\_a16@{vGBFunctionJP\_NZ\_a16}}
 \index{vGBFunctionJP\_NZ\_a16@{vGBFunctionJP\_NZ\_a16}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionJP\_NZ\_a16()}{vGBFunctionJP\_NZ\_a16()}}
 {\footnotesize\ttfamily uint8\+\_\+t v\+GBFunction\+JP\+\_\+\+NZ\+\_\+a16 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+PC,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint16\+\_\+t}]{addr }\end{DoxyParamCaption})}
 
+
+
+Jump to Immediate unsigned short address if Z flag is reset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+PC} & Pointer to Program Counter register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em addr} & Immediate unsigned short address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Duration in T-\/states for the current instruction 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_ac4a73e812970dcc5a3bc5d665888e630}\label{gbfunctions_8h_ac4a73e812970dcc5a3bc5d665888e630}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionJP\_Z\_a16@{vGBFunctionJP\_Z\_a16}}
 \index{vGBFunctionJP\_Z\_a16@{vGBFunctionJP\_Z\_a16}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionJP\_Z\_a16()}{vGBFunctionJP\_Z\_a16()}}
 {\footnotesize\ttfamily uint8\+\_\+t v\+GBFunction\+JP\+\_\+\+Z\+\_\+a16 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+PC,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint16\+\_\+t}]{addr }\end{DoxyParamCaption})}
 
+
+
+Jump to Immediate unsigned short address if Z flag is set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+PC} & Pointer to Program Counter register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em addr} & Immediate unsigned short address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Duration in T-\/states for the current instruction 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a11d4f2c9bfb9ab5397fcbe84e9639292}\label{gbfunctions_8h_a11d4f2c9bfb9ab5397fcbe84e9639292}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionJR\_C@{vGBFunctionJR\_C}}
 \index{vGBFunctionJR\_C@{vGBFunctionJR\_C}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionJR\_C()}{vGBFunctionJR\_C()}}
 {\footnotesize\ttfamily uint8\+\_\+t v\+GBFunction\+JR\+\_\+C (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+PC,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint8\+\_\+t}]{r8value }\end{DoxyParamCaption})}
 
+
+
+Jump to Program Counter address plus immediate signed byte value if C flag is set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+PC} & Pointer to Program Counter register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em r8value} & Immediate signed byte value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Duration in T-\/states for the current instruction 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a539b81e390017ea3fe2d0dd1b74ec102}\label{gbfunctions_8h_a539b81e390017ea3fe2d0dd1b74ec102}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionJR\_NC@{vGBFunctionJR\_NC}}
 \index{vGBFunctionJR\_NC@{vGBFunctionJR\_NC}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionJR\_NC()}{vGBFunctionJR\_NC()}}
 {\footnotesize\ttfamily uint8\+\_\+t v\+GBFunction\+JR\+\_\+\+NC (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+PC,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint8\+\_\+t}]{r8value }\end{DoxyParamCaption})}
 
+
+
+Jump to Program Counter address plus immediate signed byte value if C flag is reset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+PC} & Pointer to Program Counter register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em r8value} & Immediate signed byte value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Duration in T-\/states for the current instruction 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a4d255ca74224d4ea6a5429c30c685cda}\label{gbfunctions_8h_a4d255ca74224d4ea6a5429c30c685cda}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionJR\_NZ@{vGBFunctionJR\_NZ}}
 \index{vGBFunctionJR\_NZ@{vGBFunctionJR\_NZ}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionJR\_NZ()}{vGBFunctionJR\_NZ()}}
 {\footnotesize\ttfamily uint8\+\_\+t v\+GBFunction\+JR\+\_\+\+NZ (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+PC,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint8\+\_\+t}]{r8value }\end{DoxyParamCaption})}
 
+
+
+Jump to Program Counter address plus immediate signed byte value if Z flag is reset. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+PC} & Pointer to Program Counter register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em r8value} & Immediate signed byte value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Duration in T-\/states for the current instruction 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a9f59a1f64b4d3d78ee06c0b0ffca9e20}\label{gbfunctions_8h_a9f59a1f64b4d3d78ee06c0b0ffca9e20}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionJR\_Z@{vGBFunctionJR\_Z}}
 \index{vGBFunctionJR\_Z@{vGBFunctionJR\_Z}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionJR\_Z()}{vGBFunctionJR\_Z()}}
 {\footnotesize\ttfamily uint8\+\_\+t v\+GBFunction\+JR\+\_\+Z (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+PC,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint8\+\_\+t}]{r8value }\end{DoxyParamCaption})}
 
+
+
+Jump to Program Counter address plus immediate signed byte value if Z flag is set. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+PC} & Pointer to Program Counter register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em r8value} & Immediate signed byte value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Duration in T-\/states for the current instruction 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_aa54efe75b407f0c94d105ad286829330}\label{gbfunctions_8h_aa54efe75b407f0c94d105ad286829330}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionLD\_HL\_SP\_r8@{vGBFunctionLD\_HL\_SP\_r8}}
 \index{vGBFunctionLD\_HL\_SP\_r8@{vGBFunctionLD\_HL\_SP\_r8}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionLD\_HL\_SP\_r8()}{vGBFunctionLD\_HL\_SP\_r8()}}
 {\footnotesize\ttfamily void v\+GBFunction\+LD\+\_\+\+HL\+\_\+\+SP\+\_\+r8 (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+HL,  }\item[{uint16\+\_\+t $\ast$}]{reg\+SP,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint8\+\_\+t}]{r8value }\end{DoxyParamCaption})}
 
+
+
+Load the Stack Pointer + immediate signed byte value into register HL. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+HL} & Pointer to the HL register \\
+\hline
+{\em reg\+SP} & Pointer to the SP register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em r8value} & Immediate signed byte value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a67acd0a0c98029aea28f03622ba29703}\label{gbfunctions_8h_a67acd0a0c98029aea28f03622ba29703}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionPOP@{vGBFunctionPOP}}
 \index{vGBFunctionPOP@{vGBFunctionPOP}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionPOP()}{vGBFunctionPOP()}}
 {\footnotesize\ttfamily void v\+GBFunction\+POP (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+SP,  }\item[{uint16\+\_\+t $\ast$}]{reg16 }\end{DoxyParamCaption})}
 
+
+
+Pop two bytes off of the stack and into 16 bit register, increments the stack pointer by 2. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+SP} & Pointer to the Stack Pointer register \\
+\hline
+{\em reg16} & Pointer to 16 bit register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_af0cdf7d14647820f303488a8ef8d4965}\label{gbfunctions_8h_af0cdf7d14647820f303488a8ef8d4965}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionPUSH@{vGBFunctionPUSH}}
 \index{vGBFunctionPUSH@{vGBFunctionPUSH}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionPUSH()}{vGBFunctionPUSH()}}
 {\footnotesize\ttfamily void v\+GBFunction\+PUSH (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+SP,  }\item[{uint16\+\_\+t $\ast$}]{reg16 }\end{DoxyParamCaption})}
 
+
+
+Pushes 16 bit register onto stack. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+SP} & Pointer to Stack Pointer register \\
+\hline
+{\em reg16} & Pointer to 16 bit register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_ae282b64d88018aad322076154c1f6af5}\label{gbfunctions_8h_ae282b64d88018aad322076154c1f6af5}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionRET@{vGBFunctionRET}}
 \index{vGBFunctionRET@{vGBFunctionRET}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionRET()}{vGBFunctionRET()}}
 {\footnotesize\ttfamily void v\+GBFunction\+RET (\begin{DoxyParamCaption}\item[{uint16\+\_\+t $\ast$}]{reg\+SP,  }\item[{uint16\+\_\+t $\ast$}]{reg\+PC }\end{DoxyParamCaption})}
 
+
+
+Pop two bytes from the stack and jump to that address. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg\+SP} & Pointer to the Stack Pointer register \\
+\hline
+{\em reg\+PC} & Pointer to the Program Counter register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a8add9d856afee37c66da7f2099416e3a}\label{gbfunctions_8h_a8add9d856afee37c66da7f2099416e3a}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionRLA@{vGBFunctionRLA}}
 \index{vGBFunctionRLA@{vGBFunctionRLA}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionRLA()}{vGBFunctionRLA()}}
 {\footnotesize\ttfamily void v\+GBFunction\+RLA (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{regA,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Rotate register A left through carry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em regA} & Pointer to Register A to be rotated \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_abee8c6f743492a6a58e6074993e7c6cd}\label{gbfunctions_8h_abee8c6f743492a6a58e6074993e7c6cd}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionRLCA@{vGBFunctionRLCA}}
 \index{vGBFunctionRLCA@{vGBFunctionRLCA}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionRLCA()}{vGBFunctionRLCA()}}
 {\footnotesize\ttfamily void v\+GBFunction\+RLCA (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{reg,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Rotate register A left, bit 7 becomes carry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & Pointer to Register A to be rotated \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a587dfa23361a5d32b4b2e075efee7407}\label{gbfunctions_8h_a587dfa23361a5d32b4b2e075efee7407}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionRRA@{vGBFunctionRRA}}
 \index{vGBFunctionRRA@{vGBFunctionRRA}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionRRA()}{vGBFunctionRRA()}}
 {\footnotesize\ttfamily void v\+GBFunction\+RRA (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{regA,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Rotate register A right through carry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em regA} & Pointer to Register A to be rotated \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a590f83b8b08f1886e494e7b6ede93e70}\label{gbfunctions_8h_a590f83b8b08f1886e494e7b6ede93e70}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionRRCA@{vGBFunctionRRCA}}
 \index{vGBFunctionRRCA@{vGBFunctionRRCA}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionRRCA()}{vGBFunctionRRCA()}}
 {\footnotesize\ttfamily void v\+GBFunction\+RRCA (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{reg,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Rotate register A right, bit 0 becomes carry. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em reg} & Pointer to Register A to be rotated \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a4eed68c3300602ec2b7bc079f4dc93e1}\label{gbfunctions_8h_a4eed68c3300602ec2b7bc079f4dc93e1}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionSBC@{vGBFunctionSBC}}
 \index{vGBFunctionSBC@{vGBFunctionSBC}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionSBC()}{vGBFunctionSBC()}}
 {\footnotesize\ttfamily void v\+GBFunction\+SBC (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{regA,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint8\+\_\+t}]{reg\+Value }\end{DoxyParamCaption})}
 
+
+
+Subtracts the value of a register/ memory location + carry from the A register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em regA} & Pointer to the A register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em reg\+Value} & Register/memory location data to be subtracted to A register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_aa22a9ca998563f11d1c87bc45b06d06d}\label{gbfunctions_8h_aa22a9ca998563f11d1c87bc45b06d06d}} 
 \index{gbfunctions.h@{gbfunctions.h}!vGBFunctionSUB@{vGBFunctionSUB}}
 \index{vGBFunctionSUB@{vGBFunctionSUB}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vGBFunctionSUB()}{vGBFunctionSUB()}}
 {\footnotesize\ttfamily void v\+GBFunction\+SUB (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{regA,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg,  }\item[{uint8\+\_\+t}]{reg\+Value }\end{DoxyParamCaption})}
 
+
+
+Subtracts the value of a register/ memory location from the A register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em regA} & Pointer to the A register \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+{\em reg\+Value} & Register/memory location data to be subtracted to A register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a99413e16dc2b7cfc5028794c4af09348}\label{gbfunctions_8h_a99413e16dc2b7cfc5028794c4af09348}} 
 \index{gbfunctions.h@{gbfunctions.h}!vMemoryLocationDEC@{vMemoryLocationDEC}}
 \index{vMemoryLocationDEC@{vMemoryLocationDEC}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vMemoryLocationDEC()}{vMemoryLocationDEC()}}
 {\footnotesize\ttfamily void v\+Memory\+Location\+DEC (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{loc,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Decrement memory location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em loc} & memory address \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbfunctions_8h_a6d31f46628215c7a65041774e17b92f5}\label{gbfunctions_8h_a6d31f46628215c7a65041774e17b92f5}} 
 \index{gbfunctions.h@{gbfunctions.h}!vMemoryLocationINC@{vMemoryLocationINC}}
 \index{vMemoryLocationINC@{vMemoryLocationINC}!gbfunctions.h@{gbfunctions.h}}
 \doxysubsubsection{\texorpdfstring{vMemoryLocationINC()}{vMemoryLocationINC()}}
 {\footnotesize\ttfamily void v\+Memory\+Location\+INC (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{loc,  }\item[{uint8\+\_\+t $\ast$}]{flag\+Reg }\end{DoxyParamCaption})}
 
+
+
+Increment memory location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em loc} & memory address \\
+\hline
+{\em flag\+Reg} & Pointer to the flag register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbfunctions_8h_a17360a303ef8d946cb40a923502aef53}\label{gbfunctions_8h_a17360a303ef8d946cb40a923502aef53}} 
+\index{gbfunctions.h@{gbfunctions.h}!vResetBit@{vResetBit}}
+\index{vResetBit@{vResetBit}!gbfunctions.h@{gbfunctions.h}}
+\doxysubsubsection{\texorpdfstring{vResetBit()}{vResetBit()}}
+{\footnotesize\ttfamily void v\+Reset\+Bit (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{n,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
+
+
+
+Resets a bit in a register/memory location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Register/memory location \\
+\hline
+{\em bit} & The bit to be reset (0 -\/ 7) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbfunctions_8h_a302bb6703664648619ebce9fd3d193f7}\label{gbfunctions_8h_a302bb6703664648619ebce9fd3d193f7}} 
+\index{gbfunctions.h@{gbfunctions.h}!vSetBit@{vSetBit}}
+\index{vSetBit@{vSetBit}!gbfunctions.h@{gbfunctions.h}}
+\doxysubsubsection{\texorpdfstring{vSetBit()}{vSetBit()}}
+{\footnotesize\ttfamily void v\+Set\+Bit (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{n,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
+
+
+
+Sets a bit in a register/memory location. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & Register/memory location \\
+\hline
+{\em bit} & The bit to be set (0 -\/ 7) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}

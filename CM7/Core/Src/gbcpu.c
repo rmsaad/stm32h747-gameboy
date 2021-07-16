@@ -2,6 +2,7 @@
   ******************************************************************************
   * @file           : gbcpu.c
   * @brief          : Gameboy CPU Functionality
+  *                   This file emulates all functionality of the Gameboy CPU.
   * @author         : Rami
   * @date           : Mar 28, 2021
   *
@@ -31,21 +32,19 @@
 #define JOYPAD_VECTOR     0x0060
 
 /* Private variables ---------------------------------------------------------*/
+uint8_t  ucSTOPPED = 0;
+uint8_t  ucHALTED = 0;
+uint8_t  ucInterruptMasterEnable = 0;
+uint8_t  ucOneCycleInterruptDelay = 0;
+uint8_t  ucCustomDuration = 0;
+uint8_t  uctStates = 0;
 
-uint8_t ucSTOPPED = 0;
-uint8_t ucHALTED = 0;
-uint8_t ucInterruptMasterEnable = 0;
-uint8_t ucOneCycleInterruptDelay = 0;
-uint8_t customDuration = 0;
-uint8_t tStates = 0;
-uint8_t print = 0;
-uint8_t num = 0;
-uint64_t numcount;
-uint16_t pc = 0x3F9;
+uint16_t usDebugPC = 0x3F9;
+uint8_t  ucMemoryBreakPointTrigger = 0;
+
 extern registers reg;
-extern const unsigned char Alleyway_gb[];
-extern unsigned char Tetris_gb[];
-extern unsigned char cpu_instrs_gb[];
+
+void prvGBCPUinstr(uint8_t opcode);
 
 /* Game Boy CPU instruction set */
 
@@ -1119,14 +1118,14 @@ Assembly_Instr prefix_instructions[256] = {
 
 /*********************0x0X*/
 void vNOP(){          }
-void vLDs_BC_d16(){   reg.BC = concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1));}
+void vLDs_BC_d16(){   reg.BC = usConcat16BitBigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1));}
 void vLD_BC_A(){      vGBMemoryWrite(reg.BC, reg.A);}
 void vINCs_BC(){      reg.BC++;}
 void vINC_B(){        v8bitRegisterINC(&reg.B, &reg.F);}
 void vDEC_B(){        v8bitRegisterDEC(&reg.B, &reg.F);}
 void vLD_B_d8(){      reg.B = ucGBMemoryRead(reg.PC - 1);}
 void vRLCA(){         vGBFunctionRLCA(&reg.A, &reg.F);}
-void vLDs_a16_SP(){   vGBMemoryWriteShort(concat_16bit_bigEndian(ucGBMemoryRead(reg.PC -2), ucGBMemoryRead(reg.PC - 1)), reg.SP);}
+void vLDs_a16_SP(){   vGBMemoryWriteShort(usConcat16BitBigEndian(ucGBMemoryRead(reg.PC -2), ucGBMemoryRead(reg.PC - 1)), reg.SP);}
 void vADDs_HL_BC(){   vGBFunction16bitADD(&reg.HL, reg.BC, &reg.F);}
 void vLD_A_BC(){      reg.A = ucGBMemoryRead(reg.BC);}
 void vDECs_BC(){      reg.BC--;}
@@ -1137,7 +1136,7 @@ void vRRCA(){         vGBFunctionRRCA(&reg.A, &reg.F);}
 
 /*********************0x1X*/
 void vSTOP(){         ucSTOPPED = 1;}                                    // MORE NEEDED TO IMPLEMENT LATER
-void vLDs_DE_d16(){   reg.DE = concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1));}
+void vLDs_DE_d16(){   reg.DE = usConcat16BitBigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1));}
 void vLD_DE_A(){      vGBMemoryWrite(reg.DE, reg.A);}
 void vINCs_DE(){      reg.DE++;}
 void vINC_D(){        v8bitRegisterINC(&reg.D, &reg.F);}
@@ -1154,40 +1153,40 @@ void vLD_E_d8(){      reg.E = ucGBMemoryRead(reg.PC - 1);}
 void vRRA(){          vGBFunctionRRA(&reg.A, &reg.F);}
 
 /*********************0x2X*/
-void vJR_NZ_r8(){     customDuration = vGBFunctionJR_NZ(&reg.PC, &reg.F, ucGBMemoryRead(reg.PC - 1));}
-void vLDs_HL_d16(){   reg.HL = concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1));}
+void vJR_NZ_r8(){     ucCustomDuration = vGBFunctionJR_NZ(&reg.PC, &reg.F, ucGBMemoryRead(reg.PC - 1));}
+void vLDs_HL_d16(){   reg.HL = usConcat16BitBigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1));}
 void vLD_HLI_A(){     vGBMemoryWrite(reg.HL, reg.A); reg.HL++;}
 void vINCs_HL(){      reg.HL++;}
 void vINC_H(){        v8bitRegisterINC(&reg.H, &reg.F);}
 void vDEC_H(){        v8bitRegisterDEC(&reg.H, &reg.F);}
 void vLD_H_d8(){      reg.H = ucGBMemoryRead(reg.PC - 1);}
 void vDAA(){          vGBFunctionDAA(&reg.A, &reg.F);}
-void vJR_Z_r8(){      customDuration = vGBFunctionJR_Z(&reg.PC, &reg.F, ucGBMemoryRead(reg.PC - 1));}
+void vJR_Z_r8(){      ucCustomDuration = vGBFunctionJR_Z(&reg.PC, &reg.F, ucGBMemoryRead(reg.PC - 1));}
 void vADDs_HL_HL(){   vGBFunction16bitADD(&reg.HL, reg.HL, &reg.F);}
 void vLD_A_HLI(){     reg.A = ucGBMemoryRead(reg.HL); reg.HL++;}
 void vDECs_HL(){      reg.HL--;}
 void vINC_L(){        v8bitRegisterINC(&reg.L, &reg.F);}
 void vDEC_L(){        v8bitRegisterDEC(&reg.L, &reg.F);}
 void vLD_L_d8(){      reg.L = ucGBMemoryRead(reg.PC - 1);}
-void vCPL(){          reg.A = ~(reg.A); setbit(&reg.F, N_FLAG); setbit(&reg.F, H_FLAG);}
+void vCPL(){          reg.A = ~(reg.A); vSetBit(&reg.F, N_FLAG); vSetBit(&reg.F, H_FLAG);}
 
 /*********************0x3X*/
-void vJR_NC_r8(){     customDuration = vGBFunctionJR_NC(&reg.PC, &reg.F, ucGBMemoryRead(reg.PC - 1));}
-void vLDs_SP_d16(){   reg.SP = concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1));}
+void vJR_NC_r8(){     ucCustomDuration = vGBFunctionJR_NC(&reg.PC, &reg.F, ucGBMemoryRead(reg.PC - 1));}
+void vLDs_SP_d16(){   reg.SP = usConcat16BitBigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1));}
 void vLD_HLD_A(){     vGBMemoryWrite(reg.HL, reg.A); reg.HL--;}
 void vINCs_SP(){      reg.SP++;}
 void vINC_HL(){       vMemoryLocationINC(reg.HL, &reg.F);}
 void vDEC_HL(){       vMemoryLocationDEC(reg.HL, &reg.F);}
 void vLD_HL_d8(){     vGBMemoryWrite(reg.HL, ucGBMemoryRead(reg.PC - 1));}
-void vSCF(){          resetbit(&reg.F, N_FLAG); resetbit(&reg.F, H_FLAG); setbit(&reg.F, C_FLAG);}
-void vJR_C_r8(){      customDuration = vGBFunctionJR_C(&reg.PC, &reg.F, ucGBMemoryRead(reg.PC - 1));}
+void vSCF(){          vResetBit(&reg.F, N_FLAG); vResetBit(&reg.F, H_FLAG); vSetBit(&reg.F, C_FLAG);}
+void vJR_C_r8(){      ucCustomDuration = vGBFunctionJR_C(&reg.PC, &reg.F, ucGBMemoryRead(reg.PC - 1));}
 void vADDs_HL_SP(){   vGBFunction16bitADD(&reg.HL, reg.SP, &reg.F);}
 void vLD_A_HLD(){     reg.A = ucGBMemoryRead(reg.HL); reg.HL--;}
 void vDECs_SP(){      reg.SP--;}
 void vINC_A(){        v8bitRegisterINC(&reg.A, &reg.F);}
 void vDEC_A(){        v8bitRegisterDEC(&reg.A, &reg.F);}
 void vLD_A_d8(){      reg.A = ucGBMemoryRead(reg.PC - 1);}
-void vCCF(){          resetbit(&reg.F, N_FLAG); resetbit(&reg.F, H_FLAG); (checkbit(reg.F, C_FLAG)) ? resetbit(&reg.F, C_FLAG) : setbit(&reg.F, C_FLAG);}
+void vCCF(){          vResetBit(&reg.F, N_FLAG); vResetBit(&reg.F, H_FLAG); (ucCheckBit(reg.F, C_FLAG)) ? vResetBit(&reg.F, C_FLAG) : vSetBit(&reg.F, C_FLAG);}
 
 /*********************0x4X*/
 void vLD_B_B(){       reg.B = reg.B;}
@@ -1334,37 +1333,37 @@ void vCP_HL(){        vGBFunctionCP(reg.A, &reg.F, ucGBMemoryRead(reg.HL));}
 void vCP_A(){         vGBFunctionCP(reg.A, &reg.F, reg.A);}
 
 /*********************0xCX*/
-void vRET_NZ(){       customDuration = (checkbit(reg.F, Z_FLAG)) ?  8 : 20; if(checkbit(reg.F, Z_FLAG) == 0) vGBFunctionRET(&reg.SP, &reg.PC);}
+void vRET_NZ(){       ucCustomDuration = (ucCheckBit(reg.F, Z_FLAG)) ?  8 : 20; if(ucCheckBit(reg.F, Z_FLAG) == 0) vGBFunctionRET(&reg.SP, &reg.PC);}
 void vPOP_BC(){       vGBFunctionPOP(&reg.SP, &reg.BC);}
-void vJP_NZ_a16(){    customDuration = vGBFunctionJP_NZ_a16(&reg.PC, &reg.F, concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
-void vJP_a16(){       reg.PC = concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1));}
-void vCALL_NZ_a16(){  customDuration = vGBFunctionCALL_NZ_a16(&reg.PC, &reg.F, &reg.SP);}
+void vJP_NZ_a16(){    ucCustomDuration = vGBFunctionJP_NZ_a16(&reg.PC, &reg.F, usConcat16BitBigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
+void vJP_a16(){       reg.PC = usConcat16BitBigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1));}
+void vCALL_NZ_a16(){  ucCustomDuration = vGBFunctionCALL_NZ_a16(&reg.PC, &reg.F, &reg.SP);}
 void vPUSH_BC(){      vGBFunctionPUSH(&reg.SP, &reg.BC);}
 void vADD_A_d8(){     vGBFunctionADD(&reg.A, &reg.F, ucGBMemoryRead(reg.PC - 1));}
 void vRST_00H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0000;}
-void vRET_Z(){        customDuration = (checkbit(reg.F, Z_FLAG)) ?  20 : 8; if(checkbit(reg.F, Z_FLAG)) vGBFunctionRET(&reg.SP, &reg.PC);}
+void vRET_Z(){        ucCustomDuration = (ucCheckBit(reg.F, Z_FLAG)) ?  20 : 8; if(ucCheckBit(reg.F, Z_FLAG)) vGBFunctionRET(&reg.SP, &reg.PC);}
 void vRET(){          vGBFunctionRET(&reg.SP, &reg.PC);}
-void vJP_Z_a16(){     customDuration = vGBFunctionJP_Z_a16(&reg.PC, &reg.F, concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
+void vJP_Z_a16(){     ucCustomDuration = vGBFunctionJP_Z_a16(&reg.PC, &reg.F, usConcat16BitBigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
 void vPREFIX(){       ((void (*)(void))prefix_instructions[ucGBMemoryRead(reg.PC - 1)].instr)();}
-void vCALL_Z_a16(){   customDuration = vGBFunctionCALL_Z_a16(&reg.PC, &reg.F, &reg.SP);}
-void vCALL_a16(){     vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1));}
+void vCALL_Z_a16(){   ucCustomDuration = vGBFunctionCALL_Z_a16(&reg.PC, &reg.F, &reg.SP);}
+void vCALL_a16(){     vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = usConcat16BitBigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1));}
 void vADC_A_d8(){     vGBFunctionADC(&reg.A, &reg.F, ucGBMemoryRead(reg.PC - 1));}
 void vRST_08H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0008;}
 
 /*********************0xDX*/
-void vRET_NC(){       customDuration =(checkbit(reg.F, C_FLAG)) ?  8 : 20; if(checkbit(reg.F, C_FLAG) == 0) vGBFunctionRET(&reg.SP, &reg.PC);}
+void vRET_NC(){       ucCustomDuration =(ucCheckBit(reg.F, C_FLAG)) ?  8 : 20; if(ucCheckBit(reg.F, C_FLAG) == 0) vGBFunctionRET(&reg.SP, &reg.PC);}
 void vPOP_DE(){       vGBFunctionPOP(&reg.SP, &reg.DE);}
-void vJP_NC_a16(){    customDuration = vGBFunctionJP_NC_a16(&reg.PC, &reg.F, concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
+void vJP_NC_a16(){    ucCustomDuration = vGBFunctionJP_NC_a16(&reg.PC, &reg.F, usConcat16BitBigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
 // -----------
-void vCALL_NC_a16(){  customDuration = vGBFunctionCALL_NC_a16(&reg.PC, &reg.F, &reg.SP);}
+void vCALL_NC_a16(){  ucCustomDuration = vGBFunctionCALL_NC_a16(&reg.PC, &reg.F, &reg.SP);}
 void vPUSH_DE(){      vGBFunctionPUSH(&reg.SP, &reg.DE);}
 void vSUB_d8(){       vGBFunctionSUB(&reg.A, &reg.F, ucGBMemoryRead(reg.PC - 1));}
 void vRST_10H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0010;}
-void vRET_C(){        customDuration =(checkbit(reg.F, C_FLAG)) ?  20 : 8; if(checkbit(reg.F, C_FLAG)) vGBFunctionRET(&reg.SP, &reg.PC);}
+void vRET_C(){        ucCustomDuration =(ucCheckBit(reg.F, C_FLAG)) ?  20 : 8; if(ucCheckBit(reg.F, C_FLAG)) vGBFunctionRET(&reg.SP, &reg.PC);}
 void vRETI(){         ucInterruptMasterEnable = 1; vGBFunctionRET(&reg.SP, &reg.PC);}
-void vJP_C_a16(){     customDuration = vGBFunctionJP_C_a16(&reg.PC, &reg.F, concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
+void vJP_C_a16(){     ucCustomDuration = vGBFunctionJP_C_a16(&reg.PC, &reg.F, usConcat16BitBigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
 // -----------
-void vCALL_C_a16(){   customDuration = vGBFunctionCALL_C_a16(&reg.PC, &reg.F, &reg.SP);}
+void vCALL_C_a16(){   ucCustomDuration = vGBFunctionCALL_C_a16(&reg.PC, &reg.F, &reg.SP);}
 // -----------
 void vSBC_A_d8(){     vGBFunctionSBC(&reg.A, &reg.F, ucGBMemoryRead(reg.PC - 1));}
 void vRST_18H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0018;}
@@ -1380,7 +1379,7 @@ void vAND_d8(){       reg.A &= ucGBMemoryRead(reg.PC - 1); reg.F = (reg.A == 0) 
 void vRST20H(){       vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0020;}
 void vADDs_SP_r8(){   vGBFunctionADD_SP_r8(&reg.SP, &reg.F, ucGBMemoryRead(reg.PC - 1));}
 void vJP_HL(){        reg.PC = reg.HL;}
-void vLD_a16_A(){     vGBMemoryWrite(concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)), reg.A);}
+void vLD_a16_A(){     vGBMemoryWrite(usConcat16BitBigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)), reg.A);}
 // -----------
 // -----------
 // -----------
@@ -1398,7 +1397,7 @@ void vOR_d8(){        reg.A |= ucGBMemoryRead(reg.PC - 1); reg.F = (reg.A == 0) 
 void vRST_30H(){      vGBFunctionPUSH(&reg.SP, &reg.PC); reg.PC = 0x0030;}
 void vLDs_HL_SP_r8(){ vGBFunctionLD_HL_SP_r8(&reg.HL, &reg.SP, &reg.F, ucGBMemoryRead(reg.PC - 1));}
 void vLDs_SP_HL(){    reg.SP = reg.HL;}
-void vLD_A_a16(){     reg.A = ucGBMemoryRead(concat_16bit_bigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
+void vLD_A_a16(){     reg.A = ucGBMemoryRead(usConcat16BitBigEndian(ucGBMemoryRead(reg.PC - 2), ucGBMemoryRead(reg.PC - 1)));}
 void vEI(){           ucInterruptMasterEnable = 1;}
 // -----------
 // -----------
@@ -1552,188 +1551,178 @@ void vBIT_7_HL(){     vGBFunctionBIT(ucGBMemoryRead(reg.HL), 7, &reg.F);}
 void vBIT_7_A(){      vGBFunctionBIT(reg.A, 7, &reg.F);}
 
 /*********************0x8X*/
-void vRES_0_B(){      resetbit(&reg.B, 0);}
-void vRES_0_C(){      resetbit(&reg.C, 0);}
-void vRES_0_D(){      resetbit(&reg.D, 0);}
-void vRES_0_E(){      resetbit(&reg.E, 0);}
-void vRES_0_H(){      resetbit(&reg.H, 0);}
-void vRES_0_L(){      resetbit(&reg.L, 0);}
+void vRES_0_B(){      vResetBit(&reg.B, 0);}
+void vRES_0_C(){      vResetBit(&reg.C, 0);}
+void vRES_0_D(){      vResetBit(&reg.D, 0);}
+void vRES_0_E(){      vResetBit(&reg.E, 0);}
+void vRES_0_H(){      vResetBit(&reg.H, 0);}
+void vRES_0_L(){      vResetBit(&reg.L, 0);}
 void vRES_0_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionRESHL(reg.HL, 0));}
-void vRES_0_A(){      resetbit(&reg.A, 0);}
-void vRES_1_B(){      resetbit(&reg.B, 1);}
-void vRES_1_C(){      resetbit(&reg.C, 1);}
-void vRES_1_D(){      resetbit(&reg.D, 1);}
-void vRES_1_E(){      resetbit(&reg.E, 1);}
-void vRES_1_H(){      resetbit(&reg.H, 1);}
-void vRES_1_L(){      resetbit(&reg.L, 1);}
+void vRES_0_A(){      vResetBit(&reg.A, 0);}
+void vRES_1_B(){      vResetBit(&reg.B, 1);}
+void vRES_1_C(){      vResetBit(&reg.C, 1);}
+void vRES_1_D(){      vResetBit(&reg.D, 1);}
+void vRES_1_E(){      vResetBit(&reg.E, 1);}
+void vRES_1_H(){      vResetBit(&reg.H, 1);}
+void vRES_1_L(){      vResetBit(&reg.L, 1);}
 void vRES_1_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionRESHL(reg.HL, 1));}
-void vRES_1_A(){      resetbit(&reg.A, 1);}
+void vRES_1_A(){      vResetBit(&reg.A, 1);}
 
 /*********************0x9X*/
-void vRES_2_B(){      resetbit(&reg.B, 2);}
-void vRES_2_C(){      resetbit(&reg.C, 2);}
-void vRES_2_D(){      resetbit(&reg.D, 2);}
-void vRES_2_E(){      resetbit(&reg.E, 2);}
-void vRES_2_H(){      resetbit(&reg.H, 2);}
-void vRES_2_L(){      resetbit(&reg.L, 2);}
+void vRES_2_B(){      vResetBit(&reg.B, 2);}
+void vRES_2_C(){      vResetBit(&reg.C, 2);}
+void vRES_2_D(){      vResetBit(&reg.D, 2);}
+void vRES_2_E(){      vResetBit(&reg.E, 2);}
+void vRES_2_H(){      vResetBit(&reg.H, 2);}
+void vRES_2_L(){      vResetBit(&reg.L, 2);}
 void vRES_2_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionRESHL(reg.HL, 2));}
-void vRES_2_A(){      resetbit(&reg.A, 2);}
-void vRES_3_B(){      resetbit(&reg.B, 3);}
-void vRES_3_C(){      resetbit(&reg.C, 3);}
-void vRES_3_D(){      resetbit(&reg.D, 3);}
-void vRES_3_E(){      resetbit(&reg.E, 3);}
-void vRES_3_H(){      resetbit(&reg.H, 3);}
-void vRES_3_L(){      resetbit(&reg.L, 3);}
+void vRES_2_A(){      vResetBit(&reg.A, 2);}
+void vRES_3_B(){      vResetBit(&reg.B, 3);}
+void vRES_3_C(){      vResetBit(&reg.C, 3);}
+void vRES_3_D(){      vResetBit(&reg.D, 3);}
+void vRES_3_E(){      vResetBit(&reg.E, 3);}
+void vRES_3_H(){      vResetBit(&reg.H, 3);}
+void vRES_3_L(){      vResetBit(&reg.L, 3);}
 void vRES_3_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionRESHL(reg.HL, 3));}
-void vRES_3_A(){      resetbit(&reg.A, 3);}
+void vRES_3_A(){      vResetBit(&reg.A, 3);}
 
 /*********************0xAX*/
-void vRES_4_B(){      resetbit(&reg.B, 4);}
-void vRES_4_C(){      resetbit(&reg.C, 4);}
-void vRES_4_D(){      resetbit(&reg.D, 4);}
-void vRES_4_E(){      resetbit(&reg.E, 4);}
-void vRES_4_H(){      resetbit(&reg.H, 4);}
-void vRES_4_L(){      resetbit(&reg.L, 4);}
+void vRES_4_B(){      vResetBit(&reg.B, 4);}
+void vRES_4_C(){      vResetBit(&reg.C, 4);}
+void vRES_4_D(){      vResetBit(&reg.D, 4);}
+void vRES_4_E(){      vResetBit(&reg.E, 4);}
+void vRES_4_H(){      vResetBit(&reg.H, 4);}
+void vRES_4_L(){      vResetBit(&reg.L, 4);}
 void vRES_4_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionRESHL(reg.HL, 4));}
-void vRES_4_A(){      resetbit(&reg.A, 4);}
-void vRES_5_B(){      resetbit(&reg.B, 5);}
-void vRES_5_C(){      resetbit(&reg.C, 5);}
-void vRES_5_D(){      resetbit(&reg.D, 5);}
-void vRES_5_E(){      resetbit(&reg.E, 5);}
-void vRES_5_H(){      resetbit(&reg.H, 5);}
-void vRES_5_L(){      resetbit(&reg.L, 5);}
+void vRES_4_A(){      vResetBit(&reg.A, 4);}
+void vRES_5_B(){      vResetBit(&reg.B, 5);}
+void vRES_5_C(){      vResetBit(&reg.C, 5);}
+void vRES_5_D(){      vResetBit(&reg.D, 5);}
+void vRES_5_E(){      vResetBit(&reg.E, 5);}
+void vRES_5_H(){      vResetBit(&reg.H, 5);}
+void vRES_5_L(){      vResetBit(&reg.L, 5);}
 void vRES_5_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionRESHL(reg.HL, 5));}
-void vRES_5_A(){      resetbit(&reg.A, 5);}
+void vRES_5_A(){      vResetBit(&reg.A, 5);}
 
 /*********************0xBX*/
-void vRES_6_B(){      resetbit(&reg.B, 6);}
-void vRES_6_C(){      resetbit(&reg.C, 6);}
-void vRES_6_D(){      resetbit(&reg.D, 6);}
-void vRES_6_E(){      resetbit(&reg.E, 6);}
-void vRES_6_H(){      resetbit(&reg.H, 6);}
-void vRES_6_L(){      resetbit(&reg.L, 6);}
+void vRES_6_B(){      vResetBit(&reg.B, 6);}
+void vRES_6_C(){      vResetBit(&reg.C, 6);}
+void vRES_6_D(){      vResetBit(&reg.D, 6);}
+void vRES_6_E(){      vResetBit(&reg.E, 6);}
+void vRES_6_H(){      vResetBit(&reg.H, 6);}
+void vRES_6_L(){      vResetBit(&reg.L, 6);}
 void vRES_6_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionRESHL(reg.HL, 6));}
-void vRES_6_A(){      resetbit(&reg.A, 6);}
-void vRES_7_B(){      resetbit(&reg.B, 7);}
-void vRES_7_C(){      resetbit(&reg.C, 7);}
-void vRES_7_D(){      resetbit(&reg.D, 7);}
-void vRES_7_E(){      resetbit(&reg.E, 7);}
-void vRES_7_H(){      resetbit(&reg.H, 7);}
-void vRES_7_L(){      resetbit(&reg.L, 7);}
+void vRES_6_A(){      vResetBit(&reg.A, 6);}
+void vRES_7_B(){      vResetBit(&reg.B, 7);}
+void vRES_7_C(){      vResetBit(&reg.C, 7);}
+void vRES_7_D(){      vResetBit(&reg.D, 7);}
+void vRES_7_E(){      vResetBit(&reg.E, 7);}
+void vRES_7_H(){      vResetBit(&reg.H, 7);}
+void vRES_7_L(){      vResetBit(&reg.L, 7);}
 void vRES_7_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionRESHL(reg.HL, 7));}
-void vRES_7_A(){      resetbit(&reg.A, 7);}
+void vRES_7_A(){      vResetBit(&reg.A, 7);}
 
 /*********************0xCX*/
-void vSET_0_B(){      setbit(&reg.B, 0);}
-void vSET_0_C(){      setbit(&reg.C, 0);}
-void vSET_0_D(){      setbit(&reg.D, 0);}
-void vSET_0_E(){      setbit(&reg.E, 0);}
-void vSET_0_H(){      setbit(&reg.H, 0);}
-void vSET_0_L(){      setbit(&reg.L, 0);}
+void vSET_0_B(){      vSetBit(&reg.B, 0);}
+void vSET_0_C(){      vSetBit(&reg.C, 0);}
+void vSET_0_D(){      vSetBit(&reg.D, 0);}
+void vSET_0_E(){      vSetBit(&reg.E, 0);}
+void vSET_0_H(){      vSetBit(&reg.H, 0);}
+void vSET_0_L(){      vSetBit(&reg.L, 0);}
 void vSET_0_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionSETHL(reg.HL, 0));}
-void vSET_0_A(){      setbit(&reg.A, 0);}
-void vSET_1_B(){      setbit(&reg.B, 1);}
-void vSET_1_C(){      setbit(&reg.C, 1);}
-void vSET_1_D(){      setbit(&reg.D, 1);}
-void vSET_1_E(){      setbit(&reg.E, 1);}
-void vSET_1_H(){      setbit(&reg.H, 1);}
-void vSET_1_L(){      setbit(&reg.L, 1);}
+void vSET_0_A(){      vSetBit(&reg.A, 0);}
+void vSET_1_B(){      vSetBit(&reg.B, 1);}
+void vSET_1_C(){      vSetBit(&reg.C, 1);}
+void vSET_1_D(){      vSetBit(&reg.D, 1);}
+void vSET_1_E(){      vSetBit(&reg.E, 1);}
+void vSET_1_H(){      vSetBit(&reg.H, 1);}
+void vSET_1_L(){      vSetBit(&reg.L, 1);}
 void vSET_1_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionSETHL(reg.HL, 1));}
-void vSET_1_A(){      setbit(&reg.A, 1);}
+void vSET_1_A(){      vSetBit(&reg.A, 1);}
 
 /*********************0xDX*/
-void vSET_2_B(){      setbit(&reg.B, 2);}
-void vSET_2_C(){      setbit(&reg.C, 2);}
-void vSET_2_D(){      setbit(&reg.D, 2);}
-void vSET_2_E(){      setbit(&reg.E, 2);}
-void vSET_2_H(){      setbit(&reg.H, 2);}
-void vSET_2_L(){      setbit(&reg.L, 2);}
+void vSET_2_B(){      vSetBit(&reg.B, 2);}
+void vSET_2_C(){      vSetBit(&reg.C, 2);}
+void vSET_2_D(){      vSetBit(&reg.D, 2);}
+void vSET_2_E(){      vSetBit(&reg.E, 2);}
+void vSET_2_H(){      vSetBit(&reg.H, 2);}
+void vSET_2_L(){      vSetBit(&reg.L, 2);}
 void vSET_2_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionSETHL(reg.HL, 2));}
-void vSET_2_A(){      setbit(&reg.A, 2);}
-void vSET_3_B(){      setbit(&reg.B, 3);}
-void vSET_3_C(){      setbit(&reg.C, 3);}
-void vSET_3_D(){      setbit(&reg.D, 3);}
-void vSET_3_E(){      setbit(&reg.E, 3);}
-void vSET_3_H(){      setbit(&reg.H, 3);}
-void vSET_3_L(){      setbit(&reg.L, 3);}
+void vSET_2_A(){      vSetBit(&reg.A, 2);}
+void vSET_3_B(){      vSetBit(&reg.B, 3);}
+void vSET_3_C(){      vSetBit(&reg.C, 3);}
+void vSET_3_D(){      vSetBit(&reg.D, 3);}
+void vSET_3_E(){      vSetBit(&reg.E, 3);}
+void vSET_3_H(){      vSetBit(&reg.H, 3);}
+void vSET_3_L(){      vSetBit(&reg.L, 3);}
 void vSET_3_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionSETHL(reg.HL, 3));}
-void vSET_3_A(){      setbit(&reg.A, 3);}
+void vSET_3_A(){      vSetBit(&reg.A, 3);}
 
 /*********************0xEX*/
-void vSET_4_B(){      setbit(&reg.B, 4);}
-void vSET_4_C(){      setbit(&reg.C, 4);}
-void vSET_4_D(){      setbit(&reg.D, 4);}
-void vSET_4_E(){      setbit(&reg.E, 4);}
-void vSET_4_H(){      setbit(&reg.H, 4);}
-void vSET_4_L(){      setbit(&reg.L, 4);}
+void vSET_4_B(){      vSetBit(&reg.B, 4);}
+void vSET_4_C(){      vSetBit(&reg.C, 4);}
+void vSET_4_D(){      vSetBit(&reg.D, 4);}
+void vSET_4_E(){      vSetBit(&reg.E, 4);}
+void vSET_4_H(){      vSetBit(&reg.H, 4);}
+void vSET_4_L(){      vSetBit(&reg.L, 4);}
 void vSET_4_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionSETHL(reg.HL, 4));}
-void vSET_4_A(){      setbit(&reg.A, 4);}
-void vSET_5_B(){      setbit(&reg.B, 5);}
-void vSET_5_C(){      setbit(&reg.C, 5);}
-void vSET_5_D(){      setbit(&reg.D, 5);}
-void vSET_5_E(){      setbit(&reg.E, 5);}
-void vSET_5_H(){      setbit(&reg.H, 5);}
-void vSET_5_L(){      setbit(&reg.L, 5);}
+void vSET_4_A(){      vSetBit(&reg.A, 4);}
+void vSET_5_B(){      vSetBit(&reg.B, 5);}
+void vSET_5_C(){      vSetBit(&reg.C, 5);}
+void vSET_5_D(){      vSetBit(&reg.D, 5);}
+void vSET_5_E(){      vSetBit(&reg.E, 5);}
+void vSET_5_H(){      vSetBit(&reg.H, 5);}
+void vSET_5_L(){      vSetBit(&reg.L, 5);}
 void vSET_5_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionSETHL(reg.HL, 5));}
-void vSET_5_A(){      setbit(&reg.A, 5);}
+void vSET_5_A(){      vSetBit(&reg.A, 5);}
 
 /*********************0xFX*/
-void vSET_6_B(){      setbit(&reg.B, 6);}
-void vSET_6_C(){      setbit(&reg.C, 6);}
-void vSET_6_D(){      setbit(&reg.D, 6);}
-void vSET_6_E(){      setbit(&reg.E, 6);}
-void vSET_6_H(){      setbit(&reg.H, 6);}
-void vSET_6_L(){      setbit(&reg.L, 6);}
+void vSET_6_B(){      vSetBit(&reg.B, 6);}
+void vSET_6_C(){      vSetBit(&reg.C, 6);}
+void vSET_6_D(){      vSetBit(&reg.D, 6);}
+void vSET_6_E(){      vSetBit(&reg.E, 6);}
+void vSET_6_H(){      vSetBit(&reg.H, 6);}
+void vSET_6_L(){      vSetBit(&reg.L, 6);}
 void vSET_6_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionSETHL(reg.HL, 6));}
-void vSET_6_A(){      setbit(&reg.A, 6);}
-void vSET_7_B(){      setbit(&reg.B, 7);}
-void vSET_7_C(){      setbit(&reg.C, 7);}
-void vSET_7_D(){      setbit(&reg.D, 7);}
-void vSET_7_E(){      setbit(&reg.E, 7);}
-void vSET_7_H(){      setbit(&reg.H, 7);}
-void vSET_7_L(){      setbit(&reg.L, 7);}
+void vSET_6_A(){      vSetBit(&reg.A, 6);}
+void vSET_7_B(){      vSetBit(&reg.B, 7);}
+void vSET_7_C(){      vSetBit(&reg.C, 7);}
+void vSET_7_D(){      vSetBit(&reg.D, 7);}
+void vSET_7_E(){      vSetBit(&reg.E, 7);}
+void vSET_7_H(){      vSetBit(&reg.H, 7);}
+void vSET_7_L(){      vSetBit(&reg.L, 7);}
 void vSET_7_HL(){     vGBMemoryWrite(reg.HL, ucGBFunctionSETHL(reg.HL, 7));}
-void vSET_7_A(){      setbit(&reg.A, 7);}
+void vSET_7_A(){      vSetBit(&reg.A, 7);}
 
+/**
+ * @returns amount of T-states that the current instruction takes to execute
+ */
 uint8_t ucGetTstate(){
-	return tStates;
+	return uctStates;
 }
 
-void vGBCPUboot(){
+/**
+ * @brief executes 1 CPU instruction
+ * @returns Nothing
+ */
+void vGBCPUStep(){
 	if(reg.PC <= 0xFF){
-		vGBCPUinstr(ucGBMemoryRead(reg.PC));
+	    prvGBCPUinstr(ucGBMemoryRead(reg.PC));
 	}else{
-		numcount++;
 		static int n = 0;
 		if(n == 0){
 			vGBMemoryLoad(getRomPointer(), 256);
 			n = 1;
 		}
-		vGBCPUinstr(ucGBMemoryRead(reg.PC));
-		//vGBMemoryPrint();
+		prvGBCPUinstr(ucGBMemoryRead(reg.PC));
 	}
 }
 
-void vGBCPUHaltedHandler(){
-	if(ucOneCycleInterruptDelay == 1){
-			if(ucGBMemoryRead(IE_ADDR) & ucGBMemoryRead(IF_ADDR) & 0x1F){
-				ucInterruptMasterEnable = 0;
-				ucOneCycleInterruptDelay = 0;
-				uint8_t InterruptSetandEn = ucGBMemoryRead(IE_ADDR) & ucGBMemoryRead(IF_ADDR);
-				if      (InterruptSetandEn &  VBLANK_INTERRUPT){ ucHALTED = 0;
-				}else if(InterruptSetandEn & LCDSTAT_INTERRUPT){ ucHALTED = 0;
-				}else if(InterruptSetandEn &   TIMER_INTERRUPT){ ucHALTED = 0;
-				}else if(InterruptSetandEn &  SERIAL_INTERRUPT){ ucHALTED = 0;
-				}else if(InterruptSetandEn &  JOYPAD_INTERRUPT){ ucHALTED = 0;
-				}
-			}
-
-	}else{
-		ucOneCycleInterruptDelay++;
-	}
-}
-
-void vGBCPUInterruptHandler(){
+/**
+ * @brief If the corresponding IE and IF are both set then jump to the corresponding ISR
+ * @returns Nothing
+ */
+void prvGBCPUInterruptHandler(){
 	if(ucOneCycleInterruptDelay == 1){
 		if(ucGBMemoryRead(IE_ADDR) & ucGBMemoryRead(IF_ADDR) & 0x1F){
 			ucInterruptMasterEnable = 0;
@@ -1749,7 +1738,7 @@ void vGBCPUInterruptHandler(){
 			}
 
 			if( ucInterrTrig == 1){
-				tStates += 5*4;
+			    uctStates += 5*4;
 			}
 		}
 
@@ -1758,9 +1747,39 @@ void vGBCPUInterruptHandler(){
 	}
 }
 
-void vGBCPUinstr(uint8_t opcode){
-	if(reg.PC == pc){
-		num++;
+/**
+ * @brief If the CPU is halted and ucInterruptMasterEnable is not set, then this function will unhalt the CPU if both IE and IF flags are set
+ * without jumping to the ISR
+ * @returns Nothing
+ */
+void prvGBCPUHaltedHandler(){
+    if(ucOneCycleInterruptDelay == 1){
+            if(ucGBMemoryRead(IE_ADDR) & ucGBMemoryRead(IF_ADDR) & 0x1F){
+                ucInterruptMasterEnable = 0;
+                ucOneCycleInterruptDelay = 0;
+                uint8_t InterruptSetandEn = ucGBMemoryRead(IE_ADDR) & ucGBMemoryRead(IF_ADDR);
+                if      (InterruptSetandEn &  VBLANK_INTERRUPT){ ucHALTED = 0;
+                }else if(InterruptSetandEn & LCDSTAT_INTERRUPT){ ucHALTED = 0;
+                }else if(InterruptSetandEn &   TIMER_INTERRUPT){ ucHALTED = 0;
+                }else if(InterruptSetandEn &  SERIAL_INTERRUPT){ ucHALTED = 0;
+                }else if(InterruptSetandEn &  JOYPAD_INTERRUPT){ ucHALTED = 0;
+                }
+            }
+
+    }else{
+        ucOneCycleInterruptDelay++;
+    }
+}
+
+/**
+ * @brief fetch, decode and execute 1 CPU instruction, increment timers and jump to interrupt handler
+ * @param opcode Opcode of instruction to be executed
+ * @returns Nothing
+ */
+void prvGBCPUinstr(uint8_t opcode){
+
+    if(reg.PC == usDebugPC){
+	    ucMemoryBreakPointTrigger++;
 	}
 
 	if(!ucHALTED){
@@ -1771,21 +1790,20 @@ void vGBCPUinstr(uint8_t opcode){
 		((void (*)(void))instructions[opcode].instr)();
 
 		if (opcode == 0xCB){
-			tStates = prefix_instructions[ucGBMemoryRead(reg.PC - 1)].Tstate;
+		    uctStates = prefix_instructions[ucGBMemoryRead(reg.PC - 1)].Tstate;
 		}else if(instructions[opcode].Tstate == 255){
-			tStates = customDuration;
+		    uctStates = ucCustomDuration;
 		}else{
-			tStates = instructions[opcode].Tstate;
+		    uctStates = instructions[opcode].Tstate;
 		}
 
 	}
 
-	vGBMemoryIncTimers(tStates >> 2);
+	vGBMemoryIncTimers(uctStates >> 2);
 
-	if(ucInterruptMasterEnable == 1)
-		vGBCPUInterruptHandler();
-
-	if(ucHALTED == 1)
-		vGBCPUHaltedHandler();
-
+	if(ucInterruptMasterEnable == 1){
+		prvGBCPUInterruptHandler();
+	}else if(ucHALTED == 1){
+		prvGBCPUHaltedHandler();
+	}
 }

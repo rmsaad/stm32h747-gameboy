@@ -1,11 +1,6 @@
 var searchData=
 [
-  ['h_1466',['H',['../structregisters.html#ad19e8b32f0fa1c97ca72ba8dac26568f',1,'registers']]],
-  ['hadc1_1467',['hadc1',['../gbmemory_8c.html#a22b804736f5648d52f639b2647d4ed13',1,'hadc1():&#160;main.c'],['../main_8c.html#a22b804736f5648d52f639b2647d4ed13',1,'hadc1():&#160;main.c']]],
-  ['hadc3_1468',['hadc3',['../gbmemory_8c.html#a984624bcf28d1b2fb7e4e18349f65d5c',1,'hadc3():&#160;main.c'],['../main_8c.html#a984624bcf28d1b2fb7e4e18349f65d5c',1,'hadc3():&#160;main.c']]],
-  ['hdsi_1469',['hdsi',['../main_8c.html#a9f89250426445e449addaba744aa17d0',1,'main.c']]],
-  ['hi2s3_1470',['hi2s3',['../main_8c.html#a42cb7a8588778f08bf78b1cb4757169c',1,'main.c']]],
-  ['hl_1471',['HL',['../structregisters.html#a2fcc865773d369e799bfe05ae5a0e350',1,'registers']]],
-  ['hlcd_5fltdc_1472',['hlcd_ltdc',['../stm32h7__display_8c.html#ae839e40b2440160883f7e7dedec05a80',1,'stm32h7_display.c']]],
-  ['hltdc_1473',['hltdc',['../main_8c.html#a9ede3a77755ec81a9be03423cb915b05',1,'main.c']]]
+  ['instr_1455',['instr',['../struct_assembly___instr.html#afc5d129954f86f06fa693ef2b6e94ba7',1,'Assembly_Instr']]],
+  ['instr_5ftiming_5fgb_1456',['instr_timing_gb',['../main_8c.html#aa6e9cc110a6e53c9566ca512d808f57c',1,'main.c']]],
+  ['instructions_1457',['instructions',['../gbcpu_8c.html#a833969abf9a57333fb4ccb787818e980',1,'gbcpu.c']]]
 ];

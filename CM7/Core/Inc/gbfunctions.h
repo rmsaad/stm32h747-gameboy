@@ -17,13 +17,12 @@
 
 /* Public function prototypes -----------------------------------------------*/
 
-uint16_t concat_16bit_bigEndian(uint8_t x, uint8_t y);
-void setbit(uint8_t *n, uint8_t bit);
-void resetbit(uint8_t *n, uint8_t bit);
-uint8_t checkbit(uint8_t n, uint8_t bit);
+uint16_t usConcat16BitBigEndian(uint8_t x, uint8_t y);
+void vSetBit(uint8_t *n, uint8_t bit);
+void vResetBit(uint8_t *n, uint8_t bit);
+uint8_t ucCheckBit(uint8_t n, uint8_t bit);
 
 // reusable operations
-
 void v8bitRegisterINC(uint8_t *reg, uint8_t *flagReg);
 void v8bitRegisterDEC(uint8_t *reg, uint8_t *flagReg);
 void vGBFunctionRLCA(uint8_t *reg, uint8_t *flagReg);

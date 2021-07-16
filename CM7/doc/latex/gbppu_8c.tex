@@ -19,66 +19,62 @@
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{gbppu_8c_a9c60bc3bb6cc79d1ad3ce2b6fe18acec}{v\+Check\+BGP}} ()
-\begin{DoxyCompactList}\small\item\em Background color to palette translation. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{gbppu_8c_aa2ef681b987822cb47e37790e56d3436}{v\+Check\+OBP0}} ()
-\item 
-void \mbox{\hyperlink{gbppu_8c_a67d230bfe40052898d5e9b15bb8ec606}{v\+Check\+OBP1}} ()
-\item 
-void \mbox{\hyperlink{gbppu_8c_a4cf485e9accf6249e0bb79f663990fbe}{LYC\+\_\+check}} (uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ab60dac6a688a304987c96312a05243ae}{ly}})
+void \mbox{\hyperlink{gbppu_8c_ac0ea182ee405627457dc7fba48120e34}{prv\+Check\+BGP}} ()
+\begin{DoxyCompactList}\small\item\em Background and window color to palette conversion. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbppu_8c_ab73b8cd93989c2272c12fdf5d9f458a3}{prv\+Check\+OBP0}} ()
+\begin{DoxyCompactList}\small\item\em OBP0 register color to palette conversion. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbppu_8c_a1432a3e2020cb8fbd5d421d6929a57f4}{prv\+Check\+OBP1}} ()
+\begin{DoxyCompactList}\small\item\em OBP1 register color to palette conversion. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbppu_8c_a5b404d5d82422f8042bfd6540ad381ec}{prv\+Check\+LYC}} (uint8\+\_\+t ly)
 \begin{DoxyCompactList}\small\item\em Compares LY Register to LYC. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{gbppu_8c_a5d0653e9369208f1125d417a3ae32283}{set\+Mode}} (uint8\+\_\+t mode)
+void \mbox{\hyperlink{gbppu_8c_ac2086e2d9ea420499b54833b1726a681}{prv\+Set\+Mode}} (uint8\+\_\+t mode)
 \begin{DoxyCompactList}\small\item\em Sets the mode of the STAT Register. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{gbppu_8c_a0d5f1084420a859dba5e9d70af910f15}{v\+GBPPUDraw\+Line}} (uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ab60dac6a688a304987c96312a05243ae}{ly}}, uint8\+\_\+t SCX, uint8\+\_\+t SCY)
+void \mbox{\hyperlink{gbppu_8c_a945ea162b77db42c939d42c2a97aa6b6}{prv\+Update\+Buffer}} (uint8\+\_\+t data, int pixel\+Pos)
+\begin{DoxyCompactList}\small\item\em Updates the frame buffer with pixel information for 1 specified pixel. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbppu_8c_aeeeb1b7836652ece5d6f29c3c219081e}{prv\+GBPPUDraw\+Line\+Background}} (uint8\+\_\+t ly, uint8\+\_\+t SCX, uint8\+\_\+t SCY, uint16\+\_\+t Tile\+Data\+Addr, uint16\+\_\+t Display\+Addr)
+\begin{DoxyCompactList}\small\item\em Update frame buffer with background information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbppu_8c_a4c8a469ac0b13d39ce543d9b96121107}{prv\+GBPPUDraw\+Line\+Window}} (uint8\+\_\+t ly, uint8\+\_\+t WX, uint8\+\_\+t WY, uint16\+\_\+t Tile\+Data\+Addr, uint16\+\_\+t Display\+Addr)
+\begin{DoxyCompactList}\small\item\em Update frame buffer with window information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbppu_8c_a45c1df62b10bd52b1243c6d837294ef9}{prv\+GBPPUDraw\+Line\+Objects}} (uint8\+\_\+t ly)
+\begin{DoxyCompactList}\small\item\em Update frame buffer with object information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbppu_8c_a432ec91bc2248c882f63368d80540076}{prv\+GBPPUDraw\+Line}} (uint8\+\_\+t ly, uint8\+\_\+t SCX, uint8\+\_\+t SCY)
 \begin{DoxyCompactList}\small\item\em Update data in the frame buffer for 1 line of the Gameboy. \end{DoxyCompactList}\item 
-uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a40a7d6452050dcd5d7fe36b84b92e3bb}{us\+Get\+Back\+Win\+Tile\+Data\+Sel}} ()
+uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a4d71f50a18b8187e042f6a0309444279}{prv\+Get\+Back\+Win\+Tile\+Data\+Sel}} ()
 \begin{DoxyCompactList}\small\item\em Read LCDC Register to find appropriate Background \& Tile Data Address. \end{DoxyCompactList}\item 
-uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a3c815a1df8877be26b349d585b4d12ab}{us\+Get\+Back\+Tile\+Display\+Sel}} ()
+uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a833e1bbd97a1d31f085e17cc6168f72e}{prv\+Get\+Back\+Tile\+Display\+Sel}} ()
 \begin{DoxyCompactList}\small\item\em Read LCDC Register to find appropriate Background Tile Display Select Address. \end{DoxyCompactList}\item 
-uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a78e32c2958d696c2e8cc97f502789c76}{us\+Get\+Win\+Tile\+Display\+Sel}} ()
-\item 
+uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a0dc987e3a4895a95823988f9c0f6cf1f}{prv\+Get\+Win\+Tile\+Display\+Sel}} ()
+\begin{DoxyCompactList}\small\item\em Read LCDC Register to find appropriate Window Tile Display Select Address. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbppu_8c_addcbf77f2958ad2001d541a8e4a8f504}{v\+Set\+Frame\+Buffer}} ()
 \begin{DoxyCompactList}\small\item\em Zeros All Memory in the Frame Buffer. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{gbppu_8c_a112e995f6616336eac038c853aa5ac35}{gb\+PPUStep}} ()
+void \mbox{\hyperlink{gbppu_8c_af55e16b0234ec9b9a7f6703f53fa18b7}{v\+GBPPUStep}} ()
 \begin{DoxyCompactList}\small\item\em Steps the PPU by t\+States. \end{DoxyCompactList}\item 
 uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a9b29df5e22493dc42927f15a2858730b}{get\+Tile\+Line\+Data}} (uint16\+\_\+t tile\+\_\+offset, uint8\+\_\+t line\+\_\+offset, uint16\+\_\+t Tile\+Data\+Addr, uint16\+\_\+t Display\+Addr)
-\begin{DoxyCompactList}\small\item\em Finds Specific line data of a tile using the tile\+\_\+offset and line\+\_\+offset. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{gbppu_8c_af0c83a1224502876bd066041b238f9aa}{update\+Buffer\+Obj}} (uint8\+\_\+t data, int pixel\+Pos)
-\item 
-void \mbox{\hyperlink{gbppu_8c_af309ec32c8042fe2f724137a40442c65}{v\+GBPPUDraw\+Line\+Background}} (uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ab60dac6a688a304987c96312a05243ae}{ly}}, uint8\+\_\+t SCX, uint8\+\_\+t SCY, uint16\+\_\+t Tile\+Data\+Addr, uint16\+\_\+t Display\+Addr)
-\item 
-void \mbox{\hyperlink{gbppu_8c_a402e8e47c7ff5f18c2ac42940b2abcb7}{v\+GBPPUDraw\+Line\+Window}} (uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ab60dac6a688a304987c96312a05243ae}{ly}}, uint8\+\_\+t WX, uint8\+\_\+t WY, uint16\+\_\+t Tile\+Data\+Addr, uint16\+\_\+t Display\+Addr)
-\item 
-void \mbox{\hyperlink{gbppu_8c_a4a36a4a08cc1aebd45b5e8288eb3a60b}{v\+GBPPUDraw\+Line\+Objects}} (uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ab60dac6a688a304987c96312a05243ae}{ly}})
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Finds specific line data of a tile using the tile\+\_\+offset and line\+\_\+offset. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
-uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a7f102df4d72992d5d8593dc897080417}{Back\+Win\+Tile\+Data\+Addr}}
+uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ae1deb0fdbd829f97dc542cf5cc07cf86}{uc\+LY}} = 0
 \item 
-uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a81d3c3d311f9043a2fcc537ed2966d32}{Back\+Tile\+Display\+Addr}}
+uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_a016ccd2d7b6615abe4967f9a27060746}{uc\+Mode}}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ad11c3137711cc547aa65686fa2c98fc9}{Mode}}
+uint32\+\_\+t \mbox{\hyperlink{gbppu_8c_a1937f8f3d3d58a98306b4e7491aaebcc}{ult\+States\+Total}}
 \item 
-uint32\+\_\+t \mbox{\hyperlink{gbppu_8c_ae5204dc1d80b90ced93dfa0ffc9ed575}{t\+States\+Total}}
+uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_a485638b8ee0120e72662b05977915ca3}{uc\+BGPColor\+To\+Palette}} \mbox{[}4\mbox{]}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ab60dac6a688a304987c96312a05243ae}{ly}} = 0
+uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_a9be772970ed9fbe14e0218fd424b6596}{uc\+OBP0\+Color\+To\+Palette}} \mbox{[}4\mbox{]}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_a3d900d05be075fa49f3c533e8afcc181}{BGPColor\+To\+Palette}} \mbox{[}4\mbox{]}
+uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ae10b4a8ffd018a241f9ec6ce9f1f690d}{uc\+OBP1\+Color\+To\+Palette}} \mbox{[}4\mbox{]}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ae747435af34a76d58909ddb6427c8342}{OBP0\+Color\+To\+Palette}} \mbox{[}4\mbox{]}
-\item 
-uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_af2b84cbf3e4635ad2846dbc1f487e7e6}{OBP1\+Color\+To\+Palette}} \mbox{[}4\mbox{]}
-\item 
-uint8\+\_\+t $\ast$ \mbox{\hyperlink{gbppu_8c_ab799d7f1fc8dba9a1b2ae4a3b2e85f3f}{gb\+\_\+frame}} = (uint8\+\_\+t$\ast$)\mbox{\hyperlink{gbppu_8c_a6a7f90395054dfa1a2f6521213aad848}{SRAM1}}
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{gbppu_8c_a5afdae9a6f8868d40ecd9a45fa2cf7e7}{uc\+GBFrame}} = (uint8\+\_\+t$\ast$)\mbox{\hyperlink{gbppu_8c_a6a7f90395054dfa1a2f6521213aad848}{SRAM1}}
 \item 
 uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ac9de52373fb1ba5b7529ba0d15ebc8b8}{uc\+BGWINline}} \mbox{[}160\mbox{]}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_a5404f7eab814b57dc7c25d7f469f2114}{scale\+Amount}} = 2
+uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ab2318977e8442dfe26bc0a0b41c1f165}{ul\+Scale\+Amount}} = 2
 \item 
-uint32\+\_\+t \mbox{\hyperlink{gbppu_8c_a51a1568ab8f25d4e69e883ce34de4752}{cur\+Line}}
+uint32\+\_\+t \mbox{\hyperlink{gbppu_8c_ab196f3e59335a72ee34e8481033baf15}{ul\+Cur\+Line}}
 \item 
-uint32\+\_\+t \mbox{\hyperlink{gbppu_8c_ad0cd50ba7d062da5404a0a3b88fd4367}{lineadd}}
+uint32\+\_\+t \mbox{\hyperlink{gbppu_8c_af58b00da0c806a9f69bda59355d02e29}{ul\+Line\+Add}}
 \end{DoxyCompactItemize}
 
 
@@ -103,25 +99,6 @@ This includes drawing the Background, Window, and Object Layers to a frame buffe
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{gbppu_8c_a112e995f6616336eac038c853aa5ac35}\label{gbppu_8c_a112e995f6616336eac038c853aa5ac35}} 
-\index{gbppu.c@{gbppu.c}!gbPPUStep@{gbPPUStep}}
-\index{gbPPUStep@{gbPPUStep}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{gbPPUStep()}{gbPPUStep()}}
-{\footnotesize\ttfamily void gb\+PPUStep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Steps the PPU by t\+States. 
-
-This function steps the PPU by the t\+States variable if the screen enable (7th) bit of LCDC Register is high, the function sets the mode in the STAT Register using the \mbox{\hyperlink{gbppu_8c_a5d0653e9369208f1125d417a3ae32283}{set\+Mode()}} function depending on how many t\+States have elapsed. after a full line is has passed the LY register is updated \mbox{\hyperlink{gbppu_8c_a0d5f1084420a859dba5e9d70af910f15}{v\+GBPPUDraw\+Line()}} is called to place data in the frame buffer. \begin{DoxyReturn}{Returns}
-Nothing 
-\end{DoxyReturn}
-\begin{DoxyNote}{Note}
-The function and the Gameboy both mimic CRT Displays in that their are both a horizontal H-\/\+Blank after a Line is \char`\"{}drawn\char`\"{} and there is a vertical V-\/\+Blank after a full frame is drawn 
-\end{DoxyNote}
-\begin{DoxyAttention}{Attention}
-The placement of the functions v\+Check\+Back\+Win\+Tile\+Data\+Sel() and v\+Check\+Back\+Tile\+Display\+Sel() are just educated guesses at the current moment, more research into when and how often these Registers are updated must be conducted. 
-\end{DoxyAttention}
 \mbox{\Hypertarget{gbppu_8c_a9b29df5e22493dc42927f15a2858730b}\label{gbppu_8c_a9b29df5e22493dc42927f15a2858730b}} 
 \index{gbppu.c@{gbppu.c}!getTileLineData@{getTileLineData}}
 \index{getTileLineData@{getTileLineData}!gbppu.c@{gbppu.c}}
@@ -130,9 +107,9 @@ The placement of the functions v\+Check\+Back\+Win\+Tile\+Data\+Sel() and v\+Che
 
 
 
-Finds Specific line data of a tile using the tile\+\_\+offset and line\+\_\+offset. 
+Finds specific line data of a tile using the tile\+\_\+offset and line\+\_\+offset. 
 
-Called by \mbox{\hyperlink{gbppu_8c_a0d5f1084420a859dba5e9d70af910f15}{v\+GBPPUDraw\+Line()}} and returns color information of a specific tile in the Gameboy\textquotesingle{}s VRAM located by using the tile\+\_\+offset and line\+\_\+offset parameters. 
+Called by \mbox{\hyperlink{gbppu_8c_a432ec91bc2248c882f63368d80540076}{prv\+GBPPUDraw\+Line()}} and returns color information of a specific tile in the Gameboy\textquotesingle{}s VRAM located by using the tile\+\_\+offset and line\+\_\+offset parameters. 
 \begin{DoxyParams}{Parameters}
 {\em tile\+\_\+offset} & gives the address offset in the tile map in Gameboy\textquotesingle{}s VRAM \\
 \hline
@@ -142,11 +119,24 @@ Called by \mbox{\hyperlink{gbppu_8c_a0d5f1084420a859dba5e9d70af910f15}{v\+GBPPUD
 \begin{DoxyReturn}{Returns}
 uint16\+\_\+t data containing the color information of each pixel of a particular line belonging to a tile in the Gameboy\textquotesingle{}s VRAM 
 \end{DoxyReturn}
-\mbox{\Hypertarget{gbppu_8c_a4cf485e9accf6249e0bb79f663990fbe}\label{gbppu_8c_a4cf485e9accf6249e0bb79f663990fbe}} 
-\index{gbppu.c@{gbppu.c}!LYC\_check@{LYC\_check}}
-\index{LYC\_check@{LYC\_check}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{LYC\_check()}{LYC\_check()}}
-{\footnotesize\ttfamily void LYC\+\_\+check (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ly }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{gbppu_8c_ac0ea182ee405627457dc7fba48120e34}\label{gbppu_8c_ac0ea182ee405627457dc7fba48120e34}} 
+\index{gbppu.c@{gbppu.c}!prvCheckBGP@{prvCheckBGP}}
+\index{prvCheckBGP@{prvCheckBGP}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{prvCheckBGP()}{prvCheckBGP()}}
+{\footnotesize\ttfamily void prv\+Check\+BGP (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Background and window color to palette conversion. 
+
+Updates a color to its appropriate palette based on value of the Background Palette Register. each number assigned corresponds to a color referenced in STM32\textquotesingle{}s L8 color mode. \begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbppu_8c_a5b404d5d82422f8042bfd6540ad381ec}\label{gbppu_8c_a5b404d5d82422f8042bfd6540ad381ec}} 
+\index{gbppu.c@{gbppu.c}!prvCheckLYC@{prvCheckLYC}}
+\index{prvCheckLYC@{prvCheckLYC}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{prvCheckLYC()}{prvCheckLYC()}}
+{\footnotesize\ttfamily void prv\+Check\+LYC (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ly }\end{DoxyParamCaption})}
 
 
 
@@ -160,11 +150,171 @@ LYC Register compares itself to LY Register and Sets the appropriate flag (2nd b
 \begin{DoxyReturn}{Returns}
 Nothing 
 \end{DoxyReturn}
-\mbox{\Hypertarget{gbppu_8c_a5d0653e9369208f1125d417a3ae32283}\label{gbppu_8c_a5d0653e9369208f1125d417a3ae32283}} 
-\index{gbppu.c@{gbppu.c}!setMode@{setMode}}
-\index{setMode@{setMode}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{setMode()}{setMode()}}
-{\footnotesize\ttfamily void set\+Mode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mode }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{gbppu_8c_ab73b8cd93989c2272c12fdf5d9f458a3}\label{gbppu_8c_ab73b8cd93989c2272c12fdf5d9f458a3}} 
+\index{gbppu.c@{gbppu.c}!prvCheckOBP0@{prvCheckOBP0}}
+\index{prvCheckOBP0@{prvCheckOBP0}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{prvCheckOBP0()}{prvCheckOBP0()}}
+{\footnotesize\ttfamily void prv\+Check\+OBP0 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+OBP0 register color to palette conversion. 
+
+Updates a color to its appropriate palette based on value of the OBP0 Register. each number assigned corresponds to a color referenced in STM32\textquotesingle{}s L8 color mode. \begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbppu_8c_a1432a3e2020cb8fbd5d421d6929a57f4}\label{gbppu_8c_a1432a3e2020cb8fbd5d421d6929a57f4}} 
+\index{gbppu.c@{gbppu.c}!prvCheckOBP1@{prvCheckOBP1}}
+\index{prvCheckOBP1@{prvCheckOBP1}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{prvCheckOBP1()}{prvCheckOBP1()}}
+{\footnotesize\ttfamily void prv\+Check\+OBP1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+OBP1 register color to palette conversion. 
+
+Updates a color to its appropriate palette based on value of the OBP1 Register. each number assigned corresponds to a color referenced in STM32\textquotesingle{}s L8 color mode. \begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbppu_8c_a432ec91bc2248c882f63368d80540076}\label{gbppu_8c_a432ec91bc2248c882f63368d80540076}} 
+\index{gbppu.c@{gbppu.c}!prvGBPPUDrawLine@{prvGBPPUDrawLine}}
+\index{prvGBPPUDrawLine@{prvGBPPUDrawLine}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{prvGBPPUDrawLine()}{prvGBPPUDrawLine()}}
+{\footnotesize\ttfamily void prv\+GBPPUDraw\+Line (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ly,  }\item[{uint8\+\_\+t}]{SCX,  }\item[{uint8\+\_\+t}]{SCY }\end{DoxyParamCaption})}
+
+
+
+Update data in the frame buffer for 1 line of the Gameboy. 
+
+Populates the frame buffer with data related to a line ly 
+\begin{DoxyParams}{Parameters}
+{\em ly} & LY Register Value \\
+\hline
+{\em SCX} & Scroll X Register Value \\
+\hline
+{\em SCY} & Scroll Y Register Value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbppu_8c_aeeeb1b7836652ece5d6f29c3c219081e}\label{gbppu_8c_aeeeb1b7836652ece5d6f29c3c219081e}} 
+\index{gbppu.c@{gbppu.c}!prvGBPPUDrawLineBackground@{prvGBPPUDrawLineBackground}}
+\index{prvGBPPUDrawLineBackground@{prvGBPPUDrawLineBackground}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{prvGBPPUDrawLineBackground()}{prvGBPPUDrawLineBackground()}}
+{\footnotesize\ttfamily void prv\+GBPPUDraw\+Line\+Background (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ly,  }\item[{uint8\+\_\+t}]{SCX,  }\item[{uint8\+\_\+t}]{SCY,  }\item[{uint16\+\_\+t}]{Tile\+Data\+Addr,  }\item[{uint16\+\_\+t}]{Display\+Addr }\end{DoxyParamCaption})}
+
+
+
+Update frame buffer with background information. 
+
+Populates the frame buffer with Background information on the line ly 
+\begin{DoxyParams}{Parameters}
+{\em ly} & LY Register Value \\
+\hline
+{\em SCX} & X location of the left most position on the background tile map \\
+\hline
+{\em SCY} & Y location of the top most position on the background tile map \\
+\hline
+{\em Tile\+Data\+Addr} & Start Address of location in VRAM of Background Tiles \\
+\hline
+{\em Display\+Addr} & Start Address holding the offset in VRAM for each Tile displayed on Screen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbppu_8c_a45c1df62b10bd52b1243c6d837294ef9}\label{gbppu_8c_a45c1df62b10bd52b1243c6d837294ef9}} 
+\index{gbppu.c@{gbppu.c}!prvGBPPUDrawLineObjects@{prvGBPPUDrawLineObjects}}
+\index{prvGBPPUDrawLineObjects@{prvGBPPUDrawLineObjects}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{prvGBPPUDrawLineObjects()}{prvGBPPUDrawLineObjects()}}
+{\footnotesize\ttfamily void prv\+GBPPUDraw\+Line\+Objects (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ly }\end{DoxyParamCaption})}
+
+
+
+Update frame buffer with object information. 
+
+Populates the frame buffer with object sprites on line ly 
+\begin{DoxyParams}{Parameters}
+{\em ly} & LY Register Value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbppu_8c_a4c8a469ac0b13d39ce543d9b96121107}\label{gbppu_8c_a4c8a469ac0b13d39ce543d9b96121107}} 
+\index{gbppu.c@{gbppu.c}!prvGBPPUDrawLineWindow@{prvGBPPUDrawLineWindow}}
+\index{prvGBPPUDrawLineWindow@{prvGBPPUDrawLineWindow}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{prvGBPPUDrawLineWindow()}{prvGBPPUDrawLineWindow()}}
+{\footnotesize\ttfamily void prv\+GBPPUDraw\+Line\+Window (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ly,  }\item[{uint8\+\_\+t}]{WX,  }\item[{uint8\+\_\+t}]{WY,  }\item[{uint16\+\_\+t}]{Tile\+Data\+Addr,  }\item[{uint16\+\_\+t}]{Display\+Addr }\end{DoxyParamCaption})}
+
+
+
+Update frame buffer with window information. 
+
+Populates the frame buffer with window information if it is currently displayed on the frame on the line ly 
+\begin{DoxyParams}{Parameters}
+{\em ly} & LY Register Value \\
+\hline
+{\em WX} & Window X position \\
+\hline
+{\em WY} & Window Y position \\
+\hline
+{\em Tile\+Data\+Addr} & Start Address of location in VRAM of Window Tiles \\
+\hline
+{\em Display\+Addr} & Start Address holding the offset in VRAM for each Tile displayed on Screen \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbppu_8c_a833e1bbd97a1d31f085e17cc6168f72e}\label{gbppu_8c_a833e1bbd97a1d31f085e17cc6168f72e}} 
+\index{gbppu.c@{gbppu.c}!prvGetBackTileDisplaySel@{prvGetBackTileDisplaySel}}
+\index{prvGetBackTileDisplaySel@{prvGetBackTileDisplaySel}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{prvGetBackTileDisplaySel()}{prvGetBackTileDisplaySel()}}
+{\footnotesize\ttfamily uint16\+\_\+t prv\+Get\+Back\+Tile\+Display\+Sel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read LCDC Register to find appropriate Background Tile Display Select Address. 
+
+This function Reads from the LCDC Register and depending on the value of the 3rd bit, it will change the Background Tile Display Address to 0X9\+C00 on high or to 0x9800 on low. \begin{DoxyReturn}{Returns}
+Background Tile Display Select Address 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbppu_8c_a4d71f50a18b8187e042f6a0309444279}\label{gbppu_8c_a4d71f50a18b8187e042f6a0309444279}} 
+\index{gbppu.c@{gbppu.c}!prvGetBackWinTileDataSel@{prvGetBackWinTileDataSel}}
+\index{prvGetBackWinTileDataSel@{prvGetBackWinTileDataSel}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{prvGetBackWinTileDataSel()}{prvGetBackWinTileDataSel()}}
+{\footnotesize\ttfamily uint16\+\_\+t prv\+Get\+Back\+Win\+Tile\+Data\+Sel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read LCDC Register to find appropriate Background \& Tile Data Address. 
+
+This function Reads from the LCDC Register and depending on the value of the 4th bit, it will change the Background \& Window Tile Data Select Address to 0x8000 on high or to 0x8800 on low. \begin{DoxyReturn}{Returns}
+Background \& Window Tile Data Select Address 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+Background \& Window Tile Data Select should be 0x9000 on a low 4th bit in a real Gameboy, but it is much simpler to implement this way with emulation, the 0x400 offset is accounted for in \mbox{\hyperlink{gbppu_8c_a9b29df5e22493dc42927f15a2858730b}{get\+Tile\+Line\+Data()}} 
+\end{DoxyNote}
+\mbox{\Hypertarget{gbppu_8c_a0dc987e3a4895a95823988f9c0f6cf1f}\label{gbppu_8c_a0dc987e3a4895a95823988f9c0f6cf1f}} 
+\index{gbppu.c@{gbppu.c}!prvGetWinTileDisplaySel@{prvGetWinTileDisplaySel}}
+\index{prvGetWinTileDisplaySel@{prvGetWinTileDisplaySel}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{prvGetWinTileDisplaySel()}{prvGetWinTileDisplaySel()}}
+{\footnotesize\ttfamily uint16\+\_\+t prv\+Get\+Win\+Tile\+Display\+Sel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Read LCDC Register to find appropriate Window Tile Display Select Address. 
+
+This function Reads from the LCDC Register and depending on the value of the 4th bit, it will change the Window Tile Display Address to 0X9\+C00 on high or to 0x9800 on low. \begin{DoxyReturn}{Returns}
+Window Tile Display Select Address 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gbppu_8c_ac2086e2d9ea420499b54833b1726a681}\label{gbppu_8c_ac2086e2d9ea420499b54833b1726a681}} 
+\index{gbppu.c@{gbppu.c}!prvSetMode@{prvSetMode}}
+\index{prvSetMode@{prvSetMode}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{prvSetMode()}{prvSetMode()}}
+{\footnotesize\ttfamily void prv\+Set\+Mode (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{mode }\end{DoxyParamCaption})}
 
 
 
@@ -178,112 +328,45 @@ Sets the mode of the STAT Register.
 \begin{DoxyReturn}{Returns}
 Nothing 
 \end{DoxyReturn}
-\mbox{\Hypertarget{gbppu_8c_af0c83a1224502876bd066041b238f9aa}\label{gbppu_8c_af0c83a1224502876bd066041b238f9aa}} 
-\index{gbppu.c@{gbppu.c}!updateBufferObj@{updateBufferObj}}
-\index{updateBufferObj@{updateBufferObj}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{updateBufferObj()}{updateBufferObj()}}
-{\footnotesize\ttfamily void update\+Buffer\+Obj (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data,  }\item[{int}]{pixel\+Pos }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{gbppu_8c_a3c815a1df8877be26b349d585b4d12ab}\label{gbppu_8c_a3c815a1df8877be26b349d585b4d12ab}} 
-\index{gbppu.c@{gbppu.c}!usGetBackTileDisplaySel@{usGetBackTileDisplaySel}}
-\index{usGetBackTileDisplaySel@{usGetBackTileDisplaySel}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{usGetBackTileDisplaySel()}{usGetBackTileDisplaySel()}}
-{\footnotesize\ttfamily uint16\+\_\+t us\+Get\+Back\+Tile\+Display\+Sel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{gbppu_8c_a945ea162b77db42c939d42c2a97aa6b6}\label{gbppu_8c_a945ea162b77db42c939d42c2a97aa6b6}} 
+\index{gbppu.c@{gbppu.c}!prvUpdateBuffer@{prvUpdateBuffer}}
+\index{prvUpdateBuffer@{prvUpdateBuffer}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{prvUpdateBuffer()}{prvUpdateBuffer()}}
+{\footnotesize\ttfamily void prv\+Update\+Buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{data,  }\item[{int}]{pixel\+Pos }\end{DoxyParamCaption})}
 
 
 
-Read LCDC Register to find appropriate Background Tile Display Select Address. 
+Updates the frame buffer with pixel information for 1 specified pixel. 
 
-This function Reads from the LCDC Register and depending on the value of the 3rd bit, it will change the Background Tile Display Address to 0X9\+C00 on high or to 0x9800 on low. \begin{DoxyReturn}{Returns}
-Nothing 
-\end{DoxyReturn}
-\mbox{\Hypertarget{gbppu_8c_a40a7d6452050dcd5d7fe36b84b92e3bb}\label{gbppu_8c_a40a7d6452050dcd5d7fe36b84b92e3bb}} 
-\index{gbppu.c@{gbppu.c}!usGetBackWinTileDataSel@{usGetBackWinTileDataSel}}
-\index{usGetBackWinTileDataSel@{usGetBackWinTileDataSel}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{usGetBackWinTileDataSel()}{usGetBackWinTileDataSel()}}
-{\footnotesize\ttfamily uint16\+\_\+t us\+Get\+Back\+Win\+Tile\+Data\+Sel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Read LCDC Register to find appropriate Background \& Tile Data Address. 
-
-This function Reads from the LCDC Register and depending on the value of the 4th bit, it will change the Background \& Window Tile Data Select Address to 0x8000 on high or to 0x8800 on low. \begin{DoxyReturn}{Returns}
-Nothing 
-\end{DoxyReturn}
-\begin{DoxyNote}{Note}
-Background \& Window Tile Data Select should be 0x9000 on a low 4th bit in a real Gameboy, but it is much simpler to implement this way with emulation, the 0x400 offset is accounted for in \mbox{\hyperlink{gbppu_8c_a9b29df5e22493dc42927f15a2858730b}{get\+Tile\+Line\+Data()}} 
-\end{DoxyNote}
-\mbox{\Hypertarget{gbppu_8c_a78e32c2958d696c2e8cc97f502789c76}\label{gbppu_8c_a78e32c2958d696c2e8cc97f502789c76}} 
-\index{gbppu.c@{gbppu.c}!usGetWinTileDisplaySel@{usGetWinTileDisplaySel}}
-\index{usGetWinTileDisplaySel@{usGetWinTileDisplaySel}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{usGetWinTileDisplaySel()}{usGetWinTileDisplaySel()}}
-{\footnotesize\ttfamily uint16\+\_\+t us\+Get\+Win\+Tile\+Display\+Sel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{gbppu_8c_a9c60bc3bb6cc79d1ad3ce2b6fe18acec}\label{gbppu_8c_a9c60bc3bb6cc79d1ad3ce2b6fe18acec}} 
-\index{gbppu.c@{gbppu.c}!vCheckBGP@{vCheckBGP}}
-\index{vCheckBGP@{vCheckBGP}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{vCheckBGP()}{vCheckBGP()}}
-{\footnotesize\ttfamily void v\+Check\+BGP (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-
-
-Background color to palette translation. 
-
-Matches a color to its appropriate palette based on value of the Background Palette Register \begin{DoxyReturn}{Returns}
-Nothing 
-\end{DoxyReturn}
-\mbox{\Hypertarget{gbppu_8c_aa2ef681b987822cb47e37790e56d3436}\label{gbppu_8c_aa2ef681b987822cb47e37790e56d3436}} 
-\index{gbppu.c@{gbppu.c}!vCheckOBP0@{vCheckOBP0}}
-\index{vCheckOBP0@{vCheckOBP0}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{vCheckOBP0()}{vCheckOBP0()}}
-{\footnotesize\ttfamily void v\+Check\+OBP0 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{gbppu_8c_a67d230bfe40052898d5e9b15bb8ec606}\label{gbppu_8c_a67d230bfe40052898d5e9b15bb8ec606}} 
-\index{gbppu.c@{gbppu.c}!vCheckOBP1@{vCheckOBP1}}
-\index{vCheckOBP1@{vCheckOBP1}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{vCheckOBP1()}{vCheckOBP1()}}
-{\footnotesize\ttfamily void v\+Check\+OBP1 (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{gbppu_8c_a0d5f1084420a859dba5e9d70af910f15}\label{gbppu_8c_a0d5f1084420a859dba5e9d70af910f15}} 
-\index{gbppu.c@{gbppu.c}!vGBPPUDrawLine@{vGBPPUDrawLine}}
-\index{vGBPPUDrawLine@{vGBPPUDrawLine}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{vGBPPUDrawLine()}{vGBPPUDrawLine()}}
-{\footnotesize\ttfamily void v\+GBPPUDraw\+Line (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ly,  }\item[{uint8\+\_\+t}]{SCX,  }\item[{uint8\+\_\+t}]{SCY }\end{DoxyParamCaption})}
-
-
-
-Update data in the frame buffer for 1 line of the Gameboy. 
-
-populates the frame buffer with data related to a line ly 
+Updates and applies a pixel perfect image scaling algorithm on 1 pixel of the frame buffer when called. 
 \begin{DoxyParams}{Parameters}
-{\em ly} & lY Register Data \\
+{\em data} & Color information for the current pixel \\
 \hline
-{\em SCX} & Scroll X Register \\
-\hline
-{\em SCY} & Scroll Y Register \\
+{\em pixel\+Pos} & X position for the current pixel \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 Nothing 
 \end{DoxyReturn}
-\mbox{\Hypertarget{gbppu_8c_af309ec32c8042fe2f724137a40442c65}\label{gbppu_8c_af309ec32c8042fe2f724137a40442c65}} 
-\index{gbppu.c@{gbppu.c}!vGBPPUDrawLineBackground@{vGBPPUDrawLineBackground}}
-\index{vGBPPUDrawLineBackground@{vGBPPUDrawLineBackground}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{vGBPPUDrawLineBackground()}{vGBPPUDrawLineBackground()}}
-{\footnotesize\ttfamily void v\+GBPPUDraw\+Line\+Background (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ly,  }\item[{uint8\+\_\+t}]{SCX,  }\item[{uint8\+\_\+t}]{SCY,  }\item[{uint16\+\_\+t}]{Tile\+Data\+Addr,  }\item[{uint16\+\_\+t}]{Display\+Addr }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{gbppu_8c_af55e16b0234ec9b9a7f6703f53fa18b7}\label{gbppu_8c_af55e16b0234ec9b9a7f6703f53fa18b7}} 
+\index{gbppu.c@{gbppu.c}!vGBPPUStep@{vGBPPUStep}}
+\index{vGBPPUStep@{vGBPPUStep}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{vGBPPUStep()}{vGBPPUStep()}}
+{\footnotesize\ttfamily void v\+GBPPUStep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gbppu_8c_a4a36a4a08cc1aebd45b5e8288eb3a60b}\label{gbppu_8c_a4a36a4a08cc1aebd45b5e8288eb3a60b}} 
-\index{gbppu.c@{gbppu.c}!vGBPPUDrawLineObjects@{vGBPPUDrawLineObjects}}
-\index{vGBPPUDrawLineObjects@{vGBPPUDrawLineObjects}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{vGBPPUDrawLineObjects()}{vGBPPUDrawLineObjects()}}
-{\footnotesize\ttfamily void v\+GBPPUDraw\+Line\+Objects (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ly }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gbppu_8c_a402e8e47c7ff5f18c2ac42940b2abcb7}\label{gbppu_8c_a402e8e47c7ff5f18c2ac42940b2abcb7}} 
-\index{gbppu.c@{gbppu.c}!vGBPPUDrawLineWindow@{vGBPPUDrawLineWindow}}
-\index{vGBPPUDrawLineWindow@{vGBPPUDrawLineWindow}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{vGBPPUDrawLineWindow()}{vGBPPUDrawLineWindow()}}
-{\footnotesize\ttfamily void v\+GBPPUDraw\+Line\+Window (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{ly,  }\item[{uint8\+\_\+t}]{WX,  }\item[{uint8\+\_\+t}]{WY,  }\item[{uint16\+\_\+t}]{Tile\+Data\+Addr,  }\item[{uint16\+\_\+t}]{Display\+Addr }\end{DoxyParamCaption})}
 
+Steps the PPU by t\+States. 
+
+This function steps the PPU by the t\+States variable if the screen enable (7th) bit of LCDC Register is high, the function sets the mode in the STAT Register using the \mbox{\hyperlink{gbppu_8c_ac2086e2d9ea420499b54833b1726a681}{prv\+Set\+Mode()}} function depending on how many t\+States have elapsed. after a full line is has passed the LY register is updated \mbox{\hyperlink{gbppu_8c_a432ec91bc2248c882f63368d80540076}{prv\+GBPPUDraw\+Line()}} is called to place data in the frame buffer. \begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\begin{DoxyNote}{Note}
+The function and the Gameboy both mimic CRT Displays in that their are both a horizontal H-\/\+Blank after a Line is \char`\"{}drawn\char`\"{} and there is a vertical V-\/\+Blank after a full frame is drawn 
+\end{DoxyNote}
+\begin{DoxyAttention}{Attention}
+The placement of the functions v\+Check\+Back\+Win\+Tile\+Data\+Sel() and v\+Check\+Back\+Tile\+Display\+Sel() are just educated guesses at the current moment, more research into when and how often these Registers are updated must be conducted. 
+\end{DoxyAttention}
 \mbox{\Hypertarget{gbppu_8c_addcbf77f2958ad2001d541a8e4a8f504}\label{gbppu_8c_addcbf77f2958ad2001d541a8e4a8f504}} 
 \index{gbppu.c@{gbppu.c}!vSetFrameBuffer@{vSetFrameBuffer}}
 \index{vSetFrameBuffer@{vSetFrameBuffer}!gbppu.c@{gbppu.c}}
@@ -300,81 +383,69 @@ Nothing
 
 
 \doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{gbppu_8c_a81d3c3d311f9043a2fcc537ed2966d32}\label{gbppu_8c_a81d3c3d311f9043a2fcc537ed2966d32}} 
-\index{gbppu.c@{gbppu.c}!BackTileDisplayAddr@{BackTileDisplayAddr}}
-\index{BackTileDisplayAddr@{BackTileDisplayAddr}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{BackTileDisplayAddr}{BackTileDisplayAddr}}
-{\footnotesize\ttfamily uint16\+\_\+t Back\+Tile\+Display\+Addr}
-
-\mbox{\Hypertarget{gbppu_8c_a7f102df4d72992d5d8593dc897080417}\label{gbppu_8c_a7f102df4d72992d5d8593dc897080417}} 
-\index{gbppu.c@{gbppu.c}!BackWinTileDataAddr@{BackWinTileDataAddr}}
-\index{BackWinTileDataAddr@{BackWinTileDataAddr}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{BackWinTileDataAddr}{BackWinTileDataAddr}}
-{\footnotesize\ttfamily uint16\+\_\+t Back\+Win\+Tile\+Data\+Addr}
-
-\mbox{\Hypertarget{gbppu_8c_a3d900d05be075fa49f3c533e8afcc181}\label{gbppu_8c_a3d900d05be075fa49f3c533e8afcc181}} 
-\index{gbppu.c@{gbppu.c}!BGPColorToPalette@{BGPColorToPalette}}
-\index{BGPColorToPalette@{BGPColorToPalette}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{BGPColorToPalette}{BGPColorToPalette}}
-{\footnotesize\ttfamily uint8\+\_\+t BGPColor\+To\+Palette\mbox{[}4\mbox{]}}
-
-\mbox{\Hypertarget{gbppu_8c_a51a1568ab8f25d4e69e883ce34de4752}\label{gbppu_8c_a51a1568ab8f25d4e69e883ce34de4752}} 
-\index{gbppu.c@{gbppu.c}!curLine@{curLine}}
-\index{curLine@{curLine}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{curLine}{curLine}}
-{\footnotesize\ttfamily uint32\+\_\+t cur\+Line}
-
-\mbox{\Hypertarget{gbppu_8c_ab799d7f1fc8dba9a1b2ae4a3b2e85f3f}\label{gbppu_8c_ab799d7f1fc8dba9a1b2ae4a3b2e85f3f}} 
-\index{gbppu.c@{gbppu.c}!gb\_frame@{gb\_frame}}
-\index{gb\_frame@{gb\_frame}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{gb\_frame}{gb\_frame}}
-{\footnotesize\ttfamily uint8\+\_\+t$\ast$ gb\+\_\+frame = (uint8\+\_\+t$\ast$)\mbox{\hyperlink{gbppu_8c_a6a7f90395054dfa1a2f6521213aad848}{SRAM1}}}
-
-\mbox{\Hypertarget{gbppu_8c_ad0cd50ba7d062da5404a0a3b88fd4367}\label{gbppu_8c_ad0cd50ba7d062da5404a0a3b88fd4367}} 
-\index{gbppu.c@{gbppu.c}!lineadd@{lineadd}}
-\index{lineadd@{lineadd}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{lineadd}{lineadd}}
-{\footnotesize\ttfamily uint32\+\_\+t lineadd}
-
-\mbox{\Hypertarget{gbppu_8c_ab60dac6a688a304987c96312a05243ae}\label{gbppu_8c_ab60dac6a688a304987c96312a05243ae}} 
-\index{gbppu.c@{gbppu.c}!ly@{ly}}
-\index{ly@{ly}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{ly}{ly}}
-{\footnotesize\ttfamily uint8\+\_\+t ly = 0}
-
-\mbox{\Hypertarget{gbppu_8c_ad11c3137711cc547aa65686fa2c98fc9}\label{gbppu_8c_ad11c3137711cc547aa65686fa2c98fc9}} 
-\index{gbppu.c@{gbppu.c}!Mode@{Mode}}
-\index{Mode@{Mode}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{Mode}{Mode}}
-{\footnotesize\ttfamily uint8\+\_\+t Mode}
-
-\mbox{\Hypertarget{gbppu_8c_ae747435af34a76d58909ddb6427c8342}\label{gbppu_8c_ae747435af34a76d58909ddb6427c8342}} 
-\index{gbppu.c@{gbppu.c}!OBP0ColorToPalette@{OBP0ColorToPalette}}
-\index{OBP0ColorToPalette@{OBP0ColorToPalette}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{OBP0ColorToPalette}{OBP0ColorToPalette}}
-{\footnotesize\ttfamily uint8\+\_\+t OBP0\+Color\+To\+Palette\mbox{[}4\mbox{]}}
-
-\mbox{\Hypertarget{gbppu_8c_af2b84cbf3e4635ad2846dbc1f487e7e6}\label{gbppu_8c_af2b84cbf3e4635ad2846dbc1f487e7e6}} 
-\index{gbppu.c@{gbppu.c}!OBP1ColorToPalette@{OBP1ColorToPalette}}
-\index{OBP1ColorToPalette@{OBP1ColorToPalette}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{OBP1ColorToPalette}{OBP1ColorToPalette}}
-{\footnotesize\ttfamily uint8\+\_\+t OBP1\+Color\+To\+Palette\mbox{[}4\mbox{]}}
-
-\mbox{\Hypertarget{gbppu_8c_a5404f7eab814b57dc7c25d7f469f2114}\label{gbppu_8c_a5404f7eab814b57dc7c25d7f469f2114}} 
-\index{gbppu.c@{gbppu.c}!scaleAmount@{scaleAmount}}
-\index{scaleAmount@{scaleAmount}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{scaleAmount}{scaleAmount}}
-{\footnotesize\ttfamily uint8\+\_\+t scale\+Amount = 2}
-
-\mbox{\Hypertarget{gbppu_8c_ae5204dc1d80b90ced93dfa0ffc9ed575}\label{gbppu_8c_ae5204dc1d80b90ced93dfa0ffc9ed575}} 
-\index{gbppu.c@{gbppu.c}!tStatesTotal@{tStatesTotal}}
-\index{tStatesTotal@{tStatesTotal}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{tStatesTotal}{tStatesTotal}}
-{\footnotesize\ttfamily uint32\+\_\+t t\+States\+Total}
+\mbox{\Hypertarget{gbppu_8c_a485638b8ee0120e72662b05977915ca3}\label{gbppu_8c_a485638b8ee0120e72662b05977915ca3}} 
+\index{gbppu.c@{gbppu.c}!ucBGPColorToPalette@{ucBGPColorToPalette}}
+\index{ucBGPColorToPalette@{ucBGPColorToPalette}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{ucBGPColorToPalette}{ucBGPColorToPalette}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+BGPColor\+To\+Palette\mbox{[}4\mbox{]}}
 
 \mbox{\Hypertarget{gbppu_8c_ac9de52373fb1ba5b7529ba0d15ebc8b8}\label{gbppu_8c_ac9de52373fb1ba5b7529ba0d15ebc8b8}} 
 \index{gbppu.c@{gbppu.c}!ucBGWINline@{ucBGWINline}}
 \index{ucBGWINline@{ucBGWINline}!gbppu.c@{gbppu.c}}
 \doxysubsubsection{\texorpdfstring{ucBGWINline}{ucBGWINline}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+BGWINline\mbox{[}160\mbox{]}}
+
+\mbox{\Hypertarget{gbppu_8c_a5afdae9a6f8868d40ecd9a45fa2cf7e7}\label{gbppu_8c_a5afdae9a6f8868d40ecd9a45fa2cf7e7}} 
+\index{gbppu.c@{gbppu.c}!ucGBFrame@{ucGBFrame}}
+\index{ucGBFrame@{ucGBFrame}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{ucGBFrame}{ucGBFrame}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ uc\+GBFrame = (uint8\+\_\+t$\ast$)\mbox{\hyperlink{gbppu_8c_a6a7f90395054dfa1a2f6521213aad848}{SRAM1}}}
+
+\mbox{\Hypertarget{gbppu_8c_ae1deb0fdbd829f97dc542cf5cc07cf86}\label{gbppu_8c_ae1deb0fdbd829f97dc542cf5cc07cf86}} 
+\index{gbppu.c@{gbppu.c}!ucLY@{ucLY}}
+\index{ucLY@{ucLY}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{ucLY}{ucLY}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+LY = 0}
+
+\mbox{\Hypertarget{gbppu_8c_a016ccd2d7b6615abe4967f9a27060746}\label{gbppu_8c_a016ccd2d7b6615abe4967f9a27060746}} 
+\index{gbppu.c@{gbppu.c}!ucMode@{ucMode}}
+\index{ucMode@{ucMode}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{ucMode}{ucMode}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+Mode}
+
+\mbox{\Hypertarget{gbppu_8c_a9be772970ed9fbe14e0218fd424b6596}\label{gbppu_8c_a9be772970ed9fbe14e0218fd424b6596}} 
+\index{gbppu.c@{gbppu.c}!ucOBP0ColorToPalette@{ucOBP0ColorToPalette}}
+\index{ucOBP0ColorToPalette@{ucOBP0ColorToPalette}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{ucOBP0ColorToPalette}{ucOBP0ColorToPalette}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+OBP0\+Color\+To\+Palette\mbox{[}4\mbox{]}}
+
+\mbox{\Hypertarget{gbppu_8c_ae10b4a8ffd018a241f9ec6ce9f1f690d}\label{gbppu_8c_ae10b4a8ffd018a241f9ec6ce9f1f690d}} 
+\index{gbppu.c@{gbppu.c}!ucOBP1ColorToPalette@{ucOBP1ColorToPalette}}
+\index{ucOBP1ColorToPalette@{ucOBP1ColorToPalette}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{ucOBP1ColorToPalette}{ucOBP1ColorToPalette}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+OBP1\+Color\+To\+Palette\mbox{[}4\mbox{]}}
+
+\mbox{\Hypertarget{gbppu_8c_ab196f3e59335a72ee34e8481033baf15}\label{gbppu_8c_ab196f3e59335a72ee34e8481033baf15}} 
+\index{gbppu.c@{gbppu.c}!ulCurLine@{ulCurLine}}
+\index{ulCurLine@{ulCurLine}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{ulCurLine}{ulCurLine}}
+{\footnotesize\ttfamily uint32\+\_\+t ul\+Cur\+Line}
+
+\mbox{\Hypertarget{gbppu_8c_af58b00da0c806a9f69bda59355d02e29}\label{gbppu_8c_af58b00da0c806a9f69bda59355d02e29}} 
+\index{gbppu.c@{gbppu.c}!ulLineAdd@{ulLineAdd}}
+\index{ulLineAdd@{ulLineAdd}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{ulLineAdd}{ulLineAdd}}
+{\footnotesize\ttfamily uint32\+\_\+t ul\+Line\+Add}
+
+\mbox{\Hypertarget{gbppu_8c_ab2318977e8442dfe26bc0a0b41c1f165}\label{gbppu_8c_ab2318977e8442dfe26bc0a0b41c1f165}} 
+\index{gbppu.c@{gbppu.c}!ulScaleAmount@{ulScaleAmount}}
+\index{ulScaleAmount@{ulScaleAmount}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{ulScaleAmount}{ulScaleAmount}}
+{\footnotesize\ttfamily uint8\+\_\+t ul\+Scale\+Amount = 2}
+
+\mbox{\Hypertarget{gbppu_8c_a1937f8f3d3d58a98306b4e7491aaebcc}\label{gbppu_8c_a1937f8f3d3d58a98306b4e7491aaebcc}} 
+\index{gbppu.c@{gbppu.c}!ultStatesTotal@{ultStatesTotal}}
+\index{ultStatesTotal@{ultStatesTotal}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{ultStatesTotal}{ultStatesTotal}}
+{\footnotesize\ttfamily uint32\+\_\+t ult\+States\+Total}
 

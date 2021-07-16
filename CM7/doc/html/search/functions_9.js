@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['resetbit_856',['resetbit',['../gbfunctions_8h.html#a0a165012e5cc78ec782633b997200003',1,'resetbit(uint8_t *n, uint8_t bit):&#160;gbfunctions.c'],['../gbfunctions_8c.html#a0a165012e5cc78ec782633b997200003',1,'resetbit(uint8_t *n, uint8_t bit):&#160;gbfunctions.c']]]
+  ['testcontroller_861',['testController',['../main_8c.html#a57146e7cfc937af38efb8fd46a581af2',1,'main.c']]]
 ];

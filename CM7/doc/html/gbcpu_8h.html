@@ -122,16 +122,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a960a91350e7e155d24794c6e62fd139a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8h.html#a960a91350e7e155d24794c6e62fd139a">vGBCPUreset</a> ()</td></tr>
-<tr class="separator:a960a91350e7e155d24794c6e62fd139a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5a2a7acf3888505856cdea35b8cea29e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8h.html#a5a2a7acf3888505856cdea35b8cea29e">vGBCPUboot</a> ()</td></tr>
-<tr class="separator:a5a2a7acf3888505856cdea35b8cea29e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afdff24ca2343b342a41a4aa48286839c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8h.html#afdff24ca2343b342a41a4aa48286839c">vGBCPUTestInstr</a> (uint8_t opcode)</td></tr>
-<tr class="separator:afdff24ca2343b342a41a4aa48286839c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1287756051fb8c1e853804ee9088dd0d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8h.html#a1287756051fb8c1e853804ee9088dd0d">vGBCPUinstr</a> (uint8_t opcode)</td></tr>
-<tr class="separator:a1287756051fb8c1e853804ee9088dd0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad7321a705dfcb15e2f273551dc839594"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8h.html#ad7321a705dfcb15e2f273551dc839594">vStoppedFlag</a> (uint8_t condition)</td></tr>
-<tr class="separator:ad7321a705dfcb15e2f273551dc839594"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a520296d9ceac5906d056ea0b5646d40c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8h.html#a520296d9ceac5906d056ea0b5646d40c">vGBCPUStep</a> ()</td></tr>
+<tr class="memdesc:a520296d9ceac5906d056ea0b5646d40c"><td class="mdescLeft">&#160;</td><td class="mdescRight">executes 1 CPU instruction  <a href="gbcpu_8h.html#a520296d9ceac5906d056ea0b5646d40c">More...</a><br /></td></tr>
+<tr class="separator:a520296d9ceac5906d056ea0b5646d40c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a949dd2aaef61ee9dc6b76eea7fc37a8d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbcpu_8h.html#a949dd2aaef61ee9dc6b76eea7fc37a8d">ucGetTstate</a> ()</td></tr>
 <tr class="separator:a949dd2aaef61ee9dc6b76eea7fc37a8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -207,17 +200,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>amount of T-states that the current instruction takes to execute </dd></dl>
 
 </div>
 </div>
-<a id="a5a2a7acf3888505856cdea35b8cea29e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5a2a7acf3888505856cdea35b8cea29e">&#9670;&nbsp;</a></span>vGBCPUboot()</h2>
+<a id="a520296d9ceac5906d056ea0b5646d40c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a520296d9ceac5906d056ea0b5646d40c">&#9670;&nbsp;</a></span>vGBCPUStep()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vGBCPUboot </td>
+          <td class="memname">void vGBCPUStep </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -225,76 +219,8 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a1287756051fb8c1e853804ee9088dd0d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1287756051fb8c1e853804ee9088dd0d">&#9670;&nbsp;</a></span>vGBCPUinstr()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vGBCPUinstr </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>opcode</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="a960a91350e7e155d24794c6e62fd139a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a960a91350e7e155d24794c6e62fd139a">&#9670;&nbsp;</a></span>vGBCPUreset()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vGBCPUreset </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="afdff24ca2343b342a41a4aa48286839c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afdff24ca2343b342a41a4aa48286839c">&#9670;&nbsp;</a></span>vGBCPUTestInstr()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vGBCPUTestInstr </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>opcode</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-</div>
-</div>
-<a id="ad7321a705dfcb15e2f273551dc839594"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad7321a705dfcb15e2f273551dc839594">&#9670;&nbsp;</a></span>vStoppedFlag()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void vStoppedFlag </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>condition</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>executes 1 CPU instruction </p>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>

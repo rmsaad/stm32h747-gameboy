@@ -4,10 +4,7 @@ var gbfunctions_8h =
     [ "H_FLAG", "gbfunctions_8h.html#abb182b0bdbed48570d905d7f5ee90849", null ],
     [ "N_FLAG", "gbfunctions_8h.html#a6de466ba75c7d109f8efb7598c10047f", null ],
     [ "Z_FLAG", "gbfunctions_8h.html#a53a7db1c6b43d8626d6fb547dc2cc1cb", null ],
-    [ "checkbit", "gbfunctions_8h.html#a60d89faa1ac032f2e5f0aeb7714ece55", null ],
-    [ "concat_16bit_bigEndian", "gbfunctions_8h.html#ad9c1e5968f514b0a4e0f0d35da5a0eac", null ],
-    [ "resetbit", "gbfunctions_8h.html#a0a165012e5cc78ec782633b997200003", null ],
-    [ "setbit", "gbfunctions_8h.html#af11c6615ded1810b7eea1bc69c21eb33", null ],
+    [ "ucCheckBit", "gbfunctions_8h.html#a1719fc566db5b8c0c75dbef3bf232268", null ],
     [ "ucGBFunctionRESHL", "gbfunctions_8h.html#af9ef39642fcac89eb9630e052916a0b8", null ],
     [ "ucGBFunctionRL", "gbfunctions_8h.html#ad62cde0852d4b8c6613fcd313d886d07", null ],
     [ "ucGBFunctionRLC", "gbfunctions_8h.html#a1da098d4b25fcdf39d85cc13a0f9d01c", null ],
@@ -18,6 +15,7 @@ var gbfunctions_8h =
     [ "ucGBFunctionSRA", "gbfunctions_8h.html#aaee6bebb882310ea433b1d9b7835889e", null ],
     [ "ucGBFunctionSRL", "gbfunctions_8h.html#a3a337ebf04c67d7f432079a621759512", null ],
     [ "ucGBFunctionSWAP", "gbfunctions_8h.html#a56db189977b0d60a73e2648015377bc2", null ],
+    [ "usConcat16BitBigEndian", "gbfunctions_8h.html#a111c2edf243acf0cd533360096f88e51", null ],
     [ "v8bitRegisterDEC", "gbfunctions_8h.html#a3f0d7481c1158d9eb3c693ff238f3913", null ],
     [ "v8bitRegisterINC", "gbfunctions_8h.html#af2c4683984f24ed2aa5909bac6fb941b", null ],
     [ "vGBFunction16bitADD", "gbfunctions_8h.html#aecc878909ab184501b236520dfd09bdd", null ],
@@ -50,5 +48,7 @@ var gbfunctions_8h =
     [ "vGBFunctionSBC", "gbfunctions_8h.html#a4eed68c3300602ec2b7bc079f4dc93e1", null ],
     [ "vGBFunctionSUB", "gbfunctions_8h.html#aa22a9ca998563f11d1c87bc45b06d06d", null ],
     [ "vMemoryLocationDEC", "gbfunctions_8h.html#a99413e16dc2b7cfc5028794c4af09348", null ],
-    [ "vMemoryLocationINC", "gbfunctions_8h.html#a6d31f46628215c7a65041774e17b92f5", null ]
+    [ "vMemoryLocationINC", "gbfunctions_8h.html#a6d31f46628215c7a65041774e17b92f5", null ],
+    [ "vResetBit", "gbfunctions_8h.html#a17360a303ef8d946cb40a923502aef53", null ],
+    [ "vSetBit", "gbfunctions_8h.html#a302bb6703664648619ebce9fd3d193f7", null ]
 ];

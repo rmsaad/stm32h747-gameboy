@@ -9,8 +9,8 @@
 #define INC_GBMBC_H_
 
 
-void gbMBCsetControllerType(uint8_t code);
-uint8_t gbMBCreadBankX(uint16_t address);
-void gbMBCwrite(uint16_t address, uint8_t data);
+void vGBMBCsetControllerType(uint8_t code);
+uint8_t ucGBMBCreadBankX(uint16_t address);
+void vGBMBCwrite(uint16_t address, uint8_t data);
 
 #endif /* INC_GBMBC_H_ */

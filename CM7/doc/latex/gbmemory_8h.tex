@@ -135,21 +135,21 @@ struct \mbox{\hyperlink{structmemory}{memory}}
 void \mbox{\hyperlink{gbmemory_8h_a781a62ea8b011b95fb4f0866a52a39ae}{v\+GBMemory\+Load}} (const void $\ast$data, uint32\+\_\+t size)
 \begin{DoxyCompactList}\small\item\em Loads data of amount bytes into Memory maps from mem.\+ram\mbox{[}0\mbox{]} to mem.\+ram\mbox{[}bytes -\/ 1\mbox{]}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8h_a13d1367ada996283c71324bcfe8c1e3e}{v\+GBMemory\+Write}} (uint16\+\_\+t address, uint8\+\_\+t data)
-\item 
+\begin{DoxyCompactList}\small\item\em Write data to location in memory map specified by address variable. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8h_a1fa255c05819bee1cef2a587841ba9f0}{v\+GBMemory\+Write\+Short}} (uint16\+\_\+t address, uint16\+\_\+t data)
-\item 
+\begin{DoxyCompactList}\small\item\em Write a short value to location in the memory map. \end{DoxyCompactList}\item 
 uint8\+\_\+t \mbox{\hyperlink{gbmemory_8h_a683a109d784f5984037d1484e7d3cc33}{uc\+GBMemory\+Read}} (uint16\+\_\+t address)
-\item 
+\begin{DoxyCompactList}\small\item\em Read from location in memory map. \end{DoxyCompactList}\item 
 uint16\+\_\+t \mbox{\hyperlink{gbmemory_8h_ab2a72e369d5605ff01fdae3218ebd550}{us\+GBMemory\+Read\+Short}} (uint16\+\_\+t address)
-\item 
+\begin{DoxyCompactList}\small\item\em Read from 2 sequential locations in memory map. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8h_ab7132a74c7fb5b524a8c1ed437a4f598}{v\+GBMemory\+Inc\+Timers}} (uint8\+\_\+t duration)
-\item 
+\begin{DoxyCompactList}\small\item\em Ticks all timers currently in use. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8h_a88bea6ceedc1e06c9c25290a1e477d0b}{v\+GBMemory\+Set\+Bit}} (uint16\+\_\+t address, uint8\+\_\+t bit)
-\item 
+\begin{DoxyCompactList}\small\item\em Set a bit in location specified by memory map address. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8h_ae323c2e5d359578d03e43281ff20d9ed}{v\+GBMemory\+Reset\+Bit}} (uint16\+\_\+t address, uint8\+\_\+t bit)
-\item 
+\begin{DoxyCompactList}\small\item\em Reset a bit in location specified by memory map address. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8h_a285b9be84f8c4b08b2a307aab5b90c5a}{v\+GBMemory\+Print}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Print out all the Register value information to the Screen for debugging purposes. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8h_aa60061694f25f3c06249a4174c561b3a}{v\+GBMemory\+Set\+OP}} (uint8\+\_\+t op)
 \begin{DoxyCompactList}\small\item\em Set the current opcode for Debug Printing to LCD screen. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbmemory_8h_af37d720a8bbc5463b44ff37d0d5ff76d}{v\+GBMemory\+Init}} ()
@@ -521,12 +521,16 @@ void \mbox{\hyperlink{gbmemory_8h_af37d720a8bbc5463b44ff37d0d5ff76d}{v\+GBMemory
 {\footnotesize\ttfamily uint8\+\_\+t uc\+GBMemory\+Read (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})}
 
 
+
+Read from location in memory map. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em address} & \\
+{\em address} & memory map address \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+data byte of data located in memory map 
 \end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8h_ab2a72e369d5605ff01fdae3218ebd550}\label{gbmemory_8h_ab2a72e369d5605ff01fdae3218ebd550}} 
 \index{gbmemory.h@{gbmemory.h}!usGBMemoryReadShort@{usGBMemoryReadShort}}
@@ -535,19 +539,35 @@ void \mbox{\hyperlink{gbmemory_8h_af37d720a8bbc5463b44ff37d0d5ff76d}{v\+GBMemory
 {\footnotesize\ttfamily uint16\+\_\+t us\+GBMemory\+Read\+Short (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})}
 
 
+
+Read from 2 sequential locations in memory map. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em address} & \\
+{\em address} & memory map address \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-
+Short information of data in memory map 
 \end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8h_ab7132a74c7fb5b524a8c1ed437a4f598}\label{gbmemory_8h_ab7132a74c7fb5b524a8c1ed437a4f598}} 
 \index{gbmemory.h@{gbmemory.h}!vGBMemoryIncTimers@{vGBMemoryIncTimers}}
 \index{vGBMemoryIncTimers@{vGBMemoryIncTimers}!gbmemory.h@{gbmemory.h}}
 \doxysubsubsection{\texorpdfstring{vGBMemoryIncTimers()}{vGBMemoryIncTimers()}}
-{\footnotesize\ttfamily void v\+GBMemory\+Inc\+Timers (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{duration }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void v\+GBMemory\+Inc\+Timers (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{duration\+Mcycle }\end{DoxyParamCaption})}
 
+
+
+Ticks all timers currently in use. 
+
+Ticks the DIV and possibly the TIMA timers at their correct Hertz 
+\begin{DoxyParams}{Parameters}
+{\em duration\+Mcycle} & Amount of T states that have passed executing the current instruction. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8h_af37d720a8bbc5463b44ff37d0d5ff76d}\label{gbmemory_8h_af37d720a8bbc5463b44ff37d0d5ff76d}} 
 \index{gbmemory.h@{gbmemory.h}!vGBMemoryInit@{vGBMemoryInit}}
 \index{vGBMemoryInit@{vGBMemoryInit}!gbmemory.h@{gbmemory.h}}
@@ -587,6 +607,13 @@ Nothing
 \doxysubsubsection{\texorpdfstring{vGBMemoryPrint()}{vGBMemoryPrint()}}
 {\footnotesize\ttfamily void v\+GBMemory\+Print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Print out all the Register value information to the Screen for debugging purposes. 
+
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8h_ae323c2e5d359578d03e43281ff20d9ed}\label{gbmemory_8h_ae323c2e5d359578d03e43281ff20d9ed}} 
 \index{gbmemory.h@{gbmemory.h}!vGBMemoryResetBit@{vGBMemoryResetBit}}
 \index{vGBMemoryResetBit@{vGBMemoryResetBit}!gbmemory.h@{gbmemory.h}}
@@ -594,12 +621,19 @@ Nothing
 {\footnotesize\ttfamily void v\+GBMemory\+Reset\+Bit (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
 
 
+
+Reset a bit in location specified by memory map address. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em address} & \\
+{\em address} & memory map address \\
 \hline
-{\em bit} & \\
+{\em bit} & which bit to reset (0 -\/ 7) \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8h_a88bea6ceedc1e06c9c25290a1e477d0b}\label{gbmemory_8h_a88bea6ceedc1e06c9c25290a1e477d0b}} 
 \index{gbmemory.h@{gbmemory.h}!vGBMemorySetBit@{vGBMemorySetBit}}
 \index{vGBMemorySetBit@{vGBMemorySetBit}!gbmemory.h@{gbmemory.h}}
@@ -607,12 +641,19 @@ Nothing
 {\footnotesize\ttfamily void v\+GBMemory\+Set\+Bit (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{bit }\end{DoxyParamCaption})}
 
 
+
+Set a bit in location specified by memory map address. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em address} & \\
+{\em address} & memory map address \\
 \hline
-{\em bit} & \\
+{\em bit} & which bit to set (0 -\/ 7) \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8h_aa60061694f25f3c06249a4174c561b3a}\label{gbmemory_8h_aa60061694f25f3c06249a4174c561b3a}} 
 \index{gbmemory.h@{gbmemory.h}!vGBMemorySetOP@{vGBMemorySetOP}}
 \index{vGBMemorySetOP@{vGBMemorySetOP}!gbmemory.h@{gbmemory.h}}
@@ -638,15 +679,36 @@ Nothing
 {\footnotesize\ttfamily void v\+GBMemory\+Write (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
 
 
+
+Write data to location in memory map specified by address variable. 
+
+
 \begin{DoxyParams}{Parameters}
-{\em address} & \\
+{\em address} & memory map address \\
 \hline
-{\em data} & \\
+{\em data} & byte of data \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{gbmemory_8h_a1fa255c05819bee1cef2a587841ba9f0}\label{gbmemory_8h_a1fa255c05819bee1cef2a587841ba9f0}} 
 \index{gbmemory.h@{gbmemory.h}!vGBMemoryWriteShort@{vGBMemoryWriteShort}}
 \index{vGBMemoryWriteShort@{vGBMemoryWriteShort}!gbmemory.h@{gbmemory.h}}
 \doxysubsubsection{\texorpdfstring{vGBMemoryWriteShort()}{vGBMemoryWriteShort()}}
 {\footnotesize\ttfamily void v\+GBMemory\+Write\+Short (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint16\+\_\+t}]{data }\end{DoxyParamCaption})}
 
+
+
+Write a short value to location in the memory map. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & memory map address \\
+\hline
+{\em data} & 2 bytes of data \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}

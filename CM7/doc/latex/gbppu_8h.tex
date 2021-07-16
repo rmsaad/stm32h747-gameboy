@@ -3,24 +3,24 @@
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{gbppu_8h_a112e995f6616336eac038c853aa5ac35}{gb\+PPUStep}} ()
+void \mbox{\hyperlink{gbppu_8h_af55e16b0234ec9b9a7f6703f53fa18b7}{v\+GBPPUStep}} ()
 \begin{DoxyCompactList}\small\item\em Steps the PPU by t\+States. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbppu_8h_addcbf77f2958ad2001d541a8e4a8f504}{v\+Set\+Frame\+Buffer}} ()
 \begin{DoxyCompactList}\small\item\em Zeros All Memory in the Frame Buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{gbppu_8h_a112e995f6616336eac038c853aa5ac35}\label{gbppu_8h_a112e995f6616336eac038c853aa5ac35}} 
-\index{gbppu.h@{gbppu.h}!gbPPUStep@{gbPPUStep}}
-\index{gbPPUStep@{gbPPUStep}!gbppu.h@{gbppu.h}}
-\doxysubsubsection{\texorpdfstring{gbPPUStep()}{gbPPUStep()}}
-{\footnotesize\ttfamily void gb\+PPUStep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{gbppu_8h_af55e16b0234ec9b9a7f6703f53fa18b7}\label{gbppu_8h_af55e16b0234ec9b9a7f6703f53fa18b7}} 
+\index{gbppu.h@{gbppu.h}!vGBPPUStep@{vGBPPUStep}}
+\index{vGBPPUStep@{vGBPPUStep}!gbppu.h@{gbppu.h}}
+\doxysubsubsection{\texorpdfstring{vGBPPUStep()}{vGBPPUStep()}}
+{\footnotesize\ttfamily void v\+GBPPUStep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
 Steps the PPU by t\+States. 
 
-This function steps the PPU by the t\+States variable if the screen enable (7th) bit of LCDC Register is high, the function sets the mode in the STAT Register using the \mbox{\hyperlink{gbppu_8c_a5d0653e9369208f1125d417a3ae32283}{set\+Mode()}} function depending on how many t\+States have elapsed. after a full line is has passed the LY register is updated \mbox{\hyperlink{gbppu_8c_a0d5f1084420a859dba5e9d70af910f15}{v\+GBPPUDraw\+Line()}} is called to place data in the frame buffer. \begin{DoxyReturn}{Returns}
+This function steps the PPU by the t\+States variable if the screen enable (7th) bit of LCDC Register is high, the function sets the mode in the STAT Register using the \mbox{\hyperlink{gbppu_8c_ac2086e2d9ea420499b54833b1726a681}{prv\+Set\+Mode()}} function depending on how many t\+States have elapsed. after a full line is has passed the LY register is updated \mbox{\hyperlink{gbppu_8c_a432ec91bc2248c882f63368d80540076}{prv\+GBPPUDraw\+Line()}} is called to place data in the frame buffer. \begin{DoxyReturn}{Returns}
 Nothing 
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}

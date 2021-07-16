@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['obp0colortopalette_1487',['OBP0ColorToPalette',['../gbppu_8c.html#ae747435af34a76d58909ddb6427c8342',1,'gbppu.c']]],
-  ['obp1colortopalette_1488',['OBP1ColorToPalette',['../gbppu_8c.html#af2b84cbf3e4635ad2846dbc1f487e7e6',1,'gbppu.c']]]
+  ['tetris_5fgb_1468',['Tetris_gb',['../main_8c.html#afcdad1e952b60967216915d584af9f06',1,'main.c']]],
+  ['tstate_1469',['Tstate',['../struct_assembly___instr.html#a5fb2026bcf6571f577936d743090c72a',1,'Assembly_Instr']]]
 ];

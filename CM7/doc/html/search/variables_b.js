@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['l_1480',['L',['../structregisters.html#a10f900599cec5b7a56ac4db267c669de',1,'registers']]],
-  ['lineadd_1481',['lineadd',['../gbppu_8c.html#ad0cd50ba7d062da5404a0a3b88fd4367',1,'gbppu.c']]],
-  ['ly_1482',['ly',['../gbppu_8c.html#ab60dac6a688a304987c96312a05243ae',1,'gbppu.c']]]
+  ['pc_1461',['PC',['../structregisters.html#a169382b91bbba121f0cb39fd388a269b',1,'registers']]],
+  ['prefix_5finstructions_1462',['prefix_instructions',['../gbcpu_8c.html#a5e025ff8cefad04d46522eea26732a04',1,'gbcpu.c']]]
 ];

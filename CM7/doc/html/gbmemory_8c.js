@@ -1,10 +1,10 @@
 var gbmemory_8c =
 [
+    [ "prvGBMemoryJoypad", "gbmemory_8c.html#a20fa95ae35619a6f09211eb11b400909", null ],
     [ "ucGBMemoryRead", "gbmemory_8c.html#a683a109d784f5984037d1484e7d3cc33", null ],
     [ "usGBMemoryReadShort", "gbmemory_8c.html#ab2a72e369d5605ff01fdae3218ebd550", null ],
     [ "vGBMemoryIncTimers", "gbmemory_8c.html#a5c4058a1ce58dac324455bcece180ef2", null ],
     [ "vGBMemoryInit", "gbmemory_8c.html#af37d720a8bbc5463b44ff37d0d5ff76d", null ],
-    [ "vGBMemoryJoypad", "gbmemory_8c.html#a2be37591fc93329042b7abe9310e841e", null ],
     [ "vGBMemoryLoad", "gbmemory_8c.html#a36e47a1e1bab8cb1cbe6050bdcc8b114", null ],
     [ "vGBMemoryPrint", "gbmemory_8c.html#a285b9be84f8c4b08b2a307aab5b90c5a", null ],
     [ "vGBMemoryResetBit", "gbmemory_8c.html#ae323c2e5d359578d03e43281ff20d9ed", null ],
@@ -12,14 +12,14 @@ var gbmemory_8c =
     [ "vGBMemorySetOP", "gbmemory_8c.html#aa60061694f25f3c06249a4174c561b3a", null ],
     [ "vGBMemoryWrite", "gbmemory_8c.html#a13d1367ada996283c71324bcfe8c1e3e", null ],
     [ "vGBMemoryWriteShort", "gbmemory_8c.html#a1fa255c05819bee1cef2a587841ba9f0", null ],
-    [ "clockMode", "gbmemory_8c.html#a802aee4514070d1540ac9c9854b0a43b", null ],
-    [ "current_op", "gbmemory_8c.html#a21010386b1a8ee68b7c4db86723d8e40", null ],
-    [ "dataTransFlag", "gbmemory_8c.html#a0bfe7898f6fbed4f677b2c9a89f433aa", null ],
     [ "hadc1", "gbmemory_8c.html#a22b804736f5648d52f639b2647d4ed13", null ],
     [ "hadc3", "gbmemory_8c.html#a984624bcf28d1b2fb7e4e18349f65d5c", null ],
-    [ "joypadSELbut", "gbmemory_8c.html#ae8485843021908f44426e095bbbdf942", null ],
-    [ "joypadSELdir", "gbmemory_8c.html#acd3fa3efff4d8c67b73513d2b05cc08f", null ],
     [ "mem", "gbmemory_8c.html#a6135654033ccfa705ae4c5fde74eda02", null ],
     [ "reg", "gbmemory_8c.html#a2e53d7c3ec0bfaf12e47894c24a904da", null ],
-    [ "timerStopStart", "gbmemory_8c.html#a880544c7d3d22894f31088cb36ab2a46", null ]
+    [ "ucClockMode", "gbmemory_8c.html#ad4adaf5e7ed4b00d4a2e320a7b9ec1d7", null ],
+    [ "ucCurrentOP", "gbmemory_8c.html#ae9d8d95f91f42a98d93ac34191e76165", null ],
+    [ "ucDataTransFlag", "gbmemory_8c.html#a61a0842e4ccb632739f8909d693e69aa", null ],
+    [ "ucJoypadSELbut", "gbmemory_8c.html#a75029e65bb6e8e79250afa5c110613a9", null ],
+    [ "ucJoypadSELdir", "gbmemory_8c.html#a56696d8a6aafd57adf58d44aba3419c6", null ],
+    [ "ucTimerStopStart", "gbmemory_8c.html#a20ec0ef0da3287bc9b59c8e7a6e9c50e", null ]
 ];

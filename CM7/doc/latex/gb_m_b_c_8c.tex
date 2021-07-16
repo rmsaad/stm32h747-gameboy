@@ -1,25 +1,21 @@
 \hypertarget{gb_m_b_c_8c}{}\doxysection{Core/\+Src/gb\+MBC.c File Reference}
 \label{gb_m_b_c_8c}\index{Core/Src/gbMBC.c@{Core/Src/gbMBC.c}}
+
+
+\+: Gameboy MBC Functionality This file emulates all functionality of the Gameboy Memory Bank Controller embedded into each game cartridge.  
+
+
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}gbmemory.\+h\char`\"{}}\newline
-\doxysubsection*{Macros}
-\begin{DoxyCompactItemize}
-\item 
-\#define \mbox{\hyperlink{gb_m_b_c_8c_a13dbe8647a9f0158d70903b8b375ad95}{CARTROM\+\_\+\+BANK0}}~0x0000
-\item 
-\#define \mbox{\hyperlink{gb_m_b_c_8c_afc27b3eff83e39d7736da11c840da6d2}{CARTROM\+\_\+\+BANKX}}~0x4000
-\item 
-\#define \mbox{\hyperlink{gb_m_b_c_8c_aeadafef31db261c22b19a64f82608fdb}{VRAM\+\_\+\+BASE}}~0x8000
-\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-void \mbox{\hyperlink{gb_m_b_c_8c_ac39507f64b0172202f846cea0a347fae}{gb\+MBCset\+Controller\+Type}} (uint8\+\_\+t code)
-\item 
-uint8\+\_\+t \mbox{\hyperlink{gb_m_b_c_8c_a14d38cde8e089d9239af453c710263d4}{gb\+MBCread\+BankX}} (uint16\+\_\+t address)
-\item 
-void \mbox{\hyperlink{gb_m_b_c_8c_a3a7853c30ed12cb66891cab54f7b165a}{gb\+MBCwrite}} (uint16\+\_\+t address, uint8\+\_\+t data)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{gb_m_b_c_8c_a27afee853f0b4a522be68b48b81fbf5f}{v\+GBMBCset\+Controller\+Type}} (uint8\+\_\+t code)
+\begin{DoxyCompactList}\small\item\em sets the cartridge type for use in this file corresponding to data stored at the memory location 0x147 \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{gb_m_b_c_8c_ad49b9a9255e105b0fc77087a1e21dd25}{uc\+GBMBCread\+BankX}} (uint16\+\_\+t address)
+\begin{DoxyCompactList}\small\item\em This function will return data from a ROM location in the memory map depending on the MBC type. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gb_m_b_c_8c_ab5c356822fc92d633ba8f9df5c3990a1}{v\+GBMBCwrite}} (uint16\+\_\+t address, uint8\+\_\+t data)
+\begin{DoxyCompactList}\small\item\em Data is written to MBC register when the address falls in range 0x0000 to 0x7\+FFF. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
@@ -37,46 +33,74 @@ const unsigned char $\ast$ \mbox{\hyperlink{gb_m_b_c_8c_af1a74952e70d4f6f1290efd
 \end{DoxyCompactItemize}
 
 
-\doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{gb_m_b_c_8c_a13dbe8647a9f0158d70903b8b375ad95}\label{gb_m_b_c_8c_a13dbe8647a9f0158d70903b8b375ad95}} 
-\index{gbMBC.c@{gbMBC.c}!CARTROM\_BANK0@{CARTROM\_BANK0}}
-\index{CARTROM\_BANK0@{CARTROM\_BANK0}!gbMBC.c@{gbMBC.c}}
-\doxysubsubsection{\texorpdfstring{CARTROM\_BANK0}{CARTROM\_BANK0}}
-{\footnotesize\ttfamily \#define CARTROM\+\_\+\+BANK0~0x0000}
+\doxysubsection{Detailed Description}
+\+: Gameboy MBC Functionality This file emulates all functionality of the Gameboy Memory Bank Controller embedded into each game cartridge. 
 
-\mbox{\Hypertarget{gb_m_b_c_8c_afc27b3eff83e39d7736da11c840da6d2}\label{gb_m_b_c_8c_afc27b3eff83e39d7736da11c840da6d2}} 
-\index{gbMBC.c@{gbMBC.c}!CARTROM\_BANKX@{CARTROM\_BANKX}}
-\index{CARTROM\_BANKX@{CARTROM\_BANKX}!gbMBC.c@{gbMBC.c}}
-\doxysubsubsection{\texorpdfstring{CARTROM\_BANKX}{CARTROM\_BANKX}}
-{\footnotesize\ttfamily \#define CARTROM\+\_\+\+BANKX~0x4000}
-
-\mbox{\Hypertarget{gb_m_b_c_8c_aeadafef31db261c22b19a64f82608fdb}\label{gb_m_b_c_8c_aeadafef31db261c22b19a64f82608fdb}} 
-\index{gbMBC.c@{gbMBC.c}!VRAM\_BASE@{VRAM\_BASE}}
-\index{VRAM\_BASE@{VRAM\_BASE}!gbMBC.c@{gbMBC.c}}
-\doxysubsubsection{\texorpdfstring{VRAM\_BASE}{VRAM\_BASE}}
-{\footnotesize\ttfamily \#define VRAM\+\_\+\+BASE~0x8000}
-
+\begin{DoxyAuthor}{Author}
+\+: Rami 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+\+: Jun 11, 2021 
+\end{DoxyDate}
 
 
 \doxysubsection{Function Documentation}
-\mbox{\Hypertarget{gb_m_b_c_8c_a14d38cde8e089d9239af453c710263d4}\label{gb_m_b_c_8c_a14d38cde8e089d9239af453c710263d4}} 
-\index{gbMBC.c@{gbMBC.c}!gbMBCreadBankX@{gbMBCreadBankX}}
-\index{gbMBCreadBankX@{gbMBCreadBankX}!gbMBC.c@{gbMBC.c}}
-\doxysubsubsection{\texorpdfstring{gbMBCreadBankX()}{gbMBCreadBankX()}}
-{\footnotesize\ttfamily uint8\+\_\+t gb\+MBCread\+BankX (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{gb_m_b_c_8c_ad49b9a9255e105b0fc77087a1e21dd25}\label{gb_m_b_c_8c_ad49b9a9255e105b0fc77087a1e21dd25}} 
+\index{gbMBC.c@{gbMBC.c}!ucGBMBCreadBankX@{ucGBMBCreadBankX}}
+\index{ucGBMBCreadBankX@{ucGBMBCreadBankX}!gbMBC.c@{gbMBC.c}}
+\doxysubsubsection{\texorpdfstring{ucGBMBCreadBankX()}{ucGBMBCreadBankX()}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+GBMBCread\+BankX (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gb_m_b_c_8c_ac39507f64b0172202f846cea0a347fae}\label{gb_m_b_c_8c_ac39507f64b0172202f846cea0a347fae}} 
-\index{gbMBC.c@{gbMBC.c}!gbMBCsetControllerType@{gbMBCsetControllerType}}
-\index{gbMBCsetControllerType@{gbMBCsetControllerType}!gbMBC.c@{gbMBC.c}}
-\doxysubsubsection{\texorpdfstring{gbMBCsetControllerType()}{gbMBCsetControllerType()}}
-{\footnotesize\ttfamily void gb\+MBCset\+Controller\+Type (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{code }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gb_m_b_c_8c_a3a7853c30ed12cb66891cab54f7b165a}\label{gb_m_b_c_8c_a3a7853c30ed12cb66891cab54f7b165a}} 
-\index{gbMBC.c@{gbMBC.c}!gbMBCwrite@{gbMBCwrite}}
-\index{gbMBCwrite@{gbMBCwrite}!gbMBC.c@{gbMBC.c}}
-\doxysubsubsection{\texorpdfstring{gbMBCwrite()}{gbMBCwrite()}}
-{\footnotesize\ttfamily void gb\+MBCwrite (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
 
+This function will return data from a ROM location in the memory map depending on the MBC type. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em address} & memory map address \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+data stored at specified ROM address 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gb_m_b_c_8c_a27afee853f0b4a522be68b48b81fbf5f}\label{gb_m_b_c_8c_a27afee853f0b4a522be68b48b81fbf5f}} 
+\index{gbMBC.c@{gbMBC.c}!vGBMBCsetControllerType@{vGBMBCsetControllerType}}
+\index{vGBMBCsetControllerType@{vGBMBCsetControllerType}!gbMBC.c@{gbMBC.c}}
+\doxysubsubsection{\texorpdfstring{vGBMBCsetControllerType()}{vGBMBCsetControllerType()}}
+{\footnotesize\ttfamily void v\+GBMBCset\+Controller\+Type (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{code }\end{DoxyParamCaption})}
+
+
+
+sets the cartridge type for use in this file corresponding to data stored at the memory location 0x147 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & data stored at memory location 0x147 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{gb_m_b_c_8c_ab5c356822fc92d633ba8f9df5c3990a1}\label{gb_m_b_c_8c_ab5c356822fc92d633ba8f9df5c3990a1}} 
+\index{gbMBC.c@{gbMBC.c}!vGBMBCwrite@{vGBMBCwrite}}
+\index{vGBMBCwrite@{vGBMBCwrite}!gbMBC.c@{gbMBC.c}}
+\doxysubsubsection{\texorpdfstring{vGBMBCwrite()}{vGBMBCwrite()}}
+{\footnotesize\ttfamily void v\+GBMBCwrite (\begin{DoxyParamCaption}\item[{uint16\+\_\+t}]{address,  }\item[{uint8\+\_\+t}]{data }\end{DoxyParamCaption})}
+
+
+
+Data is written to MBC register when the address falls in range 0x0000 to 0x7\+FFF. 
+
+When the range 0x0000 -\/ 0x1\+FFF is written to with value 0x0A, the Gameboy external RAM is enabled. Any other value written to this range will result in the external RAM being disabled. When the range 0x2000 -\/ 0x3\+FFF is written to, the lower 5 bits correspond to the switch-\/able ROM bank that read operation are to be read from. When the range 0x4000 -\/ 0x5\+FFF is written to, depending on the mode it will either specify the top 2 bits of the ROM bank to be read from or it specify the current RAM bank. When the range falls between 0x6000 -\/ 0x7\+FFF if the value 0 is written then ROM mode is selected and if the value 1 is written then RAM mode is selected. 
+\begin{DoxyParams}{Parameters}
+{\em address} & memory map address \\
+\hline
+{\em data} & byte to be written to MBC register \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 
 
 \doxysubsection{Variable Documentation}

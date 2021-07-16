@@ -3,7 +3,7 @@ var searchData=
   ['a_0',['A',['../structregisters.html#a7390fd7954ecc6d40444a36b19ae1108',1,'registers']]],
   ['af_1',['AF',['../structregisters.html#ae2545ed5eddada1856d7494c82dfe8b4',1,'registers']]],
   ['alleyway_2egb_2eh_2',['Alleyway.gb.h',['../_alleyway_8gb_8h.html',1,'']]],
-  ['alleyway_5fgb_3',['Alleyway_gb',['../gbcpu_8c.html#a2924be90c16cc87d35ff9f5e0e2f9e3a',1,'Alleyway_gb():&#160;gbcpu.c'],['../main_8c.html#a2924be90c16cc87d35ff9f5e0e2f9e3a',1,'Alleyway_gb():&#160;main.c']]],
+  ['alleyway_5fgb_3',['Alleyway_gb',['../main_8c.html#a2924be90c16cc87d35ff9f5e0e2f9e3a',1,'main.c']]],
   ['ard_5fa1_5fgpio_5fport_4',['ARD_A1_GPIO_Port',['../main_8h.html#a69eb4fed506ab9c6ba38e8ac501e7b40',1,'main.h']]],
   ['ard_5fa1_5fpin_5',['ARD_A1_Pin',['../main_8h.html#a6018b6e7f6fbfa8a5b07b37eb467e47b',1,'main.h']]],
   ['ard_5fa2_5fgpio_5fport_6',['ARD_A2_GPIO_Port',['../main_8h.html#a58813358e80d09b98ba819daabef50f0',1,'main.h']]],
