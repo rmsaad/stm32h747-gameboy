@@ -38,7 +38,7 @@ uint8_t  ucOBP1ColorToPalette[4];
 // Frame Buffer variables
 uint8_t  *ucGBFrame = (uint8_t*)SRAM1;
 uint8_t  ucBGWINline[160];
-uint8_t  ulScaleAmount = 2;
+uint8_t  ulScaleAmount = 3;
 uint32_t ulCurLine;
 uint32_t ulLineAdd;
 

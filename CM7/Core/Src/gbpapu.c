@@ -1,10 +1,15 @@
-/*
- * gbpapu.c
- *
- *  Created on: Jul 11, 2021
- *      Author: Rami
- */
-
+/**
+  ******************************************************************************
+  * @file           : gbpapu.c
+  * @brief          : Gameboy APU Functionality
+  *                   This file emulates all functionality of the Gameboy APU.
+  * @author         : Rami
+  * @date           : Jul 11, 2021
+  *
+  ******************************************************************************
+  *
+  ******************************************************************************
+  */
 #include "main.h"
 #include "string.h"
 #include "gbmemory.h"

@@ -503,5 +503,5 @@ gbcpu.c:1241:6:vLD_L_L	0	static
 gbcpu.c:1700:9:ucGetTstate	0	static
 gbcpu.c:1725:6:prvGBCPUInterruptHandler	16	static
 gbcpu.c:1755:6:prvGBCPUHaltedHandler	16	static
-gbcpu.c:1779:6:prvGBCPUinstr	24	static
+gbcpu.c:1778:6:prvGBCPUinstr	24	static
 gbcpu.c:1708:6:vGBCPUStep	16	static

@@ -194,6 +194,7 @@ Error_Handler();
   MX_ADC3_Init();
   stm32h7_displaySetPalette();
 
+  //BSP_LCD_InitEx(0, LCD_ORIENTATION_LANDSCAPE, LCD_PIXEL_FORMAT_RGB888, 800/5, 480/5);
   BSP_LCD_Init(0, LCD_ORIENTATION_LANDSCAPE);
 
   UTIL_LCD_SetFuncDriver(&LCD_Driver);

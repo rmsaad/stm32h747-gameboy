@@ -64,9 +64,7 @@ Core/Src/stm32h7_display.o: ../Core/Src/stm32h7_display.c \
  ../Core/Inc/is42s32800j_conf.h \
  C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/STM32H747I-DISCO/stm32h747i_discovery_bus.h \
  C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Utilities/lcd/stm32_lcd.h \
- c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\utilities\fonts\fonts.h \
- ../Core/Inc/image_320x240_argb8888.h \
- ../Core/Inc/life_augmented_argb8888.h
+ c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\utilities\fonts\fonts.h
 
 ../Core/Inc/main.h:
 
@@ -199,7 +197,3 @@ C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Drivers/BSP/STM32H747I
 C:/Users/Rami/STM32Cube/Repository/STM32Cube_FW_H7_V1.9.0/Utilities/lcd/stm32_lcd.h:
 
 c:\users\rami\stm32cube\repository\stm32cube_fw_h7_v1.9.0\utilities\fonts\fonts.h:
-
-../Core/Inc/image_320x240_argb8888.h:
-
-../Core/Inc/life_augmented_argb8888.h:
