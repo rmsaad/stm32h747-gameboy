@@ -1,3 +1,3 @@
 gbMBC.c:30:6:vGBMBCsetControllerType	0	static
 gbMBC.c:39:9:ucGBMBCreadBankX	0	static
-gbMBC.c:60:6:vGBMBCwrite	0	static
+gbMBC.c:61:6:vGBMBCwrite	0	static

@@ -23,7 +23,7 @@
 
 static DMA2D_HandleTypeDef  hdma2d;
 extern LTDC_HandleTypeDef   hlcd_ltdc;
-
+extern uint8_t  ucLY;
 #define LAYER0_ADDRESS      0xD0000000
 
 
@@ -102,6 +102,19 @@ void CopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t
                     /* Polling For DMA transfer */
                     HAL_DMA2D_PollForTransfer(&hdma2d, 10);
                 }
+                ++y;
+                destination = (uint32_t)pDst + (y * LCD_X_Size + x) * 4;
+                if (HAL_DMA2D_Start(&hdma2d, source, destination, xsize, ysize) == HAL_OK){
+                    /* Polling For DMA transfer */
+                    HAL_DMA2D_PollForTransfer(&hdma2d, 10);
+                }
+
+                ++y;
+                destination = (uint32_t)pDst + (y * LCD_X_Size + x) * 4;
+                if (HAL_DMA2D_Start(&hdma2d, source, destination, xsize, ysize) == HAL_OK){
+                    /* Polling For DMA transfer */
+                    HAL_DMA2D_PollForTransfer(&hdma2d, 10);
+                }
             }
         }
     }
@@ -113,8 +126,10 @@ void CopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t
  * @param scaleAmount Up-scaling amount
  * @returns Nothing
  */
-void displayFrameBuffer(uint8_t* gb_frame, uint8_t scaleAmount){
-	CopyBuffer((uint32_t *) gb_frame, (uint32_t *)Buffers[0], 0, (480 - (144*3))/2, 160 * scaleAmount, 144 * scaleAmount);
-	LTDC_LAYER(&hlcd_ltdc, 0)->CFBAR = ((uint32_t)Buffers[0]);
+void displayFrameBuffer(uint8_t* gb_frame, uint8_t scaleAmount, uint8_t ly){
+	//CopyBuffer((uint32_t *) gb_frame, (uint32_t *)Buffers[0], 0, (480 - (144*3))/2, 160 * scaleAmount, 144 * scaleAmount);
+	CopyBuffer((uint32_t *) gb_frame, (uint32_t *)Buffers[0], 0, (480 - (144*3))/2 + (ly * scaleAmount), 160 * scaleAmount, 1);
+
+	//LTDC_LAYER(&hlcd_ltdc, 0)->CFBAR = ((uint32_t)Buffers[0]);
 }
 

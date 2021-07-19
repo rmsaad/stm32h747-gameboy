@@ -82,7 +82,7 @@ extern const unsigned char bgbtest_gb[]; //Passed
 extern const unsigned char instr_timing_gb[];
 extern const unsigned char SML_gb[];
 extern const unsigned char KDL_gb[];
-const unsigned char* rom = &KDL_gb[0];
+const unsigned char* rom = &Tetris_gb[0];
 
 /* USER CODE END PV */
 

@@ -21,7 +21,8 @@
 #include "stm32h7_display.h"
 
 // Frame buffer start address
-#define SRAM1 0x30000000UL
+//#define SRAM1 0x30000000UL
+#define SRAM1 0xD1000000UL
 
 // PPU Registers
 uint8_t  ucLY = 0;
@@ -88,7 +89,7 @@ void vGBPPUStep(){
             prvCheckLYC(ucLY);
             if(ucLY > 153){                                                                         // end of vblank
                 if(framePerSecondLimiter % 1 == 0){
-                    displayFrameBuffer(ucGBFrame, ulScaleAmount);
+                    //displayFrameBuffer(ucGBFrame, ulScaleAmount);
                 }
                 framePerSecondLimiter++;
                 prvSetMode(MODE_2);
@@ -282,11 +283,12 @@ void prvSetMode(uint8_t mode){
  */
 void prvUpdateBuffer(uint8_t data, int pixelPos){
     pixelPos *= ulScaleAmount;
-    for (int yStretch = 1; yStretch <= ulScaleAmount; yStretch++){
+    //for (int yStretch = 1; yStretch <= ulScaleAmount; yStretch++){
         for(int xStretch = 0; xStretch < ulScaleAmount; xStretch++){
-            ucGBFrame[pixelPos + xStretch + (ulCurLine) + (ulLineAdd * yStretch)] = data;
+            //ucGBFrame[pixelPos + xStretch + (ulCurLine) + (ulLineAdd)] = data;
+            ucGBFrame[pixelPos + xStretch + (ulCurLine)] = data;
         }
-    }
+
 }
 
 /**
@@ -443,16 +445,21 @@ void prvGBPPUDrawLine(uint8_t ly, uint8_t SCX, uint8_t SCY){
 
     if(ucGBMemoryRead(LCDC_ADDR) & 0x01){
         prvGBPPUDrawLineBackground(ly, SCX, SCY, TileDataAddr, prvGetBackTileDisplaySel());
-        if(ucGBMemoryRead(LCDC_ADDR) & 0x20)
+        if(ucGBMemoryRead(LCDC_ADDR) & 0x20){
             prvGBPPUDrawLineWindow(ly, ucGBMemoryRead(WX_ADDR), ucGBMemoryRead(WY_ADDR), TileDataAddr, prvGetWinTileDisplaySel());
+        }
     }else{
         for(int j = 0; j < 160; j++){
             prvUpdateBuffer(1, j);
         }
     }
 
-    if(ucGBMemoryRead(LCDC_ADDR) & 0x02)
+    if(ucGBMemoryRead(LCDC_ADDR) & 0x02){
         prvGBPPUDrawLineObjects(ly);
+    }
+
+    //displayFrameBuffer(&ucGBFrame[ulCurLine + ulLineAdd], ulScaleAmount);
+    displayFrameBuffer(&ucGBFrame[(ulCurLine)], ulScaleAmount, ly);
 }
 
 
