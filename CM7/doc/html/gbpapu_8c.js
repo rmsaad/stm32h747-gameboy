@@ -9,10 +9,9 @@ var gbpapu_8c =
     [ "BSP_AUDIO_OUT_HalfTransfer_CallBack", "gbpapu_8c.html#a477eb6c5468c7a4ce2087f6403626521", null ],
     [ "BSP_AUDIO_OUT_TransferComplete_CallBack", "gbpapu_8c.html#a4315c6dfdfaa49461a78aab24cab7449", null ],
     [ "gbPAPUstartAudio", "gbpapu_8c.html#a4c5f4ebca96cc36c96d9c625c8c02e82", null ],
-    [ "gbPAPUStep", "gbpapu_8c.html#a80a87690f6e3bfde824f1ec16abc9c9b", null ],
-    [ "Audindex", "gbpapu_8c.html#a2b582d1f25fe95142227ef7450a11669", null ],
+    [ "gbPAPUStepCH2", "gbpapu_8c.html#a9ed77375f6bb90929315a2aa61b6aacb", null ],
     [ "audio_sample_bin", "gbpapu_8c.html#a43701cf838b73fba96ebad11abba4daa", null ],
     [ "AudioBuffer", "gbpapu_8c.html#aa9d5ff7efc59a0a6b68a494a24a7d58b", null ],
     [ "AudioInit", "gbpapu_8c.html#af7f3078cf220ae54af165b9329953b9b", null ],
-    [ "audstate", "gbpapu_8c.html#a8026b45af517736108ea898fe43c2601", null ]
+    [ "audstate", "gbpapu_8c.html#a74db8e73065bcc6f0b8a5e85fc3e773f", null ]
 ];

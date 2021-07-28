@@ -521,6 +521,7 @@ var gbcpu_8c =
     [ "instructions", "gbcpu_8c.html#a833969abf9a57333fb4ccb787818e980", null ],
     [ "prefix_instructions", "gbcpu_8c.html#a5e025ff8cefad04d46522eea26732a04", null ],
     [ "reg", "gbcpu_8c.html#a2e53d7c3ec0bfaf12e47894c24a904da", null ],
+    [ "ucBootRomEn", "gbcpu_8c.html#aa103cf8eaf0e5cc6fe0fdbf56390818c", null ],
     [ "ucCustomDuration", "gbcpu_8c.html#ab706b77a4702ef6cee67d5d6c4fff385", null ],
     [ "ucHALTED", "gbcpu_8c.html#a1454b651edb9341cc0188aaf23a14c5a", null ],
     [ "ucInterruptMasterEnable", "gbcpu_8c.html#a3ace942a73e671a89d3aea57e40f2bc4", null ],

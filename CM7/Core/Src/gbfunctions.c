@@ -1,7 +1,7 @@
 /**
   ******************************************************************************
   * @file           : gbfunctions.c
-  * @brief          : Gameboy CPU extendded functions
+  * @brief          : Gameboy CPU extended functions
   *                   This file contains implementation for the more complicated CPU instructions
   * @author         : Rami
   * @date           : Jun 6, 2021

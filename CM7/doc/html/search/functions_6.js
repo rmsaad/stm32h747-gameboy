@@ -1,4 +1,21 @@
 var searchData=
 [
-  ['main_840',['main',['../main_8c.html#a840291bc02cba5474a4cb46a9b9566fe',1,'main.c']]]
+  ['periphcommonclock_5fconfig_861',['PeriphCommonClock_Config',['../main_8c.html#a336c5acb34a801b2984e602b97ed7b73',1,'main.c']]],
+  ['prvcheckbgp_862',['prvCheckBGP',['../gbppu_8c.html#ac0ea182ee405627457dc7fba48120e34',1,'gbppu.c']]],
+  ['prvchecklyc_863',['prvCheckLYC',['../gbppu_8c.html#a5b404d5d82422f8042bfd6540ad381ec',1,'gbppu.c']]],
+  ['prvcheckobp0_864',['prvCheckOBP0',['../gbppu_8c.html#ab73b8cd93989c2272c12fdf5d9f458a3',1,'gbppu.c']]],
+  ['prvcheckobp1_865',['prvCheckOBP1',['../gbppu_8c.html#a1432a3e2020cb8fbd5d421d6929a57f4',1,'gbppu.c']]],
+  ['prvgbcpuhaltedhandler_866',['prvGBCPUHaltedHandler',['../gbcpu_8c.html#afd4caa5ea86bb5fc4db403d13813b019',1,'gbcpu.c']]],
+  ['prvgbcpuinstr_867',['prvGBCPUinstr',['../gbcpu_8c.html#a741c05dea8cf91b8a459ec1082499ce5',1,'gbcpu.c']]],
+  ['prvgbcpuinterrupthandler_868',['prvGBCPUInterruptHandler',['../gbcpu_8c.html#a0650327c8e20643d66dff18caf117c73',1,'gbcpu.c']]],
+  ['prvgbmemoryjoypad_869',['prvGBMemoryJoypad',['../gbmemory_8c.html#a20fa95ae35619a6f09211eb11b400909',1,'gbmemory.c']]],
+  ['prvgbppudrawline_870',['prvGBPPUDrawLine',['../gbppu_8c.html#a432ec91bc2248c882f63368d80540076',1,'gbppu.c']]],
+  ['prvgbppudrawlinebackground_871',['prvGBPPUDrawLineBackground',['../gbppu_8c.html#aeeeb1b7836652ece5d6f29c3c219081e',1,'gbppu.c']]],
+  ['prvgbppudrawlineobjects_872',['prvGBPPUDrawLineObjects',['../gbppu_8c.html#a45c1df62b10bd52b1243c6d837294ef9',1,'gbppu.c']]],
+  ['prvgbppudrawlinewindow_873',['prvGBPPUDrawLineWindow',['../gbppu_8c.html#a4c8a469ac0b13d39ce543d9b96121107',1,'gbppu.c']]],
+  ['prvgetbacktiledisplaysel_874',['prvGetBackTileDisplaySel',['../gbppu_8c.html#a833e1bbd97a1d31f085e17cc6168f72e',1,'gbppu.c']]],
+  ['prvgetbackwintiledatasel_875',['prvGetBackWinTileDataSel',['../gbppu_8c.html#a4d71f50a18b8187e042f6a0309444279',1,'gbppu.c']]],
+  ['prvgetwintiledisplaysel_876',['prvGetWinTileDisplaySel',['../gbppu_8c.html#a0dc987e3a4895a95823988f9c0f6cf1f',1,'gbppu.c']]],
+  ['prvsetmode_877',['prvSetMode',['../gbppu_8c.html#ac2086e2d9ea420499b54833b1726a681',1,'gbppu.c']]],
+  ['prvupdatebuffer_878',['prvUpdateBuffer',['../gbppu_8c.html#a945ea162b77db42c939d42c2a97aa6b6',1,'gbppu.c']]]
 ];

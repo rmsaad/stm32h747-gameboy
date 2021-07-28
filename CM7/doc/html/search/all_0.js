@@ -15,11 +15,10 @@ var searchData=
   ['ard_5fa5_5fgpio_5fport_12',['ARD_A5_GPIO_Port',['../main_8h.html#a199ecde668a7dc139d5f26b65a6711b4',1,'main.h']]],
   ['ard_5fa5_5fpin_13',['ARD_A5_Pin',['../main_8h.html#a657397b456604c233681deaf1c410cdb',1,'main.h']]],
   ['assembly_5finstr_14',['Assembly_Instr',['../struct_assembly___instr.html',1,'']]],
-  ['audindex_15',['Audindex',['../gbpapu_8c.html#a2b582d1f25fe95142227ef7450a11669',1,'gbpapu.c']]],
-  ['audio_5fbuffer_5fsize_16',['AUDIO_BUFFER_SIZE',['../gbpapu_8c.html#a1d48237cb63c5ae67aab6d00cc64afb6',1,'gbpapu.c']]],
-  ['audio_5fsample_2ebin_2eh_17',['audio_sample.bin.h',['../audio__sample_8bin_8h.html',1,'']]],
-  ['audio_5fsample_5fbin_18',['audio_sample_bin',['../audio__sample_8bin_8h.html#a60a6bbc4c0deba2c84fff69ee756807f',1,'audio_sample_bin():&#160;audio_sample.bin.h'],['../gbpapu_8c.html#a43701cf838b73fba96ebad11abba4daa',1,'audio_sample_bin():&#160;audio_sample.bin.h']]],
-  ['audiobuffer_19',['AudioBuffer',['../gbpapu_8c.html#aa9d5ff7efc59a0a6b68a494a24a7d58b',1,'gbpapu.c']]],
-  ['audioinit_20',['AudioInit',['../gbpapu_8c.html#af7f3078cf220ae54af165b9329953b9b',1,'gbpapu.c']]],
-  ['audstate_21',['audstate',['../gbpapu_8c.html#a8026b45af517736108ea898fe43c2601',1,'gbpapu.c']]]
+  ['audio_5fbuffer_5fsize_15',['AUDIO_BUFFER_SIZE',['../gbpapu_8c.html#a1d48237cb63c5ae67aab6d00cc64afb6',1,'gbpapu.c']]],
+  ['audio_5fsample_2ebin_2eh_16',['audio_sample.bin.h',['../audio__sample_8bin_8h.html',1,'']]],
+  ['audio_5fsample_5fbin_17',['audio_sample_bin',['../audio__sample_8bin_8h.html#a60a6bbc4c0deba2c84fff69ee756807f',1,'audio_sample_bin():&#160;audio_sample.bin.h'],['../gbpapu_8c.html#a43701cf838b73fba96ebad11abba4daa',1,'audio_sample_bin():&#160;audio_sample.bin.h']]],
+  ['audiobuffer_18',['AudioBuffer',['../gbpapu_8c.html#aa9d5ff7efc59a0a6b68a494a24a7d58b',1,'gbpapu.c']]],
+  ['audioinit_19',['AudioInit',['../gbpapu_8c.html#af7f3078cf220ae54af165b9329953b9b',1,'gbpapu.c']]],
+  ['audstate_20',['audstate',['../gbpapu_8c.html#a74db8e73065bcc6f0b8a5e85fc3e773f',1,'gbpapu.c']]]
 ];

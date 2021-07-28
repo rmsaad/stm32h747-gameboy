@@ -100,10 +100,11 @@ $(document).ready(function(){initNavTree('stm32h7__display_8c.html',''); initRes
 <div class="title">stm32h7_display.c File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>: STM32H747-DISCO Display Functions This file Handles copying contents of the work buffer(s) to the frame buffer and updating the LCD screen.  
+<a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br />
-<code>#include &quot;image_320x240_argb8888.h&quot;</code><br />
-<code>#include &quot;life_augmented_argb8888.h&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
@@ -121,25 +122,29 @@ Macros</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a50f5849579459ad0a6c1245e7e307224"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8c.html#a50f5849579459ad0a6c1245e7e307224">stm32h7_displaySetPalette</a> ()</td></tr>
+<tr class="memdesc:a50f5849579459ad0a6c1245e7e307224"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the color palette for the L8 indirect color mode used for the gameboy.  <a href="stm32h7__display_8c.html#a50f5849579459ad0a6c1245e7e307224">More...</a><br /></td></tr>
 <tr class="separator:a50f5849579459ad0a6c1245e7e307224"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabb47a221bb9e4224e494952b4c10f59"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8c.html#aabb47a221bb9e4224e494952b4c10f59">HAL_LTDC_LineEventCallback</a> (LTDC_HandleTypeDef *<a class="el" href="main_8c.html#a9ede3a77755ec81a9be03423cb915b05">hltdc</a>)</td></tr>
-<tr class="memdesc:aabb47a221bb9e4224e494952b4c10f59"><td class="mdescLeft">&#160;</td><td class="mdescRight">Line Event callback.  <a href="stm32h7__display_8c.html#aabb47a221bb9e4224e494952b4c10f59">More...</a><br /></td></tr>
-<tr class="separator:aabb47a221bb9e4224e494952b4c10f59"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24336fe16fa0d0ee8c7087342fd1be47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8c.html#a24336fe16fa0d0ee8c7087342fd1be47">CopyBuffer</a> (uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t xsize, uint16_t ysize)</td></tr>
+<tr class="memdesc:a24336fe16fa0d0ee8c7087342fd1be47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies Source buffer into the frame buffer, applies CLUT loading.  <a href="stm32h7__display_8c.html#a24336fe16fa0d0ee8c7087342fd1be47">More...</a><br /></td></tr>
 <tr class="separator:a24336fe16fa0d0ee8c7087342fd1be47"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81e2c373d1e591d4bcda7aed5893ce1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8c.html#a81e2c373d1e591d4bcda7aed5893ce1a">displayFrameBuffer</a> (uint8_t *gb_frame, uint8_t scaleAmount)</td></tr>
-<tr class="separator:a81e2c373d1e591d4bcda7aed5893ce1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d6d0e93865a7306ac61431a669e51af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8c.html#a9d6d0e93865a7306ac61431a669e51af">displayDoubleBuffer</a> ()</td></tr>
-<tr class="separator:a9d6d0e93865a7306ac61431a669e51af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac283888d376a32756551f5237c3738f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8c.html#ac283888d376a32756551f5237c3738f8">displayFrameBuffer</a> (uint8_t *gb_line, uint8_t scaleAmount, uint8_t ly)</td></tr>
+<tr class="memdesc:ac283888d376a32756551f5237c3738f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the line buffer to the frame buffer while converting from L8 color to RGB8888 through use of DMA2D.  <a href="stm32h7__display_8c.html#ac283888d376a32756551f5237c3738f8">More...</a><br /></td></tr>
+<tr class="separator:ac283888d376a32756551f5237c3738f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
 <tr class="memitem:ae839e40b2440160883f7e7dedec05a80"><td class="memItemLeft" align="right" valign="top">LTDC_HandleTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8c.html#ae839e40b2440160883f7e7dedec05a80">hlcd_ltdc</a></td></tr>
 <tr class="separator:ae839e40b2440160883f7e7dedec05a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1deb0fdbd829f97dc542cf5cc07cf86"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8c.html#ae1deb0fdbd829f97dc542cf5cc07cf86">ucLY</a></td></tr>
+<tr class="separator:ae1deb0fdbd829f97dc542cf5cc07cf86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7828dbdc9d6c795c8c7335b00ef1afbb"><td class="memItemLeft" align="right" valign="top">DMA2D_CLUTCfgTypeDef&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8c.html#a7828dbdc9d6c795c8c7335b00ef1afbb">clut_cfg</a></td></tr>
 <tr class="separator:a7828dbdc9d6c795c8c7335b00ef1afbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Macro Definition Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>: STM32H747-DISCO Display Functions This file Handles copying contents of the work buffer(s) to the frame buffer and updating the LCD screen. </p>
+<dl class="section author"><dt>Author</dt><dd>: Rami </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>: Jun 14, 2021 </dd></dl>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a2ebb0bf1d379e615bda6e25cccf0f08f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2ebb0bf1d379e615bda6e25cccf0f08f">&#9670;&nbsp;</a></span>DARK_GREEN</h2>
 
@@ -261,27 +266,24 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="a9d6d0e93865a7306ac61431a669e51af"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a9d6d0e93865a7306ac61431a669e51af">&#9670;&nbsp;</a></span>displayDoubleBuffer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void displayDoubleBuffer </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
+<p>Copies Source buffer into the frame buffer, applies CLUT loading. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pSrc</td><td>Source buffer </td></tr>
+    <tr><td class="paramname">pDst</td><td>Destination buffer </td></tr>
+    <tr><td class="paramname">x</td><td>The coordinate x position of the buffer on the display </td></tr>
+    <tr><td class="paramname">y</td><td>The coordinate y position of the buffer on the display </td></tr>
+    <tr><td class="paramname">xsize</td><td>The x size of the buffer </td></tr>
+    <tr><td class="paramname">ysize</td><td>The y size of the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
-<a id="a81e2c373d1e591d4bcda7aed5893ce1a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81e2c373d1e591d4bcda7aed5893ce1a">&#9670;&nbsp;</a></span>displayFrameBuffer()</h2>
+<a id="ac283888d376a32756551f5237c3738f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac283888d376a32756551f5237c3738f8">&#9670;&nbsp;</a></span>displayFrameBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -290,13 +292,19 @@ Variables</h2></td></tr>
           <td class="memname">void displayFrameBuffer </td>
           <td>(</td>
           <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>gb_frame</em>, </td>
+          <td class="paramname"><em>gb_line</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>scaleAmount</em>&#160;</td>
+          <td class="paramname"><em>scaleAmount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ly</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -306,37 +314,15 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-</div>
-</div>
-<a id="aabb47a221bb9e4224e494952b4c10f59"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aabb47a221bb9e4224e494952b4c10f59">&#9670;&nbsp;</a></span>HAL_LTDC_LineEventCallback()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void HAL_LTDC_LineEventCallback </td>
-          <td>(</td>
-          <td class="paramtype">LTDC_HandleTypeDef *&#160;</td>
-          <td class="paramname"><em>hltdc</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Line Event callback. </p>
+<p>Copies the line buffer to the frame buffer while converting from L8 color to RGB8888 through use of DMA2D. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">hltdc</td><td>pointer to a LTDC_HandleTypeDef structure that contains the configuration information for the LTDC. </td></tr>
+    <tr><td class="paramname">gb_line</td><td>line buffer </td></tr>
+    <tr><td class="paramname">scaleAmount</td><td>Up-scaling amount </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="retval"><dt>Return values</dt><dd>
-  <table class="retval">
-    <tr><td class="paramname">None</td><td></td></tr>
-  </table>
-  </dd>
-</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
@@ -354,6 +340,9 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sets the color palette for the L8 indirect color mode used for the gameboy. </p>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
@@ -383,6 +372,28 @@ Variables</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">LTDC_HandleTypeDef hlcd_ltdc</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">extern</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="ae1deb0fdbd829f97dc542cf5cc07cf86"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1deb0fdbd829f97dc542cf5cc07cf86">&#9670;&nbsp;</a></span>ucLY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t ucLY</td>
         </tr>
       </table>
   </td>

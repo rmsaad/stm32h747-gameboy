@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['pc_1461',['PC',['../structregisters.html#a169382b91bbba121f0cb39fd388a269b',1,'registers']]],
-  ['prefix_5finstructions_1462',['prefix_instructions',['../gbcpu_8c.html#a5e025ff8cefad04d46522eea26732a04',1,'gbcpu.c']]]
+  ['mem_1483',['mem',['../gbmemory_8c.html#a6135654033ccfa705ae4c5fde74eda02',1,'gbmemory.c']]]
 ];

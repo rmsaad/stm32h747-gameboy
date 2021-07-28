@@ -9,6 +9,6 @@
 #define INC_GBPPU_H_
 
 void vGBPPUStep();
-void vSetFrameBuffer();
+void vSetLineBuffer();
 
 #endif /* INC_GBPPU_H_ */

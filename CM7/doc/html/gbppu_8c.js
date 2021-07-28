@@ -1,6 +1,6 @@
 var gbppu_8c =
 [
-    [ "SRAM1", "gbppu_8c.html#a6a7f90395054dfa1a2f6521213aad848", null ],
+    [ "SDRAM1", "gbppu_8c.html#a7be588c83ce41143d6df9542c5c4a9c2", null ],
     [ "getTileLineData", "gbppu_8c.html#a9b29df5e22493dc42927f15a2858730b", null ],
     [ "prvCheckBGP", "gbppu_8c.html#ac0ea182ee405627457dc7fba48120e34", null ],
     [ "prvCheckLYC", "gbppu_8c.html#a5b404d5d82422f8042bfd6540ad381ec", null ],
@@ -16,10 +16,10 @@ var gbppu_8c =
     [ "prvSetMode", "gbppu_8c.html#ac2086e2d9ea420499b54833b1726a681", null ],
     [ "prvUpdateBuffer", "gbppu_8c.html#a945ea162b77db42c939d42c2a97aa6b6", null ],
     [ "vGBPPUStep", "gbppu_8c.html#af55e16b0234ec9b9a7f6703f53fa18b7", null ],
-    [ "vSetFrameBuffer", "gbppu_8c.html#addcbf77f2958ad2001d541a8e4a8f504", null ],
+    [ "vSetLineBuffer", "gbppu_8c.html#a24dba8d7b4ecd97d4dc8cc7b14ff0031", null ],
     [ "ucBGPColorToPalette", "gbppu_8c.html#a485638b8ee0120e72662b05977915ca3", null ],
     [ "ucBGWINline", "gbppu_8c.html#ac9de52373fb1ba5b7529ba0d15ebc8b8", null ],
-    [ "ucGBFrame", "gbppu_8c.html#a5afdae9a6f8868d40ecd9a45fa2cf7e7", null ],
+    [ "ucGBLine", "gbppu_8c.html#accbb06b6c811df643b6d56dcd52e99f5", null ],
     [ "ucLY", "gbppu_8c.html#ae1deb0fdbd829f97dc542cf5cc07cf86", null ],
     [ "ucMode", "gbppu_8c.html#a016ccd2d7b6615abe4967f9a27060746", null ],
     [ "ucOBP0ColorToPalette", "gbppu_8c.html#a9be772970ed9fbe14e0218fd424b6596", null ],

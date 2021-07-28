@@ -11,6 +11,7 @@
 {\ttfamily \#include \char`\"{}gbmemory.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}gbcpu.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}gbppu.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gb\+MBC.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}gbpapu.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}stm32h7\+\_\+display.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}dmg\+\_\+boot.\+bin.\+h\char`\"{}}\newline
@@ -35,6 +36,20 @@
 \item 
 \#define \mbox{\hyperlink{main_8c_aa7340b5ab80d1a8df9c9d53948fcbd76}{LIGHTEST\+\_\+\+GREEN}}~0\+XFF9\+BBC0\+FUL
 \end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{main_8c_a8523f7a9e6b59b8df903f65961092ad5}{BUTTON\+\_\+\+STATE}} \{ \mbox{\hyperlink{main_8c_a8523f7a9e6b59b8df903f65961092ad5ac157bdf0b85a40d2619cbc8bc1ae5fe2}{NONE}} = 0
+, \mbox{\hyperlink{main_8c_a8523f7a9e6b59b8df903f65961092ad5aba595d8bca8bc5e67c37c0a9d89becfa}{UP}}
+, \mbox{\hyperlink{main_8c_a8523f7a9e6b59b8df903f65961092ad5a9b0b4a95b99523966e0e34ffdadac9da}{DOWN}}
+, \mbox{\hyperlink{main_8c_a8523f7a9e6b59b8df903f65961092ad5af3180515f5867a29932df1dc207b31ad}{IN}}
+ \}
+\item 
+enum \mbox{\hyperlink{main_8c_a4cc39f049df62b331976f9a4482bd3ea}{GAME\+\_\+\+STATE}} \{ \mbox{\hyperlink{main_8c_a4cc39f049df62b331976f9a4482bd3eaa37c197aa48170293f628a7aa70c87ff7}{TETRIS}} = 0
+, \mbox{\hyperlink{main_8c_a4cc39f049df62b331976f9a4482bd3eaae9a91f76741912068c09ec2a289d963b}{MARIO}}
+, \mbox{\hyperlink{main_8c_a4cc39f049df62b331976f9a4482bd3eaa0356ddbbfb9dc8449db54d1525b14fd1}{KIRBY}}
+ \}
+\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -44,10 +59,18 @@ void \mbox{\hyperlink{main_8c_a336c5acb34a801b2984e602b97ed7b73}{Periph\+Common\
 \begin{DoxyCompactList}\small\item\em Peripherals Common Clock Configuration. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{main_8c_a1730ffe1e560465665eb47d9264826f9}{Error\+\_\+\+Handler}} (void)
 \begin{DoxyCompactList}\small\item\em This function is executed in case of error occurrence. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_aa4587a97ba5d1d51bba8d821889d5709}{set\+ROM}} (const unsigned char $\ast$p\+ROM)
+\begin{DoxyCompactList}\small\item\em Sets the Gameboy ROM to be played. \end{DoxyCompactList}\item 
 const unsigned char $\ast$ \mbox{\hyperlink{main_8c_ac0e5fc84d3f0cbaee9ea71d6fbe0c31c}{get\+Rom\+Pointer}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns pointer to Start of Gameboy ROM. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_aec28fa03924ccc7c64ade3f5eb568eb0}{menu\+Sel}} ()
+\begin{DoxyCompactList}\small\item\em Handles Button inputs for Gameboy ROM selection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_a78f221846593b1386a6ed0abb3d04aa4}{update\+LCD}} ()
+\begin{DoxyCompactList}\small\item\em Updates menu LCD with correct ROM selected. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8c_aa5dff1706915d71f995284403e95ec97}{choose\+Game}} ()
+\begin{DoxyCompactList}\small\item\em Menu that allows user to select Gameboy ROM to be played. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{main_8c_a57146e7cfc937af38efb8fd46a581af2}{test\+Controller}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Check the status of each button on the controller, print result onto the LCD. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{main_8c_a840291bc02cba5474a4cb46a9b9566fe}{main}} (void)
 \begin{DoxyCompactList}\small\item\em The application entry point. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
@@ -77,7 +100,17 @@ const unsigned char \mbox{\hyperlink{main_8c_a34aa64f9b9f3578a5a0e944203f6ab5a}{
 \item 
 const unsigned char \mbox{\hyperlink{main_8c_a1015b909e9c48e86fff962e55a1ce096}{KDL\+\_\+gb}} \mbox{[}$\,$\mbox{]}
 \item 
-const unsigned char $\ast$ \mbox{\hyperlink{main_8c_af1a74952e70d4f6f1290efd9ca571e20}{rom}} = \&\mbox{\hyperlink{main_8c_a1015b909e9c48e86fff962e55a1ce096}{KDL\+\_\+gb}}\mbox{[}0\mbox{]}
+const unsigned char $\ast$ \mbox{\hyperlink{main_8c_af1a74952e70d4f6f1290efd9ca571e20}{rom}} = \&\mbox{\hyperlink{main_8c_a34aa64f9b9f3578a5a0e944203f6ab5a}{SML\+\_\+gb}}\mbox{[}0\mbox{]}
+\item 
+const unsigned char $\ast$ \mbox{\hyperlink{main_8c_a0ab35ac5cba0849e2603909381eaa20f}{rom1}} = \&\mbox{\hyperlink{main_8c_a34aa64f9b9f3578a5a0e944203f6ab5a}{SML\+\_\+gb}}\mbox{[}0\mbox{]}
+\item 
+const unsigned char $\ast$ \mbox{\hyperlink{main_8c_a62b603deeddc49b64ee20b1479b42b1c}{rom2}} = \&\mbox{\hyperlink{main_8c_a1015b909e9c48e86fff962e55a1ce096}{KDL\+\_\+gb}}\mbox{[}0\mbox{]}
+\item 
+\mbox{\hyperlink{main_8c_a8523f7a9e6b59b8df903f65961092ad5}{BUTTON\+\_\+\+STATE}} \mbox{\hyperlink{main_8c_a18051bdaea5feae6f0342bfc66b2d840}{button\+State}} = \mbox{\hyperlink{main_8c_a8523f7a9e6b59b8df903f65961092ad5ac157bdf0b85a40d2619cbc8bc1ae5fe2}{NONE}}
+\item 
+\mbox{\hyperlink{main_8c_a4cc39f049df62b331976f9a4482bd3ea}{GAME\+\_\+\+STATE}} \mbox{\hyperlink{main_8c_ad9c11192eaead6a7af0e49e0b9cd2931}{game\+State}} = \mbox{\hyperlink{main_8c_a4cc39f049df62b331976f9a4482bd3eaa37c197aa48170293f628a7aa70c87ff7}{TETRIS}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{main_8c_ab6a78282cf60fff6bd86dd05b417caed}{sel}} = 1
 \end{DoxyCompactItemize}
 
 
@@ -124,7 +157,69 @@ This software component is licensed by ST under BSD 3-\/Clause license, the \cha
 
 
 
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{main_8c_a8523f7a9e6b59b8df903f65961092ad5}\label{main_8c_a8523f7a9e6b59b8df903f65961092ad5}} 
+\index{main.c@{main.c}!BUTTON\_STATE@{BUTTON\_STATE}}
+\index{BUTTON\_STATE@{BUTTON\_STATE}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{BUTTON\_STATE}{BUTTON\_STATE}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{main_8c_a8523f7a9e6b59b8df903f65961092ad5}{BUTTON\+\_\+\+STATE}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{NONE@{NONE}!main.c@{main.c}}\index{main.c@{main.c}!NONE@{NONE}}}\mbox{\Hypertarget{main_8c_a8523f7a9e6b59b8df903f65961092ad5ac157bdf0b85a40d2619cbc8bc1ae5fe2}\label{main_8c_a8523f7a9e6b59b8df903f65961092ad5ac157bdf0b85a40d2619cbc8bc1ae5fe2}} 
+NONE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UP@{UP}!main.c@{main.c}}\index{main.c@{main.c}!UP@{UP}}}\mbox{\Hypertarget{main_8c_a8523f7a9e6b59b8df903f65961092ad5aba595d8bca8bc5e67c37c0a9d89becfa}\label{main_8c_a8523f7a9e6b59b8df903f65961092ad5aba595d8bca8bc5e67c37c0a9d89becfa}} 
+UP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOWN@{DOWN}!main.c@{main.c}}\index{main.c@{main.c}!DOWN@{DOWN}}}\mbox{\Hypertarget{main_8c_a8523f7a9e6b59b8df903f65961092ad5a9b0b4a95b99523966e0e34ffdadac9da}\label{main_8c_a8523f7a9e6b59b8df903f65961092ad5a9b0b4a95b99523966e0e34ffdadac9da}} 
+DOWN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{IN@{IN}!main.c@{main.c}}\index{main.c@{main.c}!IN@{IN}}}\mbox{\Hypertarget{main_8c_a8523f7a9e6b59b8df903f65961092ad5af3180515f5867a29932df1dc207b31ad}\label{main_8c_a8523f7a9e6b59b8df903f65961092ad5af3180515f5867a29932df1dc207b31ad}} 
+IN&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{main_8c_a4cc39f049df62b331976f9a4482bd3ea}\label{main_8c_a4cc39f049df62b331976f9a4482bd3ea}} 
+\index{main.c@{main.c}!GAME\_STATE@{GAME\_STATE}}
+\index{GAME\_STATE@{GAME\_STATE}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{GAME\_STATE}{GAME\_STATE}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{main_8c_a4cc39f049df62b331976f9a4482bd3ea}{GAME\+\_\+\+STATE}}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{TETRIS@{TETRIS}!main.c@{main.c}}\index{main.c@{main.c}!TETRIS@{TETRIS}}}\mbox{\Hypertarget{main_8c_a4cc39f049df62b331976f9a4482bd3eaa37c197aa48170293f628a7aa70c87ff7}\label{main_8c_a4cc39f049df62b331976f9a4482bd3eaa37c197aa48170293f628a7aa70c87ff7}} 
+TETRIS&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MARIO@{MARIO}!main.c@{main.c}}\index{main.c@{main.c}!MARIO@{MARIO}}}\mbox{\Hypertarget{main_8c_a4cc39f049df62b331976f9a4482bd3eaae9a91f76741912068c09ec2a289d963b}\label{main_8c_a4cc39f049df62b331976f9a4482bd3eaae9a91f76741912068c09ec2a289d963b}} 
+MARIO&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{KIRBY@{KIRBY}!main.c@{main.c}}\index{main.c@{main.c}!KIRBY@{KIRBY}}}\mbox{\Hypertarget{main_8c_a4cc39f049df62b331976f9a4482bd3eaa0356ddbbfb9dc8449db54d1525b14fd1}\label{main_8c_a4cc39f049df62b331976f9a4482bd3eaa0356ddbbfb9dc8449db54d1525b14fd1}} 
+KIRBY&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
 \doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8c_aa5dff1706915d71f995284403e95ec97}\label{main_8c_aa5dff1706915d71f995284403e95ec97}} 
+\index{main.c@{main.c}!chooseGame@{chooseGame}}
+\index{chooseGame@{chooseGame}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{chooseGame()}{chooseGame()}}
+{\footnotesize\ttfamily void choose\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Menu that allows user to select Gameboy ROM to be played. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
 \mbox{\Hypertarget{main_8c_a1730ffe1e560465665eb47d9264826f9}\label{main_8c_a1730ffe1e560465665eb47d9264826f9}} 
 \index{main.c@{main.c}!Error\_Handler@{Error\_Handler}}
 \index{Error\_Handler@{Error\_Handler}!main.c@{main.c}}
@@ -146,6 +241,15 @@ This function is executed in case of error occurrence.
 \doxysubsubsection{\texorpdfstring{getRomPointer()}{getRomPointer()}}
 {\footnotesize\ttfamily const unsigned char$\ast$ get\+Rom\+Pointer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Returns pointer to Start of Gameboy ROM. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em Gameboy} & ROM \\
+\hline
+\end{DoxyRetVals}
 \mbox{\Hypertarget{main_8c_a840291bc02cba5474a4cb46a9b9566fe}\label{main_8c_a840291bc02cba5474a4cb46a9b9566fe}} 
 \index{main.c@{main.c}!main@{main}}
 \index{main@{main}!main.c@{main.c}}
@@ -159,6 +263,21 @@ The application entry point.
 
 \begin{DoxyRetVals}{Return values}
 {\em int} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_aec28fa03924ccc7c64ade3f5eb568eb0}\label{main_8c_aec28fa03924ccc7c64ade3f5eb568eb0}} 
+\index{main.c@{main.c}!menuSel@{menuSel}}
+\index{menuSel@{menuSel}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{menuSel()}{menuSel()}}
+{\footnotesize\ttfamily void menu\+Sel (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Handles Button inputs for Gameboy ROM selection. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
 \hline
 \end{DoxyRetVals}
 \mbox{\Hypertarget{main_8c_a336c5acb34a801b2984e602b97ed7b73}\label{main_8c_a336c5acb34a801b2984e602b97ed7b73}} 
@@ -176,7 +295,27 @@ Peripherals Common Clock Configuration.
 {\em None} & \\
 \hline
 \end{DoxyRetVals}
-Initializes the peripherals clock\mbox{\Hypertarget{main_8c_a70af21c671abfcc773614a9a4f63d920}\label{main_8c_a70af21c671abfcc773614a9a4f63d920}} 
+Initializes the peripherals clock\mbox{\Hypertarget{main_8c_aa4587a97ba5d1d51bba8d821889d5709}\label{main_8c_aa4587a97ba5d1d51bba8d821889d5709}} 
+\index{main.c@{main.c}!setROM@{setROM}}
+\index{setROM@{setROM}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{setROM()}{setROM()}}
+{\footnotesize\ttfamily void set\+ROM (\begin{DoxyParamCaption}\item[{const unsigned char $\ast$}]{p\+ROM }\end{DoxyParamCaption})}
+
+
+
+Sets the Gameboy ROM to be played. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+ROM} & poitner to game ROM \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_a70af21c671abfcc773614a9a4f63d920}\label{main_8c_a70af21c671abfcc773614a9a4f63d920}} 
 \index{main.c@{main.c}!SystemClock\_Config@{SystemClock\_Config}}
 \index{SystemClock\_Config@{SystemClock\_Config}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{SystemClock\_Config()}{SystemClock\_Config()}}
@@ -204,6 +343,30 @@ $<$ Supply configuration update enable\mbox{\Hypertarget{main_8c_a57146e7cfc937a
 
 
 
+Check the status of each button on the controller, print result onto the LCD. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+\mbox{\Hypertarget{main_8c_a78f221846593b1386a6ed0abb3d04aa4}\label{main_8c_a78f221846593b1386a6ed0abb3d04aa4}} 
+\index{main.c@{main.c}!updateLCD@{updateLCD}}
+\index{updateLCD@{updateLCD}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{updateLCD()}{updateLCD()}}
+{\footnotesize\ttfamily void update\+LCD (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Updates menu LCD with correct ROM selected. 
+
+
+\begin{DoxyRetVals}{Return values}
+{\em None} & \\
+\hline
+\end{DoxyRetVals}
+
+
 \doxysubsection{Variable Documentation}
 \mbox{\Hypertarget{main_8c_a2924be90c16cc87d35ff9f5e0e2f9e3a}\label{main_8c_a2924be90c16cc87d35ff9f5e0e2f9e3a}} 
 \index{main.c@{main.c}!Alleyway\_gb@{Alleyway\_gb}}
@@ -217,11 +380,23 @@ $<$ Supply configuration update enable\mbox{\Hypertarget{main_8c_a57146e7cfc937a
 \doxysubsubsection{\texorpdfstring{bgbtest\_gb}{bgbtest\_gb}}
 {\footnotesize\ttfamily const unsigned char bgbtest\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
 
+\mbox{\Hypertarget{main_8c_a18051bdaea5feae6f0342bfc66b2d840}\label{main_8c_a18051bdaea5feae6f0342bfc66b2d840}} 
+\index{main.c@{main.c}!buttonState@{buttonState}}
+\index{buttonState@{buttonState}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{buttonState}{buttonState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{main_8c_a8523f7a9e6b59b8df903f65961092ad5}{BUTTON\+\_\+\+STATE}} button\+State = \mbox{\hyperlink{main_8c_a8523f7a9e6b59b8df903f65961092ad5ac157bdf0b85a40d2619cbc8bc1ae5fe2}{NONE}}}
+
 \mbox{\Hypertarget{main_8c_aa0dd2ea85ccd05ea5b1935047d39eeaf}\label{main_8c_aa0dd2ea85ccd05ea5b1935047d39eeaf}} 
 \index{main.c@{main.c}!cpu\_instrs\_gb@{cpu\_instrs\_gb}}
 \index{cpu\_instrs\_gb@{cpu\_instrs\_gb}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{cpu\_instrs\_gb}{cpu\_instrs\_gb}}
 {\footnotesize\ttfamily const unsigned char cpu\+\_\+instrs\+\_\+gb\mbox{[}$\,$\mbox{]}\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{main_8c_ad9c11192eaead6a7af0e49e0b9cd2931}\label{main_8c_ad9c11192eaead6a7af0e49e0b9cd2931}} 
+\index{main.c@{main.c}!gameState@{gameState}}
+\index{gameState@{gameState}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{gameState}{gameState}}
+{\footnotesize\ttfamily \mbox{\hyperlink{main_8c_a4cc39f049df62b331976f9a4482bd3ea}{GAME\+\_\+\+STATE}} game\+State = \mbox{\hyperlink{main_8c_a4cc39f049df62b331976f9a4482bd3eaa37c197aa48170293f628a7aa70c87ff7}{TETRIS}}}
 
 \mbox{\Hypertarget{main_8c_a22b804736f5648d52f639b2647d4ed13}\label{main_8c_a22b804736f5648d52f639b2647d4ed13}} 
 \index{main.c@{main.c}!hadc1@{hadc1}}
@@ -269,7 +444,25 @@ $<$ Supply configuration update enable\mbox{\Hypertarget{main_8c_a57146e7cfc937a
 \index{main.c@{main.c}!rom@{rom}}
 \index{rom@{rom}!main.c@{main.c}}
 \doxysubsubsection{\texorpdfstring{rom}{rom}}
-{\footnotesize\ttfamily const unsigned char$\ast$ rom = \&\mbox{\hyperlink{main_8c_a1015b909e9c48e86fff962e55a1ce096}{KDL\+\_\+gb}}\mbox{[}0\mbox{]}}
+{\footnotesize\ttfamily const unsigned char$\ast$ rom = \&\mbox{\hyperlink{main_8c_a34aa64f9b9f3578a5a0e944203f6ab5a}{SML\+\_\+gb}}\mbox{[}0\mbox{]}}
+
+\mbox{\Hypertarget{main_8c_a0ab35ac5cba0849e2603909381eaa20f}\label{main_8c_a0ab35ac5cba0849e2603909381eaa20f}} 
+\index{main.c@{main.c}!rom1@{rom1}}
+\index{rom1@{rom1}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{rom1}{rom1}}
+{\footnotesize\ttfamily const unsigned char$\ast$ rom1 = \&\mbox{\hyperlink{main_8c_a34aa64f9b9f3578a5a0e944203f6ab5a}{SML\+\_\+gb}}\mbox{[}0\mbox{]}}
+
+\mbox{\Hypertarget{main_8c_a62b603deeddc49b64ee20b1479b42b1c}\label{main_8c_a62b603deeddc49b64ee20b1479b42b1c}} 
+\index{main.c@{main.c}!rom2@{rom2}}
+\index{rom2@{rom2}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{rom2}{rom2}}
+{\footnotesize\ttfamily const unsigned char$\ast$ rom2 = \&\mbox{\hyperlink{main_8c_a1015b909e9c48e86fff962e55a1ce096}{KDL\+\_\+gb}}\mbox{[}0\mbox{]}}
+
+\mbox{\Hypertarget{main_8c_ab6a78282cf60fff6bd86dd05b417caed}\label{main_8c_ab6a78282cf60fff6bd86dd05b417caed}} 
+\index{main.c@{main.c}!sel@{sel}}
+\index{sel@{sel}!main.c@{main.c}}
+\doxysubsubsection{\texorpdfstring{sel}{sel}}
+{\footnotesize\ttfamily uint8\+\_\+t sel = 1}
 
 \mbox{\Hypertarget{main_8c_a34aa64f9b9f3578a5a0e944203f6ab5a}\label{main_8c_a34aa64f9b9f3578a5a0e944203f6ab5a}} 
 \index{main.c@{main.c}!SML\_gb@{SML\_gb}}

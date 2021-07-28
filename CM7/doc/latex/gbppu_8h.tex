@@ -5,8 +5,8 @@
 \item 
 void \mbox{\hyperlink{gbppu_8h_af55e16b0234ec9b9a7f6703f53fa18b7}{v\+GBPPUStep}} ()
 \begin{DoxyCompactList}\small\item\em Steps the PPU by t\+States. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{gbppu_8h_addcbf77f2958ad2001d541a8e4a8f504}{v\+Set\+Frame\+Buffer}} ()
-\begin{DoxyCompactList}\small\item\em Zeros All Memory in the Frame Buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+void \mbox{\hyperlink{gbppu_8h_a24dba8d7b4ecd97d4dc8cc7b14ff0031}{v\+Set\+Line\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em Zeros All Memory in the Line Buffer. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -20,7 +20,7 @@ void \mbox{\hyperlink{gbppu_8h_addcbf77f2958ad2001d541a8e4a8f504}{v\+Set\+Frame\
 
 Steps the PPU by t\+States. 
 
-This function steps the PPU by the t\+States variable if the screen enable (7th) bit of LCDC Register is high, the function sets the mode in the STAT Register using the \mbox{\hyperlink{gbppu_8c_ac2086e2d9ea420499b54833b1726a681}{prv\+Set\+Mode()}} function depending on how many t\+States have elapsed. after a full line is has passed the LY register is updated \mbox{\hyperlink{gbppu_8c_a432ec91bc2248c882f63368d80540076}{prv\+GBPPUDraw\+Line()}} is called to place data in the frame buffer. \begin{DoxyReturn}{Returns}
+This function steps the PPU by the t\+States variable if the screen enable (7th) bit of LCDC Register is high, the function sets the mode in the STAT Register using the \mbox{\hyperlink{gbppu_8c_ac2086e2d9ea420499b54833b1726a681}{prv\+Set\+Mode()}} function depending on how many t\+States have elapsed. after a full line is has passed the LY register is updated \mbox{\hyperlink{gbppu_8c_a432ec91bc2248c882f63368d80540076}{prv\+GBPPUDraw\+Line()}} is called to place data in the Line buffer. \begin{DoxyReturn}{Returns}
 Nothing 
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
@@ -29,15 +29,15 @@ The function and the Gameboy both mimic CRT Displays in that their are both a ho
 \begin{DoxyAttention}{Attention}
 The placement of the functions v\+Check\+Back\+Win\+Tile\+Data\+Sel() and v\+Check\+Back\+Tile\+Display\+Sel() are just educated guesses at the current moment, more research into when and how often these Registers are updated must be conducted. 
 \end{DoxyAttention}
-\mbox{\Hypertarget{gbppu_8h_addcbf77f2958ad2001d541a8e4a8f504}\label{gbppu_8h_addcbf77f2958ad2001d541a8e4a8f504}} 
-\index{gbppu.h@{gbppu.h}!vSetFrameBuffer@{vSetFrameBuffer}}
-\index{vSetFrameBuffer@{vSetFrameBuffer}!gbppu.h@{gbppu.h}}
-\doxysubsubsection{\texorpdfstring{vSetFrameBuffer()}{vSetFrameBuffer()}}
-{\footnotesize\ttfamily void v\+Set\+Frame\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{gbppu_8h_a24dba8d7b4ecd97d4dc8cc7b14ff0031}\label{gbppu_8h_a24dba8d7b4ecd97d4dc8cc7b14ff0031}} 
+\index{gbppu.h@{gbppu.h}!vSetLineBuffer@{vSetLineBuffer}}
+\index{vSetLineBuffer@{vSetLineBuffer}!gbppu.h@{gbppu.h}}
+\doxysubsubsection{\texorpdfstring{vSetLineBuffer()}{vSetLineBuffer()}}
+{\footnotesize\ttfamily void v\+Set\+Line\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Zeros All Memory in the Frame Buffer. 
+Zeros All Memory in the Line Buffer. 
 
 \begin{DoxyReturn}{Returns}
 Nothing 

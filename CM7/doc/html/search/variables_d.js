@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['sml_5fgb_1466',['SML_gb',['../main_8c.html#a34aa64f9b9f3578a5a0e944203f6ab5a',1,'main.c']]],
-  ['sp_1467',['SP',['../structregisters.html#ae1da8e6d3b9bdd44bbe6007d97a6fe05',1,'registers']]]
+  ['ram_1486',['ram',['../structmemory.html#ad7300040acc8d5561384e1508ad040fc',1,'memory']]],
+  ['reg_1487',['reg',['../gbcpu_8c.html#a2e53d7c3ec0bfaf12e47894c24a904da',1,'reg():&#160;gbmemory.c'],['../gbmemory_8c.html#a2e53d7c3ec0bfaf12e47894c24a904da',1,'reg():&#160;gbmemory.c']]],
+  ['rom_1488',['rom',['../gb_m_b_c_8c.html#af1a74952e70d4f6f1290efd9ca571e20',1,'rom():&#160;main.c'],['../main_8c.html#af1a74952e70d4f6f1290efd9ca571e20',1,'rom():&#160;main.c']]],
+  ['rom1_1489',['rom1',['../main_8c.html#a0ab35ac5cba0849e2603909381eaa20f',1,'main.c']]],
+  ['rom2_1490',['rom2',['../main_8c.html#a62b603deeddc49b64ee20b1479b42b1c',1,'main.c']]]
 ];

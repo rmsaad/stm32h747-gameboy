@@ -1,12 +1,18 @@
 \hypertarget{gbpapu_8c}{}\doxysection{Core/\+Src/gbpapu.c File Reference}
 \label{gbpapu_8c}\index{Core/Src/gbpapu.c@{Core/Src/gbpapu.c}}
+
+
+\+: Gameboy APU Functionality This file emulates all functionality of the Gameboy APU.  
+
+
 {\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}string.\+h\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}gbmemory.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}gbcpu.\+h\char`\"{}}\newline
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{gbpapu_8c_a1d48237cb63c5ae67aab6d00cc64afb6}{AUDIO\+\_\+\+BUFFER\+\_\+\+SIZE}}~5000
+\#define \mbox{\hyperlink{gbpapu_8c_a1d48237cb63c5ae67aab6d00cc64afb6}{AUDIO\+\_\+\+BUFFER\+\_\+\+SIZE}}~10000
 \end{DoxyCompactItemize}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
@@ -21,7 +27,7 @@ enum \mbox{\hyperlink{gbpapu_8c_a904033b5ba9512b24733fe21ca06c307}{BUFFER\+\_\+\
 \item 
 void \mbox{\hyperlink{gbpapu_8c_a4c5f4ebca96cc36c96d9c625c8c02e82}{gb\+PAPUstart\+Audio}} ()
 \item 
-void \mbox{\hyperlink{gbpapu_8c_a80a87690f6e3bfde824f1ec16abc9c9b}{gb\+PAPUStep}} ()
+void \mbox{\hyperlink{gbpapu_8c_a9ed77375f6bb90929315a2aa61b6aacb}{gb\+PAPUStep\+CH2}} (uint8\+\_\+t cycles)
 \item 
 void \mbox{\hyperlink{gbpapu_8c_a477eb6c5468c7a4ce2087f6403626521}{BSP\+\_\+\+AUDIO\+\_\+\+OUT\+\_\+\+Half\+Transfer\+\_\+\+Call\+Back}} (uint32\+\_\+t Instance)
 \item 
@@ -36,10 +42,19 @@ unsigned char \mbox{\hyperlink{gbpapu_8c_a43701cf838b73fba96ebad11abba4daa}{audi
 \item 
 uint8\+\_\+t \mbox{\hyperlink{gbpapu_8c_aa9d5ff7efc59a0a6b68a494a24a7d58b}{Audio\+Buffer}} \mbox{[}\mbox{\hyperlink{gbpapu_8c_a1d48237cb63c5ae67aab6d00cc64afb6}{AUDIO\+\_\+\+BUFFER\+\_\+\+SIZE}}\mbox{]}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbpapu_8c_a2b582d1f25fe95142227ef7450a11669}{Audindex}} = 1
-\item 
-\mbox{\hyperlink{gbpapu_8c_a904033b5ba9512b24733fe21ca06c307}{BUFFER\+\_\+\+State\+Type\+Def}} \mbox{\hyperlink{gbpapu_8c_a8026b45af517736108ea898fe43c2601}{audstate}} = \mbox{\hyperlink{gbpapu_8c_a904033b5ba9512b24733fe21ca06c307a400d40e8ce2d415712bb86db7f622c42}{BUFFER\+\_\+\+OFFSET\+\_\+\+NONE}}
+volatile \mbox{\hyperlink{gbpapu_8c_a904033b5ba9512b24733fe21ca06c307}{BUFFER\+\_\+\+State\+Type\+Def}} \mbox{\hyperlink{gbpapu_8c_a74db8e73065bcc6f0b8a5e85fc3e773f}{audstate}} = \mbox{\hyperlink{gbpapu_8c_a904033b5ba9512b24733fe21ca06c307a400d40e8ce2d415712bb86db7f622c42}{BUFFER\+\_\+\+OFFSET\+\_\+\+NONE}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: Gameboy APU Functionality This file emulates all functionality of the Gameboy APU. 
+
+\begin{DoxyAuthor}{Author}
+\+: Rami 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+\+: Jul 11, 2021 
+\end{DoxyDate}
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -47,7 +62,7 @@ uint8\+\_\+t \mbox{\hyperlink{gbpapu_8c_a2b582d1f25fe95142227ef7450a11669}{Audin
 \index{gbpapu.c@{gbpapu.c}!AUDIO\_BUFFER\_SIZE@{AUDIO\_BUFFER\_SIZE}}
 \index{AUDIO\_BUFFER\_SIZE@{AUDIO\_BUFFER\_SIZE}!gbpapu.c@{gbpapu.c}}
 \doxysubsubsection{\texorpdfstring{AUDIO\_BUFFER\_SIZE}{AUDIO\_BUFFER\_SIZE}}
-{\footnotesize\ttfamily \#define AUDIO\+\_\+\+BUFFER\+\_\+\+SIZE~5000}
+{\footnotesize\ttfamily \#define AUDIO\+\_\+\+BUFFER\+\_\+\+SIZE~10000}
 
 
 
@@ -93,21 +108,15 @@ BUFFER\+\_\+\+OFFSET\+\_\+\+FULL&\\
 \doxysubsubsection{\texorpdfstring{gbPAPUstartAudio()}{gbPAPUstartAudio()}}
 {\footnotesize\ttfamily void gb\+PAPUstart\+Audio (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{gbpapu_8c_a80a87690f6e3bfde824f1ec16abc9c9b}\label{gbpapu_8c_a80a87690f6e3bfde824f1ec16abc9c9b}} 
-\index{gbpapu.c@{gbpapu.c}!gbPAPUStep@{gbPAPUStep}}
-\index{gbPAPUStep@{gbPAPUStep}!gbpapu.c@{gbpapu.c}}
-\doxysubsubsection{\texorpdfstring{gbPAPUStep()}{gbPAPUStep()}}
-{\footnotesize\ttfamily void gb\+PAPUStep (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{gbpapu_8c_a9ed77375f6bb90929315a2aa61b6aacb}\label{gbpapu_8c_a9ed77375f6bb90929315a2aa61b6aacb}} 
+\index{gbpapu.c@{gbpapu.c}!gbPAPUStepCH2@{gbPAPUStepCH2}}
+\index{gbPAPUStepCH2@{gbPAPUStepCH2}!gbpapu.c@{gbpapu.c}}
+\doxysubsubsection{\texorpdfstring{gbPAPUStepCH2()}{gbPAPUStepCH2()}}
+{\footnotesize\ttfamily void gb\+PAPUStep\+CH2 (\begin{DoxyParamCaption}\item[{uint8\+\_\+t}]{cycles }\end{DoxyParamCaption})}
 
 
 
 \doxysubsection{Variable Documentation}
-\mbox{\Hypertarget{gbpapu_8c_a2b582d1f25fe95142227ef7450a11669}\label{gbpapu_8c_a2b582d1f25fe95142227ef7450a11669}} 
-\index{gbpapu.c@{gbpapu.c}!Audindex@{Audindex}}
-\index{Audindex@{Audindex}!gbpapu.c@{gbpapu.c}}
-\doxysubsubsection{\texorpdfstring{Audindex}{Audindex}}
-{\footnotesize\ttfamily uint8\+\_\+t Audindex = 1}
-
 \mbox{\Hypertarget{gbpapu_8c_a43701cf838b73fba96ebad11abba4daa}\label{gbpapu_8c_a43701cf838b73fba96ebad11abba4daa}} 
 \index{gbpapu.c@{gbpapu.c}!audio\_sample\_bin@{audio\_sample\_bin}}
 \index{audio\_sample\_bin@{audio\_sample\_bin}!gbpapu.c@{gbpapu.c}}
@@ -126,9 +135,9 @@ BUFFER\+\_\+\+OFFSET\+\_\+\+FULL&\\
 \doxysubsubsection{\texorpdfstring{AudioInit}{AudioInit}}
 {\footnotesize\ttfamily BSP\+\_\+\+AUDIO\+\_\+\+Init\+\_\+t Audio\+Init}
 
-\mbox{\Hypertarget{gbpapu_8c_a8026b45af517736108ea898fe43c2601}\label{gbpapu_8c_a8026b45af517736108ea898fe43c2601}} 
+\mbox{\Hypertarget{gbpapu_8c_a74db8e73065bcc6f0b8a5e85fc3e773f}\label{gbpapu_8c_a74db8e73065bcc6f0b8a5e85fc3e773f}} 
 \index{gbpapu.c@{gbpapu.c}!audstate@{audstate}}
 \index{audstate@{audstate}!gbpapu.c@{gbpapu.c}}
 \doxysubsubsection{\texorpdfstring{audstate}{audstate}}
-{\footnotesize\ttfamily \mbox{\hyperlink{gbpapu_8c_a904033b5ba9512b24733fe21ca06c307}{BUFFER\+\_\+\+State\+Type\+Def}} audstate = \mbox{\hyperlink{gbpapu_8c_a904033b5ba9512b24733fe21ca06c307a400d40e8ce2d415712bb86db7f622c42}{BUFFER\+\_\+\+OFFSET\+\_\+\+NONE}}}
+{\footnotesize\ttfamily volatile \mbox{\hyperlink{gbpapu_8c_a904033b5ba9512b24733fe21ca06c307}{BUFFER\+\_\+\+State\+Type\+Def}} audstate = \mbox{\hyperlink{gbpapu_8c_a904033b5ba9512b24733fe21ca06c307a400d40e8ce2d415712bb86db7f622c42}{BUFFER\+\_\+\+OFFSET\+\_\+\+NONE}}}
 

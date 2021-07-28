@@ -3,7 +3,7 @@
   * @file           : gbppu.c
   * @brief          : Gameboy PPU Functionality
  *			          This file emulates all functionality of the Gameboy Pixel/Picture Processing Unit (PPU).
-  * 				  This includes drawing the Background, Window, and Object Layers to a frame buffer to be
+  * 				  This includes drawing the Background, Window, and Object Layers to the frame buffer to be
   * 				  displayed 60 times a second.
   * @author         : Rami
   * @date           : Jun 11, 2021
@@ -20,8 +20,8 @@
 #include "string.h"
 #include "stm32h7_display.h"
 
-// Frame buffer start address
-#define SRAM1 0x30000000UL
+// Line buffer start address
+#define SDRAM1 0xD1000000UL
 
 // PPU Registers
 uint8_t  ucLY = 0;
@@ -36,7 +36,7 @@ uint8_t  ucOBP0ColorToPalette[4];
 uint8_t  ucOBP1ColorToPalette[4];
 
 // Frame Buffer variables
-uint8_t  *ucGBFrame = (uint8_t*)SRAM1;
+uint8_t  *ucGBLine = (uint8_t*)SDRAM1;
 uint8_t  ucBGWINline[160];
 uint8_t  ulScaleAmount = 3;
 uint32_t ulCurLine;
@@ -58,11 +58,15 @@ uint16_t prvGetBackTileDisplaySel();
 uint16_t prvGetWinTileDisplaySel();
 
 /**
- * @brief Zeros All Memory in the Frame Buffer
+ * @brief Zeros All Memory in the Line Buffer
  * @return Nothing
  */
-void vSetFrameBuffer(){
-    memset(ucGBFrame, 0, 160 * 144 * 4 * ulScaleAmount);
+void vSetLineBuffer(){
+    memset(ucGBLine, 0, 160 * 144 * 4 * ulScaleAmount);
+    ucLY = 0;
+    ultStatesTotal = 0;
+    ucMode = 0;
+
 }
 
 
@@ -70,7 +74,7 @@ void vSetFrameBuffer(){
   * @brief Steps the PPU by tStates
   * @details This function steps the PPU by the tStates variable if the screen enable (7th) bit of LCDC Register is high,
   * the function sets the mode in the STAT Register using the prvSetMode() function depending on how many tStates have elapsed.
-  * after a full line is has passed the LY register is updated prvGBPPUDrawLine() is called to place data in the frame buffer.
+  * after a full line is has passed the LY register is updated prvGBPPUDrawLine() is called to place data in the Line buffer.
   * @return Nothing
   * @note The function and the Gameboy both mimic CRT Displays in that their are both a horizontal H-Blank after a Line is "drawn"
   * and there is a vertical V-Blank after a full frame is drawn
@@ -87,9 +91,6 @@ void vGBPPUStep(){
             ucLY++;
             prvCheckLYC(ucLY);
             if(ucLY > 153){                                                                         // end of vblank
-                if(framePerSecondLimiter % 1 == 0){
-                    displayFrameBuffer(ucGBFrame, ulScaleAmount);
-                }
                 framePerSecondLimiter++;
                 prvSetMode(MODE_2);
                 ucLY = 0;
@@ -274,24 +275,23 @@ void prvSetMode(uint8_t mode){
 }
 
 /**
- * @brief Updates the frame buffer with pixel information for 1 specified pixel
- * @details Updates and applies a pixel perfect image scaling algorithm on 1 pixel of the frame buffer when called.
+ * @brief Updates the line buffer with pixel information for 1 specified pixel
+ * @details Updates and applies a pixel perfect image scaling algorithm on 1 pixel of the line buffer when called.
  * @param data Color information for the current pixel
  * @param pixelPos X position for the current pixel
  * @returns Nothing
  */
 void prvUpdateBuffer(uint8_t data, int pixelPos){
     pixelPos *= ulScaleAmount;
-    for (int yStretch = 1; yStretch <= ulScaleAmount; yStretch++){
         for(int xStretch = 0; xStretch < ulScaleAmount; xStretch++){
-            ucGBFrame[pixelPos + xStretch + (ulCurLine) + (ulLineAdd * yStretch)] = data;
+            ucGBLine[pixelPos + xStretch + (ulCurLine)] = data;
         }
-    }
+
 }
 
 /**
- * @brief Update frame buffer with background information
- * @details Populates the frame buffer with Background information on the line ly
+ * @brief Update line buffer with background information
+ * @details Populates the line buffer with Background information on the line ly
  * @param ly LY Register Value
  * @param SCX X location of the left most position on the background tile map
  * @param SCY Y location of the top most position on the background tile map
@@ -333,8 +333,8 @@ void prvGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY, uint16_t T
 }
 
 /**
- * @brief Update frame buffer with window information
- * @details Populates the frame buffer with window information if it is currently displayed on the frame on the line ly
+ * @brief Update line buffer with window information
+ * @details Populates the line buffer with window information if it is currently displayed on the line ly
  * @param ly LY Register Value
  * @param WX Window X position
  * @param WY Window Y position
@@ -374,8 +374,8 @@ void prvGBPPUDrawLineWindow(uint8_t ly, uint8_t WX, uint8_t WY, uint16_t TileDat
 }
 
 /**
- * @brief  Update frame buffer with object information
- * @details Populates the frame buffer with object sprites on line ly
+ * @brief  Update line buffer with object information
+ * @details Populates the line buffer with object sprites on line ly
  * @param ly LY Register Value
  * @returns Nothing
  */
@@ -423,8 +423,8 @@ void prvGBPPUDrawLineObjects(uint8_t ly){
 }
 
 /**
- * @brief Update data in the frame buffer for 1 line of the Gameboy
- * @details Populates the frame buffer with data related to a line ly
+ * @brief Update data in the line buffer for 1 line of the Gameboy
+ * @details Populates the line buffer with data related to a line ly, copies line buffer to appropriate location in frame buffer
  * @param ly LY Register Value
  * @param SCX Scroll X Register Value
  * @param SCY Scroll Y Register Value
@@ -443,16 +443,20 @@ void prvGBPPUDrawLine(uint8_t ly, uint8_t SCX, uint8_t SCY){
 
     if(ucGBMemoryRead(LCDC_ADDR) & 0x01){
         prvGBPPUDrawLineBackground(ly, SCX, SCY, TileDataAddr, prvGetBackTileDisplaySel());
-        if(ucGBMemoryRead(LCDC_ADDR) & 0x20)
+        if(ucGBMemoryRead(LCDC_ADDR) & 0x20){
             prvGBPPUDrawLineWindow(ly, ucGBMemoryRead(WX_ADDR), ucGBMemoryRead(WY_ADDR), TileDataAddr, prvGetWinTileDisplaySel());
+        }
     }else{
         for(int j = 0; j < 160; j++){
             prvUpdateBuffer(1, j);
         }
     }
 
-    if(ucGBMemoryRead(LCDC_ADDR) & 0x02)
+    if(ucGBMemoryRead(LCDC_ADDR) & 0x02){
         prvGBPPUDrawLineObjects(ly);
+    }
+
+    displayFrameBuffer(&ucGBLine[(ulCurLine)], ulScaleAmount, ly);
 }
 
 
