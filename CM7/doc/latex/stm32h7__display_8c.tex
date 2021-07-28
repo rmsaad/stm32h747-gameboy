@@ -1,9 +1,12 @@
 \hypertarget{stm32h7__display_8c}{}\doxysection{Core/\+Src/stm32h7\+\_\+display.c File Reference}
 \label{stm32h7__display_8c}\index{Core/Src/stm32h7\_display.c@{Core/Src/stm32h7\_display.c}}
+
+
+\+: STM32\+H747-\/\+DISCO Display Functions This file Handles copying contents of the work buffer(s) to the frame buffer and updating the LCD screen.  
+
+
 {\ttfamily \#include $<$stdint.\+h$>$}\newline
 {\ttfamily \#include \char`\"{}main.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}image\+\_\+320x240\+\_\+argb8888.\+h\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}life\+\_\+augmented\+\_\+argb8888.\+h\char`\"{}}\newline
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
@@ -21,22 +24,31 @@
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{stm32h7__display_8c_a50f5849579459ad0a6c1245e7e307224}{stm32h7\+\_\+display\+Set\+Palette}} ()
-\item 
-void \mbox{\hyperlink{stm32h7__display_8c_aabb47a221bb9e4224e494952b4c10f59}{HAL\+\_\+\+LTDC\+\_\+\+Line\+Event\+Callback}} (LTDC\+\_\+\+Handle\+Type\+Def $\ast$\mbox{\hyperlink{main_8c_a9ede3a77755ec81a9be03423cb915b05}{hltdc}})
-\begin{DoxyCompactList}\small\item\em Line Event callback. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Sets the color palette for the L8 indirect color mode used for the gameboy. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{stm32h7__display_8c_a24336fe16fa0d0ee8c7087342fd1be47}{Copy\+Buffer}} (uint32\+\_\+t $\ast$p\+Src, uint32\+\_\+t $\ast$p\+Dst, uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t xsize, uint16\+\_\+t ysize)
-\item 
-void \mbox{\hyperlink{stm32h7__display_8c_a81e2c373d1e591d4bcda7aed5893ce1a}{display\+Frame\+Buffer}} (uint8\+\_\+t $\ast$gb\+\_\+frame, uint8\+\_\+t scale\+Amount)
-\item 
-void \mbox{\hyperlink{stm32h7__display_8c_a9d6d0e93865a7306ac61431a669e51af}{display\+Double\+Buffer}} ()
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Copies Source buffer into the frame buffer, applies CLUT loading. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32h7__display_8c_ac283888d376a32756551f5237c3738f8}{display\+Frame\+Buffer}} (uint8\+\_\+t $\ast$gb\+\_\+line, uint8\+\_\+t scale\+Amount, uint8\+\_\+t ly)
+\begin{DoxyCompactList}\small\item\em Copies the line buffer to the frame buffer while converting from L8 color to RGB8888 through use of DMA2D. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
 \item 
 LTDC\+\_\+\+Handle\+Type\+Def \mbox{\hyperlink{stm32h7__display_8c_ae839e40b2440160883f7e7dedec05a80}{hlcd\+\_\+ltdc}}
 \item 
+uint8\+\_\+t \mbox{\hyperlink{stm32h7__display_8c_ae1deb0fdbd829f97dc542cf5cc07cf86}{uc\+LY}}
+\item 
 DMA2\+D\+\_\+\+CLUTCfg\+Type\+Def \mbox{\hyperlink{stm32h7__display_8c_a7828dbdc9d6c795c8c7335b00ef1afbb}{clut\+\_\+cfg}}
 \end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\+: STM32\+H747-\/\+DISCO Display Functions This file Handles copying contents of the work buffer(s) to the frame buffer and updating the LCD screen. 
+
+\begin{DoxyAuthor}{Author}
+\+: Rami 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+\+: Jun 14, 2021 
+\end{DoxyDate}
 
 
 \doxysubsection{Macro Definition Documentation}
@@ -79,44 +91,61 @@ DMA2\+D\+\_\+\+CLUTCfg\+Type\+Def \mbox{\hyperlink{stm32h7__display_8c_a7828dbdc
 \doxysubsubsection{\texorpdfstring{CopyBuffer()}{CopyBuffer()}}
 {\footnotesize\ttfamily void Copy\+Buffer (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{p\+Src,  }\item[{uint32\+\_\+t $\ast$}]{p\+Dst,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{xsize,  }\item[{uint16\+\_\+t}]{ysize }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{stm32h7__display_8c_a9d6d0e93865a7306ac61431a669e51af}\label{stm32h7__display_8c_a9d6d0e93865a7306ac61431a669e51af}} 
-\index{stm32h7\_display.c@{stm32h7\_display.c}!displayDoubleBuffer@{displayDoubleBuffer}}
-\index{displayDoubleBuffer@{displayDoubleBuffer}!stm32h7\_display.c@{stm32h7\_display.c}}
-\doxysubsubsection{\texorpdfstring{displayDoubleBuffer()}{displayDoubleBuffer()}}
-{\footnotesize\ttfamily void display\+Double\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{stm32h7__display_8c_a81e2c373d1e591d4bcda7aed5893ce1a}\label{stm32h7__display_8c_a81e2c373d1e591d4bcda7aed5893ce1a}} 
-\index{stm32h7\_display.c@{stm32h7\_display.c}!displayFrameBuffer@{displayFrameBuffer}}
-\index{displayFrameBuffer@{displayFrameBuffer}!stm32h7\_display.c@{stm32h7\_display.c}}
-\doxysubsubsection{\texorpdfstring{displayFrameBuffer()}{displayFrameBuffer()}}
-{\footnotesize\ttfamily void display\+Frame\+Buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{gb\+\_\+frame,  }\item[{uint8\+\_\+t}]{scale\+Amount }\end{DoxyParamCaption})}
-
-\mbox{\Hypertarget{stm32h7__display_8c_aabb47a221bb9e4224e494952b4c10f59}\label{stm32h7__display_8c_aabb47a221bb9e4224e494952b4c10f59}} 
-\index{stm32h7\_display.c@{stm32h7\_display.c}!HAL\_LTDC\_LineEventCallback@{HAL\_LTDC\_LineEventCallback}}
-\index{HAL\_LTDC\_LineEventCallback@{HAL\_LTDC\_LineEventCallback}!stm32h7\_display.c@{stm32h7\_display.c}}
-\doxysubsubsection{\texorpdfstring{HAL\_LTDC\_LineEventCallback()}{HAL\_LTDC\_LineEventCallback()}}
-{\footnotesize\ttfamily void HAL\+\_\+\+LTDC\+\_\+\+Line\+Event\+Callback (\begin{DoxyParamCaption}\item[{LTDC\+\_\+\+Handle\+Type\+Def $\ast$}]{hltdc }\end{DoxyParamCaption})}
 
 
-
-Line Event callback. 
+Copies Source buffer into the frame buffer, applies CLUT loading. 
 
 
 \begin{DoxyParams}{Parameters}
-{\em hltdc} & pointer to a LTDC\+\_\+\+Handle\+Type\+Def structure that contains the configuration information for the LTDC. \\
+{\em p\+Src} & Source buffer \\
+\hline
+{\em p\+Dst} & Destination buffer \\
+\hline
+{\em x} & The coordinate x position of the buffer on the display \\
+\hline
+{\em y} & The coordinate y position of the buffer on the display \\
+\hline
+{\em xsize} & The x size of the buffer \\
+\hline
+{\em ysize} & The y size of the buffer \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
+\mbox{\Hypertarget{stm32h7__display_8c_ac283888d376a32756551f5237c3738f8}\label{stm32h7__display_8c_ac283888d376a32756551f5237c3738f8}} 
+\index{stm32h7\_display.c@{stm32h7\_display.c}!displayFrameBuffer@{displayFrameBuffer}}
+\index{displayFrameBuffer@{displayFrameBuffer}!stm32h7\_display.c@{stm32h7\_display.c}}
+\doxysubsubsection{\texorpdfstring{displayFrameBuffer()}{displayFrameBuffer()}}
+{\footnotesize\ttfamily void display\+Frame\+Buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{gb\+\_\+line,  }\item[{uint8\+\_\+t}]{scale\+Amount,  }\item[{uint8\+\_\+t}]{ly }\end{DoxyParamCaption})}
 
-\begin{DoxyRetVals}{Return values}
-{\em None} & \\
+
+
+Copies the line buffer to the frame buffer while converting from L8 color to RGB8888 through use of DMA2D. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gb\+\_\+line} & line buffer \\
 \hline
-\end{DoxyRetVals}
+{\em scale\+Amount} & Up-\/scaling amount \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{stm32h7__display_8c_a50f5849579459ad0a6c1245e7e307224}\label{stm32h7__display_8c_a50f5849579459ad0a6c1245e7e307224}} 
 \index{stm32h7\_display.c@{stm32h7\_display.c}!stm32h7\_displaySetPalette@{stm32h7\_displaySetPalette}}
 \index{stm32h7\_displaySetPalette@{stm32h7\_displaySetPalette}!stm32h7\_display.c@{stm32h7\_display.c}}
 \doxysubsubsection{\texorpdfstring{stm32h7\_displaySetPalette()}{stm32h7\_displaySetPalette()}}
 {\footnotesize\ttfamily void stm32h7\+\_\+display\+Set\+Palette (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Sets the color palette for the L8 indirect color mode used for the gameboy. 
+
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 
 
 \doxysubsection{Variable Documentation}
@@ -131,4 +160,10 @@ Line Event callback.
 \index{hlcd\_ltdc@{hlcd\_ltdc}!stm32h7\_display.c@{stm32h7\_display.c}}
 \doxysubsubsection{\texorpdfstring{hlcd\_ltdc}{hlcd\_ltdc}}
 {\footnotesize\ttfamily LTDC\+\_\+\+Handle\+Type\+Def hlcd\+\_\+ltdc\hspace{0.3cm}{\ttfamily [extern]}}
+
+\mbox{\Hypertarget{stm32h7__display_8c_ae1deb0fdbd829f97dc542cf5cc07cf86}\label{stm32h7__display_8c_ae1deb0fdbd829f97dc542cf5cc07cf86}} 
+\index{stm32h7\_display.c@{stm32h7\_display.c}!ucLY@{ucLY}}
+\index{ucLY@{ucLY}!stm32h7\_display.c@{stm32h7\_display.c}}
+\doxysubsubsection{\texorpdfstring{ucLY}{ucLY}}
+{\footnotesize\ttfamily uint8\+\_\+t uc\+LY\hspace{0.3cm}{\ttfamily [extern]}}
 

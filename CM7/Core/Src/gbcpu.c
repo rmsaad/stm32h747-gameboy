@@ -43,6 +43,7 @@ uint16_t usDebugPC = 0x3F9;
 uint8_t  ucMemoryBreakPointTrigger = 0;
 
 extern registers reg;
+extern uint8_t   ucBootRomEn;
 
 void prvGBCPUinstr(uint8_t opcode);
 
@@ -1706,14 +1707,11 @@ uint8_t ucGetTstate(){
  * @returns Nothing
  */
 void vGBCPUStep(){
-    if(reg.PC <= 0xFF){
+    if(ucBootRomEn != 0){
         prvGBCPUinstr(ucGBMemoryRead(reg.PC));
     }else{
-        static int n = 0;
-        if(n == 0){
-            vGBMemoryLoad(getRomPointer(), 256);
-            n = 1;
-        }
+        ucBootRomEn = 1;
+        vGBMemoryLoad(getRomPointer(), 256);
         prvGBCPUinstr(ucGBMemoryRead(reg.PC));
     }
 }

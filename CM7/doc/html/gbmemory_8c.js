@@ -16,6 +16,7 @@ var gbmemory_8c =
     [ "hadc3", "gbmemory_8c.html#a984624bcf28d1b2fb7e4e18349f65d5c", null ],
     [ "mem", "gbmemory_8c.html#a6135654033ccfa705ae4c5fde74eda02", null ],
     [ "reg", "gbmemory_8c.html#a2e53d7c3ec0bfaf12e47894c24a904da", null ],
+    [ "ucBootRomEn", "gbmemory_8c.html#aa103cf8eaf0e5cc6fe0fdbf56390818c", null ],
     [ "ucClockMode", "gbmemory_8c.html#ad4adaf5e7ed4b00d4a2e320a7b9ec1d7", null ],
     [ "ucCurrentOP", "gbmemory_8c.html#ae9d8d95f91f42a98d93ac34191e76165", null ],
     [ "ucDataTransFlag", "gbmemory_8c.html#a61a0842e4ccb632739f8909d693e69aa", null ],

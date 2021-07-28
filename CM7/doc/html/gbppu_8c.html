@@ -112,8 +112,8 @@ $(document).ready(function(){initNavTree('gbppu_8c.html',''); initResizable(); }
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a6a7f90395054dfa1a2f6521213aad848"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a6a7f90395054dfa1a2f6521213aad848">SRAM1</a>&#160;&#160;&#160;0x30000000UL</td></tr>
-<tr class="separator:a6a7f90395054dfa1a2f6521213aad848"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7be588c83ce41143d6df9542c5c4a9c2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a7be588c83ce41143d6df9542c5c4a9c2">SDRAM1</a>&#160;&#160;&#160;0xD1000000UL</td></tr>
+<tr class="separator:a7be588c83ce41143d6df9542c5c4a9c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -133,19 +133,19 @@ Functions</h2></td></tr>
 <tr class="memdesc:ac2086e2d9ea420499b54833b1726a681"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the mode of the STAT Register.  <a href="gbppu_8c.html#ac2086e2d9ea420499b54833b1726a681">More...</a><br /></td></tr>
 <tr class="separator:ac2086e2d9ea420499b54833b1726a681"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a945ea162b77db42c939d42c2a97aa6b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a945ea162b77db42c939d42c2a97aa6b6">prvUpdateBuffer</a> (uint8_t data, int pixelPos)</td></tr>
-<tr class="memdesc:a945ea162b77db42c939d42c2a97aa6b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the frame buffer with pixel information for 1 specified pixel.  <a href="gbppu_8c.html#a945ea162b77db42c939d42c2a97aa6b6">More...</a><br /></td></tr>
+<tr class="memdesc:a945ea162b77db42c939d42c2a97aa6b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the line buffer with pixel information for 1 specified pixel.  <a href="gbppu_8c.html#a945ea162b77db42c939d42c2a97aa6b6">More...</a><br /></td></tr>
 <tr class="separator:a945ea162b77db42c939d42c2a97aa6b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeeb1b7836652ece5d6f29c3c219081e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#aeeeb1b7836652ece5d6f29c3c219081e">prvGBPPUDrawLineBackground</a> (uint8_t ly, uint8_t SCX, uint8_t SCY, uint16_t TileDataAddr, uint16_t DisplayAddr)</td></tr>
-<tr class="memdesc:aeeeb1b7836652ece5d6f29c3c219081e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update frame buffer with background information.  <a href="gbppu_8c.html#aeeeb1b7836652ece5d6f29c3c219081e">More...</a><br /></td></tr>
+<tr class="memdesc:aeeeb1b7836652ece5d6f29c3c219081e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update line buffer with background information.  <a href="gbppu_8c.html#aeeeb1b7836652ece5d6f29c3c219081e">More...</a><br /></td></tr>
 <tr class="separator:aeeeb1b7836652ece5d6f29c3c219081e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4c8a469ac0b13d39ce543d9b96121107"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a4c8a469ac0b13d39ce543d9b96121107">prvGBPPUDrawLineWindow</a> (uint8_t ly, uint8_t WX, uint8_t WY, uint16_t TileDataAddr, uint16_t DisplayAddr)</td></tr>
-<tr class="memdesc:a4c8a469ac0b13d39ce543d9b96121107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update frame buffer with window information.  <a href="gbppu_8c.html#a4c8a469ac0b13d39ce543d9b96121107">More...</a><br /></td></tr>
+<tr class="memdesc:a4c8a469ac0b13d39ce543d9b96121107"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update line buffer with window information.  <a href="gbppu_8c.html#a4c8a469ac0b13d39ce543d9b96121107">More...</a><br /></td></tr>
 <tr class="separator:a4c8a469ac0b13d39ce543d9b96121107"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a45c1df62b10bd52b1243c6d837294ef9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a45c1df62b10bd52b1243c6d837294ef9">prvGBPPUDrawLineObjects</a> (uint8_t ly)</td></tr>
-<tr class="memdesc:a45c1df62b10bd52b1243c6d837294ef9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update frame buffer with object information.  <a href="gbppu_8c.html#a45c1df62b10bd52b1243c6d837294ef9">More...</a><br /></td></tr>
+<tr class="memdesc:a45c1df62b10bd52b1243c6d837294ef9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update line buffer with object information.  <a href="gbppu_8c.html#a45c1df62b10bd52b1243c6d837294ef9">More...</a><br /></td></tr>
 <tr class="separator:a45c1df62b10bd52b1243c6d837294ef9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a432ec91bc2248c882f63368d80540076"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a432ec91bc2248c882f63368d80540076">prvGBPPUDrawLine</a> (uint8_t ly, uint8_t SCX, uint8_t SCY)</td></tr>
-<tr class="memdesc:a432ec91bc2248c882f63368d80540076"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update data in the frame buffer for 1 line of the Gameboy.  <a href="gbppu_8c.html#a432ec91bc2248c882f63368d80540076">More...</a><br /></td></tr>
+<tr class="memdesc:a432ec91bc2248c882f63368d80540076"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update data in the line buffer for 1 line of the Gameboy.  <a href="gbppu_8c.html#a432ec91bc2248c882f63368d80540076">More...</a><br /></td></tr>
 <tr class="separator:a432ec91bc2248c882f63368d80540076"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d71f50a18b8187e042f6a0309444279"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a4d71f50a18b8187e042f6a0309444279">prvGetBackWinTileDataSel</a> ()</td></tr>
 <tr class="memdesc:a4d71f50a18b8187e042f6a0309444279"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read LCDC Register to find appropriate Background &amp; Tile Data Address.  <a href="gbppu_8c.html#a4d71f50a18b8187e042f6a0309444279">More...</a><br /></td></tr>
@@ -156,9 +156,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a0dc987e3a4895a95823988f9c0f6cf1f"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a0dc987e3a4895a95823988f9c0f6cf1f">prvGetWinTileDisplaySel</a> ()</td></tr>
 <tr class="memdesc:a0dc987e3a4895a95823988f9c0f6cf1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read LCDC Register to find appropriate Window Tile Display Select Address.  <a href="gbppu_8c.html#a0dc987e3a4895a95823988f9c0f6cf1f">More...</a><br /></td></tr>
 <tr class="separator:a0dc987e3a4895a95823988f9c0f6cf1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:addcbf77f2958ad2001d541a8e4a8f504"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#addcbf77f2958ad2001d541a8e4a8f504">vSetFrameBuffer</a> ()</td></tr>
-<tr class="memdesc:addcbf77f2958ad2001d541a8e4a8f504"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zeros All Memory in the Frame Buffer.  <a href="gbppu_8c.html#addcbf77f2958ad2001d541a8e4a8f504">More...</a><br /></td></tr>
-<tr class="separator:addcbf77f2958ad2001d541a8e4a8f504"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24dba8d7b4ecd97d4dc8cc7b14ff0031"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a24dba8d7b4ecd97d4dc8cc7b14ff0031">vSetLineBuffer</a> ()</td></tr>
+<tr class="memdesc:a24dba8d7b4ecd97d4dc8cc7b14ff0031"><td class="mdescLeft">&#160;</td><td class="mdescRight">Zeros All Memory in the Line Buffer.  <a href="gbppu_8c.html#a24dba8d7b4ecd97d4dc8cc7b14ff0031">More...</a><br /></td></tr>
+<tr class="separator:a24dba8d7b4ecd97d4dc8cc7b14ff0031"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af55e16b0234ec9b9a7f6703f53fa18b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#af55e16b0234ec9b9a7f6703f53fa18b7">vGBPPUStep</a> ()</td></tr>
 <tr class="memdesc:af55e16b0234ec9b9a7f6703f53fa18b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Steps the PPU by tStates.  <a href="gbppu_8c.html#af55e16b0234ec9b9a7f6703f53fa18b7">More...</a><br /></td></tr>
 <tr class="separator:af55e16b0234ec9b9a7f6703f53fa18b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -180,11 +180,11 @@ Variables</h2></td></tr>
 <tr class="separator:a9be772970ed9fbe14e0218fd424b6596"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae10b4a8ffd018a241f9ec6ce9f1f690d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ae10b4a8ffd018a241f9ec6ce9f1f690d">ucOBP1ColorToPalette</a> [4]</td></tr>
 <tr class="separator:ae10b4a8ffd018a241f9ec6ce9f1f690d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5afdae9a6f8868d40ecd9a45fa2cf7e7"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#a5afdae9a6f8868d40ecd9a45fa2cf7e7">ucGBFrame</a> = (uint8_t*)<a class="el" href="gbppu_8c.html#a6a7f90395054dfa1a2f6521213aad848">SRAM1</a></td></tr>
-<tr class="separator:a5afdae9a6f8868d40ecd9a45fa2cf7e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accbb06b6c811df643b6d56dcd52e99f5"><td class="memItemLeft" align="right" valign="top">uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#accbb06b6c811df643b6d56dcd52e99f5">ucGBLine</a> = (uint8_t*)<a class="el" href="gbppu_8c.html#a7be588c83ce41143d6df9542c5c4a9c2">SDRAM1</a></td></tr>
+<tr class="separator:accbb06b6c811df643b6d56dcd52e99f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac9de52373fb1ba5b7529ba0d15ebc8b8"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ac9de52373fb1ba5b7529ba0d15ebc8b8">ucBGWINline</a> [160]</td></tr>
 <tr class="separator:ac9de52373fb1ba5b7529ba0d15ebc8b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2318977e8442dfe26bc0a0b41c1f165"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ab2318977e8442dfe26bc0a0b41c1f165">ulScaleAmount</a> = 2</td></tr>
+<tr class="memitem:ab2318977e8442dfe26bc0a0b41c1f165"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ab2318977e8442dfe26bc0a0b41c1f165">ulScaleAmount</a> = 3</td></tr>
 <tr class="separator:ab2318977e8442dfe26bc0a0b41c1f165"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab196f3e59335a72ee34e8481033baf15"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="gbppu_8c.html#ab196f3e59335a72ee34e8481033baf15">ulCurLine</a></td></tr>
 <tr class="separator:ab196f3e59335a72ee34e8481033baf15"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -193,17 +193,17 @@ Variables</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>: Gameboy PPU Functionality This file emulates all functionality of the Gameboy Pixel/Picture Processing Unit (PPU). </p>
-<p>This includes drawing the Background, Window, and Object Layers to a frame buffer to be displayed 60 times a second. </p><dl class="section author"><dt>Author</dt><dd>: Rami </dd></dl>
+<p>This includes drawing the Background, Window, and Object Layers to the frame buffer to be displayed 60 times a second. </p><dl class="section author"><dt>Author</dt><dd>: Rami </dd></dl>
 <dl class="section date"><dt>Date</dt><dd>: Jun 11, 2021 </dd></dl>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a id="a6a7f90395054dfa1a2f6521213aad848"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6a7f90395054dfa1a2f6521213aad848">&#9670;&nbsp;</a></span>SRAM1</h2>
+<a id="a7be588c83ce41143d6df9542c5c4a9c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7be588c83ce41143d6df9542c5c4a9c2">&#9670;&nbsp;</a></span>SDRAM1</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define SRAM1&#160;&#160;&#160;0x30000000UL</td>
+          <td class="memname">#define SDRAM1&#160;&#160;&#160;0xD1000000UL</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -250,7 +250,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Finds specific line data of a tile using the tile_offset and line_offset. </p>
-<p>Called by <a class="el" href="gbppu_8c.html#a432ec91bc2248c882f63368d80540076" title="Update data in the frame buffer for 1 line of the Gameboy.">prvGBPPUDrawLine()</a> and returns color information of a specific tile in the Gameboy's VRAM located by using the tile_offset and line_offset parameters. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Called by <a class="el" href="gbppu_8c.html#a432ec91bc2248c882f63368d80540076" title="Update data in the line buffer for 1 line of the Gameboy.">prvGBPPUDrawLine()</a> and returns color information of a specific tile in the Gameboy's VRAM located by using the tile_offset and line_offset parameters. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">tile_offset</td><td>gives the address offset in the tile map in Gameboy's VRAM </td></tr>
     <tr><td class="paramname">line_offset</td><td>gives the line offset in the tile </td></tr>
@@ -380,8 +380,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Update data in the frame buffer for 1 line of the Gameboy. </p>
-<p>Populates the frame buffer with data related to a line ly </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Update data in the line buffer for 1 line of the Gameboy. </p>
+<p>Populates the line buffer with data related to a line ly, copies line buffer to appropriate location in frame buffer </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ly</td><td>LY Register Value </td></tr>
     <tr><td class="paramname">SCX</td><td>Scroll X Register Value </td></tr>
@@ -437,8 +437,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Update frame buffer with background information. </p>
-<p>Populates the frame buffer with Background information on the line ly </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Update line buffer with background information. </p>
+<p>Populates the line buffer with Background information on the line ly </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ly</td><td>LY Register Value </td></tr>
     <tr><td class="paramname">SCX</td><td>X location of the left most position on the background tile map </td></tr>
@@ -468,8 +468,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Update frame buffer with object information. </p>
-<p>Populates the frame buffer with object sprites on line ly </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Update line buffer with object information. </p>
+<p>Populates the line buffer with object sprites on line ly </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ly</td><td>LY Register Value </td></tr>
   </table>
@@ -523,8 +523,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Update frame buffer with window information. </p>
-<p>Populates the frame buffer with window information if it is currently displayed on the frame on the line ly </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Update line buffer with window information. </p>
+<p>Populates the line buffer with window information if it is currently displayed on the line ly </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">ly</td><td>LY Register Value </td></tr>
     <tr><td class="paramname">WX</td><td>Window X position </td></tr>
@@ -652,8 +652,8 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Updates the frame buffer with pixel information for 1 specified pixel. </p>
-<p>Updates and applies a pixel perfect image scaling algorithm on 1 pixel of the frame buffer when called. </p><dl class="params"><dt>Parameters</dt><dd>
+<p>Updates the line buffer with pixel information for 1 specified pixel. </p>
+<p>Updates and applies a pixel perfect image scaling algorithm on 1 pixel of the line buffer when called. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">data</td><td>Color information for the current pixel </td></tr>
     <tr><td class="paramname">pixelPos</td><td>X position for the current pixel </td></tr>
@@ -680,20 +680,20 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Steps the PPU by tStates. </p>
-<p>This function steps the PPU by the tStates variable if the screen enable (7th) bit of LCDC Register is high, the function sets the mode in the STAT Register using the <a class="el" href="gbppu_8c.html#ac2086e2d9ea420499b54833b1726a681" title="Sets the mode of the STAT Register.">prvSetMode()</a> function depending on how many tStates have elapsed. after a full line is has passed the LY register is updated <a class="el" href="gbppu_8c.html#a432ec91bc2248c882f63368d80540076" title="Update data in the frame buffer for 1 line of the Gameboy.">prvGBPPUDrawLine()</a> is called to place data in the frame buffer. </p><dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+<p>This function steps the PPU by the tStates variable if the screen enable (7th) bit of LCDC Register is high, the function sets the mode in the STAT Register using the <a class="el" href="gbppu_8c.html#ac2086e2d9ea420499b54833b1726a681" title="Sets the mode of the STAT Register.">prvSetMode()</a> function depending on how many tStates have elapsed. after a full line is has passed the LY register is updated <a class="el" href="gbppu_8c.html#a432ec91bc2248c882f63368d80540076" title="Update data in the line buffer for 1 line of the Gameboy.">prvGBPPUDrawLine()</a> is called to place data in the Line buffer. </p><dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 <dl class="section note"><dt>Note</dt><dd>The function and the Gameboy both mimic CRT Displays in that their are both a horizontal H-Blank after a Line is "drawn" and there is a vertical V-Blank after a full frame is drawn </dd></dl>
 <dl class="section attention"><dt>Attention</dt><dd>The placement of the functions vCheckBackWinTileDataSel() and vCheckBackTileDisplaySel() are just educated guesses at the current moment, more research into when and how often these Registers are updated must be conducted. </dd></dl>
 
 </div>
 </div>
-<a id="addcbf77f2958ad2001d541a8e4a8f504"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#addcbf77f2958ad2001d541a8e4a8f504">&#9670;&nbsp;</a></span>vSetFrameBuffer()</h2>
+<a id="a24dba8d7b4ecd97d4dc8cc7b14ff0031"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24dba8d7b4ecd97d4dc8cc7b14ff0031">&#9670;&nbsp;</a></span>vSetLineBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void vSetFrameBuffer </td>
+          <td class="memname">void vSetLineBuffer </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -701,7 +701,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Zeros All Memory in the Frame Buffer. </p>
+<p>Zeros All Memory in the Line Buffer. </p>
 <dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
@@ -735,14 +735,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a5afdae9a6f8868d40ecd9a45fa2cf7e7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5afdae9a6f8868d40ecd9a45fa2cf7e7">&#9670;&nbsp;</a></span>ucGBFrame</h2>
+<a id="accbb06b6c811df643b6d56dcd52e99f5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accbb06b6c811df643b6d56dcd52e99f5">&#9670;&nbsp;</a></span>ucGBLine</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t* ucGBFrame = (uint8_t*)<a class="el" href="gbppu_8c.html#a6a7f90395054dfa1a2f6521213aad848">SRAM1</a></td>
+          <td class="memname">uint8_t* ucGBLine = (uint8_t*)<a class="el" href="gbppu_8c.html#a7be588c83ce41143d6df9542c5c4a9c2">SDRAM1</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -840,7 +840,7 @@ Variables</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint8_t ulScaleAmount = 2</td>
+          <td class="memname">uint8_t ulScaleAmount = 3</td>
         </tr>
       </table>
 </div><div class="memdoc">

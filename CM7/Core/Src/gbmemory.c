@@ -26,7 +26,7 @@ uint8_t   ucJoypadSELbut;
 uint8_t   ucTimerStopStart;
 uint8_t   ucClockMode;
 uint8_t   ucDataTransFlag = 0;
-
+uint8_t   ucBootRomEn = 1;
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc3;
 
@@ -49,7 +49,13 @@ void vGBMemorySetOP(uint8_t op){
  * @return Nothing
  */
 void vGBMemoryInit(){
-    vGBMBCsetControllerType(ucGBMemoryRead(0x147));
+    //memset(mem.ram, 0, 0xFFFF);
+    vGBMBCsetControllerType(mem.ram[0x147]);
+    reg.PC = 0; reg.AF = 0; reg.BC = 0; reg.DE = 0; reg.HL = 0; reg.SP = 0;
+    ucBootRomEn = 1;
+    ucClockMode = 0;
+    ucTimerStopStart = 0;
+    ucDataTransFlag = 0;
 	mem.ram[JOY_ADDR] = 0xCF;
 	mem.ram[IF_ADDR] = 0xE1;
 	vGBMemoryWrite(TAC_ADDR, 0xF8);
@@ -141,6 +147,11 @@ void vGBMemoryWrite(uint16_t address, uint8_t data){
 		    }
 			mem.ram[address] = data;
 			return;
+		}
+
+		else if(address == 0xFF50){
+		    if(data == 1)
+		        ucBootRomEn = 0;
 		}
 	}
 
@@ -259,7 +270,7 @@ void vGBMemoryIncTimers(uint8_t durationMcycle){
                 timerDiv8k = 0;
                 vGBMemoryResetBit(STC_ADDR, 7);
                 ucDataTransFlag = 0;
-                vGBMemorySetBit(IF_ADDR, 3);
+                //vGBMemorySetBit(IF_ADDR, 3);
             }
         }
     }

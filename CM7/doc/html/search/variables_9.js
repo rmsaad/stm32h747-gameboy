@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['l_1459',['L',['../structregisters.html#a10f900599cec5b7a56ac4db267c669de',1,'registers']]]
+  ['kdl_5fgb_1481',['KDL_gb',['../main_8c.html#a1015b909e9c48e86fff962e55a1ce096',1,'main.c']]]
 ];

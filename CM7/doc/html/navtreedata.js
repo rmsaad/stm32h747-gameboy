@@ -51,8 +51,8 @@ var NAVTREEINDEX =
 [
 "_alleyway_8gb_8h.html",
 "gbcpu_8c.html#a69325dd44a55250c72e8ee6250ebf050",
-"gbcpu_8c.html#ae6c9511f2274f4865b08ac67438ae112",
-"gbmemory_8h.html#adc4559afdb0535cfebadef1c707a2f91"
+"gbcpu_8c.html#ae62ee02bc9cb69135e7f10647def6811",
+"gbmemory_8h.html#ad5f5a5652b98cac183de3f7b5c392c99"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

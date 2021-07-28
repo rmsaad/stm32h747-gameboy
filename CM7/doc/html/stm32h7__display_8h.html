@@ -104,12 +104,15 @@ $(document).ready(function(){initNavTree('stm32h7__display_8h.html',''); initRes
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a50f5849579459ad0a6c1245e7e307224"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8h.html#a50f5849579459ad0a6c1245e7e307224">stm32h7_displaySetPalette</a> ()</td></tr>
+<tr class="memdesc:a50f5849579459ad0a6c1245e7e307224"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the color palette for the L8 indirect color mode used for the gameboy.  <a href="stm32h7__display_8h.html#a50f5849579459ad0a6c1245e7e307224">More...</a><br /></td></tr>
 <tr class="separator:a50f5849579459ad0a6c1245e7e307224"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a81e2c373d1e591d4bcda7aed5893ce1a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8h.html#a81e2c373d1e591d4bcda7aed5893ce1a">displayFrameBuffer</a> (uint8_t *gb_frame, uint8_t scaleAmount)</td></tr>
-<tr class="separator:a81e2c373d1e591d4bcda7aed5893ce1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a074538f6222e58f8cbc01ac5048514da"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8h.html#a074538f6222e58f8cbc01ac5048514da">displayFrameBuffer</a> (uint8_t *gb_frame, uint8_t scaleAmount, uint8_t ly)</td></tr>
+<tr class="memdesc:a074538f6222e58f8cbc01ac5048514da"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies the line buffer to the frame buffer while converting from L8 color to RGB8888 through use of DMA2D.  <a href="stm32h7__display_8h.html#a074538f6222e58f8cbc01ac5048514da">More...</a><br /></td></tr>
+<tr class="separator:a074538f6222e58f8cbc01ac5048514da"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d6d0e93865a7306ac61431a669e51af"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8h.html#a9d6d0e93865a7306ac61431a669e51af">displayDoubleBuffer</a> ()</td></tr>
 <tr class="separator:a9d6d0e93865a7306ac61431a669e51af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a24336fe16fa0d0ee8c7087342fd1be47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="stm32h7__display_8h.html#a24336fe16fa0d0ee8c7087342fd1be47">CopyBuffer</a> (uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t xsize, uint16_t ysize)</td></tr>
+<tr class="memdesc:a24336fe16fa0d0ee8c7087342fd1be47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Copies Source buffer into the frame buffer, applies CLUT loading.  <a href="stm32h7__display_8h.html#a24336fe16fa0d0ee8c7087342fd1be47">More...</a><br /></td></tr>
 <tr class="separator:a24336fe16fa0d0ee8c7087342fd1be47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -163,6 +166,20 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Copies Source buffer into the frame buffer, applies CLUT loading. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pSrc</td><td>Source buffer </td></tr>
+    <tr><td class="paramname">pDst</td><td>Destination buffer </td></tr>
+    <tr><td class="paramname">x</td><td>The coordinate x position of the buffer on the display </td></tr>
+    <tr><td class="paramname">y</td><td>The coordinate y position of the buffer on the display </td></tr>
+    <tr><td class="paramname">xsize</td><td>The x size of the buffer </td></tr>
+    <tr><td class="paramname">ysize</td><td>The y size of the buffer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
+
 </div>
 </div>
 <a id="a9d6d0e93865a7306ac61431a669e51af"></a>
@@ -182,8 +199,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a81e2c373d1e591d4bcda7aed5893ce1a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a81e2c373d1e591d4bcda7aed5893ce1a">&#9670;&nbsp;</a></span>displayFrameBuffer()</h2>
+<a id="a074538f6222e58f8cbc01ac5048514da"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a074538f6222e58f8cbc01ac5048514da">&#9670;&nbsp;</a></span>displayFrameBuffer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -192,13 +209,19 @@ Functions</h2></td></tr>
           <td class="memname">void displayFrameBuffer </td>
           <td>(</td>
           <td class="paramtype">uint8_t *&#160;</td>
-          <td class="paramname"><em>gb_frame</em>, </td>
+          <td class="paramname"><em>gb_line</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">uint8_t&#160;</td>
-          <td class="paramname"><em>scaleAmount</em>&#160;</td>
+          <td class="paramname"><em>scaleAmount</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>ly</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -207,6 +230,16 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Copies the line buffer to the frame buffer while converting from L8 color to RGB8888 through use of DMA2D. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gb_line</td><td>line buffer </td></tr>
+    <tr><td class="paramname">scaleAmount</td><td>Up-scaling amount </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>
@@ -224,6 +257,9 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Sets the color palette for the L8 indirect color mode used for the gameboy. </p>
+<dl class="section return"><dt>Returns</dt><dd>Nothing </dd></dl>
 
 </div>
 </div>

@@ -1,5 +1,5 @@
 gbppu.c:266:6:prvSetMode.part.0	8	static
-gbppu.c:65:6:vSetFrameBuffer	0	static
+gbppu.c:64:6:vSetLineBuffer	8	static
 gbppu.c:144:6:prvCheckBGP	24	static
 gbppu.c:164:6:prvCheckOBP0	24	static
 gbppu.c:183:6:prvCheckOBP1	24	static
@@ -7,12 +7,12 @@ gbppu.c:204:10:prvGetBackWinTileDataSel	8	static
 gbppu.c:214:10:prvGetBackTileDisplaySel	8	static
 gbppu.c:224:10:prvGetWinTileDisplaySel	8	static
 gbppu.c:235:10:getTileLineData	16	static
-gbppu.c:347:6:prvGBPPUDrawLineWindow.part.0	56	static
+gbppu.c:345:6:prvGBPPUDrawLineWindow.part.0	56	static
 gbppu.c:251:6:prvCheckLYC	8	static
 gbppu.c:266:6:prvSetMode	8	static
 gbppu.c:284:6:prvUpdateBuffer	16	static
-gbppu.c:304:6:prvGBPPUDrawLineBackground	64	static
-gbppu.c:347:6:prvGBPPUDrawLineWindow	12	static
-gbppu.c:384:6:prvGBPPUDrawLineObjects	48	static
-gbppu.c:435:6:prvGBPPUDrawLine	40	static
-gbppu.c:81:6:vGBPPUStep	24	static
+gbppu.c:302:6:prvGBPPUDrawLineBackground	64	static
+gbppu.c:345:6:prvGBPPUDrawLineWindow	12	static
+gbppu.c:382:6:prvGBPPUDrawLineObjects	48	static
+gbppu.c:433:6:prvGBPPUDrawLine	40	static
+gbppu.c:84:6:vGBPPUStep	24	static

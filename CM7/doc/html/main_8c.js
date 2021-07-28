@@ -5,15 +5,32 @@ var main_8c =
     [ "HSEM_ID_0", "main_8c.html#a66761607ebca2d7b18eb6adfbd0891a7", null ],
     [ "LIGHT_GREEN", "main_8c.html#a5a7142ee95ebc63218ed3aac2ae06b13", null ],
     [ "LIGHTEST_GREEN", "main_8c.html#aa7340b5ab80d1a8df9c9d53948fcbd76", null ],
+    [ "BUTTON_STATE", "main_8c.html#a8523f7a9e6b59b8df903f65961092ad5", [
+      [ "NONE", "main_8c.html#a8523f7a9e6b59b8df903f65961092ad5ac157bdf0b85a40d2619cbc8bc1ae5fe2", null ],
+      [ "UP", "main_8c.html#a8523f7a9e6b59b8df903f65961092ad5aba595d8bca8bc5e67c37c0a9d89becfa", null ],
+      [ "DOWN", "main_8c.html#a8523f7a9e6b59b8df903f65961092ad5a9b0b4a95b99523966e0e34ffdadac9da", null ],
+      [ "IN", "main_8c.html#a8523f7a9e6b59b8df903f65961092ad5af3180515f5867a29932df1dc207b31ad", null ]
+    ] ],
+    [ "GAME_STATE", "main_8c.html#a4cc39f049df62b331976f9a4482bd3ea", [
+      [ "TETRIS", "main_8c.html#a4cc39f049df62b331976f9a4482bd3eaa37c197aa48170293f628a7aa70c87ff7", null ],
+      [ "MARIO", "main_8c.html#a4cc39f049df62b331976f9a4482bd3eaae9a91f76741912068c09ec2a289d963b", null ],
+      [ "KIRBY", "main_8c.html#a4cc39f049df62b331976f9a4482bd3eaa0356ddbbfb9dc8449db54d1525b14fd1", null ]
+    ] ],
+    [ "chooseGame", "main_8c.html#aa5dff1706915d71f995284403e95ec97", null ],
     [ "Error_Handler", "main_8c.html#a1730ffe1e560465665eb47d9264826f9", null ],
     [ "getRomPointer", "main_8c.html#ac0e5fc84d3f0cbaee9ea71d6fbe0c31c", null ],
     [ "main", "main_8c.html#a840291bc02cba5474a4cb46a9b9566fe", null ],
+    [ "menuSel", "main_8c.html#aec28fa03924ccc7c64ade3f5eb568eb0", null ],
     [ "PeriphCommonClock_Config", "main_8c.html#a336c5acb34a801b2984e602b97ed7b73", null ],
+    [ "setROM", "main_8c.html#aa4587a97ba5d1d51bba8d821889d5709", null ],
     [ "SystemClock_Config", "main_8c.html#a70af21c671abfcc773614a9a4f63d920", null ],
     [ "testController", "main_8c.html#a57146e7cfc937af38efb8fd46a581af2", null ],
+    [ "updateLCD", "main_8c.html#a78f221846593b1386a6ed0abb3d04aa4", null ],
     [ "Alleyway_gb", "main_8c.html#a2924be90c16cc87d35ff9f5e0e2f9e3a", null ],
     [ "bgbtest_gb", "main_8c.html#a3a9699a39b5c6b9086d748c3f3bb13b9", null ],
+    [ "buttonState", "main_8c.html#a18051bdaea5feae6f0342bfc66b2d840", null ],
     [ "cpu_instrs_gb", "main_8c.html#aa0dd2ea85ccd05ea5b1935047d39eeaf", null ],
+    [ "gameState", "main_8c.html#ad9c11192eaead6a7af0e49e0b9cd2931", null ],
     [ "hadc1", "main_8c.html#a22b804736f5648d52f639b2647d4ed13", null ],
     [ "hadc3", "main_8c.html#a984624bcf28d1b2fb7e4e18349f65d5c", null ],
     [ "hdsi", "main_8c.html#a9f89250426445e449addaba744aa17d0", null ],
@@ -22,6 +39,9 @@ var main_8c =
     [ "instr_timing_gb", "main_8c.html#aa6e9cc110a6e53c9566ca512d808f57c", null ],
     [ "KDL_gb", "main_8c.html#a1015b909e9c48e86fff962e55a1ce096", null ],
     [ "rom", "main_8c.html#af1a74952e70d4f6f1290efd9ca571e20", null ],
+    [ "rom1", "main_8c.html#a0ab35ac5cba0849e2603909381eaa20f", null ],
+    [ "rom2", "main_8c.html#a62b603deeddc49b64ee20b1479b42b1c", null ],
+    [ "sel", "main_8c.html#ab6a78282cf60fff6bd86dd05b417caed", null ],
     [ "SML_gb", "main_8c.html#a34aa64f9b9f3578a5a0e944203f6ab5a", null ],
     [ "Tetris_gb", "main_8c.html#afcdad1e952b60967216915d584af9f06", null ]
 ];

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mem_1460',['mem',['../gbmemory_8c.html#a6135654033ccfa705ae4c5fde74eda02',1,'gbmemory.c']]]
+  ['l_1482',['L',['../structregisters.html#a10f900599cec5b7a56ac4db267c669de',1,'registers']]]
 ];

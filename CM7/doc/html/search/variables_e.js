@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['tetris_5fgb_1468',['Tetris_gb',['../main_8c.html#afcdad1e952b60967216915d584af9f06',1,'main.c']]],
-  ['tstate_1469',['Tstate',['../struct_assembly___instr.html#a5fb2026bcf6571f577936d743090c72a',1,'Assembly_Instr']]]
+  ['sel_1491',['sel',['../main_8c.html#ab6a78282cf60fff6bd86dd05b417caed',1,'main.c']]],
+  ['sml_5fgb_1492',['SML_gb',['../main_8c.html#a34aa64f9b9f3578a5a0e944203f6ab5a',1,'main.c']]],
+  ['sp_1493',['SP',['../structregisters.html#ae1da8e6d3b9bdd44bbe6007d97a6fe05',1,'registers']]]
 ];

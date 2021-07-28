@@ -14,7 +14,7 @@
 \doxysubsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define \mbox{\hyperlink{gbppu_8c_a6a7f90395054dfa1a2f6521213aad848}{SRAM1}}~0x30000000\+UL
+\#define \mbox{\hyperlink{gbppu_8c_a7be588c83ce41143d6df9542c5c4a9c2}{SDRAM1}}~0x\+D1000000\+UL
 \end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
@@ -30,23 +30,23 @@ void \mbox{\hyperlink{gbppu_8c_a5b404d5d82422f8042bfd6540ad381ec}{prv\+Check\+LY
 void \mbox{\hyperlink{gbppu_8c_ac2086e2d9ea420499b54833b1726a681}{prv\+Set\+Mode}} (uint8\+\_\+t mode)
 \begin{DoxyCompactList}\small\item\em Sets the mode of the STAT Register. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbppu_8c_a945ea162b77db42c939d42c2a97aa6b6}{prv\+Update\+Buffer}} (uint8\+\_\+t data, int pixel\+Pos)
-\begin{DoxyCompactList}\small\item\em Updates the frame buffer with pixel information for 1 specified pixel. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Updates the line buffer with pixel information for 1 specified pixel. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbppu_8c_aeeeb1b7836652ece5d6f29c3c219081e}{prv\+GBPPUDraw\+Line\+Background}} (uint8\+\_\+t ly, uint8\+\_\+t SCX, uint8\+\_\+t SCY, uint16\+\_\+t Tile\+Data\+Addr, uint16\+\_\+t Display\+Addr)
-\begin{DoxyCompactList}\small\item\em Update frame buffer with background information. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Update line buffer with background information. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbppu_8c_a4c8a469ac0b13d39ce543d9b96121107}{prv\+GBPPUDraw\+Line\+Window}} (uint8\+\_\+t ly, uint8\+\_\+t WX, uint8\+\_\+t WY, uint16\+\_\+t Tile\+Data\+Addr, uint16\+\_\+t Display\+Addr)
-\begin{DoxyCompactList}\small\item\em Update frame buffer with window information. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Update line buffer with window information. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbppu_8c_a45c1df62b10bd52b1243c6d837294ef9}{prv\+GBPPUDraw\+Line\+Objects}} (uint8\+\_\+t ly)
-\begin{DoxyCompactList}\small\item\em Update frame buffer with object information. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Update line buffer with object information. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbppu_8c_a432ec91bc2248c882f63368d80540076}{prv\+GBPPUDraw\+Line}} (uint8\+\_\+t ly, uint8\+\_\+t SCX, uint8\+\_\+t SCY)
-\begin{DoxyCompactList}\small\item\em Update data in the frame buffer for 1 line of the Gameboy. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Update data in the line buffer for 1 line of the Gameboy. \end{DoxyCompactList}\item 
 uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a4d71f50a18b8187e042f6a0309444279}{prv\+Get\+Back\+Win\+Tile\+Data\+Sel}} ()
 \begin{DoxyCompactList}\small\item\em Read LCDC Register to find appropriate Background \& Tile Data Address. \end{DoxyCompactList}\item 
 uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a833e1bbd97a1d31f085e17cc6168f72e}{prv\+Get\+Back\+Tile\+Display\+Sel}} ()
 \begin{DoxyCompactList}\small\item\em Read LCDC Register to find appropriate Background Tile Display Select Address. \end{DoxyCompactList}\item 
 uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a0dc987e3a4895a95823988f9c0f6cf1f}{prv\+Get\+Win\+Tile\+Display\+Sel}} ()
 \begin{DoxyCompactList}\small\item\em Read LCDC Register to find appropriate Window Tile Display Select Address. \end{DoxyCompactList}\item 
-void \mbox{\hyperlink{gbppu_8c_addcbf77f2958ad2001d541a8e4a8f504}{v\+Set\+Frame\+Buffer}} ()
-\begin{DoxyCompactList}\small\item\em Zeros All Memory in the Frame Buffer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{gbppu_8c_a24dba8d7b4ecd97d4dc8cc7b14ff0031}{v\+Set\+Line\+Buffer}} ()
+\begin{DoxyCompactList}\small\item\em Zeros All Memory in the Line Buffer. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{gbppu_8c_af55e16b0234ec9b9a7f6703f53fa18b7}{v\+GBPPUStep}} ()
 \begin{DoxyCompactList}\small\item\em Steps the PPU by t\+States. \end{DoxyCompactList}\item 
 uint16\+\_\+t \mbox{\hyperlink{gbppu_8c_a9b29df5e22493dc42927f15a2858730b}{get\+Tile\+Line\+Data}} (uint16\+\_\+t tile\+\_\+offset, uint8\+\_\+t line\+\_\+offset, uint16\+\_\+t Tile\+Data\+Addr, uint16\+\_\+t Display\+Addr)
@@ -66,11 +66,11 @@ uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_a9be772970ed9fbe14e0218fd424b6596}{uc\+OB
 \item 
 uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ae10b4a8ffd018a241f9ec6ce9f1f690d}{uc\+OBP1\+Color\+To\+Palette}} \mbox{[}4\mbox{]}
 \item 
-uint8\+\_\+t $\ast$ \mbox{\hyperlink{gbppu_8c_a5afdae9a6f8868d40ecd9a45fa2cf7e7}{uc\+GBFrame}} = (uint8\+\_\+t$\ast$)\mbox{\hyperlink{gbppu_8c_a6a7f90395054dfa1a2f6521213aad848}{SRAM1}}
+uint8\+\_\+t $\ast$ \mbox{\hyperlink{gbppu_8c_accbb06b6c811df643b6d56dcd52e99f5}{uc\+GBLine}} = (uint8\+\_\+t$\ast$)\mbox{\hyperlink{gbppu_8c_a7be588c83ce41143d6df9542c5c4a9c2}{SDRAM1}}
 \item 
 uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ac9de52373fb1ba5b7529ba0d15ebc8b8}{uc\+BGWINline}} \mbox{[}160\mbox{]}
 \item 
-uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ab2318977e8442dfe26bc0a0b41c1f165}{ul\+Scale\+Amount}} = 2
+uint8\+\_\+t \mbox{\hyperlink{gbppu_8c_ab2318977e8442dfe26bc0a0b41c1f165}{ul\+Scale\+Amount}} = 3
 \item 
 uint32\+\_\+t \mbox{\hyperlink{gbppu_8c_ab196f3e59335a72ee34e8481033baf15}{ul\+Cur\+Line}}
 \item 
@@ -81,7 +81,7 @@ uint32\+\_\+t \mbox{\hyperlink{gbppu_8c_af58b00da0c806a9f69bda59355d02e29}{ul\+L
 \doxysubsection{Detailed Description}
 \+: Gameboy PPU Functionality This file emulates all functionality of the Gameboy Pixel/\+Picture Processing Unit (PPU). 
 
-This includes drawing the Background, Window, and Object Layers to a frame buffer to be displayed 60 times a second. \begin{DoxyAuthor}{Author}
+This includes drawing the Background, Window, and Object Layers to the frame buffer to be displayed 60 times a second. \begin{DoxyAuthor}{Author}
 \+: Rami 
 \end{DoxyAuthor}
 \begin{DoxyDate}{Date}
@@ -90,11 +90,11 @@ This includes drawing the Background, Window, and Object Layers to a frame buffe
 
 
 \doxysubsection{Macro Definition Documentation}
-\mbox{\Hypertarget{gbppu_8c_a6a7f90395054dfa1a2f6521213aad848}\label{gbppu_8c_a6a7f90395054dfa1a2f6521213aad848}} 
-\index{gbppu.c@{gbppu.c}!SRAM1@{SRAM1}}
-\index{SRAM1@{SRAM1}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{SRAM1}{SRAM1}}
-{\footnotesize\ttfamily \#define SRAM1~0x30000000\+UL}
+\mbox{\Hypertarget{gbppu_8c_a7be588c83ce41143d6df9542c5c4a9c2}\label{gbppu_8c_a7be588c83ce41143d6df9542c5c4a9c2}} 
+\index{gbppu.c@{gbppu.c}!SDRAM1@{SDRAM1}}
+\index{SDRAM1@{SDRAM1}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{SDRAM1}{SDRAM1}}
+{\footnotesize\ttfamily \#define SDRAM1~0x\+D1000000\+UL}
 
 
 
@@ -184,9 +184,9 @@ Nothing
 
 
 
-Update data in the frame buffer for 1 line of the Gameboy. 
+Update data in the line buffer for 1 line of the Gameboy. 
 
-Populates the frame buffer with data related to a line ly 
+Populates the line buffer with data related to a line ly, copies line buffer to appropriate location in frame buffer 
 \begin{DoxyParams}{Parameters}
 {\em ly} & LY Register Value \\
 \hline
@@ -206,9 +206,9 @@ Nothing
 
 
 
-Update frame buffer with background information. 
+Update line buffer with background information. 
 
-Populates the frame buffer with Background information on the line ly 
+Populates the line buffer with Background information on the line ly 
 \begin{DoxyParams}{Parameters}
 {\em ly} & LY Register Value \\
 \hline
@@ -232,9 +232,9 @@ Nothing
 
 
 
-Update frame buffer with object information. 
+Update line buffer with object information. 
 
-Populates the frame buffer with object sprites on line ly 
+Populates the line buffer with object sprites on line ly 
 \begin{DoxyParams}{Parameters}
 {\em ly} & LY Register Value \\
 \hline
@@ -250,9 +250,9 @@ Nothing
 
 
 
-Update frame buffer with window information. 
+Update line buffer with window information. 
 
-Populates the frame buffer with window information if it is currently displayed on the frame on the line ly 
+Populates the line buffer with window information if it is currently displayed on the line ly 
 \begin{DoxyParams}{Parameters}
 {\em ly} & LY Register Value \\
 \hline
@@ -336,9 +336,9 @@ Nothing
 
 
 
-Updates the frame buffer with pixel information for 1 specified pixel. 
+Updates the line buffer with pixel information for 1 specified pixel. 
 
-Updates and applies a pixel perfect image scaling algorithm on 1 pixel of the frame buffer when called. 
+Updates and applies a pixel perfect image scaling algorithm on 1 pixel of the line buffer when called. 
 \begin{DoxyParams}{Parameters}
 {\em data} & Color information for the current pixel \\
 \hline
@@ -358,7 +358,7 @@ Nothing
 
 Steps the PPU by t\+States. 
 
-This function steps the PPU by the t\+States variable if the screen enable (7th) bit of LCDC Register is high, the function sets the mode in the STAT Register using the \mbox{\hyperlink{gbppu_8c_ac2086e2d9ea420499b54833b1726a681}{prv\+Set\+Mode()}} function depending on how many t\+States have elapsed. after a full line is has passed the LY register is updated \mbox{\hyperlink{gbppu_8c_a432ec91bc2248c882f63368d80540076}{prv\+GBPPUDraw\+Line()}} is called to place data in the frame buffer. \begin{DoxyReturn}{Returns}
+This function steps the PPU by the t\+States variable if the screen enable (7th) bit of LCDC Register is high, the function sets the mode in the STAT Register using the \mbox{\hyperlink{gbppu_8c_ac2086e2d9ea420499b54833b1726a681}{prv\+Set\+Mode()}} function depending on how many t\+States have elapsed. after a full line is has passed the LY register is updated \mbox{\hyperlink{gbppu_8c_a432ec91bc2248c882f63368d80540076}{prv\+GBPPUDraw\+Line()}} is called to place data in the Line buffer. \begin{DoxyReturn}{Returns}
 Nothing 
 \end{DoxyReturn}
 \begin{DoxyNote}{Note}
@@ -367,15 +367,15 @@ The function and the Gameboy both mimic CRT Displays in that their are both a ho
 \begin{DoxyAttention}{Attention}
 The placement of the functions v\+Check\+Back\+Win\+Tile\+Data\+Sel() and v\+Check\+Back\+Tile\+Display\+Sel() are just educated guesses at the current moment, more research into when and how often these Registers are updated must be conducted. 
 \end{DoxyAttention}
-\mbox{\Hypertarget{gbppu_8c_addcbf77f2958ad2001d541a8e4a8f504}\label{gbppu_8c_addcbf77f2958ad2001d541a8e4a8f504}} 
-\index{gbppu.c@{gbppu.c}!vSetFrameBuffer@{vSetFrameBuffer}}
-\index{vSetFrameBuffer@{vSetFrameBuffer}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{vSetFrameBuffer()}{vSetFrameBuffer()}}
-{\footnotesize\ttfamily void v\+Set\+Frame\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+\mbox{\Hypertarget{gbppu_8c_a24dba8d7b4ecd97d4dc8cc7b14ff0031}\label{gbppu_8c_a24dba8d7b4ecd97d4dc8cc7b14ff0031}} 
+\index{gbppu.c@{gbppu.c}!vSetLineBuffer@{vSetLineBuffer}}
+\index{vSetLineBuffer@{vSetLineBuffer}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{vSetLineBuffer()}{vSetLineBuffer()}}
+{\footnotesize\ttfamily void v\+Set\+Line\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
 
 
-Zeros All Memory in the Frame Buffer. 
+Zeros All Memory in the Line Buffer. 
 
 \begin{DoxyReturn}{Returns}
 Nothing 
@@ -395,11 +395,11 @@ Nothing
 \doxysubsubsection{\texorpdfstring{ucBGWINline}{ucBGWINline}}
 {\footnotesize\ttfamily uint8\+\_\+t uc\+BGWINline\mbox{[}160\mbox{]}}
 
-\mbox{\Hypertarget{gbppu_8c_a5afdae9a6f8868d40ecd9a45fa2cf7e7}\label{gbppu_8c_a5afdae9a6f8868d40ecd9a45fa2cf7e7}} 
-\index{gbppu.c@{gbppu.c}!ucGBFrame@{ucGBFrame}}
-\index{ucGBFrame@{ucGBFrame}!gbppu.c@{gbppu.c}}
-\doxysubsubsection{\texorpdfstring{ucGBFrame}{ucGBFrame}}
-{\footnotesize\ttfamily uint8\+\_\+t$\ast$ uc\+GBFrame = (uint8\+\_\+t$\ast$)\mbox{\hyperlink{gbppu_8c_a6a7f90395054dfa1a2f6521213aad848}{SRAM1}}}
+\mbox{\Hypertarget{gbppu_8c_accbb06b6c811df643b6d56dcd52e99f5}\label{gbppu_8c_accbb06b6c811df643b6d56dcd52e99f5}} 
+\index{gbppu.c@{gbppu.c}!ucGBLine@{ucGBLine}}
+\index{ucGBLine@{ucGBLine}!gbppu.c@{gbppu.c}}
+\doxysubsubsection{\texorpdfstring{ucGBLine}{ucGBLine}}
+{\footnotesize\ttfamily uint8\+\_\+t$\ast$ uc\+GBLine = (uint8\+\_\+t$\ast$)\mbox{\hyperlink{gbppu_8c_a7be588c83ce41143d6df9542c5c4a9c2}{SDRAM1}}}
 
 \mbox{\Hypertarget{gbppu_8c_ae1deb0fdbd829f97dc542cf5cc07cf86}\label{gbppu_8c_ae1deb0fdbd829f97dc542cf5cc07cf86}} 
 \index{gbppu.c@{gbppu.c}!ucLY@{ucLY}}
@@ -441,7 +441,7 @@ Nothing
 \index{gbppu.c@{gbppu.c}!ulScaleAmount@{ulScaleAmount}}
 \index{ulScaleAmount@{ulScaleAmount}!gbppu.c@{gbppu.c}}
 \doxysubsubsection{\texorpdfstring{ulScaleAmount}{ulScaleAmount}}
-{\footnotesize\ttfamily uint8\+\_\+t ul\+Scale\+Amount = 2}
+{\footnotesize\ttfamily uint8\+\_\+t ul\+Scale\+Amount = 3}
 
 \mbox{\Hypertarget{gbppu_8c_a1937f8f3d3d58a98306b4e7491aaebcc}\label{gbppu_8c_a1937f8f3d3d58a98306b4e7491aaebcc}} 
 \index{gbppu.c@{gbppu.c}!ultStatesTotal@{ultStatesTotal}}

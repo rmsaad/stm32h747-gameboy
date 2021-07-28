@@ -27,6 +27,7 @@
 #include "gbmemory.h"
 #include "gbcpu.h"
 #include "gbppu.h"
+#include "gbMBC.h"
 #include "gbpapu.h"
 #include "stm32h7_display.h"
 #include "dmg_boot.bin.h"
@@ -82,7 +83,26 @@ extern const unsigned char bgbtest_gb[]; //Passed
 extern const unsigned char instr_timing_gb[];
 extern const unsigned char SML_gb[];
 extern const unsigned char KDL_gb[];
-const unsigned char* rom = &Tetris_gb[0];
+const unsigned char* rom = &SML_gb[0];
+const unsigned char* rom1 = &SML_gb[0];
+const unsigned char* rom2 = &KDL_gb[0];
+
+typedef enum {
+  NONE = 0,
+  UP,
+  DOWN,
+  IN,
+}BUTTON_STATE;
+
+typedef enum {
+  TETRIS = 0,
+  MARIO,
+  KIRBY,
+}GAME_STATE;
+
+BUTTON_STATE buttonState = NONE;
+GAME_STATE   gameState   = TETRIS;
+uint8_t      sel         = 1;
 
 /* USER CODE END PV */
 
@@ -101,10 +121,117 @@ static void vLEDInit(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+/**
+ * @brief Sets the Gameboy ROM to be played
+ * @param pROM poitner to game ROM
+ * @retval None
+ */
+void setROM(const unsigned char* pROM){
+    rom = pROM;
+}
+
+/**
+ * @brief Returns pointer to Start of Gameboy ROM
+ * @retval Gameboy ROM
+ */
 const unsigned char* getRomPointer(){
 	return rom;
 }
 
+/**
+ * @brief Handles Button inputs for Gameboy ROM selection
+ * @retval None
+ */
+void menuSel(){
+    HAL_ADC_Start(&hadc3);
+    HAL_ADC_PollForConversion(&hadc3, HAL_MAX_DELAY);
+    uint32_t value = HAL_ADC_GetValue(&hadc3) >> 12;
+    HAL_ADC_Start(&hadc1);
+    HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
+    uint32_t value2 = HAL_ADC_GetValue(&hadc1) >> 12;
+
+    buttonState = NONE;
+
+    if(value2 == 0xA){
+        buttonState = UP;
+    }
+
+    if(value2 == 0x6){
+        buttonState = DOWN;
+    }
+
+    if(value < 0x4){
+        buttonState = IN;
+    }
+
+    switch (buttonState) {
+        case UP:    HAL_Delay(200);
+                    if(gameState == TETRIS){ gameState = KIRBY;  break;}
+                    if(gameState == MARIO){  gameState = TETRIS; break;}
+                    if(gameState == KIRBY){  gameState = MARIO;  break;}
+
+        case DOWN:  HAL_Delay(200);
+                    if(gameState == TETRIS){ gameState = MARIO;  break;}
+                    if(gameState == MARIO){  gameState = KIRBY;  break;}
+                    if(gameState == KIRBY){  gameState = TETRIS; break;}
+
+        case IN:    if(gameState == TETRIS) setROM(Tetris_gb);
+                    if(gameState == MARIO)  setROM(SML_gb);
+                    if(gameState == KIRBY)  setROM(KDL_gb);
+                    sel = 0;
+                    break;
+
+        default:    break;
+    }
+}
+
+/**
+ * @brief Updates menu LCD with correct ROM selected
+ * @retval None
+ */
+void updateLCD(){
+    if(gameState == TETRIS){
+        UTIL_LCD_SetBackColor(DARKEST_GREEN); UTIL_LCD_SetTextColor(LIGHTEST_GREEN);
+        UTIL_LCD_DisplayStringAt(275, LINE(10), (uint8_t *) "Tetris", LEFT_MODE);
+        UTIL_LCD_SetBackColor(LIGHTEST_GREEN); UTIL_LCD_SetTextColor(DARKEST_GREEN);
+        UTIL_LCD_DisplayStringAt(275, LINE(11), (uint8_t *) "Mario", LEFT_MODE);
+        UTIL_LCD_DisplayStringAt(275, LINE(12), (uint8_t *) "Kirby", LEFT_MODE);
+    }
+
+    if(gameState == MARIO){
+        UTIL_LCD_DisplayStringAt(275, LINE(10), (uint8_t *) "Tetris", LEFT_MODE);
+        UTIL_LCD_SetBackColor(DARKEST_GREEN); UTIL_LCD_SetTextColor(LIGHTEST_GREEN);
+        UTIL_LCD_DisplayStringAt(275, LINE(11), (uint8_t *) "Mario", LEFT_MODE);
+        UTIL_LCD_SetBackColor(LIGHTEST_GREEN); UTIL_LCD_SetTextColor(DARKEST_GREEN);
+        UTIL_LCD_DisplayStringAt(275, LINE(12), (uint8_t *) "Kirby", LEFT_MODE);
+    }
+
+    if(gameState == KIRBY){
+        UTIL_LCD_DisplayStringAt(275, LINE(10), (uint8_t *) "Tetris", LEFT_MODE);
+        UTIL_LCD_DisplayStringAt(275, LINE(11), (uint8_t *) "Mario", LEFT_MODE);
+        UTIL_LCD_SetBackColor(DARKEST_GREEN); UTIL_LCD_SetTextColor(LIGHTEST_GREEN);
+        UTIL_LCD_DisplayStringAt(275, LINE(12), (uint8_t *) "Kirby", LEFT_MODE);
+        UTIL_LCD_SetBackColor(LIGHTEST_GREEN); UTIL_LCD_SetTextColor(DARKEST_GREEN);
+    }
+
+}
+
+/**
+ * @brief Menu that allows user to select Gameboy ROM to be played
+ * @retval None
+ */
+void chooseGame(){
+    while(sel == 1){
+        menuSel();
+        updateLCD();
+    }
+}
+
+/**
+ * @brief Check the status of each button on the controller, print result onto the LCD
+ * @retval None
+ */
 void testController(){
 	while(1){
 		 	 HAL_ADC_Start(&hadc3);
@@ -115,9 +242,9 @@ void testController(){
 			 uint32_t value2 = HAL_ADC_GetValue(&hadc1);
 			 char temp[15];
 			 sprintf(temp,"test value %x", (unsigned int)value);
-			 UTIL_LCD_DisplayStringAt(500, LINE(2), (uint8_t *) temp, LEFT_MODE);
+			 UTIL_LCD_DisplayStringAt(275, LINE(2), (uint8_t *) temp, LEFT_MODE);
 			 sprintf(temp,"test value %x", (unsigned int)value2);
-			 UTIL_LCD_DisplayStringAt(500, LINE(3), (uint8_t *) temp, LEFT_MODE);
+			 UTIL_LCD_DisplayStringAt(275, LINE(3), (uint8_t *) temp, LEFT_MODE);
 			 HAL_Delay(100);
 	}
 }
@@ -192,27 +319,27 @@ Error_Handler();
   vLEDInit();
   MX_ADC1_Init();
   MX_ADC3_Init();
-  stm32h7_displaySetPalette();
+  stm32h7_displaySetPalette();                                                      // sets the L8 indirect addressing Pallette
 
-  //BSP_LCD_InitEx(0, LCD_ORIENTATION_LANDSCAPE, LCD_PIXEL_FORMAT_RGB888, 800/5, 480/5);
-  BSP_LCD_Init(0, LCD_ORIENTATION_LANDSCAPE);
+  BSP_LCD_Init(0, LCD_ORIENTATION_LANDSCAPE);                                       // Init LCD
 
-  UTIL_LCD_SetFuncDriver(&LCD_Driver);
-  UTIL_LCD_SetLayer(0);
-  UTIL_LCD_Clear(UTIL_LCD_COLOR_WHITE);
-  //UTIL_LCD_FillRect(0, 0, 160*3, 480, UTIL_LCD_COLOR_BLACK);
+  UTIL_LCD_SetFuncDriver(&LCD_Driver);                                              // "" "" ""
+  UTIL_LCD_SetLayer(0);                                                             // "" "" ""
+  UTIL_LCD_Clear(UTIL_LCD_COLOR_BLACK);                                             // "" "" ""
+  UTIL_LCD_FillRect(160, (480 - (144*3))/2, 160*3, 144*3, LIGHTEST_GREEN);          // "" "" ""
 
-  UTIL_LCD_SetBackColor(UTIL_LCD_COLOR_WHITE);
-  UTIL_LCD_SetTextColor(UTIL_LCD_COLOR_BLUE);
-  UTIL_LCD_SetFont(&Font24);
+  UTIL_LCD_SetBackColor(LIGHTEST_GREEN);                                            // set text color and font size
+  UTIL_LCD_SetTextColor(DARKEST_GREEN);                                             // "" "" ""
+  UTIL_LCD_SetFont(&Font24);                                                        // "" "" ""
+  UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *) "Please Select A Game", CENTER_MODE);
+  chooseGame();
+
+  vGBMemoryLoad(rom, 32768);                                                        // load rom into memory
+  vGBMemoryLoad(dmg_boot_bin, 256);                                                 // load boot rom into appropriate place in memory map
+  vGBMemoryInit();                                                                  // initialize Gameboy Memory and Registers
+  vSetLineBuffer();                                                                 //
+
   //gbPAPUstartAudio();
-
-
-  vGBMemoryLoad(rom, 32768);														// load rom into memory
-  vGBMemoryLoad(dmg_boot_bin, 256);													// load boot rom into appropriate place in memory map
-
-  vGBMemoryInit();
-  vSetFrameBuffer();
   while (1)
   {
       vGBCPUStep();
@@ -273,7 +400,7 @@ void SystemClock_Config(void)
   RCC_OscInitStruct.PLL.PLLFRACN = 0;
   RCC_OscInitStruct.PLL.PLLP = 2;
   RCC_OscInitStruct.PLL.PLLR = 2;
-  RCC_OscInitStruct.PLL.PLLQ = 4;						// changed from 4 to 16 to make i2s work
+  RCC_OscInitStruct.PLL.PLLQ = 4;
 
   RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
   RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_2;
@@ -542,7 +669,6 @@ static void vLEDInit(void){
 	GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
 	HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 }
-
 /* USER CODE END 4 */
 
 /**

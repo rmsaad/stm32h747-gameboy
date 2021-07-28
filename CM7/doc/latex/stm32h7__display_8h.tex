@@ -4,13 +4,13 @@
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{stm32h7__display_8h_a50f5849579459ad0a6c1245e7e307224}{stm32h7\+\_\+display\+Set\+Palette}} ()
-\item 
-void \mbox{\hyperlink{stm32h7__display_8h_a81e2c373d1e591d4bcda7aed5893ce1a}{display\+Frame\+Buffer}} (uint8\+\_\+t $\ast$gb\+\_\+frame, uint8\+\_\+t scale\+Amount)
-\item 
+\begin{DoxyCompactList}\small\item\em Sets the color palette for the L8 indirect color mode used for the gameboy. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{stm32h7__display_8h_a074538f6222e58f8cbc01ac5048514da}{display\+Frame\+Buffer}} (uint8\+\_\+t $\ast$gb\+\_\+frame, uint8\+\_\+t scale\+Amount, uint8\+\_\+t ly)
+\begin{DoxyCompactList}\small\item\em Copies the line buffer to the frame buffer while converting from L8 color to RGB8888 through use of DMA2D. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{stm32h7__display_8h_a9d6d0e93865a7306ac61431a669e51af}{display\+Double\+Buffer}} ()
 \item 
 void \mbox{\hyperlink{stm32h7__display_8h_a24336fe16fa0d0ee8c7087342fd1be47}{Copy\+Buffer}} (uint32\+\_\+t $\ast$p\+Src, uint32\+\_\+t $\ast$p\+Dst, uint16\+\_\+t x, uint16\+\_\+t y, uint16\+\_\+t xsize, uint16\+\_\+t ysize)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Copies Source buffer into the frame buffer, applies CLUT loading. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -20,21 +20,64 @@ void \mbox{\hyperlink{stm32h7__display_8h_a24336fe16fa0d0ee8c7087342fd1be47}{Cop
 \doxysubsubsection{\texorpdfstring{CopyBuffer()}{CopyBuffer()}}
 {\footnotesize\ttfamily void Copy\+Buffer (\begin{DoxyParamCaption}\item[{uint32\+\_\+t $\ast$}]{p\+Src,  }\item[{uint32\+\_\+t $\ast$}]{p\+Dst,  }\item[{uint16\+\_\+t}]{x,  }\item[{uint16\+\_\+t}]{y,  }\item[{uint16\+\_\+t}]{xsize,  }\item[{uint16\+\_\+t}]{ysize }\end{DoxyParamCaption})}
 
+
+
+Copies Source buffer into the frame buffer, applies CLUT loading. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em p\+Src} & Source buffer \\
+\hline
+{\em p\+Dst} & Destination buffer \\
+\hline
+{\em x} & The coordinate x position of the buffer on the display \\
+\hline
+{\em y} & The coordinate y position of the buffer on the display \\
+\hline
+{\em xsize} & The x size of the buffer \\
+\hline
+{\em ysize} & The y size of the buffer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{stm32h7__display_8h_a9d6d0e93865a7306ac61431a669e51af}\label{stm32h7__display_8h_a9d6d0e93865a7306ac61431a669e51af}} 
 \index{stm32h7\_display.h@{stm32h7\_display.h}!displayDoubleBuffer@{displayDoubleBuffer}}
 \index{displayDoubleBuffer@{displayDoubleBuffer}!stm32h7\_display.h@{stm32h7\_display.h}}
 \doxysubsubsection{\texorpdfstring{displayDoubleBuffer()}{displayDoubleBuffer()}}
 {\footnotesize\ttfamily void display\+Double\+Buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
-\mbox{\Hypertarget{stm32h7__display_8h_a81e2c373d1e591d4bcda7aed5893ce1a}\label{stm32h7__display_8h_a81e2c373d1e591d4bcda7aed5893ce1a}} 
+\mbox{\Hypertarget{stm32h7__display_8h_a074538f6222e58f8cbc01ac5048514da}\label{stm32h7__display_8h_a074538f6222e58f8cbc01ac5048514da}} 
 \index{stm32h7\_display.h@{stm32h7\_display.h}!displayFrameBuffer@{displayFrameBuffer}}
 \index{displayFrameBuffer@{displayFrameBuffer}!stm32h7\_display.h@{stm32h7\_display.h}}
 \doxysubsubsection{\texorpdfstring{displayFrameBuffer()}{displayFrameBuffer()}}
-{\footnotesize\ttfamily void display\+Frame\+Buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{gb\+\_\+frame,  }\item[{uint8\+\_\+t}]{scale\+Amount }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void display\+Frame\+Buffer (\begin{DoxyParamCaption}\item[{uint8\+\_\+t $\ast$}]{gb\+\_\+line,  }\item[{uint8\+\_\+t}]{scale\+Amount,  }\item[{uint8\+\_\+t}]{ly }\end{DoxyParamCaption})}
 
+
+
+Copies the line buffer to the frame buffer while converting from L8 color to RGB8888 through use of DMA2D. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em gb\+\_\+line} & line buffer \\
+\hline
+{\em scale\+Amount} & Up-\/scaling amount \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
 \mbox{\Hypertarget{stm32h7__display_8h_a50f5849579459ad0a6c1245e7e307224}\label{stm32h7__display_8h_a50f5849579459ad0a6c1245e7e307224}} 
 \index{stm32h7\_display.h@{stm32h7\_display.h}!stm32h7\_displaySetPalette@{stm32h7\_displaySetPalette}}
 \index{stm32h7\_displaySetPalette@{stm32h7\_displaySetPalette}!stm32h7\_display.h@{stm32h7\_display.h}}
 \doxysubsubsection{\texorpdfstring{stm32h7\_displaySetPalette()}{stm32h7\_displaySetPalette()}}
 {\footnotesize\ttfamily void stm32h7\+\_\+display\+Set\+Palette (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Sets the color palette for the L8 indirect color mode used for the gameboy. 
+
+\begin{DoxyReturn}{Returns}
+Nothing 
+\end{DoxyReturn}
