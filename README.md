@@ -2,7 +2,7 @@
 
 ![Gameboy](images/gameboy.gif?raw=true "Title")
 
-#### WIP 
+### :construction: :construction_worker: :hammer_and_wrench: WIP :hammer_and_wrench: :construction_worker: :construction:
 
 A gameboy emulator for the STM32h747 Discovery Board. 
 
