@@ -11,7 +11,6 @@
   ******************************************************************************
   */
 
-#include "main.h"
 #include "gbcpu.h"
 #include "gbmemory.h"
 #include "gbfunctions.h"

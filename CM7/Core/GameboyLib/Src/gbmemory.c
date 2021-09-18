@@ -13,8 +13,10 @@
 
 #include <string.h>
 #include <stdint.h>
+
+#include "stm32h7xx_hal.h"
 #include "gbfunctions.h"
-#include "main.h"
+
 #include "gbmemory.h"
 #include "gbMBC.h"
 
@@ -27,11 +29,31 @@ uint8_t   ucTimerStopStart;
 uint8_t   ucClockMode;
 uint8_t   ucDataTransFlag = 0;
 uint8_t   ucBootRomEn = 1;
+const unsigned char* rom;
+
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc3;
 
 /*Function Prototypes*/
 uint8_t prvGBMemoryJoypad();
+
+
+/**
+ * @brief Sets the Gameboy ROM to be played
+ * @param pROM poitner to game ROM
+ * @retval None
+ */
+void setROM(const unsigned char* pROM){
+    rom = pROM;
+}
+
+/**
+ * @brief Returns pointer to Start of Gameboy ROM
+ * @retval Gameboy ROM
+ */
+const unsigned char* getRomPointer(){
+    return rom;
+}
 
 /**
  * @brief Set the current opcode for Debug Printing to LCD screen. See vGBMemoryPrint();
@@ -312,28 +334,28 @@ void vGBMemoryIncTimers(uint8_t durationMcycle){
  * @returns Nothing
  */
 void vGBMemoryPrint(){
-    char temp[15];
-    sprintf(temp,"Opcode: 0x%.2x", ucCurrentOP);
-    UTIL_LCD_DisplayStringAt(500, LINE(2), (uint8_t *) temp, LEFT_MODE);
-    sprintf(temp,"AF: 0x%.4x",reg.AF);
-    UTIL_LCD_DisplayStringAt(500, LINE(3), (uint8_t *) temp, LEFT_MODE);
-    sprintf(temp,"BC: 0x%.4x",reg.BC);
-    UTIL_LCD_DisplayStringAt(500, LINE(4), (uint8_t *) temp, LEFT_MODE);
-    sprintf(temp,"DE: 0x%.4x",reg.DE);
-    UTIL_LCD_DisplayStringAt(500, LINE(5), (uint8_t *) temp, LEFT_MODE);
-    sprintf(temp,"HL: 0x%.4x",reg.HL);
-    UTIL_LCD_DisplayStringAt(500, LINE(6), (uint8_t *) temp, LEFT_MODE);
-    sprintf(temp,"SP: 0x%.4x",reg.SP);
-    UTIL_LCD_DisplayStringAt(500, LINE(7), (uint8_t *) temp, LEFT_MODE);
-    sprintf(temp,"PC: 0x%.4x",reg.PC);
-    UTIL_LCD_DisplayStringAt(500, LINE(8), (uint8_t *) temp, LEFT_MODE);
-
-	sprintf(temp," Z: 0x%.1x",ucCheckBit(reg.F, 7));
-	UTIL_LCD_DisplayStringAt(500, LINE(10), (uint8_t *) temp, LEFT_MODE);
-	sprintf(temp," N: 0x%.1x",ucCheckBit(reg.F, 6));
-	UTIL_LCD_DisplayStringAt(500, LINE(11), (uint8_t *) temp, LEFT_MODE);
-	sprintf(temp," H: 0x%.1x",ucCheckBit(reg.F, 5));
-	UTIL_LCD_DisplayStringAt(500, LINE(12), (uint8_t *) temp, LEFT_MODE);
-	sprintf(temp," C: 0x%.1x",ucCheckBit(reg.F, 4));
-	UTIL_LCD_DisplayStringAt(500, LINE(13), (uint8_t *) temp, LEFT_MODE);
+//    char temp[15];
+//    sprintf(temp,"Opcode: 0x%.2x", ucCurrentOP);
+//    UTIL_LCD_DisplayStringAt(500, LINE(2), (uint8_t *) temp, LEFT_MODE);
+//    sprintf(temp,"AF: 0x%.4x",reg.AF);
+//    UTIL_LCD_DisplayStringAt(500, LINE(3), (uint8_t *) temp, LEFT_MODE);
+//    sprintf(temp,"BC: 0x%.4x",reg.BC);
+//    UTIL_LCD_DisplayStringAt(500, LINE(4), (uint8_t *) temp, LEFT_MODE);
+//    sprintf(temp,"DE: 0x%.4x",reg.DE);
+//    UTIL_LCD_DisplayStringAt(500, LINE(5), (uint8_t *) temp, LEFT_MODE);
+//    sprintf(temp,"HL: 0x%.4x",reg.HL);
+//    UTIL_LCD_DisplayStringAt(500, LINE(6), (uint8_t *) temp, LEFT_MODE);
+//    sprintf(temp,"SP: 0x%.4x",reg.SP);
+//    UTIL_LCD_DisplayStringAt(500, LINE(7), (uint8_t *) temp, LEFT_MODE);
+//    sprintf(temp,"PC: 0x%.4x",reg.PC);
+//    UTIL_LCD_DisplayStringAt(500, LINE(8), (uint8_t *) temp, LEFT_MODE);
+//
+//	sprintf(temp," Z: 0x%.1x",ucCheckBit(reg.F, 7));
+//	UTIL_LCD_DisplayStringAt(500, LINE(10), (uint8_t *) temp, LEFT_MODE);
+//	sprintf(temp," N: 0x%.1x",ucCheckBit(reg.F, 6));
+//	UTIL_LCD_DisplayStringAt(500, LINE(11), (uint8_t *) temp, LEFT_MODE);
+//	sprintf(temp," H: 0x%.1x",ucCheckBit(reg.F, 5));
+//	UTIL_LCD_DisplayStringAt(500, LINE(12), (uint8_t *) temp, LEFT_MODE);
+//	sprintf(temp," C: 0x%.1x",ucCheckBit(reg.F, 4));
+//	UTIL_LCD_DisplayStringAt(500, LINE(13), (uint8_t *) temp, LEFT_MODE);
 }

@@ -83,9 +83,7 @@ extern const unsigned char bgbtest_gb[]; //Passed
 extern const unsigned char instr_timing_gb[];
 extern const unsigned char SML_gb[];
 extern const unsigned char KDL_gb[];
-const unsigned char* rom = &SML_gb[0];
-const unsigned char* rom1 = &SML_gb[0];
-const unsigned char* rom2 = &KDL_gb[0];
+
 
 typedef enum {
   NONE = 0,
@@ -122,22 +120,6 @@ static void vLEDInit(void);
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
 
-/**
- * @brief Sets the Gameboy ROM to be played
- * @param pROM poitner to game ROM
- * @retval None
- */
-void setROM(const unsigned char* pROM){
-    rom = pROM;
-}
-
-/**
- * @brief Returns pointer to Start of Gameboy ROM
- * @retval Gameboy ROM
- */
-const unsigned char* getRomPointer(){
-	return rom;
-}
 
 /**
  * @brief Handles Button inputs for Gameboy ROM selection
@@ -334,7 +316,7 @@ Error_Handler();
   UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *) "Please Select A Game", CENTER_MODE);
   chooseGame();
 
-  vGBMemoryLoad(rom, 32768);                                                        // load rom into memory
+  vGBMemoryLoad(getRomPointer(), 32768);                                                        // load rom into memory
   vGBMemoryLoad(dmg_boot_bin, 256);                                                 // load boot rom into appropriate place in memory map
   vGBMemoryInit();                                                                  // initialize Gameboy Memory and Registers
   vSetLineBuffer();                                                                 //

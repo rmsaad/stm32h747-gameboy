@@ -13,11 +13,11 @@
   ******************************************************************************
   */
 
-#include "main.h"
+#include <string.h>
+
 #include "gbfunctions.h"
 #include "gbcpu.h"
 #include "gbmemory.h"
-#include "string.h"
 #include "stm32h7_display.h"
 
 // Line buffer start address

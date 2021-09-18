@@ -73,6 +73,7 @@ void vGBMBCwrite(uint16_t address, uint8_t data){
 		}else if(address < 0x6000){
 			if(ucgbMBCbankMode == 0){
 				ucgbMBCoffsetHigh = ((data & 0x03) << 5);
+
 			}else{
 
 			}

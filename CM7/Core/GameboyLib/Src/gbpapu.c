@@ -12,7 +12,7 @@
   */
 
 #include "main.h"
-#include "string.h"
+#include <string.h>
 #include "gbmemory.h"
 #include "gbcpu.h"
 
