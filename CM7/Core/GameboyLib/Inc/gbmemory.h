@@ -125,8 +125,9 @@ typedef struct{
 
 /* Public function prototypes -----------------------------------------------*/
 
-void setROM(const unsigned char* pROM);
-const unsigned char* getRomPointer();
+void vGBMemorySetControlFunctionPtr(uint8_t (*controlsFunctionPtr)(uint8_t*, uint8_t*));
+void vGBMemorySetROM(const unsigned char* pROM);
+const unsigned char* ucGBMemoryGetRomPointer();
 void vGBMemoryLoad(const void* data, uint32_t size);
 void vGBMemoryWrite(uint16_t address, uint8_t data);
 void vGBMemoryWriteShort(uint16_t address, uint16_t data);

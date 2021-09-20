@@ -14,9 +14,7 @@
 #include <string.h>
 #include <stdint.h>
 
-#include "stm32h7xx_hal.h"
 #include "gbfunctions.h"
-
 #include "gbmemory.h"
 #include "gbMBC.h"
 
@@ -31,27 +29,35 @@ uint8_t   ucDataTransFlag = 0;
 uint8_t   ucBootRomEn = 1;
 const unsigned char* rom;
 
-extern ADC_HandleTypeDef hadc1;
-extern ADC_HandleTypeDef hadc3;
+static uint8_t (*gbmemoryConFuncPtr)(uint8_t*, uint8_t*);
 
 /*Function Prototypes*/
 uint8_t prvGBMemoryJoypad();
 
 
 /**
+ * @brief Sets function used in prvGBMemoryJoypad() without needing to include control.h
+ * @param controlsFunctionPtr function pointer holding address of ucControlsJoypad() function in controls.c
+ * @return None
+ */
+void vGBMemorySetControlFunctionPtr(uint8_t (*controlsFunctionPtr)(uint8_t*, uint8_t*)){
+    gbmemoryConFuncPtr = controlsFunctionPtr;
+}
+
+/**
  * @brief Sets the Gameboy ROM to be played
  * @param pROM poitner to game ROM
- * @retval None
+ * @return None
  */
-void setROM(const unsigned char* pROM){
+void vGBMemorySetROM(const unsigned char* pROM){
     rom = pROM;
 }
 
 /**
  * @brief Returns pointer to Start of Gameboy ROM
- * @retval Gameboy ROM
+ * @return Gameboy ROM
  */
-const unsigned char* getRomPointer(){
+const unsigned char* ucGBMemoryGetRomPointer(){
     return rom;
 }
 
@@ -100,34 +106,7 @@ void vGBMemoryLoad(const void* data, uint32_t bytes){
  * @return Joypad Keys pressed
  */
 uint8_t prvGBMemoryJoypad(){
-    uint32_t value = 0;
-	uint8_t mask = 0;
-
-	if(ucJoypadSELdir == 0x10){
-	    HAL_ADC_Start(&hadc3);
-		HAL_ADC_PollForConversion(&hadc3, HAL_MAX_DELAY);
-		value = HAL_ADC_GetValue(&hadc3) >> 12;
-	}else if(ucJoypadSELbut == 0x20){
-	    HAL_ADC_Start(&hadc1);
-		HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY);
-		value = HAL_ADC_GetValue(&hadc1) >> 12;
-	}
-
-	if(value == 0xf)
-	    mask = (0x0);
-	else{
-	    if((value >> 3) & 0x1){
-		    mask = (0x4);
-		}else if((value & 0x6) == 0x6){
-		    mask = (0x8);
-		}else if(value > 0x2){
-		    mask = (0x2);
-		}else{
-		    mask = (0x1);
-		}
-	}
-
-	return 0xC0 | (0xF^mask) | (ucJoypadSELbut | ucJoypadSELdir);
+    return (*gbmemoryConFuncPtr)(&ucJoypadSELdir, &ucJoypadSELbut);
 }
 
 /**

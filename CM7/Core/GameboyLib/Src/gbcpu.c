@@ -1710,7 +1710,7 @@ void vGBCPUStep(){
         prvGBCPUinstr(ucGBMemoryRead(reg.PC));
     }else{
         ucBootRomEn = 1;
-        vGBMemoryLoad(getRomPointer(), 256);
+        vGBMemoryLoad(ucGBMemoryGetRomPointer(), 256);
         prvGBCPUinstr(ucGBMemoryRead(reg.PC));
     }
 }

@@ -1,0 +1,8 @@
+C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/CMakeFiles/gameboyLib.dir
+C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/CMakeFiles/gameboyUnitTests.dir
+C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/CMakeFiles/INSTALL.dir
+C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/CMakeFiles/ZERO_CHECK.dir
+C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/Unity-master/CMakeFiles/unity.dir
+C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/Unity-master/CMakeFiles/INSTALL.dir
+C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/Unity-master/CMakeFiles/ALL_BUILD.dir

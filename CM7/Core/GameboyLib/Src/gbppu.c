@@ -18,7 +18,6 @@
 #include "gbfunctions.h"
 #include "gbcpu.h"
 #include "gbmemory.h"
-#include "stm32h7_display.h"
 
 // Line buffer start address
 #define SDRAM1 0xD1000000UL
@@ -42,6 +41,9 @@ uint8_t  ulScaleAmount = 3;
 uint32_t ulCurLine;
 uint32_t ulLineAdd;
 
+// Function Pointer pointing to external function in display.c
+static void (*gbppuDispLineBufFuncPtr)(uint8_t* , uint8_t , uint8_t);
+
 /*Function Prototypes*/
 void prvCheckBGP();
 void prvCheckOBP0();
@@ -56,6 +58,16 @@ void prvGBPPUDrawLine(uint8_t ly, uint8_t SCX, uint8_t SCY);
 uint16_t prvGetBackWinTileDataSel();
 uint16_t prvGetBackTileDisplaySel();
 uint16_t prvGetWinTileDisplaySel();
+
+
+/**
+ * @brief Sets function used in prvGBPPUDrawLine() without needing to include control.h
+ * @param displayLineBufferFunctionPtr function pointer holding address of displayFrameBuffer() function in display.c
+ * @return None
+ */
+void vGBPPUSetDisplayLineBufferFunctionPtr(void (*displayLineBufferFunctionPtr)(uint8_t* , uint8_t , uint8_t)){
+    gbppuDispLineBufFuncPtr = displayLineBufferFunctionPtr;
+}
 
 /**
  * @brief Zeros All Memory in the Line Buffer
@@ -456,7 +468,7 @@ void prvGBPPUDrawLine(uint8_t ly, uint8_t SCX, uint8_t SCY){
         prvGBPPUDrawLineObjects(ly);
     }
 
-    displayFrameBuffer(&ucGBLine[(ulCurLine)], ulScaleAmount, ly);
+    (*gbppuDispLineBufFuncPtr)(&ucGBLine[(ulCurLine)], ulScaleAmount, ly);
 }
 
 

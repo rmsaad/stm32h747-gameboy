@@ -24,12 +24,8 @@
 /* USER CODE BEGIN Includes */
 #include <string.h>
 #include <stdio.h>
-#include "gbmemory.h"
-#include "gbcpu.h"
-#include "gbppu.h"
-#include "gbMBC.h"
-#include "gbpapu.h"
-#include "stm32h7_display.h"
+
+// ROMS
 #include "dmg_boot.bin.h"
 #include "bgbtest.gb.h"
 #include "Tetris.gb.h"
@@ -38,7 +34,21 @@
 #include "SML.gb.h"
 #include "KDL.gb.h"
 #include "instr_timing.gb.h"
+
+// gameboyLib
+#include "gbmemory.h"
+#include "gbcpu.h"
+#include "gbppu.h"
+#include "gbMBC.h"
+#include "gbpapu.h"
+
+// stm32h747 gameboyLib
+#include "display.h"
+#include "controls.h"
+
+// audio test file
 #include "audio_sample.bin.h"
+
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -158,9 +168,9 @@ void menuSel(){
                     if(gameState == MARIO){  gameState = KIRBY;  break;}
                     if(gameState == KIRBY){  gameState = TETRIS; break;}
 
-        case IN:    if(gameState == TETRIS) setROM(Tetris_gb);
-                    if(gameState == MARIO)  setROM(SML_gb);
-                    if(gameState == KIRBY)  setROM(KDL_gb);
+        case IN:    if(gameState == TETRIS) vGBMemorySetROM(Tetris_gb);
+                    if(gameState == MARIO)  vGBMemorySetROM(SML_gb);
+                    if(gameState == KIRBY)  vGBMemorySetROM(KDL_gb);
                     sel = 0;
                     break;
 
@@ -301,7 +311,7 @@ Error_Handler();
   vLEDInit();
   MX_ADC1_Init();
   MX_ADC3_Init();
-  stm32h7_displaySetPalette();                                                      // sets the L8 indirect addressing Pallette
+  vDisplaySetPalette();                                                             // sets the L8 indirect addressing Pallette
 
   BSP_LCD_Init(0, LCD_ORIENTATION_LANDSCAPE);                                       // Init LCD
 
@@ -316,7 +326,10 @@ Error_Handler();
   UTIL_LCD_DisplayStringAt(0, LINE(3), (uint8_t *) "Please Select A Game", CENTER_MODE);
   chooseGame();
 
-  vGBMemoryLoad(getRomPointer(), 32768);                                                        // load rom into memory
+  vControlsInit();                                                                  // inits controls-gbmemory function pointer
+  vDisplayInitLineBuffer();                                                         // inits display-ppu function pointer
+
+  vGBMemoryLoad(ucGBMemoryGetRomPointer(), 32768);                                  // load rom into memory
   vGBMemoryLoad(dmg_boot_bin, 256);                                                 // load boot rom into appropriate place in memory map
   vGBMemoryInit();                                                                  // initialize Gameboy Memory and Registers
   vSetLineBuffer();                                                                 //

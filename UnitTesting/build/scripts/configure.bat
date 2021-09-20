@@ -1,0 +1,1 @@
+cmake -D UNITY_EXTENSION_MEMORY=ON -D UNITY_EXTENSION_FIXTURE=ON -S ../../ -B ../ -G "Visual Studio 16 2019"

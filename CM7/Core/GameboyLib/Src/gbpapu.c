@@ -37,7 +37,7 @@ void gbPAPUstartAudio(){
 	AudioInit.Volume = 70;
 	AudioInit.Device = AUDIO_OUT_DEVICE_HEADPHONE;
 	if(BSP_AUDIO_OUT_Init(0, &AudioInit)  != HAL_OK){
-	    Error_Handler();
+	    //Error_Handler();
 	}
 	memset(AudioBuffer, 0, AUDIO_BUFFER_SIZE);
 
