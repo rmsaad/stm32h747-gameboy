@@ -9,6 +9,7 @@
 #define INC_GBMEMORY_H_
 
 #include <stdio.h>
+#include <stdint.h>
 
 // ppu modes
 #define MODE_0 0    // HBLANK

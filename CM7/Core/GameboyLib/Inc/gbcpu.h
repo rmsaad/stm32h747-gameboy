@@ -9,6 +9,7 @@
 #define INC_GBCPU_H_
 
 #include <stdio.h>
+#include <stdint.h>
 
 #define Z_FLAG 7
 #define N_FLAG 6

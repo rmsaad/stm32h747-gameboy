@@ -21,11 +21,11 @@
 registers reg;
 memory    mem;
 uint8_t   ucCurrentOP;
-uint8_t   ucJoypadSELdir;
-uint8_t   ucJoypadSELbut;
-uint8_t   ucTimerStopStart;
-uint8_t   ucClockMode;
-uint8_t   ucDataTransFlag = 0;
+static uint8_t   ucJoypadSELdir = 0;
+static uint8_t   ucJoypadSELbut = 0;
+static uint8_t   ucTimerStopStart = 0;
+static uint8_t   ucClockMode = 0;
+static uint8_t   ucDataTransFlag = 0;
 uint8_t   ucBootRomEn = 1;
 const unsigned char* rom;
 

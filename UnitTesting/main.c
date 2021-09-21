@@ -16,47 +16,16 @@
 #include <string.h>
 #include <memory.h>
 
-//#include "unity.h"
 #include "unity_fixture.h"
 
-static char output[100];
-static const char* expected;
-
-TEST_GROUP(lazy);
-
-TEST_SETUP(lazy)
-{
-	memset(output, 0xaa, sizeof output);
-	expected = "";
-}
-
-TEST_TEAR_DOWN(lazy)
-{
-}
-
-TEST(lazy, NoFormatOperations)
-{
-	char output[5] = "";
-	TEST_ASSERT_EQUAL(3, sprintf(output, "hey"));
-	TEST_ASSERT_EQUAL_STRING("hey", output);
-}
-
-TEST(lazy, InsertString)
-{
-	char output[20] = "";
-
-	TEST_ASSERT_EQUAL(12, sprintf(output, "Hello %s\n", "World"));
-	TEST_ASSERT_EQUAL_STRING("Hello World\n", output);
-}
-
-TEST_GROUP_RUNNER(lazy) {
-	RUN_TEST_CASE(lazy, NoFormatOperations);
-	RUN_TEST_CASE(lazy, InsertString);
-}
+// include all test groups
+#include "gbmemoryTest.c"
+#include "gbppuTest.c"
 
 static void RunAllTests(void)
 {
-	RUN_TEST_GROUP(lazy);
+	RUN_TEST_GROUP(vGBMemoryWrite);
+	RUN_TEST_GROUP(getTileLineData);
 }
 /*
  * 

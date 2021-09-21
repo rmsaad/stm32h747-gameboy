@@ -22,31 +22,31 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{AF51F1D7-2F8F-3C4E-8C1D-12437B987745}</ProjectGuid>
+    <ProjectGuid>{D6A8BF18-DC9B-33A9-9017-DDE0C6DAF3B0}</ProjectGuid>
     <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
     <Keyword>Win32Proj</Keyword>
     <Platform>x64</Platform>
-    <ProjectName>gameboyLib</ProjectName>
+    <ProjectName>test</ProjectName>
     <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'" Label="Configuration">
-    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>MultiByte</CharacterSet>
     <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
@@ -60,25 +60,33 @@
   <PropertyGroup>
     <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Debug\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">gameboyLib.dir\Debug\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">gameboyLib</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.lib</TargetExt>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">test.dir\Debug\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">test</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</GenerateManifest>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Release\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">gameboyLib.dir\Release\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">gameboyLib</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.lib</TargetExt>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">test.dir\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">test</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</GenerateManifest>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\MinSizeRel\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">gameboyLib.dir\MinSizeRel\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">gameboyLib</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.lib</TargetExt>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">test.dir\MinSizeRel\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">test</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">false</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">true</GenerateManifest>
     <OutDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\RelWithDebInfo\</OutDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">gameboyLib.dir\RelWithDebInfo\</IntDir>
-    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">gameboyLib</TargetName>
-    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.lib</TargetExt>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">test.dir\RelWithDebInfo\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">test</TargetName>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">.exe</TargetExt>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</LinkIncremental>
+    <GenerateManifest Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">true</GenerateManifest>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Unity-master;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\memory\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\fixture\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -94,23 +102,33 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_DEBUG;_WINDOWS;CMAKE_INTDIR=\"Debug\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Unity-master;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\memory\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\fixture\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Unity-master;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\memory\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\fixture\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <Lib>
+    <Link>
+      <AdditionalDependencies>Unity-master\Debug\unity.lib;Debug\gameboyLib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
-    </Lib>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/Debug/test.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/Debug/test.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Unity-master;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\memory\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\fixture\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>
       </ExceptionHandling>
@@ -126,23 +144,33 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"Release\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Unity-master;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\memory\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\fixture\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Unity-master;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\memory\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\fixture\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <Lib>
+    <Link>
+      <AdditionalDependencies>Unity-master\Release\unity.lib;Release\gameboyLib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
-    </Lib>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/Release/test.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/Release/test.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MinSizeRel|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Unity-master;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\memory\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\fixture\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <ExceptionHandling>
       </ExceptionHandling>
@@ -158,23 +186,33 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"MinSizeRel\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Unity-master;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\memory\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\fixture\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Unity-master;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\memory\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\fixture\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <Lib>
+    <Link>
+      <AdditionalDependencies>Unity-master\MinSizeRel\unity.lib;MinSizeRel\gameboyLib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
-    </Lib>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/MinSizeRel/test.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/MinSizeRel/test.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='RelWithDebInfo|x64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Unity-master;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\memory\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\fixture\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <ExceptionHandling>
@@ -189,19 +227,29 @@
     </ClCompile>
     <ResourceCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions);WIN32;_WINDOWS;NDEBUG;CMAKE_INTDIR=\"RelWithDebInfo\"</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Unity-master;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\memory\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\fixture\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
     <Midl>
-      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Unity-master;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\memory\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\Unity-master\extras\fixture\src;C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\..\CM7\Core\GameboyLib\Inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
       <HeaderFileName>%(Filename).h</HeaderFileName>
       <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
       <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
       <ProxyFileName>%(Filename)_p.c</ProxyFileName>
     </Midl>
-    <Lib>
+    <Link>
+      <AdditionalDependencies>Unity-master\RelWithDebInfo\unity.lib;RelWithDebInfo\gameboyLib.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
-    </Lib>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <IgnoreSpecificDefaultLibraries>%(IgnoreSpecificDefaultLibraries)</IgnoreSpecificDefaultLibraries>
+      <ImportLibrary>C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/RelWithDebInfo/test.lib</ImportLibrary>
+      <ProgramDataBaseFile>C:/Users/Rami/STM32CubeIDE/workspace_1.4.0/stm32h747-gameboy/UnitTesting/build/RelWithDebInfo/test.pdb</ProgramDataBaseFile>
+      <SubSystem>Console</SubSystem>
+    </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>false</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\CMakeLists.txt">
@@ -261,11 +309,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\CM7\Core\GameboyLib\Src\gbmemory.c" />
-    <ClCompile Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\CM7\Core\GameboyLib\Src\gbcpu.c" />
-    <ClCompile Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\CM7\Core\GameboyLib\Src\gbppu.c" />
-    <ClCompile Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\CM7\Core\GameboyLib\Src\gbMBC.c" />
-    <ClCompile Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\CM7\Core\GameboyLib\Src\gbfunctions.c" />
+    <ClCompile Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\main2.c" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\ZERO_CHECK.vcxproj">
@@ -273,6 +317,14 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
       <Name>ZERO_CHECK</Name>
       <ReferenceOutputAssembly>false</ReferenceOutputAssembly>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\gameboyLib.vcxproj">
+      <Project>{AF51F1D7-2F8F-3C4E-8C1D-12437B987745}</Project>
+      <Name>gameboyLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Unity-master\unity.vcxproj">
+      <Project>{8F154480-1290-3551-9DE2-D0DD36D4A328}</Project>
+      <Name>unity</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

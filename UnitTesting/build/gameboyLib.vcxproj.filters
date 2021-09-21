@@ -4,6 +4,18 @@
     <ClCompile Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\CM7\Core\GameboyLib\Src\gbmemory.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\CM7\Core\GameboyLib\Src\gbcpu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\CM7\Core\GameboyLib\Src\gbppu.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\CM7\Core\GameboyLib\Src\gbMBC.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\CM7\Core\GameboyLib\Src\gbfunctions.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\CMakeLists.txt" />

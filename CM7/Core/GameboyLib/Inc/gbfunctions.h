@@ -9,6 +9,7 @@
 #define INC_GBFUNCTIONS_H_
 
 #include <stdio.h>
+#include <stdint.h>
 
 #define Z_FLAG 7
 #define N_FLAG 6
