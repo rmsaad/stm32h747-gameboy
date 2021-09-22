@@ -27,7 +27,7 @@ TEST_GROUP(vGBMemoryWrite);
 
 TEST_SETUP(vGBMemoryWrite)
 {
-	memset(mem.ram, 0, 0xFFFF);
+	memset(mem.ram, 0x00, 0xFFFF);
 }
 
 TEST_TEAR_DOWN(vGBMemoryWrite)

@@ -1,2 +1,0 @@
-C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Unity-master\Debug\unity.pdb
-C:\Users\Rami\STM32CubeIDE\workspace_1.4.0\stm32h747-gameboy\UnitTesting\build\Unity-master\unity.dir\Debug\unity.pdb
