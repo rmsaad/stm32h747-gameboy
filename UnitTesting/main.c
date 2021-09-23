@@ -21,11 +21,14 @@
 // include all test groups
 #include "gbmemoryTest.c"
 #include "gbppuTest.c"
+#include "gbmbcTest.c"
 
 static void RunAllTests(void)
 {
 	RUN_TEST_GROUP(vGBMemoryWrite);
 	RUN_TEST_GROUP(getTileLineData);
+	RUN_TEST_GROUP(ucGBMBCreadBankX);
+	RUN_TEST_GROUP(vGBMBCwrite);
 }
 /*
  * 

@@ -20,7 +20,7 @@ uint8_t ucgbMBCoffsetLow = 0x01;
 uint8_t ucgbMBCoffsetHigh = 0x0;
 uint8_t ucgbMBCbankMode = 0x0;
 
-extern const unsigned char* rom;
+extern const unsigned char* rom;              // use the getROM() in gbmemory.c instead change and test this later
 
 /**
  * @brief sets the cartridge type for use in this file corresponding to data stored at the memory location 0x147
