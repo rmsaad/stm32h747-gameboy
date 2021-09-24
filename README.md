@@ -1,6 +1,7 @@
 # STM32H747 Gameboy Emulator
 
-![Gameboy](images/gameboy.gif?raw=true "Title")
+![Gameboy](images/mario.gif?raw=true "Title")
+![Gameboy](images/tetris.gif?raw=true "Title")
 
 ### :construction: :construction_worker: :hammer_and_wrench: WIP :hammer_and_wrench: :construction_worker: :construction:
 
