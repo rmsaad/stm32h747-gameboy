@@ -48,7 +48,7 @@
 #include "audio.h"
 
 // audio test file
-#include "audio_sample.bin.h"
+//#include "audio_sample.bin.h"
 
 /* USER CODE END Includes */
 
@@ -335,12 +335,12 @@ Error_Handler();
   vGBMemoryInit();                                                                  // initialize Gameboy Memory and Registers
   vSetLineBuffer();                                                                 //
 
-  //vAudioInit();
+  vAudioInit();
   while (1)
   {
       vGBCPUStep();
 	  vGBPPUStep();
-	  //vGBPAPUStep();
+	  vGBPAPUStep();
   }
 
 }

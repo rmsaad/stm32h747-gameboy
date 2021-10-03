@@ -14,6 +14,7 @@
 #include <string.h>
 #include <stdint.h>
 
+#include "gbpapu.h"
 #include "gbfunctions.h"
 #include "gbmemory.h"
 #include "gbMBC.h"

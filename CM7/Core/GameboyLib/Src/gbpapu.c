@@ -16,6 +16,10 @@
 #include "gbmemory.h"
 #include "gbcpu.h"
 
+#define SDRAM12 0xD1100000UL
+// Frame Buffer variables
+uint16_t  *CH2Buff = (uint16_t*)SDRAM12;                  // specific to STM32h747
+
 uint8_t duties[4][8] = {
     {0,0,0,0,0,0,0,1},          //  00 (0x0)
     {1,0,0,0,0,0,0,1},          //  01 (0x1)
@@ -24,8 +28,7 @@ uint8_t duties[4][8] = {
 };
 
 // Audio buffers
-uint16_t CH2Buff[1024];
-
+//uint16_t CH2Buff[1024 * 2];
 uint16_t CH2BuffPos = 0;
 
 // Channel Enables
@@ -162,18 +165,13 @@ void vGBPAPUStep(){
 
     prvGBPAPUStepCH2(currentTstaes);
 
-    if (CH2BuffPos >= 128){
+    if (CH2BuffPos >= 8192){
         vAudioPlayBuffer(CH2Buff, &CH2BuffPos);
+        //CH2BuffPos -= 1024;
+        CH2BuffPos = 0;
     }
 
 
-//	if(audstate == BUFFER_OFFSET_HALF){
-//		//memcpy(&AudioBuffer[0], &audio_sample_bin[0], AUDIO_BUFFER_SIZE/2);
-//		audstate = BUFFER_OFFSET_NONE;
-//	}else if(audstate == BUFFER_OFFSET_FULL){
-//		//memcpy(&AudioBuffer[AUDIO_BUFFER_SIZE/2], &audio_sample_bin[50000], AUDIO_BUFFER_SIZE/2);
-//		audstate = BUFFER_OFFSET_NONE;
-//	}
 }
 
 // TRIGGER EVENTS

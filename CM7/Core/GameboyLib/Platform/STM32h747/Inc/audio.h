@@ -8,6 +8,7 @@
 #ifndef GAMEBOYLIB_PLATFORM_STM32H747_INC_AUDIO_H_
 #define GAMEBOYLIB_PLATFORM_STM32H747_INC_AUDIO_H_
 
+
 #include <stdint.h>
 
 void vAudioInit();
