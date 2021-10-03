@@ -26,7 +26,7 @@
 static void RunAllTests(void)
 {
 	RUN_TEST_GROUP(vGBMemoryWrite);
-	RUN_TEST_GROUP(getTileLineData);
+	RUN_TEST_GROUP(prvGetTileLineData);
 	RUN_TEST_GROUP(ucGBMBCreadBankX);
 	RUN_TEST_GROUP(vGBMBCwrite);
 }

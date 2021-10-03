@@ -154,6 +154,39 @@ void vGBMemoryWrite(uint16_t address, uint8_t data){
 		    if(data == 1)
 		        ucBootRomEn = 0;
 		}
+
+		else if (address == 0xF26) {
+            if(ucCheckBit(data, 7)) {
+                mem.ram[address] |= 0x80;
+            }else {
+                mem.ram[address] &= ~(0x80);
+            }
+            return;
+        }
+
+        else if (address == 0xFF14 && ucCheckBit(data, 7)) {
+            mem.ram[address] = data;
+            vGBPAPUTriggerCH1(mem.ram[0xFF11] & 0x3f);
+            return;
+        }
+
+        else if (address == 0xFF19 && ucCheckBit(data, 7)) {
+            mem.ram[address] = data;
+            vGBPAPUTriggerCH2(mem.ram[0xFF16] & 0x3f);
+            return;
+        }
+
+        else if (address == 0xFF1e && ucCheckBit(data, 7)) {
+            mem.ram[address] = data;
+            vGBPAPUTriggerCH3(mem.ram[0xFF1b]);
+            return;
+        }
+
+        else if (address == 0xFF23 && ucCheckBit(data, 7)) {
+            mem.ram[address] = data;
+            vGBPAPUTriggerCH4(mem.ram[0xFF20] & 0x3f);
+            return;
+        }
 	}
 
 	if((address >= CARTROM_BANK0 && address < VRAM_BASE)){

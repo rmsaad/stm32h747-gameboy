@@ -45,6 +45,7 @@
 // stm32h747 gameboyLib
 #include "display.h"
 #include "controls.h"
+#include "audio.h"
 
 // audio test file
 #include "audio_sample.bin.h"
@@ -334,12 +335,12 @@ Error_Handler();
   vGBMemoryInit();                                                                  // initialize Gameboy Memory and Registers
   vSetLineBuffer();                                                                 //
 
-  //gbPAPUstartAudio();
+  //vAudioInit();
   while (1)
   {
       vGBCPUStep();
 	  vGBPPUStep();
-	  //gbPAPUStep();
+	  //vGBPAPUStep();
   }
 
 }

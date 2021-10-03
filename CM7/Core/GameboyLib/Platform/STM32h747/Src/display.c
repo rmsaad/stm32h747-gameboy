@@ -43,7 +43,7 @@ DMA2D_CLUTCfgTypeDef clut_cfg;
 
 /*Function Prototypes*/
 void prvDisplayLineBuffer(uint8_t* gb_line, uint8_t scaleAmount, uint8_t ly);
-void prvCopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t xsize, uint16_t ysize);
+void prvCopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t xsize, uint16_t ysize, uint8_t scaleAmt);
 
 /**
  * @brief Allows gbppu.c access to function displayFrameBuffer() without needing to include display.h
@@ -102,7 +102,7 @@ void vDisplaySetPalette(){
  * @param ysize The y size of the buffer
  * @returns Nothing
  */
-void prvCopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t xsize, uint16_t ysize){
+void prvCopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint16_t xsize, uint16_t ysize, uint8_t scaleAmt){
 
     uint32_t destination = (uint32_t)pDst + (y * LCD_X_Size + x) * 4;
     uint32_t source      = (uint32_t)pSrc;
@@ -114,22 +114,13 @@ void prvCopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint1
             if(HAL_DMA2D_CLUTLoad(&hdma2d, clut_cfg, 1) == HAL_OK){
                 HAL_DMA2D_PollForTransfer(&hdma2d, 10);
 
-                if (HAL_DMA2D_Start(&hdma2d, source, destination, xsize, ysize) == HAL_OK){
-                    /* Polling For DMA transfer */
-                    HAL_DMA2D_PollForTransfer(&hdma2d, 10);
-                }
-                ++y;
-                destination = (uint32_t)pDst + (y * LCD_X_Size + x) * 4;
-                if (HAL_DMA2D_Start(&hdma2d, source, destination, xsize, ysize) == HAL_OK){
-                    /* Polling For DMA transfer */
-                    HAL_DMA2D_PollForTransfer(&hdma2d, 10);
-                }
-
-                ++y;
-                destination = (uint32_t)pDst + (y * LCD_X_Size + x) * 4;
-                if (HAL_DMA2D_Start(&hdma2d, source, destination, xsize, ysize) == HAL_OK){
-                    /* Polling For DMA transfer */
-                   HAL_DMA2D_PollForTransfer(&hdma2d, 10);
+                for(int i = 0; i < scaleAmt; i++){
+                    if (HAL_DMA2D_Start(&hdma2d, source, destination, xsize, ysize) == HAL_OK){
+                        /* Polling For DMA transfer */
+                        HAL_DMA2D_PollForTransfer(&hdma2d, 10);
+                    }
+                    ++y;
+                    destination = (uint32_t)pDst + (y * LCD_X_Size + x) * 4;
                 }
             }
         }
@@ -143,6 +134,6 @@ void prvCopyBuffer(uint32_t *pSrc, uint32_t *pDst, uint16_t x, uint16_t y, uint1
  * @returns Nothing
  */
 void prvDisplayLineBuffer(uint8_t* gb_line, uint8_t scaleAmount, uint8_t ly){
-    prvCopyBuffer((uint32_t *) gb_line, (uint32_t *)Buffers[0], 160, (480 - (144*3))/2 + (ly * scaleAmount), 160 * scaleAmount, 1);
+    prvCopyBuffer((uint32_t *) gb_line, (uint32_t *)Buffers[0], 160, (480 - (144*3))/2 + (ly * scaleAmount), 160 * scaleAmount, 1, scaleAmount);
 }
 

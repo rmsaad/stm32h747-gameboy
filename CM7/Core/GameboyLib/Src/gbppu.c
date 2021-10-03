@@ -35,9 +35,9 @@ uint8_t  ucOBP0ColorToPalette[4];
 uint8_t  ucOBP1ColorToPalette[4];
 
 // Frame Buffer variables
-uint8_t  *ucGBLine = (uint8_t*)SDRAM1;
+uint8_t  *ucGBLine = (uint8_t*)SDRAM1;                  // specific to STM32h747
 uint8_t  ucBGWINline[160];
-uint8_t  ulScaleAmount = 3;
+uint8_t  ulScaleAmount = 1;
 uint32_t ulCurLine;
 uint32_t ulLineAdd;
 
@@ -55,6 +55,7 @@ void prvGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY, uint16_t T
 void prvGBPPUDrawLineWindow(uint8_t ly, uint8_t WX, uint8_t WY, uint16_t TileDataAddr, uint16_t DisplayAddr);
 void prvGBPPUDrawLineObjects(uint8_t ly);
 void prvGBPPUDrawLine(uint8_t ly, uint8_t SCX, uint8_t SCY);
+uint16_t prvGetTileLineData(uint16_t tile_offset, uint8_t line_offset, uint16_t TileDataAddr, uint16_t DisplayAddr);
 uint16_t prvGetBackWinTileDataSel();
 uint16_t prvGetBackTileDisplaySel();
 uint16_t prvGetWinTileDisplaySel();
@@ -211,7 +212,7 @@ void prvCheckOBP1(){
  * & Window Tile Data Select Address to 0x8000 on high or to 0x8800 on low.
  * @return Background & Window Tile Data Select Address
  * @note Background & Window Tile Data Select should be 0x9000 on a low 4th bit in a real Gameboy,
- * but it is much simpler to implement this way with emulation, the  0x400 offset is accounted for in getTileLineData()
+ * but it is much simpler to implement this way with emulation, the  0x400 offset is accounted for in prvGetTileLineData()
  */
 uint16_t prvGetBackWinTileDataSel(){
     return (ucGBMemoryRead(LCDC_ADDR) & 0x10) ? TILE_DATA_UNSIGNED_ADDR : TILE_DATA_SIGNED_ADDR;
@@ -244,7 +245,7 @@ uint16_t prvGetWinTileDisplaySel(){
  * @param line_offset gives the line offset in the tile
  * @return uint16_t data containing the color information of each pixel of a particular line belonging to a tile in the Gameboy's VRAM
  */
-uint16_t getTileLineData(uint16_t tile_offset, uint8_t line_offset, uint16_t TileDataAddr, uint16_t DisplayAddr){
+uint16_t prvGetTileLineData(uint16_t tile_offset, uint8_t line_offset, uint16_t TileDataAddr, uint16_t DisplayAddr){
     if (TileDataAddr == 0x8000){
         return usGBMemoryReadShort(TileDataAddr + (ucGBMemoryRead(DisplayAddr + tile_offset) * 0x10) + line_offset);
     }else{
@@ -317,7 +318,7 @@ void prvGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY, uint16_t T
     uint8_t pixl_offset = SCX % 8;                                                              // gives current pixel offset
 
     uint16_t first_tile = tile_offset % 32;
-    uint16_t tile_data = getTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);  // tile data holds tile line information
+    uint16_t tile_data = prvGetTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);  // tile data holds tile line information
 
     for(int j = 0; j < 160; j++){
 
@@ -337,9 +338,9 @@ void prvGBPPUDrawLineBackground(uint8_t ly, uint8_t SCX, uint8_t SCY, uint16_t T
             tile_offset++;
             pixl_offset = 0;
             if(first_tile + (tile_offset % 32) >= 12 && (tile_offset % 32) < first_tile)
-                tile_data = getTileLineData(tile_offset - 32, line_offset, TileDataAddr, DisplayAddr);
+                tile_data = prvGetTileLineData(tile_offset - 32, line_offset, TileDataAddr, DisplayAddr);
             else
-                tile_data = getTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);
+                tile_data = prvGetTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);
         }
     }
 }
@@ -362,7 +363,7 @@ void prvGBPPUDrawLineWindow(uint8_t ly, uint8_t WX, uint8_t WY, uint16_t TileDat
     uint8_t line_offset = (((ly - WY) % 8)) * 2;                                                // gives the line offset in the tile
     uint8_t pixl_offset = (WX - 7) % 8;                                                         // gives current pixel offset
 
-    uint16_t tile_data = getTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);  // tile data holds tile line information
+    uint16_t tile_data = prvGetTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);  // tile data holds tile line information
 
     for(int j = (WX - 7); j < 160; j++){
         uint8_t pixelData = 0;
@@ -380,7 +381,7 @@ void prvGBPPUDrawLineWindow(uint8_t ly, uint8_t WX, uint8_t WY, uint16_t TileDat
         if(pixl_offset == 8){
             tile_offset++;
             pixl_offset = 0;
-            tile_data = getTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);
+            tile_data = prvGetTileLineData(tile_offset, line_offset, TileDataAddr, DisplayAddr);
         }
     }
 }
